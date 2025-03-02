@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_example_8hpp_source" xml:lang="en-US">
+<title>example.hpp</title>
+<indexterm><primary>/home/himanshulikhar/Downloads/design-lab/project/part-a/doxygen-awesome-css/include/MyLibrary/example.hpp</primary></indexterm>
+<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#pragma&#32;once</emphasis>
+2 <emphasis role="preprocessor">#include&#32;&lt;string&gt;</emphasis>
+3 
+4 <emphasis role="keyword">namespace&#32;</emphasis>MyLibrary&#32;{
+5 
+6 <emphasis role="keyword">enum</emphasis>&#32;Color&#32;{&#32;red&#32;&#32;=&#32;1,&#32;green&#32;=&#32;2,&#32;blue&#32;=&#32;3&#32;};
+7 
+14 <emphasis role="keyword">class&#32;</emphasis><link linkend="_classMyLibrary_1_1Example">Example</link>&#32;{
+15 <emphasis role="keyword">public</emphasis>:
+155 &#32;&#32;&#32;&#32;std::string&#32;<link linkend="_classMyLibrary_1_1Example_1a1c0046b0674eb4cad09c5d3e943912b8">test</link>(<emphasis role="keyword">const</emphasis>&#32;std::string&amp;&#32;<link linkend="_classMyLibrary_1_1Example_1a1c0046b0674eb4cad09c5d3e943912b8">test</link>);
+156 
+157 &#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;virtualfunc()&#32;=&#32;0;
+158 
+159 &#32;&#32;&#32;&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;staticfunc();
+160 
+161 
+162 };
+163 
+164 <emphasis role="keyword">class&#32;</emphasis><link linkend="_classMyLibrary_1_1SecondExample">SecondExample</link>&#32;{
+165 &#32;&#32;&#32;&#32;std::string&#32;foo();
+166 }
+167 
+168 }
+169 
+</programlisting></section>

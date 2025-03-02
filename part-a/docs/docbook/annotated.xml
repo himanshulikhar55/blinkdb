@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_annotated" xml:lang="en-US">
+<title>Class List</title>
+Here are the classes, structs, unions and interfaces with brief descriptions:<link linkend="_classMyLibrary_1_1Example">MyLibrary::Example</link>
+<para><link linkend="_classMyLibrary_1_1Example">Example</link> class to demonstrate the features of the custom CSS </para>
+<link linkend="_classMyLibrary_1_1SecondExample">MyLibrary::SecondExample</link><link linkend="_classMyLibrary_1_1SubclassExample">MyLibrary::SubclassExample&lt; TemplatedClass &gt;</link>
+<para>Some subclass </para>
+</section>

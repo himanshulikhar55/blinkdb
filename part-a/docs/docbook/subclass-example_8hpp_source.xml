@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_subclass-example_8hpp_source" xml:lang="en-US">
+<title>subclass-example.hpp</title>
+<indexterm><primary>/home/himanshulikhar/Downloads/design-lab/project/part-a/doxygen-awesome-css/include/MyLibrary/subclass-example.hpp</primary></indexterm>
+<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#pragma&#32;once</emphasis>
+2 <emphasis role="preprocessor">#include&#32;&lt;string&gt;</emphasis>
+3 <emphasis role="preprocessor">#include&#32;&quot;example.hpp&quot;</emphasis>
+4 <emphasis role="preprocessor">#include&#32;&lt;iostream&gt;</emphasis>
+5 
+6 <emphasis role="keyword">namespace&#32;</emphasis>MyLibrary&#32;{
+7 
+11 &#32;&#32;&#32;&#32;<emphasis role="keyword">template</emphasis>&lt;<emphasis role="keyword">typename</emphasis>&#32;TemplatedClass&gt;
+12 &#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_classMyLibrary_1_1SubclassExample">SubclassExample</link>&#32;:&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_classMyLibrary_1_1Example">Example</link>&#32;{
+13 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>:
+14 
+19 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_classMyLibrary_1_1SubclassExample_1a08668a9f16511ad37fb547c985d62764">virtualfunc</link>()&#32;<emphasis role="keyword">override</emphasis>;
+20 
+24 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">template</emphasis>&#32;&lt;<emphasis role="keyword">typename</emphasis>&#32;T&gt;
+25 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::shared_ptr&lt;std::string&gt;&#32;<link linkend="_classMyLibrary_1_1SubclassExample_1ad2432fe3b060789f6f7052c515d515f4">function_template_test</link>(std::shared_ptr&lt;T&gt;&amp;&#32;param);
+26 
+36 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">template</emphasis>&#32;&lt;<emphasis role="keyword">typename</emphasis>&#32;T,&#32;<emphasis role="keyword">typename</emphasis>&#32;Foo,&#32;<emphasis role="keyword">typename</emphasis>&#32;Bar,&#32;<emphasis role="keyword">typename</emphasis>&#32;Alice,&#32;<emphasis role="keyword">typename</emphasis>&#32;Bob,&#32;<emphasis role="keyword">typename</emphasis>&#32;Charlie,&#32;<emphasis role="keyword">typename</emphasis>&#32;Hello,&#32;<emphasis role="keyword">typename</emphasis>&#32;World&gt;
+37 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::pair&lt;std::string,&#32;std::string&gt;&#32;<link linkend="_classMyLibrary_1_1SubclassExample_1a92227fff4f72a11be0e21d88914ba63e">long_function_with_many_parameters</link>(std::shared_ptr&lt;T&gt;&amp;&#32;param1,&#32;std::shared_ptr&lt;std::string&gt;&amp;&#32;param2,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;parameter3,&#32;Alice&#32;paramater4&#32;Bob&#32;parameter&#32;5)&#32;{
+38 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(<emphasis role="keyword">true</emphasis>)&#32;{
+39 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;this&#32;even&#32;has&#32;some&#32;code.&quot;</emphasis>&#32;&lt;&lt;&#32;std::endl;
+40 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+41 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+42 
+43 &#32;&#32;&#32;&#32;};
+44 
+45 }
+46 
+</programlisting></section>
