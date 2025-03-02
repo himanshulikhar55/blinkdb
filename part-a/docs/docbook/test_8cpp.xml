@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_test_8cpp" xml:lang="en-US">
+<title>/home/himanshulikhar/Downloads/design-lab/project/part-a/src/test.cpp File Reference</title>
+<indexterm><primary>/home/himanshulikhar/Downloads/design-lab/project/part-a/src/test.cpp</primary></indexterm>
+<para>
+
+<para>Testing doxygen. </para>
+ 
+</para>
+<simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para>void <link linkend="_test_8cpp_1a809b597c628c0a2bd088c711e4c87a9e">test</link> (int a, int b)</para>
+
+<para>This is a test function. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>Testing doxygen. </para>
+
+<para><formalpara><title>Author</title>
+
+<para>Himanshu (<link xlink:href="mailto:himanshu@domain.com">himanshu@domain.com</link>) </para>
+</formalpara>
+<formalpara><title>Version</title>
+
+<para>0.1 </para>
+</formalpara>
+<formalpara><title>Date</title>
+
+<para>2025-03-02</para>
+</formalpara>
+<formalpara><title>Copyright</title>
+
+<para>Copyright (c) 2025 </para>
+</formalpara>
+</para>
+</section>
+<section>
+<title>Function Documentation</title>
+<anchor xml:id="_test_8cpp_1a809b597c628c0a2bd088c711e4c87a9e"/><section>
+    <title>test()</title>
+<indexterm><primary>test</primary><secondary>test.cpp</secondary></indexterm>
+<indexterm><primary>test.cpp</primary><secondary>test</secondary></indexterm>
+<para><computeroutput>void test (int a, int b)</computeroutput></para><para>
+
+<para>This is a test function. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>a</entry><entry>
+<para>1st param </para>
+</entry>
+                            </row>
+                            <row>
+<entry>b</entry><entry>
+<para>2nd param </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+</section>
+</section>
