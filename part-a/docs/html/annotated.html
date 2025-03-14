@@ -19,6 +19,8 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -100,11 +102,13 @@ $(function(){initNavTree('annotated.html',''); initResizable(true); });
 </div><!--header-->
 <div class="contents">
 <div class="textblock">Here are the classes, structs, unions and interfaces with brief descriptions:</div><div class="directory">
-<div class="levels">[detail level <span onclick="javascript:dynsection.toggleLevel(1);">1</span><span onclick="javascript:dynsection.toggleLevel(2);">2</span>]</div><table class="directory">
-<tr id="row_0_" class="even"><td class="entry"><span style="width:0px;display:inline-block;">&#160;</span><span id="arr_0_" class="arrow" onclick="dynsection.toggleFolder('0_')">&#9660;</span><span class="icona"><span class="icon">N</span></span><b>MyLibrary</b></td><td class="desc"></td></tr>
-<tr id="row_0_0_" class="odd"><td class="entry"><span style="width:32px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="classMyLibrary_1_1Example.html" target="_self">Example</a></td><td class="desc"><a class="el" href="classMyLibrary_1_1Example.html" title="Example class to demonstrate the features of the custom CSS.">Example</a> class to demonstrate the features of the custom CSS </td></tr>
-<tr id="row_0_1_" class="even"><td class="entry"><span style="width:32px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="classMyLibrary_1_1SecondExample.html" target="_self">SecondExample</a></td><td class="desc"></td></tr>
-<tr id="row_0_2_" class="odd"><td class="entry"><span style="width:32px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="classMyLibrary_1_1SubclassExample.html" target="_self">SubclassExample</a></td><td class="desc">Some subclass </td></tr>
+<table class="directory">
+<tr id="row_0_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="classblinkdb.html" target="_self">blinkdb</a></td><td class="desc">This is the blinkdb class. It is a key-value store that lets user to set, get and delete key-value pairs It uses a hashtable to store the key-value pairs. The hashtable uses open addressing with double hashing to resolve collisions. If the in-memory hashtable is full, the key-value pairs are stored in a file on disk. When the user exits, all the data is erased from the disk and from the memory (obviously) </td></tr>
+<tr id="row_1_" class="odd"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="structBlock.html" target="_self">Block</a></td><td class="desc">This is the actual "Block" that will store the key and value pair. This block will be dynamically allocated and deallocated during "set" and "delete" operations in blinkdb </td></tr>
+<tr id="row_2_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="classbloomfilter.html" target="_self">bloomfilter</a></td><td class="desc"></td></tr>
+<tr id="row_3_" class="odd"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="classhashtable.html" target="_self">hashtable</a></td><td class="desc">This is the custom hashtable class. It uses open addressing with double hashing to resolve collisions. The table is a vector of Entry structs. Each Entry struct has a key, a value and a boolean flag to indicate if the entry is occupied. The occupied variable is a std::atomic&lt;bool&gt; to ensure that the operations are atomic </td></tr>
+<tr id="row_4_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="classmemorypool.html" target="_self">memorypool</a></td><td class="desc">This class is a memory pool that is used to allocate and deallocate memory blocks that will store key-value pairs </td></tr>
+<tr id="row_5_" class="odd"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="structparse__ip.html" target="_self">parse_ip</a></td><td class="desc"></td></tr>
 </table>
 </div><!-- directory -->
 </div><!-- contents -->

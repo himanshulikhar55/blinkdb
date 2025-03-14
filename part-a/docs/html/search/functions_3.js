@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['virtualfunc_0',['virtualfunc',['../classMyLibrary_1_1SubclassExample.html#a08668a9f16511ad37fb547c985d62764',1,'MyLibrary::SubclassExample']]]
+  ['get_0',['get',['../classblinkdb.html#a75e197842560cea323699bb1c5981a3d',1,'blinkdb::get()'],['../classhashtable.html#a6f614816407ca67d2feccc4eb6f11cf2',1,'hashtable::get()']]]
 ];

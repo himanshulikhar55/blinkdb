@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_structBlock" xml:lang="en-US">
+<title>Block Struct Reference</title>
+<indexterm><primary>Block</primary></indexterm>
+<para>
+
+<para>This is the actual &quot;Block&quot; that will store the key and value pair. This block will be dynamically allocated and deallocated during &quot;set&quot; and &quot;delete&quot; operations in blinkdb. </para>
+ 
+</para>
+<para>
+<computeroutput>#include &lt;lib/block.h&gt;</computeroutput>
+</para>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_structBlock_1a25435aaaf04f03275498ba03ef0593f5"/>std::atomic&lt; bool &gt; <emphasis role="strong">used</emphasis></para>
+
+<para>Tells if the block is used or not. </para>
+</listitem>
+            <listitem><para><anchor xml:id="_structBlock_1afa6df4ab7e5b31c6ecf5270e6a86749a"/>std::string <emphasis role="strong">key</emphasis></para>
+
+<para>The key in the key-value pair. </para>
+</listitem>
+            <listitem><para><anchor xml:id="_structBlock_1ae9be57efa71d5c61092282c4032d4b6b"/>std::string <emphasis role="strong">value</emphasis></para>
+
+<para>The value in the key-value pair. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>This is the actual &quot;Block&quot; that will store the key and value pair. This block will be dynamically allocated and deallocated during &quot;set&quot; and &quot;delete&quot; operations in blinkdb. </para>
+<para>
+The documentation for this struct was generated from the following file:</para>
+block.h</section>
+</section>

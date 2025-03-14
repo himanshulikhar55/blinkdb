@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_bloomfiler_8h_source" xml:lang="en-US">
+<title>bloomfiler.h</title>
+<indexterm><primary>bloomfiler.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#include&#32;&lt;vector&gt;</emphasis>
+2 <emphasis role="preprocessor">#include&#32;&lt;atomic&gt;</emphasis>
+3 <emphasis role="preprocessor">#include&#32;&lt;functional&gt;</emphasis>
+4 <emphasis role="preprocessor">#include&#32;&lt;string&gt;</emphasis>
+5 
+6 <emphasis role="keyword">class&#32;</emphasis><link linkend="_classbloomfilter">bloomfilter</link>&#32;{
+7 <emphasis role="keyword">private</emphasis>:
+8 &#32;&#32;&#32;&#32;std::vector&lt;std::atomic&lt;uint64_t&gt;&gt;&#32;bit_array;
+9 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;size;
+10 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;hash_count;
+11 
+12 &#32;&#32;&#32;&#32;std::pair&lt;size_t,&#32;size_t&gt;&#32;hash(<emphasis role="keyword">const</emphasis>&#32;std::string&amp;&#32;key)<emphasis role="keyword">&#32;const&#32;</emphasis>{
+13 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::hash&lt;std::string&gt;&#32;hasher;
+14 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;hash1&#32;=&#32;hasher(key);
+15 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;hash2&#32;=&#32;hash1&#32;&gt;&gt;&#32;3;&#32;<emphasis role="comment">//&#32;Second&#32;hash&#32;(cheap&#32;variation)</emphasis>
+16 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;{hash1,&#32;hash2};
+17 &#32;&#32;&#32;&#32;}
+18 
+19 <emphasis role="keyword">public</emphasis>:
+20 &#32;&#32;&#32;&#32;<link linkend="_classbloomfilter">bloomfilter</link>(<emphasis role="keywordtype">size_t</emphasis>&#32;num_bits,&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;num_hashes)
+21 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;size(num_bits),&#32;hash_count(num_hashes),&#32;bit_array((num_bits&#32;+&#32;63)&#32;/&#32;64)&#32;{}
+22 
+23 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;insert(<emphasis role="keyword">const</emphasis>&#32;std::string&amp;&#32;key)&#32;{
+24 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">auto</emphasis>&#32;[hash1,&#32;hash2]&#32;=&#32;hash(key);
+25 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">size_t</emphasis>&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;hash_count;&#32;++i)&#32;{
+26 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;index&#32;=&#32;(hash1&#32;+&#32;i&#32;*&#32;hash2)&#32;%&#32;size;
+27 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;bit_array[index&#32;/&#32;64].fetch_or(1ULL&#32;&lt;&lt;&#32;(index&#32;%&#32;64),&#32;std::memory_order_relaxed);
+28 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+29 &#32;&#32;&#32;&#32;}
+30 
+31 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;possibly_contains(<emphasis role="keyword">const</emphasis>&#32;std::string&amp;&#32;key)<emphasis role="keyword">&#32;const&#32;</emphasis>{
+32 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">auto</emphasis>&#32;[hash1,&#32;hash2]&#32;=&#32;hash(key);
+33 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">size_t</emphasis>&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;hash_count;&#32;++i)&#32;{
+34 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;index&#32;=&#32;(hash1&#32;+&#32;i&#32;*&#32;hash2)&#32;%&#32;size;
+35 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!(bit_array[index&#32;/&#32;64].load(std::memory_order_relaxed)&#32;&amp;&#32;(1ULL&#32;&lt;&lt;&#32;(index&#32;%&#32;64))))&#32;{
+36 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+37 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+38 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+39 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+40 &#32;&#32;&#32;&#32;}
+41 };
+</programlisting></section>

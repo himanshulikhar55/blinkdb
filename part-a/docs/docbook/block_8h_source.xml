@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_block_8h_source" xml:lang="en-US">
+<title>block.h</title>
+<indexterm><primary>block.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#pragma&#32;once</emphasis>
+2 <emphasis role="preprocessor">#include&#32;&lt;string&gt;</emphasis>
+3 <emphasis role="preprocessor">#include&#32;&lt;atomic&gt;</emphasis>
+4 
+10 <emphasis role="keyword">struct&#32;</emphasis><link linkend="_structBlock">Block</link>&#32;{
+15 &#32;&#32;&#32;&#32;std::atomic&lt;bool&gt;&#32;<link linkend="_structBlock_1a25435aaaf04f03275498ba03ef0593f5">used</link>;
+20 &#32;&#32;&#32;&#32;std::string&#32;<link linkend="_structBlock_1afa6df4ab7e5b31c6ecf5270e6a86749a">key</link>;
+25 &#32;&#32;&#32;&#32;std::string&#32;<link linkend="_structBlock_1ae9be57efa71d5c61092282c4032d4b6b">value</link>;
+26 };
+</programlisting></section>

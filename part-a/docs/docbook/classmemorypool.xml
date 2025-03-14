@@ -1,0 +1,155 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_classmemorypool" xml:lang="en-US">
+<title>memorypool Class Reference</title>
+<indexterm><primary>memorypool</primary></indexterm>
+<para>
+
+<para>This class is a memory pool that is used to allocate and deallocate memory blocks that will store key-value pairs. </para>
+ 
+</para>
+<para>
+<computeroutput>#include &lt;lib/memorypool.h&gt;</computeroutput>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_classmemorypool_1a8be7c07ebe027a2dec03630743a25c0b">memorypool</link> (size_t size)</para>
+
+<para>Construct a new memorypool object with a given size. </para>
+</listitem>
+            <listitem><para><anchor xml:id="_classmemorypool_1a4076462d8538f4b7f57975aedb2c2a13"/><emphasis role="strong">memorypool</emphasis> ()</para>
+
+<para>Default constructor for a new memorypool object. </para>
+</listitem>
+            <listitem><para><link linkend="_structBlock">Block</link> * <link linkend="_classmemorypool_1aff5c0156c665b592139431231496d305">allocate</link> (const std::string &amp;key, std::string &amp;&amp;value)</para>
+
+<para>When &quot;set&quot; is called, a new <link linkend="_structBlock">Block</link> is allocated from the memory pool and the key-value pair is stored in the <link linkend="_structBlock">Block</link>. </para>
+</listitem>
+            <listitem><para>bool <link linkend="_classmemorypool_1a56e8e86546b458db97dacf75730abc2a">deallocate</link> (<link linkend="_structBlock">Block</link> *block)</para>
+
+<para>When &quot;del&quot; is called, the <link linkend="_structBlock">Block</link> that stores the key-value pair is deallocated from the memory pool. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>This class is a memory pool that is used to allocate and deallocate memory blocks that will store key-value pairs. </para>
+</section>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_classmemorypool_1a8be7c07ebe027a2dec03630743a25c0b"/><section>
+    <title>memorypool()</title>
+<indexterm><primary>memorypool</primary><secondary>memorypool</secondary></indexterm>
+<indexterm><primary>memorypool</primary><secondary>memorypool</secondary></indexterm>
+<para><computeroutput>memorypool::memorypool (size_t size)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>Construct a new memorypool object with a given size. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>size</entry><entry>
+<para>The number of &quot;Blocks&quot; that the memory pool can store in-memory </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_classmemorypool_1aff5c0156c665b592139431231496d305"/><section>
+    <title>allocate()</title>
+<indexterm><primary>allocate</primary><secondary>memorypool</secondary></indexterm>
+<indexterm><primary>memorypool</primary><secondary>allocate</secondary></indexterm>
+<para><computeroutput><link linkend="_structBlock">Block</link> * memorypool::allocate (const std::string &amp; key, std::string &amp;&amp; value)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>When &quot;set&quot; is called, a new <link linkend="_structBlock">Block</link> is allocated from the memory pool and the key-value pair is stored in the <link linkend="_structBlock">Block</link>. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>key</entry><entry>
+<para>The key in the key-value pair </para>
+</entry>
+                            </row>
+                            <row>
+<entry>value</entry><entry>
+<para>The value in the key-value pair </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>Block* A pointer to the <link linkend="_structBlock">Block</link> that stores the key-value pair </para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_classmemorypool_1a56e8e86546b458db97dacf75730abc2a"/><section>
+    <title>deallocate()</title>
+<indexterm><primary>deallocate</primary><secondary>memorypool</secondary></indexterm>
+<indexterm><primary>memorypool</primary><secondary>deallocate</secondary></indexterm>
+<para><computeroutput>bool memorypool::deallocate (<link linkend="_structBlock">Block</link> * block)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>When &quot;del&quot; is called, the <link linkend="_structBlock">Block</link> that stores the key-value pair is deallocated from the memory pool. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>block</entry><entry>
+<para>Pointer the <link linkend="_structBlock">Block</link> that stores the key-value pair </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>true When the <link linkend="_structBlock">Block</link> is deallocated successfully </para>
+
+<para>false Otherwise </para>
+</formalpara>
+</para>
+</section>
+<para>
+The documentation for this class was generated from the following file:</para>
+memorypool.h</section>
+</section>

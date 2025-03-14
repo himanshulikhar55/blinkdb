@@ -1,0 +1,198 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_classhashtable" xml:lang="en-US">
+<title>hashtable Class Reference</title>
+<indexterm><primary>hashtable</primary></indexterm>
+<para>
+
+<para>This is the custom hashtable class. It uses open addressing with double hashing to resolve collisions. The table is a vector of Entry structs. Each Entry struct has a key, a value and a boolean flag to indicate if the entry is occupied. The occupied variable is a std::atomic&lt;bool&gt; to ensure that the operations are atomic. </para>
+ 
+</para>
+<para>
+<computeroutput>#include &lt;lib/hashtable.h&gt;</computeroutput>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_classhashtable_1ae538aec043b2dcfb97529053484640ce">hashtable</link> (size_t size)</para>
+
+<para>Construct a new hashtable object. </para>
+</listitem>
+            <listitem><para><anchor xml:id="_classhashtable_1a0e8cd243f696051b91e3ac04205564c5"/><emphasis role="strong">hashtable</emphasis> ()</para>
+
+<para>Construct a new hashtable object. This is the default constructor. </para>
+</listitem>
+            <listitem><para>bool <link linkend="_classhashtable_1a4c02725230715510665452b4ee20e209">insert</link> (const std::string &amp;key, std::string &amp;value)</para>
+
+<para>Function to insert a key-value pair into the hashtable. </para>
+</listitem>
+            <listitem><para>std::string <link linkend="_classhashtable_1a6f614816407ca67d2feccc4eb6f11cf2">get</link> (const std::string &amp;key)</para>
+
+<para>Function to get the value corresponding to a key. </para>
+</listitem>
+            <listitem><para>bool <link linkend="_classhashtable_1a84de2b2fb13c58b207081fc6c239b3b5">del</link> (const std::string &amp;key)</para>
+
+<para>Function to delete a key-value pair from the hashtable. </para>
+</listitem>
+            <listitem><para><anchor xml:id="_classhashtable_1a9f5174a33d3f1726fad9d7a2bb3c66d6"/>void <emphasis role="strong">print</emphasis> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>This is the custom hashtable class. It uses open addressing with double hashing to resolve collisions. The table is a vector of Entry structs. Each Entry struct has a key, a value and a boolean flag to indicate if the entry is occupied. The occupied variable is a std::atomic&lt;bool&gt; to ensure that the operations are atomic. </para>
+</section>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_classhashtable_1ae538aec043b2dcfb97529053484640ce"/><section>
+    <title>hashtable()</title>
+<indexterm><primary>hashtable</primary><secondary>hashtable</secondary></indexterm>
+<indexterm><primary>hashtable</primary><secondary>hashtable</secondary></indexterm>
+<para><computeroutput>hashtable::hashtable (size_t size)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>Construct a new hashtable object. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>size</entry><entry>
+<para>Size of the hashtable </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_classhashtable_1a84de2b2fb13c58b207081fc6c239b3b5"/><section>
+    <title>del()</title>
+<indexterm><primary>del</primary><secondary>hashtable</secondary></indexterm>
+<indexterm><primary>hashtable</primary><secondary>del</secondary></indexterm>
+<para><computeroutput>bool hashtable::del (const std::string &amp; key)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>Function to delete a key-value pair from the hashtable. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>key</entry><entry>
+<para>The key that you want to delete </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>true, if the key-value pair is deleted successfully </para>
+
+<para>false, otherwise </para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_classhashtable_1a6f614816407ca67d2feccc4eb6f11cf2"/><section>
+    <title>get()</title>
+<indexterm><primary>get</primary><secondary>hashtable</secondary></indexterm>
+<indexterm><primary>hashtable</primary><secondary>get</secondary></indexterm>
+<para><computeroutput>std::string hashtable::get (const std::string &amp; key)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>Function to get the value corresponding to a key. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>key</entry><entry>
+<para>The key whose value you want to retrieve </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>std::string Returns the value corresponding to the key. If the key does not exist, it returns an empty string </para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_classhashtable_1a4c02725230715510665452b4ee20e209"/><section>
+    <title>insert()</title>
+<indexterm><primary>insert</primary><secondary>hashtable</secondary></indexterm>
+<indexterm><primary>hashtable</primary><secondary>insert</secondary></indexterm>
+<para><computeroutput>bool hashtable::insert (const std::string &amp; key, std::string &amp; value)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>Function to insert a key-value pair into the hashtable. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>key</entry><entry>
+<para>The key in the key-value pair </para>
+</entry>
+                            </row>
+                            <row>
+<entry>value</entry><entry>
+<para>The value in the key-value pair </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>true, when the key-value pair is inserted successfully </para>
+
+<para>false, otherwise </para>
+</formalpara>
+</para>
+</section>
+<para>
+The documentation for this class was generated from the following file:</para>
+hashtable.h</section>
+</section>

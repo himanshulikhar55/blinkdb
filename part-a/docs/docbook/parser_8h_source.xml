@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_parser_8h_source" xml:lang="en-US">
+<title>parser.h</title>
+<indexterm><primary>parser.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#pragma&#32;once</emphasis>
+2 <emphasis role="preprocessor">#include&#32;&lt;string&gt;</emphasis>
+3 <emphasis role="preprocessor">#include&#32;&lt;sstream&gt;</emphasis>
+4 
+5 <emphasis role="keyword">struct&#32;</emphasis><link linkend="_structparse__ip">parse_ip</link>&#32;{
+6 &#32;&#32;&#32;&#32;std::string&#32;op;
+7 &#32;&#32;&#32;&#32;std::string&#32;key;
+8 &#32;&#32;&#32;&#32;std::string&#32;value;
+9 };
+10 
+11 <emphasis role="keywordtype">void</emphasis>&#32;to_lower(std::string&#32;&amp;s){
+12 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>(<emphasis role="keyword">auto</emphasis>&#32;&amp;c&#32;:&#32;s){
+13 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;c&#32;=&#32;tolower(c);
+14 &#32;&#32;&#32;&#32;}
+15 }
+16 
+17 <link linkend="_structparse__ip">parse_ip</link>*&#32;parse(std::string&#32;input){
+18 &#32;&#32;&#32;&#32;<link linkend="_structparse__ip">parse_ip</link>&#32;*ip&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_structparse__ip">parse_ip</link>();
+19 &#32;&#32;&#32;&#32;std::stringstream&#32;ss(input);
+20 &#32;&#32;&#32;&#32;std::string&#32;temp;
+21 &#32;&#32;&#32;&#32;ss&#32;&gt;&gt;&#32;ip-&gt;op;
+22 &#32;&#32;&#32;&#32;to_lower(ip-&gt;op);
+23 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(ip-&gt;op&#32;==&#32;<emphasis role="stringliteral">&quot;print&quot;</emphasis>)
+24 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;ip;
+25 &#32;&#32;&#32;&#32;ss&#32;&gt;&gt;&#32;ip-&gt;key;
+26 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(ip-&gt;op&#32;==&#32;<emphasis role="stringliteral">&quot;set&quot;</emphasis>){
+27 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::string&#32;value&#32;=&#32;<emphasis role="stringliteral">&quot;&quot;</emphasis>;
+28 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">while</emphasis>(ss&#32;&gt;&gt;&#32;temp){
+29 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;value&#32;+=&#32;temp&#32;+&#32;<emphasis role="stringliteral">&quot;&#32;&quot;</emphasis>;
+30 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+31 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;ip-&gt;value&#32;=&#32;value;
+32 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;std::cout&#32;&lt;&lt;&#32;ip-&gt;op&#32;&lt;&lt;&#32;&quot;&#32;&quot;&#32;&lt;&lt;&#32;ip-&gt;key&#32;&lt;&lt;&#32;&quot;&#32;&quot;&#32;&lt;&lt;&#32;ip-&gt;value&#32;&lt;&lt;&#32;std::endl;</emphasis>
+33 &#32;&#32;&#32;&#32;}
+34 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;ip;
+35 }
+</programlisting></section>

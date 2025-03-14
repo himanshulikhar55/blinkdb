@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_blinkdb_8h_source" xml:lang="en-US">
+<title>blinkdb.h</title>
+<indexterm><primary>blinkdb.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#include&#32;&quot;hashtable.h&quot;</emphasis>
+2 
+10 <emphasis role="keyword">class&#32;</emphasis><link linkend="_classblinkdb">blinkdb</link>&#32;{
+11 &#32;&#32;&#32;&#32;<emphasis role="keyword">private</emphasis>:
+12 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classhashtable">hashtable</link>&#32;ht;
+13 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>:
+18 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classblinkdb_1ad20d4882572f1b492ab041b45f238a0c">blinkdb</link>(<emphasis role="keywordtype">size_t</emphasis>&#32;size){
+19 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;ht&#32;=&#32;<link linkend="_classhashtable">hashtable</link>(size);
+20 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+29 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_classblinkdb_1a38ee1f661825653379d471d7ad6f522f">set</link>(std::string&#32;key,&#32;std::string&#32;value){
+30 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;ht.<link linkend="_classhashtable_1a4c02725230715510665452b4ee20e209">insert</link>(key,&#32;value);
+31 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+38 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::string&#32;<link linkend="_classblinkdb_1a75e197842560cea323699bb1c5981a3d">get</link>(std::string&#32;key){
+39 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;ht.<link linkend="_classhashtable_1a6f614816407ca67d2feccc4eb6f11cf2">get</link>(key);
+40 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+48 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_classblinkdb_1af46ef218f2206bf3d934f49cbbd69a7c">del</link>(std::string&#32;key){
+49 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;ht.<link linkend="_classhashtable_1a84de2b2fb13c58b207081fc6c239b3b5">del</link>(key);
+50 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+51 
+52 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;print(){
+53 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;ht.print();
+54 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+55 };
+</programlisting></section>

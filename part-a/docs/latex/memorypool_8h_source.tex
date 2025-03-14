@@ -1,0 +1,55 @@
+\doxysection{memorypool.\+h}
+\hypertarget{memorypool_8h_source}{}\label{memorypool_8h_source}\index{memorypool.h@{memorypool.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ "{}block.h"{}}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <atomic>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <queue>}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classmemorypool}{memorypool}}\ \{}
+\DoxyCodeLine{00015\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00016\ \ \ \ \ std::vector<Block>\ pool;}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ capacity;}
+\DoxyCodeLine{00018\ \ \ \ \ std::queue<int>\ free\_blocks;}
+\DoxyCodeLine{00019\ \ \ \ \ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00026\ \ \ \ \ \mbox{\hyperlink{classmemorypool_a8be7c07ebe027a2dec03630743a25c0b}{memorypool}}(\textcolor{keywordtype}{size\_t}\ size)\ :\ capacity(size),\ pool(size)\ \{}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ free\_blocks\ =\ std::queue<int>();}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ size;\ i++)\ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ free\_blocks.push(i);}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00031\ \ \ \ \ \}}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00037\ \ \ \ \ \mbox{\hyperlink{classmemorypool_a4076462d8538f4b7f57975aedb2c2a13}{memorypool}}():\ capacity(0),\ pool(0)\ \{\}}
+\DoxyCodeLine{00038\ \ \ \ \ }
+\DoxyCodeLine{00046\ \ \ \ \ \mbox{\hyperlink{structBlock}{Block}}*\ \mbox{\hyperlink{classmemorypool_aff5c0156c665b592139431231496d305}{allocate}}(\textcolor{keyword}{const}\ std::string\&\ key,\ std::string\&\&\ value)\ \{}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (!free\_blocks.empty())\ \{}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ index\ =\ free\_blocks.front();}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ free\_blocks.pop();}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structBlock}{Block}}\&\ block\ =\ pool[index];}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!block.\mbox{\hyperlink{structBlock_a25435aaaf04f03275498ba03ef0593f5}{used}}.load())\ \{}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ block.\mbox{\hyperlink{structBlock_a25435aaaf04f03275498ba03ef0593f5}{used}}.store(\textcolor{keyword}{true});}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ block.\mbox{\hyperlink{structBlock_afa6df4ab7e5b31c6ecf5270e6a86749a}{key}}\ =\ std::move(key);}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ block.\mbox{\hyperlink{structBlock_ae9be57efa71d5c61092282c4032d4b6b}{value}}\ =\ std::move(value);}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \&block;}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00059\ \ \ \ \ \}}
+\DoxyCodeLine{00060\ \ \ \ \ }
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classmemorypool_a56e8e86546b458db97dacf75730abc2a}{deallocate}}(\mbox{\hyperlink{structBlock}{Block}}*\ block)\ \{}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(block)\{}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ index\ =\ block\ -\/\ \&pool[0];}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ free\_blocks.push(index);}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ block-\/>\mbox{\hyperlink{structBlock_a25435aaaf04f03275498ba03ef0593f5}{used}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00076\ \ \ \ \ \}}
+\DoxyCodeLine{00077\ \};}
+
+\end{DoxyCode}

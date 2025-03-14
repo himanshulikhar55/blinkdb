@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_memorypool_8h_source" xml:lang="en-US">
+<title>memorypool.h</title>
+<indexterm><primary>memorypool.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#pragma&#32;once</emphasis>
+2 <emphasis role="preprocessor">#include&#32;&quot;block.h&quot;</emphasis>
+3 <emphasis role="preprocessor">#include&#32;&lt;iostream&gt;</emphasis>
+4 <emphasis role="preprocessor">#include&#32;&lt;vector&gt;</emphasis>
+5 <emphasis role="preprocessor">#include&#32;&lt;atomic&gt;</emphasis>
+6 <emphasis role="preprocessor">#include&#32;&lt;memory&gt;</emphasis>
+7 <emphasis role="preprocessor">#include&#32;&lt;queue&gt;</emphasis>
+8 
+14 <emphasis role="keyword">class&#32;</emphasis><link linkend="_classmemorypool">memorypool</link>&#32;{
+15 <emphasis role="keyword">private</emphasis>:
+16 &#32;&#32;&#32;&#32;std::vector&lt;Block&gt;&#32;pool;
+17 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;capacity;
+18 &#32;&#32;&#32;&#32;std::queue&lt;int&gt;&#32;free_blocks;
+19 &#32;&#32;&#32;&#32;
+20 <emphasis role="keyword">public</emphasis>:
+26 &#32;&#32;&#32;&#32;<link linkend="_classmemorypool_1a8be7c07ebe027a2dec03630743a25c0b">memorypool</link>(<emphasis role="keywordtype">size_t</emphasis>&#32;size)&#32;:&#32;capacity(size),&#32;pool(size)&#32;{
+27 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;free_blocks&#32;=&#32;std::queue&lt;int&gt;();
+28 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;size;&#32;i++)&#32;{
+29 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;free_blocks.push(i);
+30 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+31 &#32;&#32;&#32;&#32;}
+32 
+37 &#32;&#32;&#32;&#32;<link linkend="_classmemorypool_1a4076462d8538f4b7f57975aedb2c2a13">memorypool</link>():&#32;capacity(0),&#32;pool(0)&#32;{}
+38 &#32;&#32;&#32;&#32;
+46 &#32;&#32;&#32;&#32;<link linkend="_structBlock">Block</link>*&#32;<link linkend="_classmemorypool_1aff5c0156c665b592139431231496d305">allocate</link>(<emphasis role="keyword">const</emphasis>&#32;std::string&amp;&#32;key,&#32;std::string&amp;&amp;&#32;value)&#32;{
+47 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">while</emphasis>&#32;(!free_blocks.empty())&#32;{
+48 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;index&#32;=&#32;free_blocks.front();
+49 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;free_blocks.pop();
+50 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_structBlock">Block</link>&amp;&#32;block&#32;=&#32;pool[index];
+51 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!block.<link linkend="_structBlock_1a25435aaaf04f03275498ba03ef0593f5">used</link>.load())&#32;{
+52 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;block.<link linkend="_structBlock_1a25435aaaf04f03275498ba03ef0593f5">used</link>.store(<emphasis role="keyword">true</emphasis>);
+53 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;block.<link linkend="_structBlock_1afa6df4ab7e5b31c6ecf5270e6a86749a">key</link>&#32;=&#32;std::move(key);
+54 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;block.<link linkend="_structBlock_1ae9be57efa71d5c61092282c4032d4b6b">value</link>&#32;=&#32;std::move(value);
+55 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;&amp;block;
+56 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+57 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+58 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">nullptr</emphasis>;
+59 &#32;&#32;&#32;&#32;}
+60 &#32;&#32;&#32;&#32;
+68 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_classmemorypool_1a56e8e86546b458db97dacf75730abc2a">deallocate</link>(<link linkend="_structBlock">Block</link>*&#32;block)&#32;{
+69 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(block){
+70 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;index&#32;=&#32;block&#32;-&#32;&amp;pool[0];
+71 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;free_blocks.push(index);
+72 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;block-&gt;<link linkend="_structBlock_1a25435aaaf04f03275498ba03ef0593f5">used</link>&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+73 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+74 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+75 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+76 &#32;&#32;&#32;&#32;}
+77 };
+</programlisting></section>

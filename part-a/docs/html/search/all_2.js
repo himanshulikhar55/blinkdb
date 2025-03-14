@@ -1,13 +1,5 @@
 var searchData=
 [
-  ['centering_0',['Centering',['../md__2home_2himanshulikhar_2Downloads_2design-lab_2project_2part-a_2doxygen-awesome-css_2docs_2tricks.html#autotoc_md20',1,'']]],
-  ['choosing_20a_20layout_1',['Choosing a layout',['../md__2home_2himanshulikhar_2Downloads_2design-lab_2project_2part-a_2doxygen-awesome-css_2README.html#autotoc_md37',1,'']]],
-  ['choosing_20sidebar_20width_2',['Choosing Sidebar Width',['../md__2home_2himanshulikhar_2Downloads_2design-lab_2project_2part-a_2doxygen-awesome-css_2docs_2tricks.html#tricks-sidebar',1,'']]],
-  ['code_20block_3',['Code block',['../classMyLibrary_1_1Example.html#autotoc_md27',1,'']]],
-  ['copy_20button_4',['Fragment Copy Button',['../md__2home_2himanshulikhar_2Downloads_2design-lab_2project_2part-a_2doxygen-awesome-css_2docs_2extensions.html#extension-copy-button',1,'']]],
-  ['credits_5',['Credits',['../md__2home_2himanshulikhar_2Downloads_2design-lab_2project_2part-a_2doxygen-awesome-css_2README.html#autotoc_md40',1,'']]],
-  ['css_20variables_6',['CSS-Variables',['../md__2home_2himanshulikhar_2Downloads_2design-lab_2project_2part-a_2doxygen-awesome-css_2docs_2customization.html#autotoc_md1',1,'']]],
-  ['customization_7',['Customization',['../md__2home_2himanshulikhar_2Downloads_2design-lab_2project_2part-a_2doxygen-awesome-css_2docs_2customization.html',1,'']]],
-  ['customizations_8',['Share your customizations',['../md__2home_2himanshulikhar_2Downloads_2design-lab_2project_2part-a_2doxygen-awesome-css_2docs_2customization.html#autotoc_md5',1,'']]],
-  ['customizing_9',['Customizing',['../md__2home_2himanshulikhar_2Downloads_2design-lab_2project_2part-a_2doxygen-awesome-css_2docs_2extensions.html#autotoc_md8',1,'Customizing'],['../md__2home_2himanshulikhar_2Downloads_2design-lab_2project_2part-a_2doxygen-awesome-css_2docs_2extensions.html#autotoc_md10',1,'Customizing'],['../md__2home_2himanshulikhar_2Downloads_2design-lab_2project_2part-a_2doxygen-awesome-css_2docs_2extensions.html#autotoc_md12',1,'Customizing'],['../md__2home_2himanshulikhar_2Downloads_2design-lab_2project_2part-a_2doxygen-awesome-css_2docs_2extensions.html#autotoc_md14',1,'Customizing']]]
+  ['deallocate_0',['deallocate',['../classmemorypool.html#a56e8e86546b458db97dacf75730abc2a',1,'memorypool']]],
+  ['del_1',['del',['../classblinkdb.html#af46ef218f2206bf3d934f49cbbd69a7c',1,'blinkdb::del()'],['../classhashtable.html#a84de2b2fb13c58b207081fc6c239b3b5',1,'hashtable::del()']]]
 ];

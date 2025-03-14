@@ -1,6 +1,9 @@
 \doxysection{Class List}
 Here are the classes, structs, unions and interfaces with brief descriptions\+:\begin{DoxyCompactList}
-\item\contentsline{section}{\mbox{\hyperlink{classMyLibrary_1_1Example}{My\+Library\+::\+Example}} \\*\doxylink{classMyLibrary_1_1Example}{Example} class to demonstrate the features of the custom CSS }{\pageref{classMyLibrary_1_1Example}}{}
-\item\contentsline{section}{\mbox{\hyperlink{classMyLibrary_1_1SecondExample}{My\+Library\+::\+Second\+Example}} }{\pageref{classMyLibrary_1_1SecondExample}}{}
-\item\contentsline{section}{\mbox{\hyperlink{classMyLibrary_1_1SubclassExample}{My\+Library\+::\+Subclass\+Example$<$ Templated\+Class $>$}} \\*Some subclass }{\pageref{classMyLibrary_1_1SubclassExample}}{}
+\item\contentsline{section}{\mbox{\hyperlink{classblinkdb}{blinkdb}} \\*This is the blinkdb class. It is a key-\/value store that lets user to set, get and delete key-\/value pairs It uses a hashtable to store the key-\/value pairs. The hashtable uses open addressing with double hashing to resolve collisions. If the in-\/memory hashtable is full, the key-\/value pairs are stored in a file on disk. When the user exits, all the data is erased from the disk and from the memory (obviously) }{\pageref{classblinkdb}}{}
+\item\contentsline{section}{\mbox{\hyperlink{structBlock}{Block}} \\*This is the actual "{}\+Block"{} that will store the key and value pair. This block will be dynamically allocated and deallocated during "{}set"{} and "{}delete"{} operations in blinkdb }{\pageref{structBlock}}{}
+\item\contentsline{section}{\mbox{\hyperlink{classbloomfilter}{bloomfilter}} }{\pageref{classbloomfilter}}{}
+\item\contentsline{section}{\mbox{\hyperlink{classhashtable}{hashtable}} \\*This is the custom hashtable class. It uses open addressing with double hashing to resolve collisions. The table is a vector of Entry structs. Each Entry struct has a key, a value and a boolean flag to indicate if the entry is occupied. The occupied variable is a std\+::atomic$<$bool$>$ to ensure that the operations are atomic }{\pageref{classhashtable}}{}
+\item\contentsline{section}{\mbox{\hyperlink{classmemorypool}{memorypool}} \\*This class is a memory pool that is used to allocate and deallocate memory blocks that will store key-\/value pairs }{\pageref{classmemorypool}}{}
+\item\contentsline{section}{\mbox{\hyperlink{structparse__ip}{parse\+\_\+ip}} }{\pageref{structparse__ip}}{}
 \end{DoxyCompactList}

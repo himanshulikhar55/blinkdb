@@ -1,0 +1,30 @@
+\doxysection{lsmtree.\+h}
+\hypertarget{lsmtree_8h_source}{}\label{lsmtree_8h_source}\index{/home/himanshulikhar/Downloads/design-\/lab/project/part-\/a/src/lib/lsmtree.h@{/home/himanshulikhar/Downloads/design-\/lab/project/part-\/a/src/lib/lsmtree.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ "{}memtable.h"{}}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classlsmtree}{lsmtree}}\{}
+\DoxyCodeLine{00009\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00010\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classmemtable}{memtable}}\ mTable;}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classlsmtree}{lsmtree}}()\{}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \ \ \ \ mTable\ =\ \mbox{\hyperlink{classmemtable}{memtable}}();}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ insert(std::string\ key,\ std::string\ value)\{}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(mTable.\_insert(key,\ value))}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ std::string\ get(std::string\ key)\{}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ mTable.\_get(key);}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \_del(std::string\ key)\{}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ mTable.\_del(key);}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ print()\{}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ mTable.print();}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00029\ \};}
+
+\end{DoxyCode}

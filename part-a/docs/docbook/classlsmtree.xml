@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_classlsmtree" xml:lang="en-US">
+<title>lsmtree Class Reference</title>
+<indexterm><primary>lsmtree</primary></indexterm>
+<para>
+
+<para>This is the. </para>
+ 
+</para>
+<para>
+<computeroutput>#include &lt;lsmtree.h&gt;</computeroutput>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_classlsmtree_1a2449887c8fc7c49117c05674e6dc80ce"/>bool <emphasis role="strong">insert</emphasis> (std::string key, std::string value)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_classlsmtree_1ac9aba0ac5f87109dc7abd9bace9e079f"/>std::string <emphasis role="strong">get</emphasis> (std::string key)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_classlsmtree_1a6e8ee9a13a79538c47b9dc9b38b82b35"/>bool <emphasis role="strong">_del</emphasis> (std::string key)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_classlsmtree_1a14d95245e50bf1a6f0c1d125198e8215"/>void <emphasis role="strong">print</emphasis> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>This is the. </para>
+<para>
+The documentation for this class was generated from the following file:</para>
+/home/himanshulikhar/Downloads/design-lab/project/part-a/src/lib/lsmtree.h</section>
+</section>

@@ -1,0 +1,29 @@
+\doxysection{blinkdb.\+h}
+\hypertarget{blinkdb_8h_source}{}\label{blinkdb_8h_source}\index{blinkdb.h@{blinkdb.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ "{}hashtable.h"{}}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classblinkdb}{blinkdb}}\ \{}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classhashtable}{hashtable}}\ ht;}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classblinkdb_ad20d4882572f1b492ab041b45f238a0c}{blinkdb}}(\textcolor{keywordtype}{size\_t}\ size)\{}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \ \ \ \ ht\ =\ \mbox{\hyperlink{classhashtable}{hashtable}}(size);}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classblinkdb_a38ee1f661825653379d471d7ad6f522f}{set}}(std::string\ key,\ std::string\ value)\{}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ ht.\mbox{\hyperlink{classhashtable_a4c02725230715510665452b4ee20e209}{insert}}(key,\ value);}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{classblinkdb_a75e197842560cea323699bb1c5981a3d}{get}}(std::string\ key)\{}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ ht.\mbox{\hyperlink{classhashtable_a6f614816407ca67d2feccc4eb6f11cf2}{get}}(key);}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classblinkdb_af46ef218f2206bf3d934f49cbbd69a7c}{del}}(std::string\ key)\{}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ ht.\mbox{\hyperlink{classhashtable_a84de2b2fb13c58b207081fc6c239b3b5}{del}}(key);}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ print()\{}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ ht.print();}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00055\ \};}
+
+\end{DoxyCode}

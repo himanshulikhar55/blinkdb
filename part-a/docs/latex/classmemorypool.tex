@@ -1,0 +1,92 @@
+\doxysection{memorypool Class Reference}
+\hypertarget{classmemorypool}{}\label{classmemorypool}\index{memorypool@{memorypool}}
+
+
+This class is a memory pool that is used to allocate and deallocate memory blocks that will store key-\/value pairs.  
+
+
+
+
+{\ttfamily \#include $<$lib/memorypool.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmemorypool_a8be7c07ebe027a2dec03630743a25c0b}{memorypool}} (size\+\_\+t size)
+\begin{DoxyCompactList}\small\item\em Construct a new memorypool object with a given size. \end{DoxyCompactList}\item 
+\Hypertarget{classmemorypool_a4076462d8538f4b7f57975aedb2c2a13}\label{classmemorypool_a4076462d8538f4b7f57975aedb2c2a13} 
+{\bfseries memorypool} ()
+\begin{DoxyCompactList}\small\item\em Default constructor for a new memorypool object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structBlock}{Block}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classmemorypool_aff5c0156c665b592139431231496d305}{allocate}} (const std\+::string \&key, std\+::string \&\&value)
+\begin{DoxyCompactList}\small\item\em When "{}set"{} is called, a new \doxylink{structBlock}{Block} is allocated from the memory pool and the key-\/value pair is stored in the \doxylink{structBlock}{Block}. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classmemorypool_a56e8e86546b458db97dacf75730abc2a}{deallocate}} (\mbox{\hyperlink{structBlock}{Block}} \texorpdfstring{$\ast$}{*}block)
+\begin{DoxyCompactList}\small\item\em When "{}del"{} is called, the \doxylink{structBlock}{Block} that stores the key-\/value pair is deallocated from the memory pool. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This class is a memory pool that is used to allocate and deallocate memory blocks that will store key-\/value pairs. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classmemorypool_a8be7c07ebe027a2dec03630743a25c0b}\index{memorypool@{memorypool}!memorypool@{memorypool}}
+\index{memorypool@{memorypool}!memorypool@{memorypool}}
+\doxysubsubsection{\texorpdfstring{memorypool()}{memorypool()}}
+{\footnotesize\ttfamily \label{classmemorypool_a8be7c07ebe027a2dec03630743a25c0b} 
+memorypool\+::memorypool (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{size}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construct a new memorypool object with a given size. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em size} & The number of "{}\+Blocks"{} that the memory pool can store in-\/memory \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classmemorypool_aff5c0156c665b592139431231496d305}\index{memorypool@{memorypool}!allocate@{allocate}}
+\index{allocate@{allocate}!memorypool@{memorypool}}
+\doxysubsubsection{\texorpdfstring{allocate()}{allocate()}}
+{\footnotesize\ttfamily \label{classmemorypool_aff5c0156c665b592139431231496d305} 
+\mbox{\hyperlink{structBlock}{Block}} \texorpdfstring{$\ast$}{*} memorypool\+::allocate (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{key}{, }\item[{std\+::string \&\&}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+When "{}set"{} is called, a new \doxylink{structBlock}{Block} is allocated from the memory pool and the key-\/value pair is stored in the \doxylink{structBlock}{Block}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & The key in the key-\/value pair \\
+\hline
+{\em value} & The value in the key-\/value pair \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Block\texorpdfstring{$\ast$}{*} A pointer to the \doxylink{structBlock}{Block} that stores the key-\/value pair 
+\end{DoxyReturn}
+\Hypertarget{classmemorypool_a56e8e86546b458db97dacf75730abc2a}\index{memorypool@{memorypool}!deallocate@{deallocate}}
+\index{deallocate@{deallocate}!memorypool@{memorypool}}
+\doxysubsubsection{\texorpdfstring{deallocate()}{deallocate()}}
+{\footnotesize\ttfamily \label{classmemorypool_a56e8e86546b458db97dacf75730abc2a} 
+bool memorypool\+::deallocate (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structBlock}{Block}} \texorpdfstring{$\ast$}{*}}]{block}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+When "{}del"{} is called, the \doxylink{structBlock}{Block} that stores the key-\/value pair is deallocated from the memory pool. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em block} & Pointer the \doxylink{structBlock}{Block} that stores the key-\/value pair \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true When the \doxylink{structBlock}{Block} is deallocated successfully 
+
+false Otherwise 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+memorypool.\+h\end{DoxyCompactItemize}

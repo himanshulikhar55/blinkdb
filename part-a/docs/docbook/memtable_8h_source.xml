@@ -1,6 +1,52 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_memtable_8h_source" xml:lang="en-US">
 <title>memtable.h</title>
-<indexterm><primary>/home/himanshulikhar/Downloads/design-lab/project/part-a/src/memtable.h</primary></indexterm>
-<programlisting linenumbering="unnumbered">1 
+<indexterm><primary>/home/himanshulikhar/Downloads/design-lab/project/part-a/src/lib/memtable.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#include&#32;&quot;avl.h&quot;</emphasis>
+2 
+3 <emphasis role="preprocessor">#define&#32;NULLSTR&#32;&quot;&quot;</emphasis>
+4 
+5 <emphasis role="preprocessor">#define&#32;MAX_SIZE&#32;4096</emphasis>
+6 
+7 <emphasis role="keyword">class&#32;</emphasis><link linkend="_classmemtable">memtable</link>&#32;{
+8 &#32;&#32;&#32;&#32;<emphasis role="keyword">private</emphasis>:
+9 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classavl__node">avl_node</link>&#32;*head;
+10 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;count&#32;=&#32;0;
+11 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>:
+12 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classmemtable">memtable</link>(){
+13 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;head&#32;=&#32;<emphasis role="keyword">nullptr</emphasis>;
+14 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+15 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;_insert(std::string&#32;key,&#32;std::string&#32;value){
+16 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(count&#32;==&#32;MAX_SIZE){
+17 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;need&#32;to&#32;save&#32;into&#32;a&#32;vector&#32;and&#32;start&#32;a&#32;new&#32;tree</emphasis>
+18 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Will&#32;write&#32;that&#32;logic&#32;later</emphasis>
+19 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+20 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!head){
+21 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;head&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_classavl__node">avl_node</link>(key,&#32;value);
+22 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+23 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+24 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;head&#32;=&#32;head-&gt;insert(key,&#32;value);
+25 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+26 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+27 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::string&#32;_get(std::string&#32;key){
+28 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classavl__node">avl_node</link>&#32;*temp&#32;=&#32;head;
+29 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">while</emphasis>(temp){
+30 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(temp-&gt;key&#32;==&#32;key)
+31 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;temp-&gt;get_value();
+32 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>&#32;<emphasis role="keywordflow">if</emphasis>(temp-&gt;key&#32;&lt;&#32;key)
+33 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;temp&#32;=&#32;temp-&gt;right;
+34 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+35 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;temp&#32;=&#32;temp-&gt;left;
+36 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+37 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;NULLSTR;
+38 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+39 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;_del(std::string&#32;key){
+40 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;head&#32;=&#32;head-&gt;del(key);
+41 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+42 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+43 
+44 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;print(){
+45 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;head-&gt;print();
+46 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+47 };
 </programlisting></section>

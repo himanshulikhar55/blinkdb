@@ -1,8 +1,9 @@
 var annotated_dup =
 [
-    [ "MyLibrary", null, [
-      [ "Example", "classMyLibrary_1_1Example.html", "classMyLibrary_1_1Example" ],
-      [ "SecondExample", "classMyLibrary_1_1SecondExample.html", null ],
-      [ "SubclassExample", "classMyLibrary_1_1SubclassExample.html", "classMyLibrary_1_1SubclassExample" ]
-    ] ]
+    [ "blinkdb", "classblinkdb.html", "classblinkdb" ],
+    [ "Block", "structBlock.html", "structBlock" ],
+    [ "bloomfilter", "classbloomfilter.html", null ],
+    [ "hashtable", "classhashtable.html", "classhashtable" ],
+    [ "memorypool", "classmemorypool.html", "classmemorypool" ],
+    [ "parse_ip", "structparse__ip.html", null ]
 ];

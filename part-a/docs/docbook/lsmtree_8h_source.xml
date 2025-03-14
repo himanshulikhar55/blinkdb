@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_lsmtree_8h_source" xml:lang="en-US">
+<title>lsmtree.h</title>
+<indexterm><primary>/home/himanshulikhar/Downloads/design-lab/project/part-a/src/lib/lsmtree.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#include&#32;&quot;memtable.h&quot;</emphasis>
+2 
+8 <emphasis role="keyword">class&#32;</emphasis><link linkend="_classlsmtree">lsmtree</link>{
+9 &#32;&#32;&#32;&#32;<emphasis role="keyword">private</emphasis>:
+10 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classmemtable">memtable</link>&#32;mTable;
+11 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>:
+12 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classlsmtree">lsmtree</link>(){
+13 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;mTable&#32;=&#32;<link linkend="_classmemtable">memtable</link>();
+14 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+15 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;insert(std::string&#32;key,&#32;std::string&#32;value){
+16 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(mTable._insert(key,&#32;value))
+17 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+18 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+19 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+20 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::string&#32;get(std::string&#32;key){
+21 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;mTable._get(key);
+22 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+23 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;_del(std::string&#32;key){
+24 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;mTable._del(key);
+25 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+26 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;print(){
+27 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;mTable.print();
+28 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+29 };
+</programlisting></section>

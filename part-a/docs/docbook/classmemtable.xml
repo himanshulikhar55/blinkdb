@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_classmemtable" xml:lang="en-US">
+<title>memtable Class Reference</title>
+<indexterm><primary>memtable</primary></indexterm>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_classmemtable_1a9c7591f972b1a2e19ec3698566d4b2c1"/>bool <emphasis role="strong">_insert</emphasis> (std::string key, std::string value)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_classmemtable_1a42feda9cb1c9e0dbc8bcaaa520eddd60"/>std::string <emphasis role="strong">_get</emphasis> (std::string key)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_classmemtable_1aa115e6601868365984a8190c9a2206e4"/>bool <emphasis role="strong">_del</emphasis> (std::string key)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_classmemtable_1a753a837c55081c4fff6d30c4ddb8198b"/>void <emphasis role="strong">print</emphasis> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<para>
+The documentation for this class was generated from the following file:</para>
+/home/himanshulikhar/Downloads/design-lab/project/part-a/src/lib/memtable.h</section>

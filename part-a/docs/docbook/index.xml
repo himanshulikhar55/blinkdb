@@ -4,8 +4,13 @@
     <title>BLINKDB-Engine</title>
     </info>
 <chapter>
-    <title>File Documentation</title>
-    <xi:include href="memtable_8h_source.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <title>Class Documentation</title>
+    <xi:include href="classblinkdb.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="structBlock.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="classbloomfilter.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="classhashtable.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="classmemorypool.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="structparse__ip.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
 </chapter>
 <index/>
 </book>

@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_classbloomfilter" xml:lang="en-US">
+<title>bloomfilter Class Reference</title>
+<indexterm><primary>bloomfilter</primary></indexterm>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_classbloomfilter_1a07695cd9beb90cbb31a9f953a0d5698e"/><emphasis role="strong">bloomfilter</emphasis> (size_t num_bits, size_t num_hashes)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_classbloomfilter_1ac810ef21aa0925b28e291c2a4168af2a"/>void <emphasis role="strong">insert</emphasis> (const std::string &amp;key)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_classbloomfilter_1a36048739c6dcf5534c328f2bfc2bcf6f"/>bool <emphasis role="strong">possibly_contains</emphasis> (const std::string &amp;key) const</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<para>
+The documentation for this class was generated from the following file:</para>
+bloomfiler.h</section>

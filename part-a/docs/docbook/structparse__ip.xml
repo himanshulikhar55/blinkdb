@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_structparse__ip" xml:lang="en-US">
+<title>parse_ip Struct Reference</title>
+<indexterm><primary>parse_ip</primary></indexterm>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_structparse__ip_1ac83bf3850bbf875bf696b04dad33b550"/>std::string <emphasis role="strong">op</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_structparse__ip_1a310f867c9ffc2e6629e0c2571cdd9121"/>std::string <emphasis role="strong">key</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_structparse__ip_1a245dacb00261a917e3e5b18308ccfe52"/>std::string <emphasis role="strong">value</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<para>
+The documentation for this struct was generated from the following file:</para>
+parser.h</section>

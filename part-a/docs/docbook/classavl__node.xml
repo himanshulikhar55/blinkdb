@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_classavl__node" xml:lang="en-US">
+<title>avl_node Class Reference</title>
+<indexterm><primary>avl_node</primary></indexterm>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_classavl__node_1a225368f5d5efefc07087cf9d8542b8ef"/><emphasis role="strong">avl_node</emphasis> (std::string k, std::string v)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_classavl__node_1a405ffbb231682d27bc848bfd4967af27"/>std::string <emphasis role="strong">get_value</emphasis> ()</para>
+</listitem>
+            <listitem><para><anchor xml:id="_classavl__node_1a9842c9b5707eaa92f78672026e69dd1d"/><link linkend="_classavl__node">avl_node</link> * <emphasis role="strong">insert</emphasis> (std::string key, std::string val)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_classavl__node_1ad8c9a58a022a2cdd7d9032d2dfdbd22e"/><link linkend="_classavl__node">avl_node</link> * <emphasis role="strong">del</emphasis> (std::string key)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_classavl__node_1a42eff79f840b33118bae19777a713e3d"/>void <emphasis role="strong">print</emphasis> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_classavl__node_1a222233dbb0e0705bd3e4bda4007f8bc2"/><link linkend="_classavl__node">avl_node</link> * <emphasis role="strong">left</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_classavl__node_1a8d1e83b7034cd12be5828a9e7658bf80"/><link linkend="_classavl__node">avl_node</link> * <emphasis role="strong">right</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_classavl__node_1ad132dfb4ee06890d9b107c9e1bfa571d"/>std::string <emphasis role="strong">key</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<para>
+The documentation for this class was generated from the following file:</para>
+/home/himanshulikhar/Downloads/design-lab/project/part-a/src/lib/avl.h</section>
