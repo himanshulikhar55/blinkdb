@@ -1,3 +1,4 @@
+#pragma once
 #include "hashtable.h"
 
 /**
@@ -10,14 +11,18 @@
 class blinkdb {
     private:
         hashtable ht;
+        diskstorage ds;
+        bloomfilter bloomFilter;
+        sparseindex sparseIndex;
     public:
         /**
          * @brief Construct a new blinkdb object
          * 
          */
-        blinkdb(size_t size){
-            ht = hashtable(size);
+        blinkdb(size_t size) : ht(size) {
+            bloomFilter = bloomfilter(size, 6);
         }
+
         /**
          * @brief Function to set a key-value pair
          * 
@@ -27,8 +32,12 @@ class blinkdb {
          * @return false otherwise
          */
         bool set(std::string key, std::string value){
+            if (ht.insert(key, value))
+                return true;
+            ht.evict(ds, sparseIndex, bloomFilter);
             return ht.insert(key, value);
         }
+
         /**
          * @brief Function to get value correspoding to a key
          * 
@@ -36,8 +45,16 @@ class blinkdb {
          * @return std::string 
          */
         std::string get(std::string key){
-            return ht.get(key);
+            std::string val = ht.get(key);
+            if(val != "")
+                return val;
+            if(!bloomFilter.possibly_contains(key))
+                return "";
+            // Need to go to the disk
+            // If still not found, then the key does not exist and we return an empty string
+            return ds.read(key, sparseIndex);
         }
+
         /**
          * @brief Function to delete a key-value pair
          * 

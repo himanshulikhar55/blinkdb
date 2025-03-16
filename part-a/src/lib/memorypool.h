@@ -39,18 +39,16 @@ public:
     /**
      * @brief When "set" is called, a new Block is allocated from the memory pool and the key-value pair is stored in the Block
      * 
-     * @param key The key in the key-value pair
      * @param value The value in the key-value pair
      * @return Block* A pointer to the Block that stores the key-value pair
      */
-    Block* allocate(const std::string& key, std::string&& value) {
+    Block* allocate(std::string&& value) {
         while (!free_blocks.empty()) {
             int index = free_blocks.front();
             free_blocks.pop();
             Block& block = pool[index];
             if (!block.used.load()) {
                 block.used.store(true);
-                block.key = std::move(key);
                 block.value = std::move(value);
                 return &block;
             }

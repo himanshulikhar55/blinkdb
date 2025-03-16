@@ -14,11 +14,6 @@ struct Block {
      */
     std::atomic<bool> used;
     /**
-     * @brief The key in the key-value pair
-     * 
-     */
-    std::string key;
-    /**
      * @brief The value in the key-value pair
      * 
      */

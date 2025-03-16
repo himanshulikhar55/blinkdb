@@ -19,7 +19,7 @@ private:
 public:
     bloomfilter(size_t num_bits, size_t num_hashes)
         : size(num_bits), hash_count(num_hashes), bit_array((num_bits + 63) / 64) {}
-
+    bloomfilter() : bloomfilter(0, 0) {}
     void insert(const std::string& key) {
         auto [hash1, hash2] = hash(key);
         for (size_t i = 0; i < hash_count; ++i) {
