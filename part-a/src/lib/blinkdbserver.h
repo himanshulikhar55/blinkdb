@@ -100,13 +100,14 @@ private:
             perror("Epoll_ctl failed");
             return false;
         }
-        
+        std::cout << "Server started on port " << PORT << std::endl;
         return true;
     }
     void handle_client(int client_fd) {
         char buffer[1024];
+        // std::cout << "Before READ\n";
         ssize_t bytes_read = read(client_fd, buffer, sizeof(buffer));
-        
+        // std::cout << "After READ\n";
         if (bytes_read <= 0) {
             close(client_fd);
         } else {
@@ -117,6 +118,7 @@ private:
             int i = 0;
             while(buffer[i] != '\0'){
                 client_data[client_fd].push_back(buffer[i]);
+                i++;
             }
             std::cout << "Received from: " << client_fd << std::endl;
         }
@@ -133,6 +135,7 @@ private:
         while (true) {
             int event_count = epoll_wait(epoll_fd, events, max_parallel_conn, -1);
             for (int i = 0; i < event_count; ++i) {
+                // std::cout << "HERE\n";
                 if (events[i].data.fd == server_fd) {
                     sockaddr_in client_addr;
                     socklen_t client_len = sizeof(client_addr);
@@ -145,14 +148,19 @@ private:
                     epoll_event event{};
                     event.events = EPOLLIN;
                     event.data.fd = client_fd;
+                    std::cout << "New client connected: " << client_fd << std::endl;
                     epoll_ctl(epoll_fd, EPOLL_CTL_ADD, client_fd, &event);
                 } else {
+                    // std::cout << "IN ELSE\n";
                     handle_client(events[i].data.fd);
+                    // std::cout << "Data received from client: " << events[i].data.fd << std::endl;
+                    // std::cout << "Data: " << client_data[events[i].data.fd] << std::endl;
                     parse_op* op = new parse_op();
                     int status = parser.parse_command(client_data[events[i].data.fd], op);
+                    std::cout << "Status: " << status << '\n';
                     if(status){
-                        std::cout << "Data received from: " << events[i].data.fd << std::endl;
-                        std::cout << "Data: " << client_data[events[i].data.fd] << std::endl;
+                        // std::cout << "Data received from: " << events[i].data.fd << std::endl;
+                        // std::cout << "Data: " << client_data[events[i].data.fd] << std::endl;
                         client_data.erase(events[i].data.fd);
                         if(op->cmd == "set"){
                             if(db.set(op->key, op->value))
@@ -164,15 +172,29 @@ private:
                             if(val != ""){
                                 std::string bufferStr = "";
                                 parser.convert_to_byte_stream(bufferStr, val);
+                                std::cout << "Value: " << val << std::endl;
+                                std::cout << "Sending to client: " << bufferStr << std::endl;
                                 send(events[i].data.fd, bufferStr.c_str(), bufferStr.length(), 0);
                             }
-                            else
-                            send(events[i].data.fd, "-ERR\r\n", 6, 0);
+                            else {
+                                std::cout << "Something wrong while sending\n";
+                                send(events[i].data.fd, "-ERR\r\n", 6, 0);
+                            }
                         } else if(op->cmd == "del"){
                             if(db.del(op->key))
                                 send(events[i].data.fd, "+OK\r\n", 5, 0);
                             else
                                 send(events[i].data.fd, "-ERR\r\n", 6, 0);
+                        } else if(op->cmd == "quit"){\
+                            int client_id = events[i].data.fd;
+                            send(events[i].data.fd, "+OK\r\n", 5, 0);
+                            close(events[i].data.fd);
+                            client_data.erase(client_id);
+                            std::cout << "Client " << client_id << " disconnected\n";
+                        } else if(op->cmd == "print"){ // will most probably remove this. This is mainly for debugging purposes
+                            std::cout << "DB Content:\n";
+                            db.print();
+                            send(events[i].data.fd, "+OK\r\n", 5, 0);
                         }
                     } else {
                         // but data not complete

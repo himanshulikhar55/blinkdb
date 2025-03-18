@@ -9,9 +9,6 @@
 
 class resp_client {
 public:
-    resp_client(const std::string &server_ip, int port);
-    ~resp_client();
-
     resp_client(const std::string &server_ip, int port)
         : server_ip(server_ip), port(port), sock_fd(-1) {}
 

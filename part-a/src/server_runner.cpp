@@ -1,4 +1,4 @@
-#include "blinkdbserver.h"
+#include "lib/blinkdbserver.h"
 
 int main() {
     blinkdbserver server(100);
