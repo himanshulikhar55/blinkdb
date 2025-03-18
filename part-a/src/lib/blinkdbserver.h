@@ -37,11 +37,11 @@
         Implement correct responses ($length\r\nvalue\r\n for GET, etc.). -> done
 */
 
-class EpollServer {
+class blinkdbserver {
 public:
-    EpollServer(int max_conn) : server_fd(-1), epoll_fd(-1), max_parallel_conn(max_conn), parser(), db(10000) {
+    blinkdbserver(int max_conn) : server_fd(-1), epoll_fd(-1), max_parallel_conn(max_conn), parser(), db(10000) {
     }
-    ~EpollServer() {
+    ~blinkdbserver() {
         if (server_fd != -1) close(server_fd);
         if (epoll_fd != -1) close(epoll_fd);
     }
@@ -51,67 +51,6 @@ public:
             return false;
         run();
         return true;
-    }
-    bool check_data_complete(const std::string& data){
-        if(data.size() < 5)
-            return false;
-        if(data.substr(data.size() - 2) == "\r\n")
-            return true;
-        return false;
-    }
-    void run() {
-        epoll_event events[MAX_EVENTS];
-        while (true) {
-            int event_count = epoll_wait(epoll_fd, events, max_parallel_conn, -1);
-            for (int i = 0; i < event_count; ++i) {
-                if (events[i].data.fd == server_fd) {
-                    sockaddr_in client_addr;
-                    socklen_t client_len = sizeof(client_addr);
-                    int client_fd = accept(server_fd, (struct sockaddr*)&client_addr, &client_len);
-                    if (client_fd == -1) {
-                        perror("Accept failed");
-                        continue;
-                    }
-                    
-                    epoll_event event{};
-                    event.events = EPOLLIN;
-                    event.data.fd = client_fd;
-                    epoll_ctl(epoll_fd, EPOLL_CTL_ADD, client_fd, &event);
-                } else {
-                    handle_client(events[i].data.fd);
-                    parse_op* op = new parse_op();
-                    int status = parser.parse_command(client_data[events[i].data.fd], op);
-                    if(status){
-                        std::cout << "Data received from: " << events[i].data.fd << std::endl;
-                        std::cout << "Data: " << client_data[events[i].data.fd] << std::endl;
-                        client_data.erase(events[i].data.fd);
-                        if(op->cmd == "set"){
-                            if(db.set(op->key, op->value))
-                                send(events[i].data.fd, "+OK\r\n", 5, 0);
-                            else
-                                send(events[i].data.fd, "-ERR\r\n", 6, 0);
-                        } else if(op->cmd == "get"){
-                            std::string val = db.get(op->key);
-                            if(val != ""){
-                                std::string bufferStr = "";
-                                parser.convert_to_byte_stream(bufferStr, val);
-                                send(events[i].data.fd, bufferStr.c_str(), bufferStr.length(), 0);
-                            }
-                            else
-                            send(events[i].data.fd, "-ERR\r\n", 6, 0);
-                        } else if(op->cmd == "del"){
-                            if(db.del(op->key))
-                                send(events[i].data.fd, "+OK\r\n", 5, 0);
-                            else
-                                send(events[i].data.fd, "-ERR\r\n", 6, 0);
-                        }
-                    } else {
-                        // but data not complete
-                        send(events[i].data.fd, "+OK\r\n", 5, 0);
-                    }
-                }
-            }
-        }
     }
 
 private:
@@ -182,13 +121,65 @@ private:
             std::cout << "Received from: " << client_fd << std::endl;
         }
     }
+    bool check_data_complete(const std::string& data){
+        if(data.size() < 5)
+            return false;
+        if(data.substr(data.size() - 2) == "\r\n")
+            return true;
+        return false;
+    }
+    void run() {
+        epoll_event events[MAX_EVENTS];
+        while (true) {
+            int event_count = epoll_wait(epoll_fd, events, max_parallel_conn, -1);
+            for (int i = 0; i < event_count; ++i) {
+                if (events[i].data.fd == server_fd) {
+                    sockaddr_in client_addr;
+                    socklen_t client_len = sizeof(client_addr);
+                    int client_fd = accept(server_fd, (struct sockaddr*)&client_addr, &client_len);
+                    if (client_fd == -1) {
+                        perror("Accept failed");
+                        continue;
+                    }
+                    
+                    epoll_event event{};
+                    event.events = EPOLLIN;
+                    event.data.fd = client_fd;
+                    epoll_ctl(epoll_fd, EPOLL_CTL_ADD, client_fd, &event);
+                } else {
+                    handle_client(events[i].data.fd);
+                    parse_op* op = new parse_op();
+                    int status = parser.parse_command(client_data[events[i].data.fd], op);
+                    if(status){
+                        std::cout << "Data received from: " << events[i].data.fd << std::endl;
+                        std::cout << "Data: " << client_data[events[i].data.fd] << std::endl;
+                        client_data.erase(events[i].data.fd);
+                        if(op->cmd == "set"){
+                            if(db.set(op->key, op->value))
+                                send(events[i].data.fd, "+OK\r\n", 5, 0);
+                            else
+                                send(events[i].data.fd, "-ERR\r\n", 6, 0);
+                        } else if(op->cmd == "get"){
+                            std::string val = db.get(op->key);
+                            if(val != ""){
+                                std::string bufferStr = "";
+                                parser.convert_to_byte_stream(bufferStr, val);
+                                send(events[i].data.fd, bufferStr.c_str(), bufferStr.length(), 0);
+                            }
+                            else
+                            send(events[i].data.fd, "-ERR\r\n", 6, 0);
+                        } else if(op->cmd == "del"){
+                            if(db.del(op->key))
+                                send(events[i].data.fd, "+OK\r\n", 5, 0);
+                            else
+                                send(events[i].data.fd, "-ERR\r\n", 6, 0);
+                        }
+                    } else {
+                        // but data not complete
+                        send(events[i].data.fd, "+OK\r\n", 5, 0);
+                    }
+                }
+            }
+        }
+    }
 };
-
-// int main() {
-//     EpollServer server;
-//     if (!server.start()) {
-//         std::cerr << "Server failed to start" << std::endl;
-//         return 1;
-//     }
-//     return 0;
-// }
