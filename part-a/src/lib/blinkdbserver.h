@@ -120,7 +120,7 @@ private:
                 client_data[client_fd].push_back(buffer[i]);
                 i++;
             }
-            std::cout << "Received from: " << client_fd << std::endl;
+            // std::cout << "Received from: " << client_fd << std::endl;
         }
     }
     bool check_data_complete(const std::string& data){
@@ -157,7 +157,7 @@ private:
                     // std::cout << "Data: " << client_data[events[i].data.fd] << std::endl;
                     parse_op* op = new parse_op();
                     int status = parser.parse_command(client_data[events[i].data.fd], op);
-                    std::cout << "Status: " << status << '\n';
+                    // std::cout << "Status: " << status << '\n';
                     if(status){
                         // std::cout << "Data received from: " << events[i].data.fd << std::endl;
                         // std::cout << "Data: " << client_data[events[i].data.fd] << std::endl;
@@ -172,8 +172,8 @@ private:
                             if(val != ""){
                                 std::string bufferStr = "";
                                 parser.convert_to_byte_stream(bufferStr, val);
-                                std::cout << "Value: " << val << std::endl;
-                                std::cout << "Sending to client: " << bufferStr << std::endl;
+                                // std::cout << "Value: " << val << std::endl;
+                                // std::cout << "Sending to client: " << bufferStr << std::endl;
                                 send(events[i].data.fd, bufferStr.c_str(), bufferStr.length(), 0);
                             }
                             else {

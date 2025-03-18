@@ -187,14 +187,14 @@ class resp_parser {
         }
         int parse_command(std::string& data, parse_op* pop){
             //*3\r\n$3\r\nGET\r\n$1\r\nk\r\n
-            //"2\r\n$3\r\nGET\r\n$1a\r\n
+            //*2\r\n$3\r\nGET\r\n$1\r\na\r\n
             //$5\r\nprint\r\n
             if(data == "print"){
                 pop->cmd = "print";
                 return 1;
             }
             if(data.length() < 11 || data[0] != '*')
-                return 0;
+                return 0;   
             if(data == quit){
                 pop->cmd = "quit";
                 return 1;
@@ -235,7 +235,7 @@ class resp_parser {
             }
             pop->cmd = std::move(cmd);
             pop->key = std::move(key);
-            std::cout << pop->cmd << " " << pop->key << " " << pop->value << std::endl;
+            // std::cout << pop->cmd << " " << pop->key << " " << pop->value << std::endl;
             return 1;
         }
 };
