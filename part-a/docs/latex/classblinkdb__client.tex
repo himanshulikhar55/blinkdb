@@ -1,0 +1,126 @@
+\doxysection{blinkdb\+\_\+client Class Reference}
+\hypertarget{classblinkdb__client}{}\label{classblinkdb__client}\index{blinkdb\_client@{blinkdb\_client}}
+
+
+Establishes a connection to the Blink\+DB server.  
+
+
+
+
+{\ttfamily \#include $<$lib/blinkdb\+\_\+client.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classblinkdb__client_a241c6b3fd49c3b614de8084c38c46843}{blinkdb\+\_\+client}} (const std\+::string \&server\+\_\+ip, int port)
+\begin{DoxyCompactList}\small\item\em Constructs a new \doxylink{classblinkdb__client}{blinkdb\+\_\+client} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classblinkdb__client_a7de8b80085d695f6b17dd7441ba04438}{\texorpdfstring{$\sim$}{\string~}blinkdb\+\_\+client}} ()
+\begin{DoxyCompactList}\small\item\em Destroys the \doxylink{classblinkdb__client}{blinkdb\+\_\+client} object. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classblinkdb__client_a2617b4d52ddfbaf0d700f0afb782fd8f}{connect\+\_\+to\+\_\+server}} ()
+\begin{DoxyCompactList}\small\item\em Connects to the Blink\+DB server. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classblinkdb__client_a0cd58d36cc3847316e6bead61eba3f9a}{send\+\_\+request}} (const std\+::string \&request)
+\begin{DoxyCompactList}\small\item\em Sends a request to the Blink\+DB server and receives the response. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Establishes a connection to the Blink\+DB server. 
+
+Creates a TCP socket, sets up the server address structure using the provided IP and port, and attempts to establish a connection to the server.
+
+\begin{DoxyReturn}{Returns}
+true if the connection was successfully established; false otherwise.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+In case of failure, an error message is printed using perror.
+\end{DoxyNote}
+Client for establishing a connection to a Blink\+DB server.
+
+The \doxylink{classblinkdb__client}{blinkdb\+\_\+client} class encapsulates the functionality to create a socket, connect to a server through a specified IP and port, send a request, and receive a response. It ensures the proper release of socket resources when the instance is destroyed.
+
+Example usage\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{classblinkdb__client}{blinkdb\_client}}\ client(\textcolor{stringliteral}{"{}127.0.0.1"{}},\ 8080);}
+\DoxyCodeLine{\textcolor{keywordflow}{if}\ (client.\mbox{\hyperlink{classblinkdb__client_a2617b4d52ddfbaf0d700f0afb782fd8f}{connect\_to\_server}}())\ \{}
+\DoxyCodeLine{\ \ \ \ std::string\ response\ =\ client.\mbox{\hyperlink{classblinkdb__client_a0cd58d36cc3847316e6bead61eba3f9a}{send\_request}}(\textcolor{stringliteral}{"{}GET\ /data"{}});}
+\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Server\ response:\ "{}}\ <<\ response\ <<\ std::endl;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classblinkdb__client_a241c6b3fd49c3b614de8084c38c46843}\index{blinkdb\_client@{blinkdb\_client}!blinkdb\_client@{blinkdb\_client}}
+\index{blinkdb\_client@{blinkdb\_client}!blinkdb\_client@{blinkdb\_client}}
+\doxysubsubsection{\texorpdfstring{blinkdb\_client()}{blinkdb\_client()}}
+{\footnotesize\ttfamily \label{classblinkdb__client_a241c6b3fd49c3b614de8084c38c46843} 
+blinkdb\+\_\+client\+::blinkdb\+\_\+client (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{server\+\_\+ip}{, }\item[{int}]{port}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructs a new \doxylink{classblinkdb__client}{blinkdb\+\_\+client} object. 
+
+Initializes the client with the provided server IP address and port number. The socket file descriptor is set to an invalid value (-\/1) until a connection is established.
+
+
+\begin{DoxyParams}{Parameters}
+{\em server\+\_\+ip} & The IP address of the Blink\+DB server. \\
+\hline
+{\em port} & The port number on which the Blink\+DB server is listening. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classblinkdb__client_a7de8b80085d695f6b17dd7441ba04438}\index{blinkdb\_client@{blinkdb\_client}!````~blinkdb\_client@{\texorpdfstring{$\sim$}{\string~}blinkdb\_client}}
+\index{````~blinkdb\_client@{\texorpdfstring{$\sim$}{\string~}blinkdb\_client}!blinkdb\_client@{blinkdb\_client}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}blinkdb\_client()}{\string~blinkdb\_client()}}
+{\footnotesize\ttfamily \label{classblinkdb__client_a7de8b80085d695f6b17dd7441ba04438} 
+blinkdb\+\_\+client\+::\texorpdfstring{$\sim$}{\string~}blinkdb\+\_\+client (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Destroys the \doxylink{classblinkdb__client}{blinkdb\+\_\+client} object. 
+
+Ensures that the open socket connection is closed upon destruction to free up system resources. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classblinkdb__client_a2617b4d52ddfbaf0d700f0afb782fd8f}\index{blinkdb\_client@{blinkdb\_client}!connect\_to\_server@{connect\_to\_server}}
+\index{connect\_to\_server@{connect\_to\_server}!blinkdb\_client@{blinkdb\_client}}
+\doxysubsubsection{\texorpdfstring{connect\_to\_server()}{connect\_to\_server()}}
+{\footnotesize\ttfamily \label{classblinkdb__client_a2617b4d52ddfbaf0d700f0afb782fd8f} 
+bool blinkdb\+\_\+client\+::connect\+\_\+to\+\_\+server (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Connects to the Blink\+DB server. 
+
+This function creates a TCP socket, configures the server address using the specified IP and port, and attempts to establish a connection to the Blink\+DB server. If socket creation, address conversion, or connection fails, the function prints an error message using perror and returns false.
+
+\begin{DoxyReturn}{Returns}
+true if the connection is successfully established; false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{classblinkdb__client_a0cd58d36cc3847316e6bead61eba3f9a}\index{blinkdb\_client@{blinkdb\_client}!send\_request@{send\_request}}
+\index{send\_request@{send\_request}!blinkdb\_client@{blinkdb\_client}}
+\doxysubsubsection{\texorpdfstring{send\_request()}{send\_request()}}
+{\footnotesize\ttfamily \label{classblinkdb__client_a0cd58d36cc3847316e6bead61eba3f9a} 
+std\+::string blinkdb\+\_\+client\+::send\+\_\+request (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{request}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Sends a request to the Blink\+DB server and receives the response. 
+
+Transmits the provided request string over the established socket. It then waits for a response from the server, reads it into a buffer, and returns it as a std\+::string.
+
+
+\begin{DoxyParams}{Parameters}
+{\em request} & A string containing the request message to be sent.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A std\+::string containing the server\textquotesingle{}s response, or the string "{}\+ERROR"{} if sending or receiving data fails.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Error messages are printed using perror on failure. 
+\end{DoxyNote}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{blinkdb__client_8h}{blinkdb\+\_\+client.\+h}}\end{DoxyCompactItemize}

@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_hashtable_8h" xml:lang="en-US">
+<title>hashtable.h File Reference</title>
+<indexterm><primary>hashtable.h</primary></indexterm>
+<para>
+
+<para>Custom Hashtable implementation using open addressing with double hashing. </para>
+ 
+</para>
+<programlisting linenumbering="unnumbered">#include &quot;memorypool.h&quot;<?linebreak?>#include &quot;diskstorage.h&quot;<?linebreak?>#include &quot;bloomfilter.h&quot;<?linebreak?>#include &quot;sparseindex.h&quot;<?linebreak?>#include &lt;vector&gt;<?linebreak?>#include &lt;string&gt;<?linebreak?>#include &lt;thread&gt;<?linebreak?>#include &lt;chrono&gt;<?linebreak?>#include &lt;atomic&gt;<?linebreak?></programlisting><simplesect>
+    <title>Classes    </title>
+        <itemizedlist>
+            <listitem><para>class <link linkend="_classhashtable">hashtable</link></para>
+
+<para>This is the custom hashtable class. It uses open addressing with double hashing to resolve collisions. The table is a vector of Entry structs. Each Entry struct has a key, a value and a boolean flag to indicate if the entry is occupied. The occupied variable is a std::atomic&lt;bool&gt; to ensure that the operations are atomic. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>Custom Hashtable implementation using open addressing with double hashing. </para>
+
+<para>This file contains the declaration and implementation of a custom hashtable that employs open addressing with double hashing for collision resolution. Each entry in the hashtable is represented by an Entry struct containing an atomic occupancy flag, a key string, and a pointer to a memory-managed <link linkend="_structBlock">Block</link>. The hashtable integrates several components including:<itemizedlist>
+<listitem>
+<para>A custom memory pool for managing dynamic memory allocation.</para>
+</listitem><listitem>
+<para>Disk storage for offloading key-value pairs via the evict() function.</para>
+</listitem><listitem>
+<para>A sparse index for maintaining and updating disk entries.</para>
+</listitem><listitem>
+<para>A bloom filter to provide efficient approximate membership tests.</para>
+</listitem></itemizedlist>
+</para>
+
+<para>Key features include:<itemizedlist>
+<listitem>
+<para>Atomic operations ensuring thread-safety in the manipulation of table entries.</para>
+</listitem><listitem>
+<para>Dynamic resizing of the table based on occupancy thresholds, monitored by a dedicated background thread.</para>
+</listitem><listitem>
+<para>Standard hashtable operations such as insert, get, del, and evict.</para>
+</listitem></itemizedlist>
+</para>
+
+<para>The implementation is designed to efficiently handle memory and disk storage operations, making use of modern C++ features such as move semantics, std::atomic, and multithreading. </para>
+</section>
+</section>

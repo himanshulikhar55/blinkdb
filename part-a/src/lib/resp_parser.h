@@ -1,3 +1,22 @@
+/**
+ * @file resp_parser.h
+ * @brief Provides functionalities for parsing and converting commands using the Redis Serialization Protocol (RESP).
+ *
+ * This file defines the data structure and class used to process commands in RESP format.
+ * It includes:
+ *   - The parse_op structure, which encapsulates a parsed command's details including
+ *     the command type, key, value, and the generated RESP formatted string.
+ *   - The resp_parser class, responsible for parsing input strings and converting them
+ *     into RESP-encoded messages. It supports commands such as GET, SET, DEL, and PRINT,
+ *     handling conversion between standard string representation and RESP formatted data.
+ *
+ * The parser offers robust mechanisms to validate, format, and retrieve command components,
+ * ensuring the correct conversion to and from RESP representations. Additionally, helper
+ * methods are provided for converting strings to byte streams and handling specific command
+ * conditions like quit, print, and configuration commands.
+ *
+ * Detailed functionality is documented within the respective methods.
+ */
 #pragma once
 #include <string>
 #include <sstream>
@@ -7,6 +26,20 @@
 #include <iostream>
 #include <cstring>
 
+/**
+ * @brief Represents a parsed command operation.
+ *
+ * This structure holds the details of a command parsed from an input string.
+ * It encapsulates the command, key, and value parts of the operation, as well
+ * as a generated response string in RESP format (used in communication protocols).
+ *
+ * Members:
+ * - cmd: The command name (e.g., "SET", "GET", "DEL", etc.) indicating the operation.
+ * - key: The target key on which the command operates.
+ * - value: The associated value for operations that require it (e.g., "SET"); empty otherwise.
+ * - resp_str: The response string generated following the parsing of the command,
+ *             formatted as a RESP message.
+ */
 struct parse_op {
     std::string cmd;
     std::string key;
@@ -14,6 +47,14 @@ struct parse_op {
     std::string resp_str;
 };
 
+/**
+ * @brief A parser for RESP (Redis Serialization Protocol) commands.
+ *
+ * The resp_parser class provides methods to parse input strings formatted in RESP,
+ * extract commands and their arguments, and convert standard strings into RESP-formatted
+ * byte streams. It supports parsing of commands such as GET, SET, DEL, and PRINT.
+ *
+ */
 class resp_parser {
     private:
         const std::string quit = "*1\r\n$4\r\nQUIT\r\n";
@@ -142,6 +183,7 @@ class resp_parser {
             *i += val_len + 2;
             return val;
         }
+    
     public:
         // kept for debugging purposes. Need to move to private later
         parse_op *op;
@@ -158,33 +200,46 @@ class resp_parser {
         void parse(std::string input, parse_op* pop){
             _parse_(input, pop);
         }
-        // std::string parse_str(const std::string& input){
-        //     ss = std::stringstream(input);
-        //     parse_op* op;
-        //     parse(input, op);
-        //     if(op->cmd == "print")
-        //         return "print";
-        //     std::string resp = convert_to_resp(op);
-        //     if(resp == "")
-        //         return "-ERR\r\n";
-        //     return resp;
-        // }
+        /**
+         * @brief Converts an IP string to a byte stream.
+         *
+         * This function constructs a byte stream from the given IP string by first creating a prefix with
+         * the '$' character followed by the length of the IP string, then a carriage return and line feed (CRLF),
+         * the IP string itself, and finally another CRLF.
+         *
+         * @param bufferStr Reference to a string where the resulting byte stream will be stored.
+         * @param ip The IP address string to be converted.
+         */
         void convert_to_byte_stream(std::string& bufferStr, std::string& ip){
             bufferStr = "$" + std::to_string(ip.length()) + "\r\n" + ip + "\r\n";
         }
-        int extract_print(std::string& data, parse_op* pop){
-            int i = 1;
-            std::string num = get_len(data, &i);
-            int len = std::stoi(num);
-            if(len != 5)
-                return 0;
-            std::string cmd = data.substr(i, len);
-            to_lower(cmd);
-            if(cmd != "print")
-                return 0;
-            pop->cmd = std::move(cmd);
-            return 1;
-        }
+        /**
+         * @brief Parses a RESP-encoded command string and extracts its components.
+         *
+         * This function processes an input RESP string (data) and attempts to extract the command,
+         * key, and optionally the value from it. The parsed components are stored in the provided
+         * parse_op structure (pop).
+         *
+         * The function handles several special cases:
+         *   - If the input is "print", it sets the command in pop to "print" and returns success.
+         *   - If the input contains "CONFIG", it sets the command to "CONFIG" and returns success.
+         *   - If the input matches the predefined quit command, the command is set to "quit".
+         *
+         * For a general RESP command, the function:
+         *   - Verifies that the input starts with '*' and is of sufficient length.
+         *   - Extracts the number of arguments.
+         *   - Validates and retrieves the command string using helper functions, ensuring it is one
+         *     of the supported commands ("set", "get", "del").
+         *   - Extracts the key from the input.
+         *   - If the command is "set", it also extracts the associated value.
+         *
+         * @param data A reference to the RESP-encoded command string to be parsed.
+         * @param pop  A pointer to a parse_op structure where the parsed command, key, and value
+         *             (if applicable) will be stored.
+         * 
+         * @return int Returns 1 if the command is successfully parsed; otherwise, returns 0 to
+         *         indicate a parsing failure (due to incorrect formatting or unsupported number of arguments).
+         */
         int parse_command(std::string& data, parse_op* pop){
             //*3\r\n$3\r\nGET\r\n$1\r\nk\r\n
             //*2\r\n$3\r\nGET\r\n$1\r\na\r\n
@@ -193,14 +248,18 @@ class resp_parser {
                 pop->cmd = "print";
                 return 1;
             }
+            if(data.find("CONFIG") != std::string::npos){
+                pop->cmd = "CONFIG";
+                return 1;
+            }
+            //check_delim
+            //fetch_fetch_arg
             if(data.length() < 11 || data[0] != '*')
                 return 0;   
             if(data == quit){
                 pop->cmd = "quit";
                 return 1;
             }
-            if(data[0] == '$')
-                return extract_print(data, pop);
             int num_args = 0, i = 1, key_len = 0;
             
             // get the number of arguments

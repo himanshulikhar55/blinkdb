@@ -1,0 +1,127 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_classdiskstorage" xml:lang="en-US">
+<title>diskstorage Class Reference</title>
+<indexterm><primary>diskstorage</primary></indexterm>
+<para>
+
+<para>This class is used to store key-value pairs on disk. </para>
+ 
+</para>
+<para>
+<computeroutput>#include &lt;lib/diskstorage.h&gt;</computeroutput>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_classdiskstorage_1a0300c72eb828fd9708e9ac0fb53000d8"/><emphasis role="strong">diskstorage</emphasis> ()</para>
+
+<para>Construct a new diskstorage object. It opens the file &quot;data.log&quot; in current directory in append mode. It currently stores data as key-value pairs in the file (space-separated). </para>
+</listitem>
+            <listitem><para>bool <link linkend="_classdiskstorage_1a5cd280ffdc039f12c75f26ba325ec455">write</link> (const std::string &amp;key, const std::string &amp;value, <link linkend="_classsparseindex">sparseindex</link> &amp;sparseIndex)</para>
+
+<para>Function to write a key-value pair to disk. It also updates the sparse index with the key and offset in the file. </para>
+</listitem>
+            <listitem><para>std::string <link linkend="_classdiskstorage_1a2a6d4004689c9c8084f0c07d4f49b191">read</link> (const std::string &amp;key, <link linkend="_classsparseindex">sparseindex</link> &amp;sparseIndex)</para>
+
+<para>Function to read a key-value pair from disk using the key. It uses the sparse index to find the offset in the file. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>This class is used to store key-value pairs on disk. </para>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_classdiskstorage_1a2a6d4004689c9c8084f0c07d4f49b191"/><section>
+    <title>read()</title>
+<indexterm><primary>read</primary><secondary>diskstorage</secondary></indexterm>
+<indexterm><primary>diskstorage</primary><secondary>read</secondary></indexterm>
+<para><computeroutput>std::string diskstorage::read (const std::string &amp; key, <link linkend="_classsparseindex">sparseindex</link> &amp; sparseIndex)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>Function to read a key-value pair from disk using the key. It uses the sparse index to find the offset in the file. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>key</entry><entry>
+<para>The key in the key-value pair </para>
+</entry>
+                            </row>
+                            <row>
+<entry>sparseIndex</entry><entry>
+<para>The sparse index that stores the key and offset in the file </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>std::string The value in the key-value pair </para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_classdiskstorage_1a5cd280ffdc039f12c75f26ba325ec455"/><section>
+    <title>write()</title>
+<indexterm><primary>write</primary><secondary>diskstorage</secondary></indexterm>
+<indexterm><primary>diskstorage</primary><secondary>write</secondary></indexterm>
+<para><computeroutput>bool diskstorage::write (const std::string &amp; key, const std::string &amp; value, <link linkend="_classsparseindex">sparseindex</link> &amp; sparseIndex)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>Function to write a key-value pair to disk. It also updates the sparse index with the key and offset in the file. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>key</entry><entry>
+<para>The key in the key-value pair </para>
+</entry>
+                            </row>
+                            <row>
+<entry>value</entry><entry>
+<para>The value in the key-value pair </para>
+</entry>
+                            </row>
+                            <row>
+<entry>sparseIndex</entry><entry>
+<para>The sparse index that stores the key and offset in the file </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>true, if the key-value pair is written successfully </para>
+
+<para>false, otherwise </para>
+</formalpara>
+</para>
+</section>
+<para>
+The documentation for this class was generated from the following file:</para>
+<link linkend="_diskstorage_8h">diskstorage.h</link></section>
+</section>

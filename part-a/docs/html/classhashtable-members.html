@@ -18,6 +18,13 @@
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 <link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
@@ -105,11 +112,13 @@ $(function(){initNavTree('classhashtable.html',''); initResizable(true); });
 <p>This is the complete list of members for <a class="el" href="classhashtable.html">hashtable</a>, including all inherited members.</p>
 <table class="directory">
   <tr class="even"><td class="entry"><a class="el" href="classhashtable.html#a84de2b2fb13c58b207081fc6c239b3b5">del</a>(const std::string &amp;key)</td><td class="entry"><a class="el" href="classhashtable.html">hashtable</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr class="odd"><td class="entry"><a class="el" href="classhashtable.html#a6f614816407ca67d2feccc4eb6f11cf2">get</a>(const std::string &amp;key)</td><td class="entry"><a class="el" href="classhashtable.html">hashtable</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classhashtable.html#ae538aec043b2dcfb97529053484640ce">hashtable</a>(size_t size)</td><td class="entry"><a class="el" href="classhashtable.html">hashtable</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr class="odd"><td class="entry"><a class="el" href="classhashtable.html#a0e8cd243f696051b91e3ac04205564c5">hashtable</a>()</td><td class="entry"><a class="el" href="classhashtable.html">hashtable</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classhashtable.html#a4c02725230715510665452b4ee20e209">insert</a>(const std::string &amp;key, std::string &amp;value)</td><td class="entry"><a class="el" href="classhashtable.html">hashtable</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr bgcolor="#f0f0f0" class="odd"><td class="entry"><b>print</b>() (defined in <a class="el" href="classhashtable.html">hashtable</a>)</td><td class="entry"><a class="el" href="classhashtable.html">hashtable</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classhashtable.html#ac0d2bf8122887f46a668cc0516683768">evict</a>(diskstorage &amp;ds, sparseindex &amp;sparseIndex, bloomfilter &amp;bloomFilter)</td><td class="entry"><a class="el" href="classhashtable.html">hashtable</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classhashtable.html#a6f614816407ca67d2feccc4eb6f11cf2">get</a>(const std::string &amp;key)</td><td class="entry"><a class="el" href="classhashtable.html">hashtable</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classhashtable.html#aa394870c0ba3bfcb038a3cbc506a5ab3">hashtable</a>(size_t size, double threshold=0.70)</td><td class="entry"><a class="el" href="classhashtable.html">hashtable</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classhashtable.html#a0e8cd243f696051b91e3ac04205564c5">hashtable</a>()</td><td class="entry"><a class="el" href="classhashtable.html">hashtable</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classhashtable.html#a4c02725230715510665452b4ee20e209">insert</a>(const std::string &amp;key, std::string &amp;value)</td><td class="entry"><a class="el" href="classhashtable.html">hashtable</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>print</b>() (defined in <a class="el" href="classhashtable.html">hashtable</a>)</td><td class="entry"><a class="el" href="classhashtable.html">hashtable</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr bgcolor="#f0f0f0" class="odd"><td class="entry"><b>~hashtable</b>() (defined in <a class="el" href="classhashtable.html">hashtable</a>)</td><td class="entry"><a class="el" href="classhashtable.html">hashtable</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
 </table></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

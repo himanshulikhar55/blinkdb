@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_sparseindex_8h" xml:lang="en-US">
+<title>sparseindex.h File Reference</title>
+<indexterm><primary>sparseindex.h</primary></indexterm>
+<para>
+
+<para>Sparse index implementation using a skip list. </para>
+ 
+</para>
+<programlisting linenumbering="unnumbered">#include &quot;skiplist.h&quot;<?linebreak?></programlisting><simplesect>
+    <title>Classes    </title>
+        <itemizedlist>
+            <listitem><para>class <link linkend="_classsparseindex">sparseindex</link></para>
+
+<para>This class is a sparse-index that uses a skip list to store key-offset pairs. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>Sparse index implementation using a skip list. </para>
+
+<para>This file defines the sparseindex class, which encapsulates a skip list that stores key-offset pairs. The class leverages the efficiency of skip lists to allow fast insertion and nearest-neighbor offset retrieval, which is particularly useful for indexing. For N keys, the maximum level L for the skip list is recommended as:           <mediaobject>
+            <imageobject>
+                <imagedata align="center" valign="middle" scalefit="0" fileref="form_6.png"/>
+            </imageobject>
+        </mediaobject>
+ With p chosen as 0.5, the formula simplifies to:</para>
+
+<para>        <mediaobject>
+            <imageobject>
+                <imagedata align="center" valign="middle" scalefit="0" fileref="form_7.png"/>
+            </imageobject>
+        </mediaobject>
+</para>
+
+<para>The design aims to provide a balance between space efficiency and quick lookup times, utilizing the probabilistic balancing nature of skip lists. </para>
+</section>
+</section>

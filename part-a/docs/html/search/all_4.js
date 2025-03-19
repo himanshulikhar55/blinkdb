@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['hashtable_0',['hashtable',['../classhashtable.html',1,'hashtable'],['../classhashtable.html#ae538aec043b2dcfb97529053484640ce',1,'hashtable::hashtable(size_t size)'],['../classhashtable.html#a0e8cd243f696051b91e3ac04205564c5',1,'hashtable::hashtable()']]]
+  ['evict_0',['evict',['../classhashtable.html#ac0d2bf8122887f46a668cc0516683768',1,'hashtable']]],
+  ['examples_3a_1',['Usage Examples:',['../client__runner_8cpp.html#autotoc_md0',1,'']]]
 ];

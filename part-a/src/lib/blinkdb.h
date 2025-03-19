@@ -1,3 +1,22 @@
+/**
+ * @file blinkdb.h
+ * @brief Defines the blinkdb class, a key-value store with in-memory and disk storage.
+ *
+ * @details
+ * This file introduces the blinkdb class which implements a key-value store. The design uses an 
+ * in-memory hashtable (with open addressing and double hashing) to store key-value pairs. When the 
+ * hashtable becomes full, it evicts entries to disk storage and leverages a sparse index for file 
+ * lookups. A bloom filter is used to optimize read operations by quickly ruling out non-existent keys.
+ *
+ * The class provides basic operations:
+ * - set: Insert a key-value pair into the store.
+ * - get: Retrieve the value corresponding to a given key, fetching from memory first, then disk if needed.
+ * - del: Delete a key-value pair from the in-memory store.
+ *
+ * The design ensures that when the user exits, all stored data, both in memory and on disk, are cleared.
+ *
+ * @note This file is part of the design-lab project and is located in the src/lib directory.
+ */
 #pragma once
 #include "hashtable.h"
 
@@ -20,7 +39,7 @@ class blinkdb {
          * 
          */
         blinkdb(size_t size) : ht(size) {
-            bloomFilter = bloomfilter(size, 6);
+            bloomFilter = bloomfilter(size, 8);
         }
 
         /**

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['insert_0',['insert',['../classhashtable.html#a4c02725230715510665452b4ee20e209',1,'hashtable']]]
+  ['format_3a_0',['Command Format:',['../client__runner_8cpp.html#autotoc_md1',1,'']]]
 ];

@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_blinkdb_8h" xml:lang="en-US">
+<title>blinkdb.h File Reference</title>
+<indexterm><primary>blinkdb.h</primary></indexterm>
+<para>
+
+<para>Defines the blinkdb class, a key-value store with in-memory and disk storage. </para>
+ 
+</para>
+<programlisting linenumbering="unnumbered">#include &quot;hashtable.h&quot;<?linebreak?></programlisting><simplesect>
+    <title>Classes    </title>
+        <itemizedlist>
+            <listitem><para>class <link linkend="_classblinkdb">blinkdb</link></para>
+
+<para>This is the blinkdb class. It is a key-value store that lets user to set, get and delete key-value pairs It uses a hashtable to store the key-value pairs. The hashtable uses open addressing with double hashing to resolve collisions. If the in-memory hashtable is full, the key-value pairs are stored in a file on disk. When the user exits, all the data is erased from the disk and from the memory (obviously). </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>Defines the blinkdb class, a key-value store with in-memory and disk storage. </para>
+
+<para>This file introduces the blinkdb class which implements a key-value store. The design uses an in-memory hashtable (with open addressing and double hashing) to store key-value pairs. When the hashtable becomes full, it evicts entries to disk storage and leverages a sparse index for file lookups. A bloom filter is used to optimize read operations by quickly ruling out non-existent keys.</para>
+
+<para>The class provides basic operations:<itemizedlist>
+<listitem>
+<para>set: Insert a key-value pair into the store.</para>
+</listitem><listitem>
+<para>get: Retrieve the value corresponding to a given key, fetching from memory first, then disk if needed.</para>
+</listitem><listitem>
+<para>del: Delete a key-value pair from the in-memory store.</para>
+</listitem></itemizedlist>
+</para>
+
+<para>The design ensures that when the user exits, all stored data, both in memory and on disk, are cleared.</para>
+
+<para><note><title>Note</title>
+
+<para>This file is part of the design-lab project and is located in the src/lib directory. </para>
+</note>
+</para>
+</section>
+</section>

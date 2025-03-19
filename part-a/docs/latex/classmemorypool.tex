@@ -17,7 +17,7 @@ This class is a memory pool that is used to allocate and deallocate memory block
 \Hypertarget{classmemorypool_a4076462d8538f4b7f57975aedb2c2a13}\label{classmemorypool_a4076462d8538f4b7f57975aedb2c2a13} 
 {\bfseries memorypool} ()
 \begin{DoxyCompactList}\small\item\em Default constructor for a new memorypool object. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{structBlock}{Block}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classmemorypool_aff5c0156c665b592139431231496d305}{allocate}} (const std\+::string \&key, std\+::string \&\&value)
+\mbox{\hyperlink{structBlock}{Block}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classmemorypool_a6459e3c1db2ae164d44df5bc63f2d0b7}{allocate}} (std\+::string \&\&value)
 \begin{DoxyCompactList}\small\item\em When "{}set"{} is called, a new \doxylink{structBlock}{Block} is allocated from the memory pool and the key-\/value pair is stored in the \doxylink{structBlock}{Block}. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classmemorypool_a56e8e86546b458db97dacf75730abc2a}{deallocate}} (\mbox{\hyperlink{structBlock}{Block}} \texorpdfstring{$\ast$}{*}block)
 \begin{DoxyCompactList}\small\item\em When "{}del"{} is called, the \doxylink{structBlock}{Block} that stores the key-\/value pair is deallocated from the memory pool. \end{DoxyCompactList}\end{DoxyCompactItemize}
@@ -45,11 +45,11 @@ Construct a new memorypool object with a given size.
 
 
 \doxysubsection{Member Function Documentation}
-\Hypertarget{classmemorypool_aff5c0156c665b592139431231496d305}\index{memorypool@{memorypool}!allocate@{allocate}}
+\Hypertarget{classmemorypool_a6459e3c1db2ae164d44df5bc63f2d0b7}\index{memorypool@{memorypool}!allocate@{allocate}}
 \index{allocate@{allocate}!memorypool@{memorypool}}
 \doxysubsubsection{\texorpdfstring{allocate()}{allocate()}}
-{\footnotesize\ttfamily \label{classmemorypool_aff5c0156c665b592139431231496d305} 
-\mbox{\hyperlink{structBlock}{Block}} \texorpdfstring{$\ast$}{*} memorypool\+::allocate (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{key}{, }\item[{std\+::string \&\&}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily \label{classmemorypool_a6459e3c1db2ae164d44df5bc63f2d0b7} 
+\mbox{\hyperlink{structBlock}{Block}} \texorpdfstring{$\ast$}{*} memorypool\+::allocate (\begin{DoxyParamCaption}\item[{std\+::string \&\&}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -57,8 +57,6 @@ When "{}set"{} is called, a new \doxylink{structBlock}{Block} is allocated from 
 
 
 \begin{DoxyParams}{Parameters}
-{\em key} & The key in the key-\/value pair \\
-\hline
 {\em value} & The value in the key-\/value pair \\
 \hline
 \end{DoxyParams}
@@ -89,4 +87,4 @@ false Otherwise
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-memorypool.\+h\end{DoxyCompactItemize}
+\mbox{\hyperlink{memorypool_8h}{memorypool.\+h}}\end{DoxyCompactItemize}

@@ -18,6 +18,13 @@
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 <link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
@@ -101,6 +108,40 @@ $(function(){initNavTree('dir_c85d3e3c5052e9ad9ce18c6863244a25.html',''); initRe
   <div class="headertitle"><div class="title">lib Directory Reference</div></div>
 </div><!--header-->
 <div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="files" name="files"></a>
+Files</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><span class="icondoc"></span>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="blinkdb_8h.html">blinkdb.h</a></td></tr>
+<tr class="memdesc:blinkdb_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines the blinkdb class, a key-value store with in-memory and disk storage. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><span class="icondoc"></span>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="blinkdb__client_8h.html">blinkdb_client.h</a></td></tr>
+<tr class="memdesc:blinkdb__client_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines the <a class="el" href="classblinkdb__client.html" title="Establishes a connection to the BlinkDB server.">blinkdb_client</a> class for connecting to a BlinkDB server and sending requests. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><span class="icondoc"></span>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="blinkdb__server_8h.html">blinkdb_server.h</a></td></tr>
+<tr class="memdesc:blinkdb__server_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation of a Redis-like server using epoll for non-blocking I/O. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><span class="icondoc"></span>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bloomfilter_8h.html">bloomfilter.h</a></td></tr>
+<tr class="memdesc:bloomfilter_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implements a space-efficient probabilistic Bloom filter. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><span class="icondoc"></span>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="diskstorage_8h.html">diskstorage.h</a></td></tr>
+<tr class="memdesc:diskstorage_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">Provides the diskstorage class for disk-based storage of key-value pairs. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><span class="icondoc"></span>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hashtable_8h.html">hashtable.h</a></td></tr>
+<tr class="memdesc:hashtable_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">Custom Hashtable implementation using open addressing with double hashing. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><span class="icondoc"></span>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memorypool_8h.html">memorypool.h</a></td></tr>
+<tr class="memdesc:memorypool_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implements a memory pool for managing <a class="el" href="structBlock.html" title="This is the actual &quot;Block&quot; that will store the key and value pair. This block will be dynamically all...">Block</a> objects. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><span class="icondoc"></span>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="resp__parser_8h.html">resp_parser.h</a></td></tr>
+<tr class="memdesc:resp__parser_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">Provides functionalities for parsing and converting commands using the Redis Serialization Protocol (RESP). <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><span class="icondoc"></span>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="skiplist_8h.html">skiplist.h</a></td></tr>
+<tr class="memdesc:skiplist_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation of a concurrent skiplist data structure. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><span class="icondoc"></span>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sparseindex_8h.html">sparseindex.h</a></td></tr>
+<tr class="memdesc:sparseindex_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sparse index implementation using a skip list. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

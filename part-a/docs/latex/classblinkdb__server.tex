@@ -1,0 +1,78 @@
+\doxysection{blinkdb\+\_\+server Class Reference}
+\hypertarget{classblinkdb__server}{}\label{classblinkdb__server}\index{blinkdb\_server@{blinkdb\_server}}
+
+
+Redis-\/compatible server implementation.  
+
+
+
+
+{\ttfamily \#include $<$lib/blinkdb\+\_\+server.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classblinkdb__server_a03488742e0e300e384826059b2cf908e}{blinkdb\+\_\+server}} (int max\+\_\+conn)
+\begin{DoxyCompactList}\small\item\em Constructor for the \doxylink{classblinkdb__server}{blinkdb\+\_\+server}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classblinkdb__server_aea1530a77fbf44d7b4051dc2bce2e519}{run}} (int epoll\+\_\+fd, int server\+\_\+fd)
+\begin{DoxyCompactList}\small\item\em Main server loop. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Redis-\/compatible server implementation. 
+
+This class implements a server that can handle multiple client connections concurrently using epoll for non-\/blocking I/O. It interprets RESP protocol commands and interfaces with a blinkdb database instance for data storage and retrieval.
+
+Supported commands\+:
+\begin{DoxyItemize}
+\item SET\+: Store a key-\/value pair
+\item GET\+: Retrieve a value by key
+\item DEL\+: Remove a key-\/value pair
+\item QUIT\+: Disconnect client
+\item CONFIG\+: Server configuration (basic implementation)
+\item PRINT\+: Debug command to display database contents 
+\end{DoxyItemize}
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classblinkdb__server_a03488742e0e300e384826059b2cf908e}\index{blinkdb\_server@{blinkdb\_server}!blinkdb\_server@{blinkdb\_server}}
+\index{blinkdb\_server@{blinkdb\_server}!blinkdb\_server@{blinkdb\_server}}
+\doxysubsubsection{\texorpdfstring{blinkdb\_server()}{blinkdb\_server()}}
+{\footnotesize\ttfamily \label{classblinkdb__server_a03488742e0e300e384826059b2cf908e} 
+blinkdb\+\_\+server\+::blinkdb\+\_\+server (\begin{DoxyParamCaption}\item[{int}]{max\+\_\+conn}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor for the \doxylink{classblinkdb__server}{blinkdb\+\_\+server}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em max\+\_\+conn} & Maximum number of parallel connections to handle \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classblinkdb__server_aea1530a77fbf44d7b4051dc2bce2e519}\index{blinkdb\_server@{blinkdb\_server}!run@{run}}
+\index{run@{run}!blinkdb\_server@{blinkdb\_server}}
+\doxysubsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily \label{classblinkdb__server_aea1530a77fbf44d7b4051dc2bce2e519} 
+void blinkdb\+\_\+server\+::run (\begin{DoxyParamCaption}\item[{int}]{epoll\+\_\+fd}{, }\item[{int}]{server\+\_\+fd}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Main server loop. 
+
+Continuously listens for client connections and data using epoll. Handles new client connections, processes client requests, and manages disconnections. Delegates command parsing to the \doxylink{classresp__parser}{resp\+\_\+parser} and data operations to the blinkdb instance.
+
+
+\begin{DoxyParams}{Parameters}
+{\em epoll\+\_\+fd} & File descriptor for the epoll instance \\
+\hline
+{\em server\+\_\+fd} & File descriptor for the server socket \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{blinkdb__server_8h}{blinkdb\+\_\+server.\+h}}\end{DoxyCompactItemize}

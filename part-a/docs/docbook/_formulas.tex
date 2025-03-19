@@ -1,0 +1,63 @@
+\documentclass{article}
+\usepackage{iftex}
+\usepackage{ifthen}
+\usepackage{epsfig}
+\usepackage[utf8]{inputenc}
+\usepackage{xcolor}
+\ifPDFTeX
+\usepackage{newunicodechar}
+  \makeatletter
+    \def\doxynewunicodechar#1#2{%
+    \@tempswafalse
+    \edef\nuc@tempa{\detokenize{#1}}%
+    \if\relax\nuc@tempa\relax
+      \nuc@emptyargerr
+    \else
+      \edef\@tempb{\expandafter\@car\nuc@tempa\@nil}%
+      \nuc@check
+      \if@tempswa
+        \@namedef{u8:\nuc@tempa}{#2}%
+      \fi
+    \fi
+  }
+  \makeatother
+  \doxynewunicodechar{⁻}{${}^{-}$}% Superscript minus
+  \doxynewunicodechar{²}{${}^{2}$}% Superscript two
+  \doxynewunicodechar{³}{${}^{3}$}% Superscript three
+
+\fi
+\pagestyle{empty}
+\begin{document}
+$n$
+\pagebreak
+
+$m$
+\pagebreak
+
+$k$
+\pagebreak
+
+$p$
+\pagebreak
+
+\[
+   m = - \frac{n \ln(p)}{(\ln(2))^2}
+   \]
+\pagebreak
+
+\[
+   k = \frac{m}{n} \ln(2)
+   \]
+\pagebreak
+
+\[
+L = \log_{1/p}(N)
+\]
+\pagebreak
+
+\[
+L = \log_2(N)
+\]
+\pagebreak
+
+\end{document}

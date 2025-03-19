@@ -21,7 +21,7 @@
 
 <para>Default constructor for a new memorypool object. </para>
 </listitem>
-            <listitem><para><link linkend="_structBlock">Block</link> * <link linkend="_classmemorypool_1aff5c0156c665b592139431231496d305">allocate</link> (const std::string &amp;key, std::string &amp;&amp;value)</para>
+            <listitem><para><link linkend="_structBlock">Block</link> * <link linkend="_classmemorypool_1a6459e3c1db2ae164d44df5bc63f2d0b7">allocate</link> (std::string &amp;&amp;value)</para>
 
 <para>When &quot;set&quot; is called, a new <link linkend="_structBlock">Block</link> is allocated from the memory pool and the key-value pair is stored in the <link linkend="_structBlock">Block</link>. </para>
 </listitem>
@@ -72,11 +72,11 @@ Parameters</title>
 </section>
 <section>
 <title>Member Function Documentation</title>
-<anchor xml:id="_classmemorypool_1aff5c0156c665b592139431231496d305"/><section>
+<anchor xml:id="_classmemorypool_1a6459e3c1db2ae164d44df5bc63f2d0b7"/><section>
     <title>allocate()</title>
 <indexterm><primary>allocate</primary><secondary>memorypool</secondary></indexterm>
 <indexterm><primary>memorypool</primary><secondary>allocate</secondary></indexterm>
-<para><computeroutput><link linkend="_structBlock">Block</link> * memorypool::allocate (const std::string &amp; key, std::string &amp;&amp; value)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+<para><computeroutput><link linkend="_structBlock">Block</link> * memorypool::allocate (std::string &amp;&amp; value)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
 
 <para>When &quot;set&quot; is called, a new <link linkend="_structBlock">Block</link> is allocated from the memory pool and the key-value pair is stored in the <link linkend="_structBlock">Block</link>. </para>
 </para>
@@ -91,11 +91,6 @@ Parameters</title>
                         <colspec colwidth="1*"/>
                         <colspec colwidth="4*"/>
                         <tbody>
-                            <row>
-<entry>key</entry><entry>
-<para>The key in the key-value pair </para>
-</entry>
-                            </row>
                             <row>
 <entry>value</entry><entry>
 <para>The value in the key-value pair </para>
@@ -151,5 +146,5 @@ Parameters</title>
 </section>
 <para>
 The documentation for this class was generated from the following file:</para>
-memorypool.h</section>
+<link linkend="_memorypool_8h">memorypool.h</link></section>
 </section>

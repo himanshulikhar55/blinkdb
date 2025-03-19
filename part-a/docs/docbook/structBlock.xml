@@ -17,10 +17,6 @@
 
 <para>Tells if the block is used or not. </para>
 </listitem>
-            <listitem><para><anchor xml:id="_structBlock_1afa6df4ab7e5b31c6ecf5270e6a86749a"/>std::string <emphasis role="strong">key</emphasis></para>
-
-<para>The key in the key-value pair. </para>
-</listitem>
             <listitem><para><anchor xml:id="_structBlock_1ae9be57efa71d5c61092282c4032d4b6b"/>std::string <emphasis role="strong">value</emphasis></para>
 
 <para>The value in the key-value pair. </para>

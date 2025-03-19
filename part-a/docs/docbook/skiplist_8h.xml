@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_skiplist_8h" xml:lang="en-US">
+<title>skiplist.h File Reference</title>
+<indexterm><primary>skiplist.h</primary></indexterm>
+<para>
+
+<para>Implementation of a concurrent skiplist data structure. </para>
+ 
+</para>
+<programlisting linenumbering="unnumbered">#include &lt;iostream&gt;<?linebreak?>#include &lt;atomic&gt;<?linebreak?>#include &lt;vector&gt;<?linebreak?>#include &lt;random&gt;<?linebreak?>#include &lt;limits&gt;<?linebreak?>#include &lt;string&gt;<?linebreak?></programlisting><simplesect>
+    <title>Classes    </title>
+        <itemizedlist>
+            <listitem><para>class <link linkend="_classskiplist">skiplist</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>Implementation of a concurrent skiplist data structure. </para>
+
+<para>This file provides the implementation of a skiplist data structure using C++. The skiplist is designed to support efficient insertion and search operations, leveraging probabilistic balancing and atomic operations for thread safety.</para>
+
+<para>The data structure consists of:<itemizedlist>
+<listitem>
+<para>A nested Node struct, representing each node in the skiplist, which holds a key, a stream offset, and a vector of atomic pointers to subsequent nodes at different levels.</para>
+</listitem><listitem>
+<para>Member functions for inserting nodes and retrieving the nearest offset for a given key.</para>
+</listitem></itemizedlist>
+</para>
+
+<para>The design uses a probabilistic method for promoting nodes to higher levels based on a user-defined probability, ensuring balanced performance across operations.</para>
+
+<para>Typical usage example: <literallayout><computeroutput><link linkend="_classskiplist">skiplist</link>&#32;sl;
+sl.<link linkend="_classskiplist_1aa193aa8a10a77cbf6bddca202b5c253a">insert</link>(<emphasis role="stringliteral">&quot;example_key&quot;</emphasis>,&#32;42);
+std::streampos&#32;pos&#32;=&#32;sl.<link linkend="_classskiplist_1aa1d31fd7a91a970ce89658791be4872e">get_nearest_offset</link>(<emphasis role="stringliteral">&quot;another_key&quot;</emphasis>);
+</computeroutput></literallayout></para>
+
+<para><note><title>Note</title>
+
+<para>This implementation showcases concurrency control using std::atomic and assumes that the environment supports C++11 or later.</para>
+</note>
+<formalpara><title>Author</title>
+
+<para></para>
+</formalpara>
+<formalpara><title>Date</title>
+
+<para></para>
+</formalpara>
+</para>
+</section>
+</section>

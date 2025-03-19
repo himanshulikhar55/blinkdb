@@ -1,0 +1,102 @@
+\doxysection{server\+\_\+runner.\+cpp File Reference}
+\hypertarget{server__runner_8cpp}{}\label{server__runner_8cpp}\index{server\_runner.cpp@{server\_runner.cpp}}
+
+
+Implementation of the Blink\+DB server application.  
+
+
+{\ttfamily \#include "{}lib/blinkdb\+\_\+server.\+h"{}}\newline
+{\ttfamily \#include "{}lib/blinkdb.\+h"{}}\newline
+{\ttfamily \#include "{}lib/resp\+\_\+parser.\+h"{}}\newline
+{\ttfamily \#include $<$sys/epoll.\+h$>$}\newline
+{\ttfamily \#include $<$arpa/inet.\+h$>$}\newline
+{\ttfamily \#include $<$fcntl.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{server__runner_8cpp_a824f45aaf6041e2e0c6b91551e82a4b6}{MAX\+\_\+\+CONN}}~1000
+\begin{DoxyCompactList}\small\item\em Main entry point for the Blink\+DB server. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{server__runner_8cpp_a32c1402c1491ea6c063e45c1c5a57f10}{handle\+\_\+exit}} ()
+\begin{DoxyCompactList}\small\item\em Handles the server exit process. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{server__runner_8cpp_a5b3210a63df1873c78a11917bce26ff1}{handle\+Sig\+Int}} (int signum)
+\begin{DoxyCompactList}\small\item\em Signal handler for SIGINT (Ctrl+C) \end{DoxyCompactList}\item 
+\Hypertarget{server__runner_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{server__runner_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4} 
+int {\bfseries main} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implementation of the Blink\+DB server application. 
+
+This file implements the main entry point for the Blink\+DB server application. It initializes a TCP socket server that listens for incoming connections and handles them using an epoll-\/based event loop. The server is designed to handle up to MAX\+\_\+\+CONN simultaneous connections.
+
+The server uses the \doxylink{classblinkdb__server}{blinkdb\+\_\+server} class to process client requests according to the RESP (Redis Serialization Protocol) format.
+
+Dependencies\+:
+\begin{DoxyItemize}
+\item \doxylink{classblinkdb__server}{blinkdb\+\_\+server}\+: Manages the server\textquotesingle{}s main event loop and connection handling.
+\item blinkdb\+: Implements the core Blink\+DB functionality for storing key-\/value pairs.
+\item \doxylink{classresp__parser}{resp\+\_\+parser}\+: Parses the RESP protocol commands and responses. \begin{DoxyNote}{Note}
+The server listens on the port defined by PORT macro (defined elsewhere). 
+
+The server can be terminated by sending a SIGINT signal (Ctrl+C). 
+\end{DoxyNote}
+
+\end{DoxyItemize}
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{server__runner_8cpp_a824f45aaf6041e2e0c6b91551e82a4b6}\index{server\_runner.cpp@{server\_runner.cpp}!MAX\_CONN@{MAX\_CONN}}
+\index{MAX\_CONN@{MAX\_CONN}!server\_runner.cpp@{server\_runner.cpp}}
+\doxysubsubsection{\texorpdfstring{MAX\_CONN}{MAX\_CONN}}
+{\footnotesize\ttfamily \label{server__runner_8cpp_a824f45aaf6041e2e0c6b91551e82a4b6} 
+\#define MAX\+\_\+\+CONN~1000}
+
+
+
+Main entry point for the Blink\+DB server. 
+
+This function\+:
+\begin{DoxyEnumerate}
+\item Creates a \doxylink{classblinkdb__server}{blinkdb\+\_\+server} instance
+\item Sets up signal handling for graceful termination
+\item Creates and configures a TCP socket to listen for connections
+\item Sets up an epoll instance for efficient I/O multiplexing
+\item Starts the server\textquotesingle{}s main event loop by calling \doxylink{classblinkdb__server_aea1530a77fbf44d7b4051dc2bce2e519}{blinkdb\+\_\+server\+::run()}
+\end{DoxyEnumerate}
+
+\begin{DoxyReturn}{Returns}
+0 on successful execution, negative value on error 
+\end{DoxyReturn}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{server__runner_8cpp_a32c1402c1491ea6c063e45c1c5a57f10}\index{server\_runner.cpp@{server\_runner.cpp}!handle\_exit@{handle\_exit}}
+\index{handle\_exit@{handle\_exit}!server\_runner.cpp@{server\_runner.cpp}}
+\doxysubsubsection{\texorpdfstring{handle\_exit()}{handle\_exit()}}
+{\footnotesize\ttfamily \label{server__runner_8cpp_a32c1402c1491ea6c063e45c1c5a57f10} 
+void handle\+\_\+exit (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Handles the server exit process. 
+
+This function is called when the server is shutting down. It prints a message and exits the process gracefully. \Hypertarget{server__runner_8cpp_a5b3210a63df1873c78a11917bce26ff1}\index{server\_runner.cpp@{server\_runner.cpp}!handleSigInt@{handleSigInt}}
+\index{handleSigInt@{handleSigInt}!server\_runner.cpp@{server\_runner.cpp}}
+\doxysubsubsection{\texorpdfstring{handleSigInt()}{handleSigInt()}}
+{\footnotesize\ttfamily \label{server__runner_8cpp_a5b3210a63df1873c78a11917bce26ff1} 
+void handle\+Sig\+Int (\begin{DoxyParamCaption}\item[{int}]{signum}{}\end{DoxyParamCaption})}
+
+
+
+Signal handler for SIGINT (Ctrl+C) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em signum} & The signal number received\\
+\hline
+\end{DoxyParams}
+This function is registered as the handler for SIGINT signals and calls \doxylink{server__runner_8cpp_a32c1402c1491ea6c063e45c1c5a57f10}{handle\+\_\+exit()} to terminate the server gracefully. 

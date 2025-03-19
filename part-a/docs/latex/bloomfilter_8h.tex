@@ -1,0 +1,47 @@
+\doxysection{bloomfilter.\+h File Reference}
+\hypertarget{bloomfilter_8h}{}\label{bloomfilter_8h}\index{bloomfilter.h@{bloomfilter.h}}
+
+
+Implements a space-\/efficient probabilistic Bloom filter.  
+
+
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$atomic$>$}\newline
+{\ttfamily \#include $<$functional$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classbloomfilter}{bloomfilter}}
+\begin{DoxyCompactList}\small\item\em Bloom filter class documentation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implements a space-\/efficient probabilistic Bloom filter. 
+
+This file defines the bloomfilter class which provides a space-\/efficient data structure to test whether a key is possibly present in a dataset.
+
+A Bloom filter is characterized by the following parameters\+:
+\begin{DoxyItemize}
+\item $n$\+: Expected number of elements to be inserted.
+\item $m$\+: Size of the bit array (in bits).
+\item $k$\+: Number of hash functions.
+\end{DoxyItemize}
+
+The optimal parameters for a desired false positive probability $p$ are calculated as follows\+:
+
+
+\begin{DoxyEnumerate}
+\item {\bfseries{Bit Array Size}}\+:   \[
+   m = - \frac{n \ln(p)}{(\ln(2))^2}
+   \]
+\item {\bfseries{Number of Hash Functions}}\+:   \[
+   k = \frac{m}{n} \ln(2)
+   \]
+\end{DoxyEnumerate}
+
+These formulas help minimize the false positive rate while using space efficiently.
+
+The implementation combines two hash functions to simulate k hash functions using the formula\+: hash\+\_\+i = hash1 + i \texorpdfstring{$\ast$}{*} hash2, and uses atomic operations to maintain the correctness of the bit array during concurrent insertions.
+
+This file is part of the design-\/lab project and is intended for quickly checking key membership with a controlled false positive rate. 

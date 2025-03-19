@@ -13,7 +13,7 @@
 <simplesect>
     <title>Public Member Functions    </title>
         <itemizedlist>
-            <listitem><para><link linkend="_classhashtable_1ae538aec043b2dcfb97529053484640ce">hashtable</link> (size_t size)</para>
+            <listitem><para><link linkend="_classhashtable_1aa394870c0ba3bfcb038a3cbc506a5ab3">hashtable</link> (size_t size, double threshold=0.70)</para>
 
 <para>Construct a new hashtable object. </para>
 </listitem>
@@ -33,6 +33,10 @@
 
 <para>Function to delete a key-value pair from the hashtable. </para>
 </listitem>
+            <listitem><para>void <link linkend="_classhashtable_1ac0d2bf8122887f46a668cc0516683768">evict</link> (<link linkend="_classdiskstorage">diskstorage</link> &amp;ds, <link linkend="_classsparseindex">sparseindex</link> &amp;sparseIndex, <link linkend="_classbloomfilter">bloomfilter</link> &amp;bloomFilter)</para>
+
+<para>Evicts all occupied entries from the hash table and offloads them to disk. </para>
+</listitem>
             <listitem><para><anchor xml:id="_classhashtable_1a9f5174a33d3f1726fad9d7a2bb3c66d6"/>void <emphasis role="strong">print</emphasis> ()</para>
 </listitem>
         </itemizedlist>
@@ -44,11 +48,12 @@
 </section>
 <section>
 <title>Constructor &amp; Destructor Documentation</title>
-<anchor xml:id="_classhashtable_1ae538aec043b2dcfb97529053484640ce"/><section>
+<anchor xml:id="_classhashtable_1aa394870c0ba3bfcb038a3cbc506a5ab3"/><section>
     <title>hashtable()</title>
 <indexterm><primary>hashtable</primary><secondary>hashtable</secondary></indexterm>
 <indexterm><primary>hashtable</primary><secondary>hashtable</secondary></indexterm>
-<para><computeroutput>hashtable::hashtable (size_t size)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+<para><computeroutput>hashtable::hashtable (size_t size, double threshold = <computeroutput>0.70</computeroutput>
+)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
 
 <para>Construct a new hashtable object. </para>
 </para>
@@ -66,6 +71,11 @@ Parameters</title>
                             <row>
 <entry>size</entry><entry>
 <para>Size of the hashtable </para>
+</entry>
+                            </row>
+                            <row>
+<entry>threshold</entry><entry>
+<para>Threshold for resizing the hashtable. Currently this cannot be changed </para>
 </entry>
                             </row>
                         </tbody>
@@ -114,6 +124,61 @@ Parameters</title>
 <para>false, otherwise </para>
 </formalpara>
 </para>
+</section>
+<anchor xml:id="_classhashtable_1ac0d2bf8122887f46a668cc0516683768"/><section>
+    <title>evict()</title>
+<indexterm><primary>evict</primary><secondary>hashtable</secondary></indexterm>
+<indexterm><primary>hashtable</primary><secondary>evict</secondary></indexterm>
+<para><computeroutput>void hashtable::evict (<link linkend="_classdiskstorage">diskstorage</link> &amp; ds, <link linkend="_classsparseindex">sparseindex</link> &amp; sparseIndex, <link linkend="_classbloomfilter">bloomfilter</link> &amp; bloomFilter)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>Evicts all occupied entries from the hash table and offloads them to disk. </para>
+</para>
+
+<para>This function iterates over each slot in the table and, for every occupied entry:<itemizedlist>
+<listitem>
+<para>Retrieves the key and its associated value.</para>
+</listitem><listitem>
+<para>Writes the key-value pair to disk via the provided disk storage, updating the sparse index.</para>
+</listitem><listitem>
+<para>Inserts the key into the bloom filter.</para>
+</listitem><listitem>
+<para>Marks the entry as unoccupied.</para>
+</listitem></itemizedlist>
+</para>
+
+<para>After processing all entries, the count of occupied entries is reset to zero.</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>ds</entry><entry>
+<para>Reference to a diskstorage object used to perform disk write operations. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>sparseIndex</entry><entry>
+<para>Reference to a sparseindex object managing disk entry indexing. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>bloomFilter</entry><entry>
+<para>Reference to a bloomfilter object used for tracking key presence. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
 </section>
 <anchor xml:id="_classhashtable_1a6f614816407ca67d2feccc4eb6f11cf2"/><section>
     <title>get()</title>
@@ -194,5 +259,5 @@ Parameters</title>
 </section>
 <para>
 The documentation for this class was generated from the following file:</para>
-hashtable.h</section>
+<link linkend="_hashtable_8h">hashtable.h</link></section>
 </section>

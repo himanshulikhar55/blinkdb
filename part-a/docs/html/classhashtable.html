@@ -18,6 +18,13 @@
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 <link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
@@ -112,9 +119,9 @@ $(function(){initNavTree('classhashtable.html',''); initResizable(true); });
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ae538aec043b2dcfb97529053484640ce" id="r_ae538aec043b2dcfb97529053484640ce"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae538aec043b2dcfb97529053484640ce">hashtable</a> (size_t size)</td></tr>
-<tr class="memdesc:ae538aec043b2dcfb97529053484640ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new hashtable object.  <br /></td></tr>
-<tr class="separator:ae538aec043b2dcfb97529053484640ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa394870c0ba3bfcb038a3cbc506a5ab3" id="r_aa394870c0ba3bfcb038a3cbc506a5ab3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa394870c0ba3bfcb038a3cbc506a5ab3">hashtable</a> (size_t size, double threshold=0.70)</td></tr>
+<tr class="memdesc:aa394870c0ba3bfcb038a3cbc506a5ab3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new hashtable object.  <br /></td></tr>
+<tr class="separator:aa394870c0ba3bfcb038a3cbc506a5ab3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0e8cd243f696051b91e3ac04205564c5" id="r_a0e8cd243f696051b91e3ac04205564c5"><td class="memItemLeft" align="right" valign="top"><a id="a0e8cd243f696051b91e3ac04205564c5" name="a0e8cd243f696051b91e3ac04205564c5"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>hashtable</b> ()</td></tr>
 <tr class="memdesc:a0e8cd243f696051b91e3ac04205564c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new hashtable object. This is the default constructor. <br /></td></tr>
@@ -128,6 +135,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a84de2b2fb13c58b207081fc6c239b3b5" id="r_a84de2b2fb13c58b207081fc6c239b3b5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a84de2b2fb13c58b207081fc6c239b3b5">del</a> (const std::string &amp;key)</td></tr>
 <tr class="memdesc:a84de2b2fb13c58b207081fc6c239b3b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to delete a key-value pair from the hashtable.  <br /></td></tr>
 <tr class="separator:a84de2b2fb13c58b207081fc6c239b3b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0d2bf8122887f46a668cc0516683768" id="r_ac0d2bf8122887f46a668cc0516683768"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac0d2bf8122887f46a668cc0516683768">evict</a> (<a class="el" href="classdiskstorage.html">diskstorage</a> &amp;ds, <a class="el" href="classsparseindex.html">sparseindex</a> &amp;sparseIndex, <a class="el" href="classbloomfilter.html">bloomfilter</a> &amp;bloomFilter)</td></tr>
+<tr class="memdesc:ac0d2bf8122887f46a668cc0516683768"><td class="mdescLeft">&#160;</td><td class="mdescRight">Evicts all occupied entries from the hash table and offloads them to disk.  <br /></td></tr>
+<tr class="separator:ac0d2bf8122887f46a668cc0516683768"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9f5174a33d3f1726fad9d7a2bb3c66d6" id="r_a9f5174a33d3f1726fad9d7a2bb3c66d6"><td class="memItemLeft" align="right" valign="top"><a id="a9f5174a33d3f1726fad9d7a2bb3c66d6" name="a9f5174a33d3f1726fad9d7a2bb3c66d6"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>print</b> ()</td></tr>
 <tr class="separator:a9f5174a33d3f1726fad9d7a2bb3c66d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -135,8 +145,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>print</b> ()</td></tr
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This is the custom hashtable class. It uses open addressing with double hashing to resolve collisions. The table is a vector of Entry structs. Each Entry struct has a key, a value and a boolean flag to indicate if the entry is occupied. The occupied variable is a std::atomic&lt;bool&gt; to ensure that the operations are atomic. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="ae538aec043b2dcfb97529053484640ce" name="ae538aec043b2dcfb97529053484640ce"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae538aec043b2dcfb97529053484640ce">&#9670;&#160;</a></span>hashtable()</h2>
+<a id="aa394870c0ba3bfcb038a3cbc506a5ab3" name="aa394870c0ba3bfcb038a3cbc506a5ab3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa394870c0ba3bfcb038a3cbc506a5ab3">&#9670;&#160;</a></span>hashtable()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -147,8 +157,12 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>print</b> ()</td></tr
         <tr>
           <td class="memname">hashtable::hashtable </td>
           <td>(</td>
-          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>size</em></span></td><td>)</td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>size</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>threshold</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0.70</span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -162,6 +176,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>print</b> ()</td></tr
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">size</td><td>Size of the hashtable </td></tr>
+    <tr><td class="paramname">threshold</td><td>Threshold for resizing the hashtable. Currently this cannot be changed </td></tr>
   </table>
   </dd>
 </dl>
@@ -202,6 +217,57 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>print</b> ()</td></tr
 <dl class="section return"><dt>Returns</dt><dd>true, if the key-value pair is deleted successfully </dd>
 <dd>
 false, otherwise </dd></dl>
+
+</div>
+</div>
+<a id="ac0d2bf8122887f46a668cc0516683768" name="ac0d2bf8122887f46a668cc0516683768"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac0d2bf8122887f46a668cc0516683768">&#9670;&#160;</a></span>evict()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void hashtable::evict </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classdiskstorage.html">diskstorage</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>ds</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classsparseindex.html">sparseindex</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>sparseIndex</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classbloomfilter.html">bloomfilter</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>bloomFilter</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Evicts all occupied entries from the hash table and offloads them to disk. </p>
+<p>This function iterates over each slot in the table and, for every occupied entry:</p><ul>
+<li>Retrieves the key and its associated value.</li>
+<li>Writes the key-value pair to disk via the provided disk storage, updating the sparse index.</li>
+<li>Inserts the key into the bloom filter.</li>
+<li>Marks the entry as unoccupied.</li>
+</ul>
+<p>After processing all entries, the count of occupied entries is reset to zero.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ds</td><td>Reference to a diskstorage object used to perform disk write operations. </td></tr>
+    <tr><td class="paramname">sparseIndex</td><td>Reference to a sparseindex object managing disk entry indexing. </td></tr>
+    <tr><td class="paramname">bloomFilter</td><td>Reference to a bloomfilter object used for tracking key presence. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -281,7 +347,7 @@ false, otherwise </dd></dl>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li><b>hashtable.h</b></li>
+<li><a class="el" href="hashtable_8h.html">hashtable.h</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

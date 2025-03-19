@@ -1,3 +1,27 @@
+
+/**
+ * @file hashtable.h
+ * @brief Custom Hashtable implementation using open addressing with double hashing.
+ *
+ * This file contains the declaration and implementation of a custom hashtable that
+ * employs open addressing with double hashing for collision resolution. Each entry in
+ * the hashtable is represented by an Entry struct containing an atomic occupancy flag,
+ * a key string, and a pointer to a memory-managed Block. The hashtable integrates several
+ * components including:
+ *   - A custom memory pool for managing dynamic memory allocation.
+ *   - Disk storage for offloading key-value pairs via the evict() function.
+ *   - A sparse index for maintaining and updating disk entries.
+ *   - A bloom filter to provide efficient approximate membership tests.
+ *
+ * Key features include:
+ *   - Atomic operations ensuring thread-safety in the manipulation of table entries.
+ *   - Dynamic resizing of the table based on occupancy thresholds, monitored by a dedicated
+ *     background thread.
+ *   - Standard hashtable operations such as insert, get, del, and evict.
+ *
+ * The implementation is designed to efficiently handle memory and disk storage operations,
+ * making use of modern C++ features such as move semantics, std::atomic, and multithreading.
+ */
 #pragma once
 #include "memorypool.h"
 #include "diskstorage.h"
@@ -23,17 +47,17 @@ class hashtable {
             std::string key;
             Block* value;
 
-            // Default constructor
+            /* Default constructor */
             Entry() : occupied(false), key(""), value(nullptr) {}
 
-            // Move constructor
+            /* Move constructor */
             Entry(Entry&& other) noexcept 
                 : key(std::move(other.key)), value(other.value) {
                 occupied.store(other.occupied.load()); 
                 other.value = nullptr; 
             }
 
-            // Move assignment operator
+            /* Move assignment operator */
             Entry& operator=(Entry&& other) noexcept {
                 if (this != &other) {
                     occupied.store(other.occupied.load());
@@ -44,7 +68,7 @@ class hashtable {
                 return *this;
             }
 
-            // Disable copying
+            /* Disable copying */
             Entry(const Entry&) = delete;
             Entry& operator=(const Entry&) = delete;
         };
@@ -116,6 +140,7 @@ class hashtable {
          * @brief Construct a new hashtable object
          * 
          * @param size Size of the hashtable
+         * @param threshold Threshold for resizing the hashtable. Currently this cannot be changed
          */
         hashtable(size_t size, double threshold = 0.70) 
             : capacity(size), table(size), memoryPool(size), count(0), resizeThreshold(threshold), resizing(false), stopThread(false) {
@@ -212,6 +237,21 @@ class hashtable {
             return false;
         }
 
+        /**
+         * @brief Evicts all occupied entries from the hash table and offloads them to disk.
+         *
+         * This function iterates over each slot in the table and, for every occupied entry:
+         * - Retrieves the key and its associated value.
+         * - Writes the key-value pair to disk via the provided disk storage, updating the sparse index.
+         * - Inserts the key into the bloom filter.
+         * - Marks the entry as unoccupied.
+         *
+         * After processing all entries, the count of occupied entries is reset to zero.
+         *
+         * @param ds Reference to a diskstorage object used to perform disk write operations.
+         * @param sparseIndex Reference to a sparseindex object managing disk entry indexing.
+         * @param bloomFilter Reference to a bloomfilter object used for tracking key presence.
+         */
         void evict(diskstorage& ds, sparseindex& sparseIndex, bloomfilter& bloomFilter) {
             for (size_t i = 0; i < capacity; ++i) {
                 if (table[i].occupied.load()) {

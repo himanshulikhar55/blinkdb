@@ -1,0 +1,149 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_classskiplist" xml:lang="en-US">
+<title>skiplist Class Reference</title>
+<indexterm><primary>skiplist</primary></indexterm>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_classskiplist_1a9751bd1be5d110bb38e5cb4a42c172c7">skiplist</link> (int maxLvl=16, float prob=0.5)</para>
+
+<para>Constructs a new skiplist object. </para>
+</listitem>
+            <listitem><para>void <link linkend="_classskiplist_1aa193aa8a10a77cbf6bddca202b5c253a">insert</link> (const std::string &amp;key, std::streampos offset)</para>
+
+<para>Inserts a new node with the given key and stream offset into the skip list. </para>
+</listitem>
+            <listitem><para>std::streampos <link linkend="_classskiplist_1aa1d31fd7a91a970ce89658791be4872e">get_nearest_offset</link> (const std::string &amp;key)</para>
+
+<para>Retrieves the stream offset of the node immediately preceding the given key. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_classskiplist_1a9751bd1be5d110bb38e5cb4a42c172c7"/><section>
+    <title>skiplist()</title>
+<indexterm><primary>skiplist</primary><secondary>skiplist</secondary></indexterm>
+<indexterm><primary>skiplist</primary><secondary>skiplist</secondary></indexterm>
+<para><computeroutput>skiplist::skiplist (int maxLvl = <computeroutput>16</computeroutput>
+, float prob = <computeroutput>0.5</computeroutput>
+)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>Constructs a new skiplist object. </para>
+</para>
+
+<para>Initializes the skiplist with a specified maximum level and probability. A header node is created with an empty key and a placeholder value (-1) using the provided maximum level.</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>maxLvl</entry><entry>
+<para>The maximum level allowed in the skiplist (default is 16). This cannot be changed currently. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>prob</entry><entry>
+<para>The probability used for level promotion of nodes (default is 0.5). This cannot be changed currently. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_classskiplist_1aa1d31fd7a91a970ce89658791be4872e"/><section>
+    <title>get_nearest_offset()</title>
+<indexterm><primary>get_nearest_offset</primary><secondary>skiplist</secondary></indexterm>
+<indexterm><primary>skiplist</primary><secondary>get_nearest_offset</secondary></indexterm>
+<para><computeroutput>std::streampos skiplist::get_nearest_offset (const std::string &amp; key)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>Retrieves the stream offset of the node immediately preceding the given key. </para>
+</para>
+
+<para>This function traverses the skip list from the top-most level down to the lowest level, moving forward at each level until it finds the last node whose key is less than the specified key. The function then returns the offset of this node within the stream.</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>key</entry><entry>
+<para>The key to search for in the skip list.</para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>std::streampos The offset of the node with the largest key that is less than the input key.</para>
+</formalpara>
+<note><title>Note</title>
+
+<para>If no node with a key less than the provided key exists, the offset of the head node is returned. </para>
+</note>
+</para>
+</section>
+<anchor xml:id="_classskiplist_1aa193aa8a10a77cbf6bddca202b5c253a"/><section>
+    <title>insert()</title>
+<indexterm><primary>insert</primary><secondary>skiplist</secondary></indexterm>
+<indexterm><primary>skiplist</primary><secondary>insert</secondary></indexterm>
+<para><computeroutput>void skiplist::insert (const std::string &amp; key, std::streampos offset)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>Inserts a new node with the given key and stream offset into the skip list. </para>
+</para>
+
+<para>This function navigates the skip list from the highest level down to level 0 to find the appropriate insertion point for the new node. It maintains arrays of predecessor and successor nodes for each level during the traversal. A new random level is determined for the node, and the node is inserted into each level using atomic operations to ensure thread safety.</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>key</entry><entry>
+<para>The key associated with the new node; used for maintaining order within the list. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>offset</entry><entry>
+<para>The stream offset associated with the key, typically representing a position or location in an external data source. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+<para>
+The documentation for this class was generated from the following file:</para>
+<link linkend="_skiplist_8h">skiplist.h</link></section>
+</section>

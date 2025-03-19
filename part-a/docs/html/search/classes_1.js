@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['hashtable_0',['hashtable',['../classhashtable.html',1,'']]]
+  ['diskstorage_0',['diskstorage',['../classdiskstorage.html',1,'']]]
 ];

@@ -1,0 +1,128 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_client__runner_8cpp" xml:lang="en-US">
+<title>client_runner.cpp File Reference</title>
+<indexterm><primary>client_runner.cpp</primary></indexterm>
+<para>
+
+<para>Client runner for connecting to BlinkDB and interacting with it. </para>
+ 
+</para>
+<programlisting linenumbering="unnumbered">#include &lt;iostream&gt;<?linebreak?>#include &lt;string&gt;<?linebreak?>#include &lt;csignal&gt;<?linebreak?>#include &lt;unistd.h&gt;<?linebreak?>#include &lt;termios.h&gt;<?linebreak?>#include &quot;lib/blinkdb_client.h&quot;<?linebreak?>#include &quot;lib/resp_parser.h&quot;<?linebreak?>#include &lt;limits&gt;<?linebreak?></programlisting><simplesect>
+    <title>Macros    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_client__runner_8cpp_1a614217d263be1fb1a5f76e2ff7be19a2"/>#define <emphasis role="strong">PORT</emphasis>&#160;&#160;&#160;9001</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_client__runner_8cpp_1ad18c16ed26afe044ae31ebb0747ca3e0"/>void <emphasis role="strong">sigtstpHandler</emphasis> (int signum)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_client__runner_8cpp_1a32c1402c1491ea6c063e45c1c5a57f10"/>void <emphasis role="strong">handle_exit</emphasis> ()</para>
+</listitem>
+            <listitem><para><anchor xml:id="_client__runner_8cpp_1a5b3210a63df1873c78a11917bce26ff1"/>void <emphasis role="strong">handleSigInt</emphasis> (int signum)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_client__runner_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4"/>int <emphasis role="strong">main</emphasis> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Variables    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_client__runner_8cpp_1ae27b4f22721ba0592f8aacd5d2bbc8c3"/>std::string <emphasis role="strong">response</emphasis> = &quot;\nPlease enter &apos;exit&apos; to exit the client\n&quot;</para>
+</listitem>
+            <listitem><para><anchor xml:id="_client__runner_8cpp_1a8fcd9b89b4e75da59ed5f2e83dce4c8b"/>const std::string <emphasis role="strong">quit</emphasis> = &quot;*1\r\n$4\r\nQUIT\r\n&quot;</para>
+</listitem>
+            <listitem><para><anchor xml:id="_client__runner_8cpp_1af37dd3e201ddc8f713737a9a8eaba215"/><link linkend="_classblinkdb__client">blinkdb_client</link> <emphasis role="strong">client</emphasis> = <link linkend="_classblinkdb__client">blinkdb_client</link>(&quot;127.0.0.1&quot;, PORT)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>Client runner for connecting to BlinkDB and interacting with it. </para>
+
+<para>This file provides the main functionality for a client that connects to a BlinkDB server. It establishes a connection to the server on a specified port, handles user input, and communicates using the RESP protocol. The client supports sending various commands and cleanly exits on receiving an exit command or SIGINT signal.</para>
+
+<para>Signal Handlers:<itemizedlist>
+<listitem>
+<para>SIGINT: Invokes the function to safely exit the client by sending a QUIT command.</para>
+</listitem><listitem>
+<para>SIGTSTP: Outputs a prompt message to remind the user of the available exit command.</para>
+</listitem></itemizedlist>
+</para>
+
+<para>Key Functions:<itemizedlist>
+<listitem>
+<para>sigtstpHandler: Displays a reminder message when the SIGTSTP signal (Ctrl+Z) is received.</para>
+</listitem><listitem>
+<para>handle_exit: Sends the quit command to the BlinkDB server and terminates the client.</para>
+</listitem><listitem>
+<para>handleSigInt: Triggered by SIGINT (Ctrl+C) and calls handle_exit to perform a cleanup before exit.</para>
+</listitem><listitem>
+<para>main: Sets up the client, registers signal handlers, and enters an interactive loop to process user input.</para>
+</listitem></itemizedlist>
+</para>
+
+<para>This client allows users to send commands to the BlinkDB server using the RESP-2 protocol. The supported commands are:</para>
+
+<para><itemizedlist>
+<listitem>
+<para><emphasis role="bold">SET key value</emphasis>: Store a key-value pair in the database.</para>
+</listitem><listitem>
+<para><emphasis role="bold">GET key</emphasis>: Retrieve the value associated with a key.</para>
+</listitem><listitem>
+<para><emphasis role="bold">DEL key</emphasis>: Delete a key from the database.</para>
+</listitem></itemizedlist>
+</para>
+<section xml:id="_client__runner_8cpp_1autotoc_md0">
+<title>Usage Examples:</title>
+<para><literallayout><computeroutput>./client_runner
+</computeroutput></literallayout></para>
+
+<para>Once inside the interactive client, you can type commands as follows:</para>
+
+<para><literallayout><computeroutput>&gt;&#32;SET&#32;A&#32;10
++OK
+
+&gt;&#32;GET&#32;A
+10
+&gt;&#32;DEL&#32;A
++OK
+</computeroutput></literallayout></para>
+
+<para>The client connects to the BlinkDB server running on the configured port (default: <emphasis role="bold">9001</emphasis>).</para>
+</section>
+<section xml:id="_client__runner_8cpp_1autotoc_md1">
+<title>Command Format:</title>
+<para>The client serializes commands into the <emphasis role="bold">RESP-2 protocol format</emphasis> before sending them:</para>
+
+<para><itemizedlist>
+<listitem>
+<para><emphasis role="bold">SET A 10</emphasis> → <computeroutput>*3\r\n$3\r\nSET\r\n$1\r\nA\r\n$2\r\n10\r\n</computeroutput></para>
+</listitem><listitem>
+<para><emphasis role="bold">GET A</emphasis> → <computeroutput>*2\r\n$3\r\nGET\r\n$1\r\nA\r\n</computeroutput></para>
+</listitem><listitem>
+<para><emphasis role="bold">DEL A</emphasis> → <computeroutput>*2\r\n$3\r\nDEL\r\n$1\r\nA\r\n</computeroutput></para>
+</listitem></itemizedlist>
+</para>
+
+<para>The server responds with a result (OK, a value, or an error message).</para>
+
+<para>Dependencies:<itemizedlist>
+<listitem>
+<para><link linkend="_classblinkdb__client">blinkdb_client</link>: Manages the connection and communication with the BlinkDB server.</para>
+</listitem><listitem>
+<para><link linkend="_classresp__parser">resp_parser</link>: Parses the RESP protocol commands and responses.</para>
+</listitem></itemizedlist>
+</para>
+
+<para><note><title>Note</title>
+
+<para>The client communicates with the server using a custom RESP protocol format. </para>
+</note>
+</para>
+</section>
+</section>
+</section>

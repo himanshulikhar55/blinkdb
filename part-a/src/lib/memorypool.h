@@ -1,3 +1,20 @@
+/**
+ * @file memorypool.h
+ * @brief Implements a memory pool for managing Block objects.
+ *
+ * This file defines the memorypool class, which is responsible for allocating and deallocating memory blocks,
+ * each represented by a Block object that can store key-value pairs. The memory pool maintains a fixed-size vector
+ * of Blocks and uses a queue to track available (unused) blocks.
+ *
+ * The allocation function assigns a key-value pair to the first available block and marks it as used,
+ * ensuring efficient memory usage. The deallocation function returns a block to the pool for future reuse.
+ *
+ * This design is intended for scenarios where managing a collection of key-value pairs in memory
+ * is crucial for performance and resource utilization.
+ *
+ * @note The memorypool relies on the Block class declared in "block.h", and it uses C++ Standard Library
+ * facilities like std::vector, std::queue, and std::atomic.
+ */
 #pragma once
 #include "block.h"
 #include <iostream>

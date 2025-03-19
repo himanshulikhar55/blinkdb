@@ -18,6 +18,13 @@
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 <link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
@@ -104,7 +111,7 @@ $(function(){initNavTree('classmemorypool.html',''); initResizable(true); });
 
 <p>This is the complete list of members for <a class="el" href="classmemorypool.html">memorypool</a>, including all inherited members.</p>
 <table class="directory">
-  <tr class="even"><td class="entry"><a class="el" href="classmemorypool.html#aff5c0156c665b592139431231496d305">allocate</a>(const std::string &amp;key, std::string &amp;&amp;value)</td><td class="entry"><a class="el" href="classmemorypool.html">memorypool</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classmemorypool.html#a6459e3c1db2ae164d44df5bc63f2d0b7">allocate</a>(std::string &amp;&amp;value)</td><td class="entry"><a class="el" href="classmemorypool.html">memorypool</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
   <tr class="odd"><td class="entry"><a class="el" href="classmemorypool.html#a56e8e86546b458db97dacf75730abc2a">deallocate</a>(Block *block)</td><td class="entry"><a class="el" href="classmemorypool.html">memorypool</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classmemorypool.html#a8be7c07ebe027a2dec03630743a25c0b">memorypool</a>(size_t size)</td><td class="entry"><a class="el" href="classmemorypool.html">memorypool</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
   <tr class="odd"><td class="entry"><a class="el" href="classmemorypool.html#a4076462d8538f4b7f57975aedb2c2a13">memorypool</a>()</td><td class="entry"><a class="el" href="classmemorypool.html">memorypool</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>

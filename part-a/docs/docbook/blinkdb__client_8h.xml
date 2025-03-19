@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_blinkdb__client_8h" xml:lang="en-US">
+<title>blinkdb_client.h File Reference</title>
+<indexterm><primary>blinkdb_client.h</primary></indexterm>
+<para>
+
+<para>Defines the <link linkend="_classblinkdb__client">blinkdb_client</link> class for connecting to a BlinkDB server and sending requests. </para>
+ 
+</para>
+<programlisting linenumbering="unnumbered">#include &lt;string&gt;<?linebreak?>#include &lt;iostream&gt;<?linebreak?>#include &lt;unistd.h&gt;<?linebreak?>#include &lt;arpa/inet.h&gt;<?linebreak?>#include &lt;sys/socket.h&gt;<?linebreak?></programlisting><simplesect>
+    <title>Classes    </title>
+        <itemizedlist>
+            <listitem><para>class <link linkend="_classblinkdb__client">blinkdb_client</link></para>
+
+<para>Establishes a connection to the BlinkDB server. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>Defines the <link linkend="_classblinkdb__client">blinkdb_client</link> class for connecting to a BlinkDB server and sending requests. </para>
+
+<para>This file provides a simple client interface that uses POSIX sockets to establish a TCP connection to a BlinkDB server, send requests, and receive responses. </para>
+</section>
+</section>

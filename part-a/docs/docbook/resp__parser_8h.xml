@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_resp__parser_8h" xml:lang="en-US">
+<title>resp_parser.h File Reference</title>
+<indexterm><primary>resp_parser.h</primary></indexterm>
+<para>
+
+<para>Provides functionalities for parsing and converting commands using the Redis Serialization Protocol (RESP). </para>
+ 
+</para>
+<programlisting linenumbering="unnumbered">#include &lt;string&gt;<?linebreak?>#include &lt;sstream&gt;<?linebreak?>#include &lt;vector&gt;<?linebreak?>#include &lt;stdint.h&gt;<?linebreak?>#include &lt;stdlib.h&gt;<?linebreak?>#include &lt;iostream&gt;<?linebreak?>#include &lt;cstring&gt;<?linebreak?></programlisting><simplesect>
+    <title>Classes    </title>
+        <itemizedlist>
+            <listitem><para>struct <link linkend="_structparse__op">parse_op</link></para>
+
+<para>Represents a parsed command operation. </para>
+</listitem>
+            <listitem><para>class <link linkend="_classresp__parser">resp_parser</link></para>
+
+<para>A parser for RESP (Redis Serialization Protocol) commands. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>Provides functionalities for parsing and converting commands using the Redis Serialization Protocol (RESP). </para>
+
+<para>This file defines the data structure and class used to process commands in RESP format. It includes:<itemizedlist>
+<listitem>
+<para>The <link linkend="_structparse__op">parse_op</link> structure, which encapsulates a parsed command&apos;s details including the command type, key, value, and the generated RESP formatted string.</para>
+</listitem><listitem>
+<para>The <link linkend="_classresp__parser">resp_parser</link> class, responsible for parsing input strings and converting them into RESP-encoded messages. It supports commands such as GET, SET, DEL, and PRINT, handling conversion between standard string representation and RESP formatted data.</para>
+</listitem></itemizedlist>
+</para>
+
+<para>The parser offers robust mechanisms to validate, format, and retrieve command components, ensuring the correct conversion to and from RESP representations. Additionally, helper methods are provided for converting strings to byte streams and handling specific command conditions like quit, print, and configuration commands.</para>
+
+<para>Detailed functionality is documented within the respective methods. </para>
+</section>
+</section>

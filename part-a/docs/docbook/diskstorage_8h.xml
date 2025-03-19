@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_diskstorage_8h" xml:lang="en-US">
+<title>diskstorage.h File Reference</title>
+<indexterm><primary>diskstorage.h</primary></indexterm>
+<para>
+
+<para>Provides the diskstorage class for disk-based storage of key-value pairs. </para>
+ 
+</para>
+<programlisting linenumbering="unnumbered">#include &lt;iostream&gt;<?linebreak?>#include &lt;fstream&gt;<?linebreak?>#include &lt;string&gt;<?linebreak?>#include &lt;atomic&gt;<?linebreak?>#include &quot;sparseindex.h&quot;<?linebreak?></programlisting><simplesect>
+    <title>Classes    </title>
+        <itemizedlist>
+            <listitem><para>class <link linkend="_classdiskstorage">diskstorage</link></para>
+
+<para>This class is used to store key-value pairs on disk. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Macros    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_diskstorage_8h_1ab39fec97d85960796efedec442f38004"/>#define <emphasis role="strong">INTERVAL</emphasis>&#160;&#160;&#160;100</para>
+</listitem>
+            <listitem><para><anchor xml:id="_diskstorage_8h_1a6d3fef197146b932f5ad01fce683a66b"/>#define <emphasis role="strong">LOGFILE</emphasis>&#160;&#160;&#160;&quot;data.log&quot;</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>Provides the diskstorage class for disk-based storage of key-value pairs. </para>
+
+<para>This file defines the diskstorage class, which allows writing key-value pairs to a log file in an append-only mode and reading them back by leveraging a sparse indexing mechanism provided by the sparseindex class.</para>
+
+<para>The diskstorage class manages an output file stream that is used to append data to the file &quot;data.log&quot;. Every INTERVAL number of insertions, it updates the sparse index with the offset position of the key within the file. The read() member function uses the sparse index to retrieve and search for key-value entries efficiently.</para>
+
+<para>Usage Example: <literallayout><computeroutput><link linkend="_classdiskstorage">diskstorage</link>&#32;ds;
+<link linkend="_classsparseindex">sparseindex</link>&#32;index;
+ds.<link linkend="_classdiskstorage_1a5cd280ffdc039f12c75f26ba325ec455">write</link>(<emphasis role="stringliteral">&quot;sampleKey&quot;</emphasis>,&#32;<emphasis role="stringliteral">&quot;sampleValue&quot;</emphasis>,&#32;index);
+std::string&#32;value&#32;=&#32;ds.<link linkend="_classdiskstorage_1a2a6d4004689c9c8084f0c07d4f49b191">read</link>(<emphasis role="stringliteral">&quot;sampleKey&quot;</emphasis>,&#32;index);
+</computeroutput></literallayout></para>
+
+<para><formalpara><title>See also</title>
+
+<para><link linkend="_sparseindex_8h">sparseindex.h</link> </para>
+</formalpara>
+</para>
+</section>
+</section>

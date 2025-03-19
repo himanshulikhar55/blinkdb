@@ -1,0 +1,136 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_server__runner_8cpp" xml:lang="en-US">
+<title>server_runner.cpp File Reference</title>
+<indexterm><primary>server_runner.cpp</primary></indexterm>
+<para>
+
+<para>Implementation of the BlinkDB server application. </para>
+ 
+</para>
+<programlisting linenumbering="unnumbered">#include &quot;lib/blinkdb_server.h&quot;<?linebreak?>#include &quot;lib/blinkdb.h&quot;<?linebreak?>#include &quot;lib/resp_parser.h&quot;<?linebreak?>#include &lt;sys/epoll.h&gt;<?linebreak?>#include &lt;arpa/inet.h&gt;<?linebreak?>#include &lt;fcntl.h&gt;<?linebreak?>#include &lt;unistd.h&gt;<?linebreak?></programlisting><simplesect>
+    <title>Macros    </title>
+        <itemizedlist>
+            <listitem><para>#define <link linkend="_server__runner_8cpp_1a824f45aaf6041e2e0c6b91551e82a4b6">MAX_CONN</link>&#160;&#160;&#160;1000</para>
+
+<para>Main entry point for the BlinkDB server. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para>void <link linkend="_server__runner_8cpp_1a32c1402c1491ea6c063e45c1c5a57f10">handle_exit</link> ()</para>
+
+<para>Handles the server exit process. </para>
+</listitem>
+            <listitem><para>void <link linkend="_server__runner_8cpp_1a5b3210a63df1873c78a11917bce26ff1">handleSigInt</link> (int signum)</para>
+
+<para>Signal handler for SIGINT (Ctrl+C) </para>
+</listitem>
+            <listitem><para><anchor xml:id="_server__runner_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4"/>int <emphasis role="strong">main</emphasis> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>Implementation of the BlinkDB server application. </para>
+
+<para>This file implements the main entry point for the BlinkDB server application. It initializes a TCP socket server that listens for incoming connections and handles them using an epoll-based event loop. The server is designed to handle up to MAX_CONN simultaneous connections.</para>
+
+<para>The server uses the <link linkend="_classblinkdb__server">blinkdb_server</link> class to process client requests according to the RESP (Redis Serialization Protocol) format.</para>
+
+<para>Dependencies:<itemizedlist>
+<listitem>
+<para><link linkend="_classblinkdb__server">blinkdb_server</link>: Manages the server&apos;s main event loop and connection handling.</para>
+</listitem><listitem>
+<para>blinkdb: Implements the core BlinkDB functionality for storing key-value pairs.</para>
+</listitem><listitem>
+<para><link linkend="_classresp__parser">resp_parser</link>: Parses the RESP protocol commands and responses. <note><title>Note</title>
+
+<para>The server listens on the port defined by PORT macro (defined elsewhere). </para>
+
+<para>The server can be terminated by sending a SIGINT signal (Ctrl+C). </para>
+</note>
+</para>
+</listitem></itemizedlist>
+</para>
+</section>
+<section>
+<title>Macro Definition Documentation</title>
+<anchor xml:id="_server__runner_8cpp_1a824f45aaf6041e2e0c6b91551e82a4b6"/><section>
+    <title>MAX_CONN</title>
+<indexterm><primary>MAX_CONN</primary><secondary>server_runner.cpp</secondary></indexterm>
+<indexterm><primary>server_runner.cpp</primary><secondary>MAX_CONN</secondary></indexterm>
+<para><computeroutput>#define MAX_CONN&#160;&#160;&#160;1000</computeroutput></para><para>
+
+<para>Main entry point for the BlinkDB server. </para>
+</para>
+
+<para>This function:<orderedlist>
+<listitem>
+<para>Creates a <link linkend="_classblinkdb__server">blinkdb_server</link> instance</para>
+</listitem><listitem>
+<para>Sets up signal handling for graceful termination</para>
+</listitem><listitem>
+<para>Creates and configures a TCP socket to listen for connections</para>
+</listitem><listitem>
+<para>Sets up an epoll instance for efficient I/O multiplexing</para>
+</listitem><listitem>
+<para>Starts the server&apos;s main event loop by calling <link linkend="_classblinkdb__server_1aea1530a77fbf44d7b4051dc2bce2e519">blinkdb_server::run()</link></para>
+</listitem></orderedlist>
+</para>
+
+<para><formalpara><title>Returns</title>
+
+<para>0 on successful execution, negative value on error </para>
+</formalpara>
+</para>
+</section>
+</section>
+<section>
+<title>Function Documentation</title>
+<anchor xml:id="_server__runner_8cpp_1a32c1402c1491ea6c063e45c1c5a57f10"/><section>
+    <title>handle_exit()</title>
+<indexterm><primary>handle_exit</primary><secondary>server_runner.cpp</secondary></indexterm>
+<indexterm><primary>server_runner.cpp</primary><secondary>handle_exit</secondary></indexterm>
+<para><computeroutput>void handle_exit ( )</computeroutput></para><para>
+
+<para>Handles the server exit process. </para>
+</para>
+
+<para>This function is called when the server is shutting down. It prints a message and exits the process gracefully. </para>
+</section>
+<anchor xml:id="_server__runner_8cpp_1a5b3210a63df1873c78a11917bce26ff1"/><section>
+    <title>handleSigInt()</title>
+<indexterm><primary>handleSigInt</primary><secondary>server_runner.cpp</secondary></indexterm>
+<indexterm><primary>server_runner.cpp</primary><secondary>handleSigInt</secondary></indexterm>
+<para><computeroutput>void handleSigInt (int signum)</computeroutput></para><para>
+
+<para>Signal handler for SIGINT (Ctrl+C) </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>signum</entry><entry>
+<para>The signal number received</para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                This function is registered as the handler for SIGINT signals and calls <link linkend="_server__runner_8cpp_1a32c1402c1491ea6c063e45c1c5a57f10">handle_exit()</link> to terminate the server gracefully. </para>
+</section>
+</section>
+</section>

@@ -18,6 +18,13 @@
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 <link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
@@ -104,9 +111,10 @@ $(function(){initNavTree('classbloomfilter.html',''); initResizable(true); });
 
 <p>This is the complete list of members for <a class="el" href="classbloomfilter.html">bloomfilter</a>, including all inherited members.</p>
 <table class="directory">
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>bloomfilter</b>(size_t num_bits, size_t num_hashes) (defined in <a class="el" href="classbloomfilter.html">bloomfilter</a>)</td><td class="entry"><a class="el" href="classbloomfilter.html">bloomfilter</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr bgcolor="#f0f0f0" class="odd"><td class="entry"><b>insert</b>(const std::string &amp;key) (defined in <a class="el" href="classbloomfilter.html">bloomfilter</a>)</td><td class="entry"><a class="el" href="classbloomfilter.html">bloomfilter</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>possibly_contains</b>(const std::string &amp;key) const (defined in <a class="el" href="classbloomfilter.html">bloomfilter</a>)</td><td class="entry"><a class="el" href="classbloomfilter.html">bloomfilter</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classbloomfilter.html#a07695cd9beb90cbb31a9f953a0d5698e">bloomfilter</a>(size_t num_bits, size_t num_hashes)</td><td class="entry"><a class="el" href="classbloomfilter.html">bloomfilter</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr bgcolor="#f0f0f0" class="odd"><td class="entry"><b>bloomfilter</b>() (defined in <a class="el" href="classbloomfilter.html">bloomfilter</a>)</td><td class="entry"><a class="el" href="classbloomfilter.html">bloomfilter</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classbloomfilter.html#ac810ef21aa0925b28e291c2a4168af2a">insert</a>(const std::string &amp;key)</td><td class="entry"><a class="el" href="classbloomfilter.html">bloomfilter</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classbloomfilter.html#a36048739c6dcf5534c328f2bfc2bcf6f">possibly_contains</a>(const std::string &amp;key) const</td><td class="entry"><a class="el" href="classbloomfilter.html">bloomfilter</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
 </table></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

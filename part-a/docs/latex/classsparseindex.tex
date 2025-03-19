@@ -1,0 +1,67 @@
+\doxysection{sparseindex Class Reference}
+\hypertarget{classsparseindex}{}\label{classsparseindex}\index{sparseindex@{sparseindex}}
+
+
+This class is a sparse-\/index that uses a skip list to store key-\/offset pairs.  
+
+
+
+
+{\ttfamily \#include $<$lib/sparseindex.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classsparseindex_ae58c2e252cf853f258d7e305208c0d46}\label{classsparseindex_ae58c2e252cf853f258d7e305208c0d46} 
+{\bfseries sparseindex} ()
+\begin{DoxyCompactList}\small\item\em Construct a new sparseindex object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsparseindex_ac5a9142436d081224cafb964cad4becb}{insert}} (const std\+::string \&key, std\+::streampos offset)
+\begin{DoxyCompactList}\small\item\em Function to insert a key-\/offset pair into the skiplist. \end{DoxyCompactList}\item 
+std\+::streampos \mbox{\hyperlink{classsparseindex_ad4ffd3a38bc56212d400d82b3e320f54}{get\+\_\+offset}} (const std\+::string \&key)
+\begin{DoxyCompactList}\small\item\em Function to get the nearest offset for a given key. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This class is a sparse-\/index that uses a skip list to store key-\/offset pairs. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classsparseindex_ad4ffd3a38bc56212d400d82b3e320f54}\index{sparseindex@{sparseindex}!get\_offset@{get\_offset}}
+\index{get\_offset@{get\_offset}!sparseindex@{sparseindex}}
+\doxysubsubsection{\texorpdfstring{get\_offset()}{get\_offset()}}
+{\footnotesize\ttfamily \label{classsparseindex_ad4ffd3a38bc56212d400d82b3e320f54} 
+std\+::streampos sparseindex\+::get\+\_\+offset (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{key}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Function to get the nearest offset for a given key. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & The key for which the offset is to be found \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::streampos The offset for the given key 
+\end{DoxyReturn}
+\Hypertarget{classsparseindex_ac5a9142436d081224cafb964cad4becb}\index{sparseindex@{sparseindex}!insert@{insert}}
+\index{insert@{insert}!sparseindex@{sparseindex}}
+\doxysubsubsection{\texorpdfstring{insert()}{insert()}}
+{\footnotesize\ttfamily \label{classsparseindex_ac5a9142436d081224cafb964cad4becb} 
+void sparseindex\+::insert (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{key}{, }\item[{std\+::streampos}]{offset}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Function to insert a key-\/offset pair into the skiplist. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & The key in the key-\/offset pair \\
+\hline
+{\em offset} & The offset in the key-\/offset pair \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{sparseindex_8h}{sparseindex.\+h}}\end{DoxyCompactItemize}

@@ -4,3 +4,8 @@
 .vscode
 .backup
 test.cpp
+benchmark-command.txt
+docs/latex/
+docs/xml/
+docs/rtf/
+docs/man/
