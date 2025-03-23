@@ -2,24 +2,35 @@
 <section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_bloomfilter_8h" xml:lang="en-US">
 <title>bloomfilter.h File Reference</title>
 <indexterm><primary>bloomfilter.h</primary></indexterm>
-<para>
-
-<para>Implements a space-efficient probabilistic Bloom filter. </para>
- 
+<programlisting linenumbering="unnumbered">#include &lt;vector&gt;<?linebreak?>#include &lt;functional&gt;<?linebreak?>#include &lt;string&gt;<?linebreak?></programlisting>Include dependency graph for bloomfilter.h:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="bloomfilter_8h__incl.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
 </para>
-<programlisting linenumbering="unnumbered">#include &lt;vector&gt;<?linebreak?>#include &lt;atomic&gt;<?linebreak?>#include &lt;functional&gt;<?linebreak?>#include &lt;string&gt;<?linebreak?></programlisting><simplesect>
+This graph shows which files directly or indirectly include this file:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="bloomfilter_8h__dep__incl.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
     <title>Classes    </title>
         <itemizedlist>
             <listitem><para>class <link linkend="_classbloomfilter">bloomfilter</link></para>
-
-<para>Bloom filter class documentation. </para>
 </listitem>
         </itemizedlist>
 </simplesect>
 <section>
 <title>Detailed Description</title>
 
-<para>Implements a space-efficient probabilistic Bloom filter. </para>
+<para>Implements a space-efficient probabilistic Bloom filter.</para>
 
 <para>This file defines the bloomfilter class which provides a space-efficient data structure to test whether a key is possibly present in a dataset.</para>
 
@@ -59,14 +70,14 @@
 <listitem>
 <para><emphasis role="bold">Bit Array Size</emphasis>:           <mediaobject>
             <imageobject>
-                <imagedata align="center" valign="middle" scalefit="0" fileref="form_4.png"/>
+                <imagedata align="center" valign="middle" scalefit="0" fileref="form_8.png"/>
             </imageobject>
         </mediaobject>
 </para>
 </listitem><listitem>
 <para><emphasis role="bold">Number of Hash Functions</emphasis>:           <mediaobject>
             <imageobject>
-                <imagedata align="center" valign="middle" scalefit="0" fileref="form_5.png"/>
+                <imagedata align="center" valign="middle" scalefit="0" fileref="form_9.png"/>
             </imageobject>
         </mediaobject>
 </para>
@@ -75,7 +86,7 @@
 
 <para>These formulas help minimize the false positive rate while using space efficiently.</para>
 
-<para>The implementation combines two hash functions to simulate k hash functions using the formula: hash_i = hash1 + i * hash2, and uses atomic operations to maintain the correctness of the bit array during concurrent insertions.</para>
+<para>The implementation combines two hash functions to simulate k hash functions using the formula: hash_i = hash1 + i * hash2.</para>
 
 <para>This file is part of the design-lab project and is intended for quickly checking key membership with a controlled false positive rate. </para>
 </section>

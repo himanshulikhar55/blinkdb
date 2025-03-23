@@ -1,0 +1,166 @@
+\doxysection{memorypool Class Reference}
+\hypertarget{classmemorypool}{}\label{classmemorypool}\index{memorypool@{memorypool}}
+
+
+{\ttfamily \#include $<$part-\/a/lib/memorypool.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmemorypool_a8be7c07ebe027a2dec03630743a25c0b}{memorypool}} (size\+\_\+t size)
+\item 
+\mbox{\hyperlink{classmemorypool_a4076462d8538f4b7f57975aedb2c2a13}{memorypool}} ()
+\item 
+size\+\_\+t \mbox{\hyperlink{classmemorypool_a12dc3dad0e3261da39eb647a3608cee4}{allocate}} (std\+::string \&value)
+\item 
+bool \mbox{\hyperlink{classmemorypool_a087fc49928d81116fc6369aff223de6f}{deallocate}} (size\+\_\+t index)
+\item 
+void \mbox{\hyperlink{classmemorypool_a871f9780fd6902725ef3559839ed7fd9}{resize}} (size\+\_\+t new\+\_\+size)
+\item 
+void \mbox{\hyperlink{classmemorypool_acb087b6a8e53f29ea2a6da68a6ca7a91}{set\+\_\+value}} (size\+\_\+t index, std\+::string \&value)
+\item 
+std\+::string \mbox{\hyperlink{classmemorypool_a6f20cdec1ee2500c3b6bf2229e5bc2fd}{get\+\_\+value}} (size\+\_\+t index)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This class is a memory pool that is used to allocate and deallocate memory blocks that will store key-\/value pairs 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classmemorypool_a8be7c07ebe027a2dec03630743a25c0b}\index{memorypool@{memorypool}!memorypool@{memorypool}}
+\index{memorypool@{memorypool}!memorypool@{memorypool}}
+\doxysubsubsection{\texorpdfstring{memorypool()}{memorypool()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classmemorypool_a8be7c07ebe027a2dec03630743a25c0b} 
+memorypool\+::memorypool (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{size}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Construct a new memorypool object with a given size
+
+
+\begin{DoxyParams}{Parameters}
+{\em size} & The number of "{}\+Blocks"{} that the memory pool can store in-\/memory \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classmemorypool_a4076462d8538f4b7f57975aedb2c2a13}\index{memorypool@{memorypool}!memorypool@{memorypool}}
+\index{memorypool@{memorypool}!memorypool@{memorypool}}
+\doxysubsubsection{\texorpdfstring{memorypool()}{memorypool()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classmemorypool_a4076462d8538f4b7f57975aedb2c2a13} 
+memorypool\+::memorypool (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Default constructor for a new memorypool object 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classmemorypool_a12dc3dad0e3261da39eb647a3608cee4}\index{memorypool@{memorypool}!allocate@{allocate}}
+\index{allocate@{allocate}!memorypool@{memorypool}}
+\doxysubsubsection{\texorpdfstring{allocate()}{allocate()}}
+{\footnotesize\ttfamily \label{classmemorypool_a12dc3dad0e3261da39eb647a3608cee4} 
+size\+\_\+t memorypool\+::allocate (\begin{DoxyParamCaption}\item[{std\+::string \&}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+When "{}set"{} is called, a new \doxylink{structBlock}{Block} is allocated from the memory pool and the key-\/value pair is stored in the \doxylink{structBlock}{Block}
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & The value in the key-\/value pair \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Block\texorpdfstring{$\ast$}{*} A pointer to the \doxylink{structBlock}{Block} that stores the key-\/value pair 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmemorypool_a12dc3dad0e3261da39eb647a3608cee4_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmemorypool_a087fc49928d81116fc6369aff223de6f}\index{memorypool@{memorypool}!deallocate@{deallocate}}
+\index{deallocate@{deallocate}!memorypool@{memorypool}}
+\doxysubsubsection{\texorpdfstring{deallocate()}{deallocate()}}
+{\footnotesize\ttfamily \label{classmemorypool_a087fc49928d81116fc6369aff223de6f} 
+bool memorypool\+::deallocate (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{index}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+When "{}del"{} is called, the \doxylink{structBlock}{Block} that stores the key-\/value pair is deallocated from the memory pool
+
+
+\begin{DoxyParams}{Parameters}
+{\em block} & Pointer the \doxylink{structBlock}{Block} that stores the key-\/value pair \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true When the \doxylink{structBlock}{Block} is deallocated successfully 
+
+false Otherwise 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmemorypool_a087fc49928d81116fc6369aff223de6f_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmemorypool_a6f20cdec1ee2500c3b6bf2229e5bc2fd}\index{memorypool@{memorypool}!get\_value@{get\_value}}
+\index{get\_value@{get\_value}!memorypool@{memorypool}}
+\doxysubsubsection{\texorpdfstring{get\_value()}{get\_value()}}
+{\footnotesize\ttfamily \label{classmemorypool_a6f20cdec1ee2500c3b6bf2229e5bc2fd} 
+std\+::string memorypool\+::get\+\_\+value (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{index}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Get the value of a \doxylink{structBlock}{Block} at a given index
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & The index at which you want to get the value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::string 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmemorypool_a6f20cdec1ee2500c3b6bf2229e5bc2fd_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmemorypool_a871f9780fd6902725ef3559839ed7fd9}\index{memorypool@{memorypool}!resize@{resize}}
+\index{resize@{resize}!memorypool@{memorypool}}
+\doxysubsubsection{\texorpdfstring{resize()}{resize()}}
+{\footnotesize\ttfamily \label{classmemorypool_a871f9780fd6902725ef3559839ed7fd9} 
+void memorypool\+::resize (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{new\+\_\+size}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Resizes the memory pool to a new size
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+\_\+size} & The new size of memory pool \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classmemorypool_acb087b6a8e53f29ea2a6da68a6ca7a91}\index{memorypool@{memorypool}!set\_value@{set\_value}}
+\index{set\_value@{set\_value}!memorypool@{memorypool}}
+\doxysubsubsection{\texorpdfstring{set\_value()}{set\_value()}}
+{\footnotesize\ttfamily \label{classmemorypool_acb087b6a8e53f29ea2a6da68a6ca7a91} 
+void memorypool\+::set\+\_\+value (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{index}{, }\item[{std\+::string \&}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Sets the value of a \doxylink{structBlock}{Block} at a given index
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & The index at which you want to store the value \\
+\hline
+{\em value} & The value that you want to store at that index \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmemorypool_acb087b6a8e53f29ea2a6da68a6ca7a91_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{memorypool_8h}{memorypool.\+h}}\end{DoxyCompactItemize}

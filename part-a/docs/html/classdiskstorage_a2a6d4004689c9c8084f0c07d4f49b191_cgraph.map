@@ -1,0 +1,7 @@
+<map id="diskstorage::read" name="diskstorage::read">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,13,127,40"/>
+<area shape="rect" id="Node000002" href="$classsparseindex.html#ad4ffd3a38bc56212d400d82b3e320f54" title=" " alt="" coords="175,13,332,40"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="127,24,159,24,159,29,127,29"/>
+<area shape="rect" id="Node000003" href="$classskiplist.html#aa1d31fd7a91a970ce89658791be4872e" title=" " alt="" coords="380,5,518,48"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="332,24,365,24,365,29,332,29"/>
+</map>

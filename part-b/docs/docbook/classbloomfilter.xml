@@ -1,0 +1,150 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_classbloomfilter" xml:lang="en-US">
+<title>bloomfilter Class Reference</title>
+<indexterm><primary>bloomfilter</primary></indexterm>
+<para>
+<computeroutput>#include &lt;part-a/lib/bloomfilter.h&gt;</computeroutput>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_classbloomfilter_1a07695cd9beb90cbb31a9f953a0d5698e">bloomfilter</link> (size_t num_bits, size_t num_hashes)</para>
+</listitem>
+            <listitem><para>void <link linkend="_classbloomfilter_1ac810ef21aa0925b28e291c2a4168af2a">insert</link> (const std::string &amp;key)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_classbloomfilter_1a36048739c6dcf5534c328f2bfc2bcf6f">possibly_contains</link> (const std::string &amp;key) const</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>Bloom filter class documentation.</para>
+
+<para>This Bloom filter is used to quickly test whether a key is possibly present in the dataset. It provides a space-efficient probabilistic method with a configurable false positive rate. </para>
+</section>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_classbloomfilter_1a07695cd9beb90cbb31a9f953a0d5698e"/><section>
+    <title>bloomfilter()</title>
+<indexterm><primary>bloomfilter</primary><secondary>bloomfilter</secondary></indexterm>
+<indexterm><primary>bloomfilter</primary><secondary>bloomfilter</secondary></indexterm>
+<para><computeroutput>bloomfilter::bloomfilter (size_t num_bits, size_t num_hashes)<computeroutput>[inline]</computeroutput></computeroutput></para>
+<para>Construct a new bloomfilter object</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>num_bits</entry><entry>
+<para>Size of the bit array (in bits) </para>
+</entry>
+                            </row>
+                            <row>
+<entry>num_hashes</entry><entry>
+<para>Number of hash functions </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_classbloomfilter_1ac810ef21aa0925b28e291c2a4168af2a"/><section>
+    <title>insert()</title>
+<indexterm><primary>insert</primary><secondary>bloomfilter</secondary></indexterm>
+<indexterm><primary>bloomfilter</primary><secondary>insert</secondary></indexterm>
+<para><computeroutput>void bloomfilter::insert (const std::string &amp; key)<computeroutput>[inline]</computeroutput></computeroutput></para>
+<para>Function to insert a key into the bloomfilter. This function is only called when the key-value pair is being flushed to the disk</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>key</entry><entry>
+<para>The key to insert </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="classbloomfilter_ac810ef21aa0925b28e291c2a4168af2a_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_classbloomfilter_1a36048739c6dcf5534c328f2bfc2bcf6f"/><section>
+    <title>possibly_contains()</title>
+<indexterm><primary>possibly_contains</primary><secondary>bloomfilter</secondary></indexterm>
+<indexterm><primary>bloomfilter</primary><secondary>possibly_contains</secondary></indexterm>
+<para><computeroutput>bool bloomfilter::possibly_contains (const std::string &amp; key) const<computeroutput>[inline]</computeroutput></computeroutput></para>
+<para>Function to check if a key is possibly present in the bloomfilter</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>key</entry><entry>
+<para>The key to check </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>true If the key is possibly present </para>
+
+<para>false Otherwise </para>
+</formalpara>
+</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="classbloomfilter_a36048739c6dcf5534c328f2bfc2bcf6f_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<para>
+The documentation for this class was generated from the following file:</para>
+<link linkend="_bloomfilter_8h">bloomfilter.h</link></section>
+</section>

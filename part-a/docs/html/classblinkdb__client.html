@@ -112,42 +112,41 @@ $(function(){initNavTree('classblinkdb__client.html',''); initResizable(true); }
 </div><!--header-->
 <div class="contents">
 
-<p>Establishes a connection to the BlinkDB server.  
- <a href="#details">More...</a></p>
-
-<p><code>#include &lt;lib/blinkdb_client.h&gt;</code></p>
+<p><code>#include &lt;part-a/src/lib/blinkdb_client.h&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a241c6b3fd49c3b614de8084c38c46843" id="r_a241c6b3fd49c3b614de8084c38c46843"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a241c6b3fd49c3b614de8084c38c46843">blinkdb_client</a> (const std::string &amp;server_ip, int port)</td></tr>
-<tr class="memdesc:a241c6b3fd49c3b614de8084c38c46843"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a new <a class="el" href="classblinkdb__client.html" title="Establishes a connection to the BlinkDB server.">blinkdb_client</a> object.  <br /></td></tr>
 <tr class="separator:a241c6b3fd49c3b614de8084c38c46843"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7de8b80085d695f6b17dd7441ba04438" id="r_a7de8b80085d695f6b17dd7441ba04438"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7de8b80085d695f6b17dd7441ba04438">~blinkdb_client</a> ()</td></tr>
-<tr class="memdesc:a7de8b80085d695f6b17dd7441ba04438"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroys the <a class="el" href="classblinkdb__client.html" title="Establishes a connection to the BlinkDB server.">blinkdb_client</a> object.  <br /></td></tr>
 <tr class="separator:a7de8b80085d695f6b17dd7441ba04438"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2617b4d52ddfbaf0d700f0afb782fd8f" id="r_a2617b4d52ddfbaf0d700f0afb782fd8f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2617b4d52ddfbaf0d700f0afb782fd8f">connect_to_server</a> ()</td></tr>
-<tr class="memdesc:a2617b4d52ddfbaf0d700f0afb782fd8f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Connects to the BlinkDB server.  <br /></td></tr>
 <tr class="separator:a2617b4d52ddfbaf0d700f0afb782fd8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0cd58d36cc3847316e6bead61eba3f9a" id="r_a0cd58d36cc3847316e6bead61eba3f9a"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0cd58d36cc3847316e6bead61eba3f9a">send_request</a> (const std::string &amp;request)</td></tr>
-<tr class="memdesc:a0cd58d36cc3847316e6bead61eba3f9a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a request to the BlinkDB server and receives the response.  <br /></td></tr>
 <tr class="separator:a0cd58d36cc3847316e6bead61eba3f9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a47e4a96c8025543684f24122efa74063" id="r_a47e4a96c8025543684f24122efa74063"><td class="memItemLeft" align="right" valign="top"><a id="a47e4a96c8025543684f24122efa74063" name="a47e4a96c8025543684f24122efa74063"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>execute</b> (<a class="el" href="classblinkdb.html">blinkdb</a> &amp;db, <a class="el" href="structparse__op.html">parse_op</a> *ip)</td></tr>
+<tr class="separator:a47e4a96c8025543684f24122efa74063"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Establishes a connection to the BlinkDB server. </p>
-<p>Creates a TCP socket, sets up the server address structure using the provided IP and port, and attempts to establish a connection to the server.</p>
-<dl class="section return"><dt>Returns</dt><dd>true if the connection was successfully established; false otherwise.</dd></dl>
-<dl class="section note"><dt>Note</dt><dd>In case of failure, an error message is printed using perror.</dd></dl>
-<p>Client for establishing a connection to a BlinkDB server.</p>
-<p>The <a class="el" href="classblinkdb__client.html" title="Establishes a connection to the BlinkDB server.">blinkdb_client</a> class encapsulates the functionality to create a socket, connect to a server through a specified IP and port, send a request, and receive a response. It ensures the proper release of socket resources when the instance is destroyed.</p>
+<div class="textblock"><p>Client for establishing a connection to a BlinkDB server.</p>
+<p>The <a class="el" href="classblinkdb__client.html">blinkdb_client</a> class encapsulates the functionality to create a socket, connect to a server through a specified IP and port, send a request, and receive a response. It ensures the proper release of socket resources when the instance is destroyed.</p>
 <p>Example usage: </p><div class="fragment"><div class="line"><a class="code hl_class" href="classblinkdb__client.html">blinkdb_client</a> client(<span class="stringliteral">&quot;127.0.0.1&quot;</span>, 8080);</div>
 <div class="line"><span class="keywordflow">if</span> (client.<a class="code hl_function" href="#a2617b4d52ddfbaf0d700f0afb782fd8f">connect_to_server</a>()) {</div>
 <div class="line">    std::string response = client.<a class="code hl_function" href="#a0cd58d36cc3847316e6bead61eba3f9a">send_request</a>(<span class="stringliteral">&quot;GET /data&quot;</span>);</div>
 <div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;Server response: &quot;</span> &lt;&lt; response &lt;&lt; std::endl;</div>
 <div class="line">}</div>
-<div class="ttc" id="aclassblinkdb__client_html"><div class="ttname"><a href="classblinkdb__client.html">blinkdb_client</a></div><div class="ttdoc">Establishes a connection to the BlinkDB server.</div><div class="ttdef"><b>Definition</b> blinkdb_client.h:43</div></div>
-<div class="ttc" id="aclassblinkdb__client_html_a0cd58d36cc3847316e6bead61eba3f9a"><div class="ttname"><a href="#a0cd58d36cc3847316e6bead61eba3f9a">blinkdb_client::send_request</a></div><div class="ttdeci">std::string send_request(const std::string &amp;request)</div><div class="ttdoc">Sends a request to the BlinkDB server and receives the response.</div><div class="ttdef"><b>Definition</b> blinkdb_client.h:111</div></div>
-<div class="ttc" id="aclassblinkdb__client_html_a2617b4d52ddfbaf0d700f0afb782fd8f"><div class="ttname"><a href="#a2617b4d52ddfbaf0d700f0afb782fd8f">blinkdb_client::connect_to_server</a></div><div class="ttdeci">bool connect_to_server()</div><div class="ttdoc">Connects to the BlinkDB server.</div><div class="ttdef"><b>Definition</b> blinkdb_client.h:76</div></div>
-</div><!-- fragment --> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<div class="ttc" id="aclassblinkdb__client_html"><div class="ttname"><a href="classblinkdb__client.html">blinkdb_client</a></div><div class="ttdef"><b>Definition</b> blinkdb_client.h:46</div></div>
+<div class="ttc" id="aclassblinkdb__client_html_a0cd58d36cc3847316e6bead61eba3f9a"><div class="ttname"><a href="#a0cd58d36cc3847316e6bead61eba3f9a">blinkdb_client::send_request</a></div><div class="ttdeci">std::string send_request(const std::string &amp;request)</div><div class="ttdef"><b>Definition</b> blinkdb_client.h:117</div></div>
+<div class="ttc" id="aclassblinkdb__client_html_a2617b4d52ddfbaf0d700f0afb782fd8f"><div class="ttname"><a href="#a2617b4d52ddfbaf0d700f0afb782fd8f">blinkdb_client::connect_to_server</a></div><div class="ttdeci">bool connect_to_server()</div><div class="ttdef"><b>Definition</b> blinkdb_client.h:82</div></div>
+</div><!-- fragment --><dl class="section note"><dt>Note</dt><dd>The user should enter the commands in the following format only. The case of the command does not matter but the format must be followed: <div class="fragment"><div class="line">SET &lt;KEY&gt; &lt;VALUE&gt; (Eg: SET A 10)</div>
+<div class="line">GET &lt;KEY&gt;         (Eg: GET A)</div>
+<div class="line">DEL &lt;KEY&gt;         (Eg: DEL A)</div>
+<div class="line">exit              (Eg: exit)</div>
+<div class="line">print             (Eg: print)</div>
+</div><!-- fragment --></dd></dl>
+<p>The </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a241c6b3fd49c3b614de8084c38c46843" name="a241c6b3fd49c3b614de8084c38c46843"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a241c6b3fd49c3b614de8084c38c46843">&#9670;&#160;</a></span>blinkdb_client()</h2>
 
@@ -174,8 +173,7 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>Constructs a new <a class="el" href="classblinkdb__client.html" title="Establishes a connection to the BlinkDB server.">blinkdb_client</a> object. </p>
+<p>onstructs a new <a class="el" href="classblinkdb__client.html">blinkdb_client</a> object.</p>
 <p>Initializes the client with the provided server IP address and port number. The socket file descriptor is set to an invalid value (-1) until a connection is established.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -209,8 +207,7 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>Destroys the <a class="el" href="classblinkdb__client.html" title="Establishes a connection to the BlinkDB server.">blinkdb_client</a> object. </p>
+<p>Destroys the <a class="el" href="classblinkdb__client.html">blinkdb_client</a> object.</p>
 <p>Ensures that the open socket connection is closed upon destruction to free up system resources. </p>
 
 </div>
@@ -238,10 +235,10 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>Connects to the BlinkDB server. </p>
+<p>Connects to the BlinkDB server.</p>
 <p>This function creates a TCP socket, configures the server address using the specified IP and port, and attempts to establish a connection to the BlinkDB server. If socket creation, address conversion, or connection fails, the function prints an error message using perror and returns false.</p>
-<dl class="section return"><dt>Returns</dt><dd>true if the connection is successfully established; false otherwise. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><b>true</b> if the connection is successfully established; false otherwise.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>In case of failure, an error message is printed using perror. </dd></dl>
 
 </div>
 </div>
@@ -267,8 +264,7 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>Sends a request to the BlinkDB server and receives the response. </p>
+<p>Sends a request to the BlinkDB server and receives the response.</p>
 <p>Transmits the provided request string over the established socket. It then waits for a response from the server, reads it into a buffer, and returns it as a std::string.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">

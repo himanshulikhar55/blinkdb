@@ -40,20 +40,12 @@
 
 <para>The server uses the <link linkend="_classblinkdb__server">blinkdb_server</link> class to process client requests according to the RESP (Redis Serialization Protocol) format.</para>
 
-<para>Dependencies:<itemizedlist>
-<listitem>
-<para><link linkend="_classblinkdb__server">blinkdb_server</link>: Manages the server&apos;s main event loop and connection handling.</para>
-</listitem><listitem>
-<para>blinkdb: Implements the core BlinkDB functionality for storing key-value pairs.</para>
-</listitem><listitem>
-<para><link linkend="_classresp__parser">resp_parser</link>: Parses the RESP protocol commands and responses. <note><title>Note</title>
+<para><note><title>Note</title>
 
 <para>The server listens on the port defined by PORT macro (defined elsewhere). </para>
 
 <para>The server can be terminated by sending a SIGINT signal (Ctrl+C). </para>
 </note>
-</para>
-</listitem></itemizedlist>
 </para>
 </section>
 <section>

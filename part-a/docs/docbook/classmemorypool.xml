@@ -3,49 +3,40 @@
 <title>memorypool Class Reference</title>
 <indexterm><primary>memorypool</primary></indexterm>
 <para>
-
-<para>This class is a memory pool that is used to allocate and deallocate memory blocks that will store key-value pairs. </para>
- 
-</para>
-<para>
-<computeroutput>#include &lt;lib/memorypool.h&gt;</computeroutput>
+<computeroutput>#include &lt;part-a/src/lib/memorypool.h&gt;</computeroutput>
 </para>
 <simplesect>
     <title>Public Member Functions    </title>
         <itemizedlist>
             <listitem><para><link linkend="_classmemorypool_1a8be7c07ebe027a2dec03630743a25c0b">memorypool</link> (size_t size)</para>
-
-<para>Construct a new memorypool object with a given size. </para>
 </listitem>
-            <listitem><para><anchor xml:id="_classmemorypool_1a4076462d8538f4b7f57975aedb2c2a13"/><emphasis role="strong">memorypool</emphasis> ()</para>
-
-<para>Default constructor for a new memorypool object. </para>
+            <listitem><para><link linkend="_classmemorypool_1a4076462d8538f4b7f57975aedb2c2a13">memorypool</link> ()</para>
 </listitem>
-            <listitem><para><link linkend="_structBlock">Block</link> * <link linkend="_classmemorypool_1a6459e3c1db2ae164d44df5bc63f2d0b7">allocate</link> (std::string &amp;&amp;value)</para>
-
-<para>When &quot;set&quot; is called, a new <link linkend="_structBlock">Block</link> is allocated from the memory pool and the key-value pair is stored in the <link linkend="_structBlock">Block</link>. </para>
+            <listitem><para>size_t <link linkend="_classmemorypool_1a12dc3dad0e3261da39eb647a3608cee4">allocate</link> (std::string &amp;value)</para>
 </listitem>
-            <listitem><para>bool <link linkend="_classmemorypool_1a56e8e86546b458db97dacf75730abc2a">deallocate</link> (<link linkend="_structBlock">Block</link> *block)</para>
-
-<para>When &quot;del&quot; is called, the <link linkend="_structBlock">Block</link> that stores the key-value pair is deallocated from the memory pool. </para>
+            <listitem><para>bool <link linkend="_classmemorypool_1a087fc49928d81116fc6369aff223de6f">deallocate</link> (size_t index)</para>
+</listitem>
+            <listitem><para>void <link linkend="_classmemorypool_1a871f9780fd6902725ef3559839ed7fd9">resize</link> (size_t new_size)</para>
+</listitem>
+            <listitem><para>void <link linkend="_classmemorypool_1acb087b6a8e53f29ea2a6da68a6ca7a91">set_value</link> (size_t index, std::string &amp;value)</para>
+</listitem>
+            <listitem><para>std::string <link linkend="_classmemorypool_1a6f20cdec1ee2500c3b6bf2229e5bc2fd">get_value</link> (size_t index)</para>
 </listitem>
         </itemizedlist>
 </simplesect>
 <section>
 <title>Detailed Description</title>
 
-<para>This class is a memory pool that is used to allocate and deallocate memory blocks that will store key-value pairs. </para>
+<para>This class is a memory pool that is used to allocate and deallocate memory blocks that will store key-value pairs </para>
 </section>
 <section>
 <title>Constructor &amp; Destructor Documentation</title>
 <anchor xml:id="_classmemorypool_1a8be7c07ebe027a2dec03630743a25c0b"/><section>
-    <title>memorypool()</title>
+    <title>memorypool()<computeroutput>[1/2]</computeroutput></title>
 <indexterm><primary>memorypool</primary><secondary>memorypool</secondary></indexterm>
 <indexterm><primary>memorypool</primary><secondary>memorypool</secondary></indexterm>
-<para><computeroutput>memorypool::memorypool (size_t size)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
-
-<para>Construct a new memorypool object with a given size. </para>
-</para>
+<para><computeroutput>memorypool::memorypool (size_t size)<computeroutput>[inline]</computeroutput></computeroutput></para>
+<para>Construct a new memorypool object with a given size</para>
 
 <para>
                 <formalpara>
@@ -69,17 +60,22 @@ Parameters</title>
                 </formalpara>
                 </para>
 </section>
+<anchor xml:id="_classmemorypool_1a4076462d8538f4b7f57975aedb2c2a13"/><section>
+    <title>memorypool()<computeroutput>[2/2]</computeroutput></title>
+<indexterm><primary>memorypool</primary><secondary>memorypool</secondary></indexterm>
+<indexterm><primary>memorypool</primary><secondary>memorypool</secondary></indexterm>
+<para><computeroutput>memorypool::memorypool ( )<computeroutput>[inline]</computeroutput></computeroutput></para>
+<para>Default constructor for a new memorypool object </para>
+</section>
 </section>
 <section>
 <title>Member Function Documentation</title>
-<anchor xml:id="_classmemorypool_1a6459e3c1db2ae164d44df5bc63f2d0b7"/><section>
+<anchor xml:id="_classmemorypool_1a12dc3dad0e3261da39eb647a3608cee4"/><section>
     <title>allocate()</title>
 <indexterm><primary>allocate</primary><secondary>memorypool</secondary></indexterm>
 <indexterm><primary>memorypool</primary><secondary>allocate</secondary></indexterm>
-<para><computeroutput><link linkend="_structBlock">Block</link> * memorypool::allocate (std::string &amp;&amp; value)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
-
-<para>When &quot;set&quot; is called, a new <link linkend="_structBlock">Block</link> is allocated from the memory pool and the key-value pair is stored in the <link linkend="_structBlock">Block</link>. </para>
-</para>
+<para><computeroutput>size_t memorypool::allocate (std::string &amp; value)<computeroutput>[inline]</computeroutput></computeroutput></para>
+<para>When &quot;set&quot; is called, a new <link linkend="_structBlock">Block</link> is allocated from the memory pool and the key-value pair is stored in the <link linkend="_structBlock">Block</link></para>
 
 <para>
                 <formalpara>
@@ -106,15 +102,22 @@ Parameters</title>
 <para>Block* A pointer to the <link linkend="_structBlock">Block</link> that stores the key-value pair </para>
 </formalpara>
 </para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="classmemorypool_a12dc3dad0e3261da39eb647a3608cee4_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
 </section>
-<anchor xml:id="_classmemorypool_1a56e8e86546b458db97dacf75730abc2a"/><section>
+<anchor xml:id="_classmemorypool_1a087fc49928d81116fc6369aff223de6f"/><section>
     <title>deallocate()</title>
 <indexterm><primary>deallocate</primary><secondary>memorypool</secondary></indexterm>
 <indexterm><primary>memorypool</primary><secondary>deallocate</secondary></indexterm>
-<para><computeroutput>bool memorypool::deallocate (<link linkend="_structBlock">Block</link> * block)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
-
-<para>When &quot;del&quot; is called, the <link linkend="_structBlock">Block</link> that stores the key-value pair is deallocated from the memory pool. </para>
-</para>
+<para><computeroutput>bool memorypool::deallocate (size_t index)<computeroutput>[inline]</computeroutput></computeroutput></para>
+<para>When &quot;del&quot; is called, the <link linkend="_structBlock">Block</link> that stores the key-value pair is deallocated from the memory pool</para>
 
 <para>
                 <formalpara>
@@ -138,10 +141,133 @@ Parameters</title>
                 </formalpara>
                 <formalpara><title>Returns</title>
 
-<para>true When the <link linkend="_structBlock">Block</link> is deallocated successfully </para>
+<para><emphasis role="bold">true</emphasis> When the <link linkend="_structBlock">Block</link> is deallocated successfully </para>
 
-<para>false Otherwise </para>
+<para><emphasis role="bold">false</emphasis> Otherwise </para>
 </formalpara>
+</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="classmemorypool_a087fc49928d81116fc6369aff223de6f_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_classmemorypool_1a6f20cdec1ee2500c3b6bf2229e5bc2fd"/><section>
+    <title>get_value()</title>
+<indexterm><primary>get_value</primary><secondary>memorypool</secondary></indexterm>
+<indexterm><primary>memorypool</primary><secondary>get_value</secondary></indexterm>
+<para><computeroutput>std::string memorypool::get_value (size_t index)<computeroutput>[inline]</computeroutput></computeroutput></para>
+<para>Get the value of a <link linkend="_structBlock">Block</link> at a given index</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>index</entry><entry>
+<para>The index at which you want to get the value </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>std::string The value of at the index </para>
+</formalpara>
+</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="classmemorypool_a6f20cdec1ee2500c3b6bf2229e5bc2fd_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_classmemorypool_1a871f9780fd6902725ef3559839ed7fd9"/><section>
+    <title>resize()</title>
+<indexterm><primary>resize</primary><secondary>memorypool</secondary></indexterm>
+<indexterm><primary>memorypool</primary><secondary>resize</secondary></indexterm>
+<para><computeroutput>void memorypool::resize (size_t new_size)<computeroutput>[inline]</computeroutput></computeroutput></para>
+<para>Resizes the memory pool to a new size</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>new_size</entry><entry>
+<para>The new size of memory pool </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+<anchor xml:id="_classmemorypool_1acb087b6a8e53f29ea2a6da68a6ca7a91"/><section>
+    <title>set_value()</title>
+<indexterm><primary>set_value</primary><secondary>memorypool</secondary></indexterm>
+<indexterm><primary>memorypool</primary><secondary>set_value</secondary></indexterm>
+<para><computeroutput>void memorypool::set_value (size_t index, std::string &amp; value)<computeroutput>[inline]</computeroutput></computeroutput></para>
+<para>Sets the value of a <link linkend="_structBlock">Block</link> at a given index</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>index</entry><entry>
+<para>The index at which you want to store the value </para>
+</entry>
+                            </row>
+                            <row>
+<entry>value</entry><entry>
+<para>The value that you want to store at that index </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="classmemorypool_acb087b6a8e53f29ea2a6da68a6ca7a91_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
 </para>
 </section>
 <para>

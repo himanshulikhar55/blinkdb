@@ -1,0 +1,93 @@
+\doxysection{bloomfilter Class Reference}
+\hypertarget{classbloomfilter}{}\label{classbloomfilter}\index{bloomfilter@{bloomfilter}}
+
+
+{\ttfamily \#include $<$part-\/a/lib/bloomfilter.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classbloomfilter_a07695cd9beb90cbb31a9f953a0d5698e}{bloomfilter}} (size\+\_\+t num\+\_\+bits, size\+\_\+t num\+\_\+hashes)
+\item 
+void \mbox{\hyperlink{classbloomfilter_ac810ef21aa0925b28e291c2a4168af2a}{insert}} (const std\+::string \&key)
+\item 
+bool \mbox{\hyperlink{classbloomfilter_a36048739c6dcf5534c328f2bfc2bcf6f}{possibly\+\_\+contains}} (const std\+::string \&key) const
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Bloom filter class documentation.
+
+This Bloom filter is used to quickly test whether a key is possibly present in the dataset. It provides a space-\/efficient probabilistic method with a configurable false positive rate. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classbloomfilter_a07695cd9beb90cbb31a9f953a0d5698e}\index{bloomfilter@{bloomfilter}!bloomfilter@{bloomfilter}}
+\index{bloomfilter@{bloomfilter}!bloomfilter@{bloomfilter}}
+\doxysubsubsection{\texorpdfstring{bloomfilter()}{bloomfilter()}}
+{\footnotesize\ttfamily \label{classbloomfilter_a07695cd9beb90cbb31a9f953a0d5698e} 
+bloomfilter\+::bloomfilter (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{num\+\_\+bits}{, }\item[{size\+\_\+t}]{num\+\_\+hashes}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Construct a new bloomfilter object
+
+
+\begin{DoxyParams}{Parameters}
+{\em num\+\_\+bits} & Size of the bit array (in bits) \\
+\hline
+{\em num\+\_\+hashes} & Number of hash functions \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classbloomfilter_ac810ef21aa0925b28e291c2a4168af2a}\index{bloomfilter@{bloomfilter}!insert@{insert}}
+\index{insert@{insert}!bloomfilter@{bloomfilter}}
+\doxysubsubsection{\texorpdfstring{insert()}{insert()}}
+{\footnotesize\ttfamily \label{classbloomfilter_ac810ef21aa0925b28e291c2a4168af2a} 
+void bloomfilter\+::insert (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{key}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Function to insert a key into the bloomfilter. This function is only called when the key-\/value pair is being flushed to the disk
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & The key to insert \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classbloomfilter_ac810ef21aa0925b28e291c2a4168af2a_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classbloomfilter_a36048739c6dcf5534c328f2bfc2bcf6f}\index{bloomfilter@{bloomfilter}!possibly\_contains@{possibly\_contains}}
+\index{possibly\_contains@{possibly\_contains}!bloomfilter@{bloomfilter}}
+\doxysubsubsection{\texorpdfstring{possibly\_contains()}{possibly\_contains()}}
+{\footnotesize\ttfamily \label{classbloomfilter_a36048739c6dcf5534c328f2bfc2bcf6f} 
+bool bloomfilter\+::possibly\+\_\+contains (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{key}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Function to check if a key is possibly present in the bloomfilter
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & The key to check \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true If the key is possibly present 
+
+false Otherwise 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classbloomfilter_a36048739c6dcf5534c328f2bfc2bcf6f_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{bloomfilter_8h}{bloomfilter.\+h}}\end{DoxyCompactItemize}

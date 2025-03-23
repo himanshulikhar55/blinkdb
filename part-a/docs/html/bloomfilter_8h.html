@@ -110,22 +110,48 @@ $(function(){initNavTree('bloomfilter_8h.html',''); initResizable(true); });
   <div class="headertitle"><div class="title">bloomfilter.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-
-<p>Implements a space-efficient probabilistic Bloom filter.  
-<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;vector&gt;</code><br />
-<code>#include &lt;atomic&gt;</code><br />
 <code>#include &lt;functional&gt;</code><br />
 <code>#include &lt;string&gt;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Include dependency graph for bloomfilter.h:</div>
+<div class="dyncontent">
+<div class="center"><img src="bloomfilter_8h__incl.png" border="0" usemap="#abloomfilter_8h" alt=""/></div>
+<map name="abloomfilter_8h" id="abloomfilter_8h">
+<area shape="rect" title=" " alt="" coords="80,5,172,32"/>
+<area shape="rect" title=" " alt="" coords="5,80,63,107"/>
+<area shape="poly" title=" " alt="" coords="112,35,63,73,60,68,108,30"/>
+<area shape="rect" title=" " alt="" coords="87,80,165,107"/>
+<area shape="poly" title=" " alt="" coords="129,33,129,64,123,64,123,33"/>
+<area shape="rect" title=" " alt="" coords="189,80,242,107"/>
+<area shape="poly" title=" " alt="" coords="143,30,190,68,186,72,140,35"/>
+</map>
+</div>
+</div><div class="textblock"><div class="dynheader">
+This graph shows which files directly or indirectly include this file:</div>
+<div class="dyncontent">
+<div class="center"><img src="bloomfilter_8h__dep__incl.png" border="0" usemap="#abloomfilter_8hdep" alt=""/></div>
+<map name="abloomfilter_8hdep" id="abloomfilter_8hdep">
+<area shape="rect" title=" " alt="" coords="62,5,153,32"/>
+<area shape="rect" href="hashtable_8h.html" title=" " alt="" coords="64,80,152,107"/>
+<area shape="poly" title=" " alt="" coords="110,48,110,80,105,80,105,48"/>
+<area shape="rect" href="blinkdb_8h.html" title=" " alt="" coords="71,155,144,181"/>
+<area shape="poly" title=" " alt="" coords="110,122,110,154,105,154,105,122"/>
+<area shape="rect" href="blinkdb__client_8h.html" title=" " alt="" coords="5,229,117,256"/>
+<area shape="poly" title=" " alt="" coords="94,196,71,230,67,227,89,193"/>
+<area shape="rect" href="client__runner_8cpp.html" title=" " alt="" coords="48,304,167,331"/>
+<area shape="poly" title=" " alt="" coords="122,195,132,229,132,250,129,271,116,305,111,303,124,270,127,250,126,230,117,197"/>
+<area shape="poly" title=" " alt="" coords="80,268,102,302,97,305,75,271"/>
+</map>
+</div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbloomfilter.html">bloomfilter</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bloom filter class documentation.  <a href="classbloomfilter.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Implements a space-efficient probabilistic Bloom filter. </p>
+<div class="textblock"><p>Implements a space-efficient probabilistic Bloom filter.</p>
 <p>This file defines the bloomfilter class which provides a space-efficient data structure to test whether a key is possibly present in a dataset.</p>
 <p>A Bloom filter is characterized by the following parameters:</p><ul>
 <li>\(n\): Expected number of elements to be inserted.</li>
@@ -136,19 +162,19 @@ Classes</h2></td></tr>
 <ol type="1">
 <li><b>Bit Array Size</b>:   <p class="formulaDsp">
 \[
-   m = - \frac{n \ln(p)}{(\ln(2))^2}
-   \]
+    m = - \frac{n \ln(p)}{(\ln(2))^2}
+    \]
 </p>
 </li>
 <li><b>Number of Hash Functions</b>:   <p class="formulaDsp">
 \[
-   k = \frac{m}{n} \ln(2)
-   \]
+    k = \frac{m}{n} \ln(2)
+    \]
 </p>
 </li>
 </ol>
 <p>These formulas help minimize the false positive rate while using space efficiently.</p>
-<p>The implementation combines two hash functions to simulate k hash functions using the formula: hash_i = hash1 + i * hash2, and uses atomic operations to maintain the correctness of the bit array during concurrent insertions.</p>
+<p>The implementation combines two hash functions to simulate k hash functions using the formula: hash_i = hash1 + i * hash2.</p>
 <p>This file is part of the design-lab project and is intended for quickly checking key membership with a controlled false positive rate. </p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->

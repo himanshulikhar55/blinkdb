@@ -7,7 +7,6 @@
     <title>Class Documentation</title>
     <xi:include href="classblinkdb.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="classblinkdb__client.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
-    <xi:include href="classblinkdb__server.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="structBlock.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="classbloomfilter.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="classdiskstorage.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
@@ -23,7 +22,6 @@
     <xi:include href="client__runner_8cpp.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="blinkdb_8h.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="blinkdb__client_8h.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
-    <xi:include href="blinkdb__server_8h.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="bloomfilter_8h.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="diskstorage_8h.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="hashtable_8h.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
@@ -31,7 +29,6 @@
     <xi:include href="resp__parser_8h.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="skiplist_8h.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="sparseindex_8h.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
-    <xi:include href="server__runner_8cpp.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
 </chapter>
 <index/>
 </book>

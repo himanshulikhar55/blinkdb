@@ -106,31 +106,71 @@ $(function(){initNavTree('structBlock.html',''); initResizable(true); });
 
 <div class="header">
   <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="structBlock-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">Block Struct Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>This is the actual "Block" that will store the key and value pair. This block will be dynamically allocated and deallocated during "set" and "delete" operations in blinkdb.  
- <a href="#details">More...</a></p>
-
-<p><code>#include &lt;lib/block.h&gt;</code></p>
+<p><code>#include &lt;part-a/src/lib/block.h&gt;</code></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a0ea72a3eb59e554553361052ba685fc2" id="r_a0ea72a3eb59e554553361052ba685fc2"><td class="memItemLeft" align="right" valign="top"><a id="a0ea72a3eb59e554553361052ba685fc2" name="a0ea72a3eb59e554553361052ba685fc2"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Block</b> (<a class="el" href="structBlock.html">Block</a> &amp;&amp;other) noexcept</td></tr>
+<tr class="separator:a0ea72a3eb59e554553361052ba685fc2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad4beffac191c95134d0077eba050874e" id="r_ad4beffac191c95134d0077eba050874e"><td class="memItemLeft" align="right" valign="top"><a id="ad4beffac191c95134d0077eba050874e" name="ad4beffac191c95134d0077eba050874e"></a>
+<a class="el" href="structBlock.html">Block</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (<a class="el" href="structBlock.html">Block</a> &amp;&amp;other) noexcept</td></tr>
+<tr class="separator:ad4beffac191c95134d0077eba050874e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9157e4f3718be0fbf96fc7688aca03f" id="r_ab9157e4f3718be0fbf96fc7688aca03f"><td class="memItemLeft" align="right" valign="top"><a id="ab9157e4f3718be0fbf96fc7688aca03f" name="ab9157e4f3718be0fbf96fc7688aca03f"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Block</b> (const <a class="el" href="structBlock.html">Block</a> &amp;other)</td></tr>
+<tr class="separator:ab9157e4f3718be0fbf96fc7688aca03f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a888b88c7a7a80512f859193f7924e49a" id="r_a888b88c7a7a80512f859193f7924e49a"><td class="memItemLeft" align="right" valign="top"><a id="a888b88c7a7a80512f859193f7924e49a" name="a888b88c7a7a80512f859193f7924e49a"></a>
+<a class="el" href="structBlock.html">Block</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (const <a class="el" href="structBlock.html">Block</a> &amp;other) noexcept</td></tr>
+<tr class="separator:a888b88c7a7a80512f859193f7924e49a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a25435aaaf04f03275498ba03ef0593f5" id="r_a25435aaaf04f03275498ba03ef0593f5"><td class="memItemLeft" align="right" valign="top"><a id="a25435aaaf04f03275498ba03ef0593f5" name="a25435aaaf04f03275498ba03ef0593f5"></a>
-std::atomic&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>used</b></td></tr>
-<tr class="memdesc:a25435aaaf04f03275498ba03ef0593f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tells if the block is used or not. <br /></td></tr>
-<tr class="separator:a25435aaaf04f03275498ba03ef0593f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae9be57efa71d5c61092282c4032d4b6b" id="r_ae9be57efa71d5c61092282c4032d4b6b"><td class="memItemLeft" align="right" valign="top"><a id="ae9be57efa71d5c61092282c4032d4b6b" name="ae9be57efa71d5c61092282c4032d4b6b"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><b>value</b></td></tr>
-<tr class="memdesc:ae9be57efa71d5c61092282c4032d4b6b"><td class="mdescLeft">&#160;</td><td class="mdescRight">The value in the key-value pair. <br /></td></tr>
+<tr class="memitem:a225ba060d553f8fa475ea477c2bb5134" id="r_a225ba060d553f8fa475ea477c2bb5134"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a225ba060d553f8fa475ea477c2bb5134">used</a></td></tr>
+<tr class="separator:a225ba060d553f8fa475ea477c2bb5134"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae9be57efa71d5c61092282c4032d4b6b" id="r_ae9be57efa71d5c61092282c4032d4b6b"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae9be57efa71d5c61092282c4032d4b6b">value</a></td></tr>
 <tr class="separator:ae9be57efa71d5c61092282c4032d4b6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This is the actual "Block" that will store the key and value pair. This block will be dynamically allocated and deallocated during "set" and "delete" operations in blinkdb. </p>
-</div><hr/>The documentation for this struct was generated from the following file:<ul>
+</div><h2 class="groupheader">Member Data Documentation</h2>
+<a id="a225ba060d553f8fa475ea477c2bb5134" name="a225ba060d553f8fa475ea477c2bb5134"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a225ba060d553f8fa475ea477c2bb5134">&#9670;&#160;</a></span>used</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Block::used</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Tells if the block is used or not </p>
+
+</div>
+</div>
+<a id="ae9be57efa71d5c61092282c4032d4b6b" name="ae9be57efa71d5c61092282c4032d4b6b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae9be57efa71d5c61092282c4032d4b6b">&#9670;&#160;</a></span>value</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string Block::value</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The value in the key-value pair </p>
+
+</div>
+</div>
+<hr/>The documentation for this struct was generated from the following file:<ul>
 <li><b>block.h</b></li>
 </ul>
 </div><!-- contents -->

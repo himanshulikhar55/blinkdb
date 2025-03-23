@@ -112,25 +112,17 @@ $(function(){initNavTree('classblinkdb.html',''); initResizable(true); });
 </div><!--header-->
 <div class="contents">
 
-<p>This is the blinkdb class. It is a key-value store that lets user to set, get and delete key-value pairs It uses a hashtable to store the key-value pairs. The hashtable uses open addressing with double hashing to resolve collisions. If the in-memory hashtable is full, the key-value pairs are stored in a file on disk. When the user exits, all the data is erased from the disk and from the memory (obviously).  
- <a href="#details">More...</a></p>
-
-<p><code>#include &lt;lib/blinkdb.h&gt;</code></p>
+<p><code>#include &lt;part-a/src/lib/blinkdb.h&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ad20d4882572f1b492ab041b45f238a0c" id="r_ad20d4882572f1b492ab041b45f238a0c"><td class="memItemLeft" align="right" valign="top"><a id="ad20d4882572f1b492ab041b45f238a0c" name="ad20d4882572f1b492ab041b45f238a0c"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>blinkdb</b> (size_t size)</td></tr>
-<tr class="memdesc:ad20d4882572f1b492ab041b45f238a0c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new blinkdb object. <br /></td></tr>
+<tr class="memitem:ad20d4882572f1b492ab041b45f238a0c" id="r_ad20d4882572f1b492ab041b45f238a0c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad20d4882572f1b492ab041b45f238a0c">blinkdb</a> (size_t size)</td></tr>
 <tr class="separator:ad20d4882572f1b492ab041b45f238a0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a38ee1f661825653379d471d7ad6f522f" id="r_a38ee1f661825653379d471d7ad6f522f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a38ee1f661825653379d471d7ad6f522f">set</a> (std::string key, std::string value)</td></tr>
-<tr class="memdesc:a38ee1f661825653379d471d7ad6f522f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to set a key-value pair.  <br /></td></tr>
 <tr class="separator:a38ee1f661825653379d471d7ad6f522f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a75e197842560cea323699bb1c5981a3d" id="r_a75e197842560cea323699bb1c5981a3d"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a75e197842560cea323699bb1c5981a3d">get</a> (std::string key)</td></tr>
-<tr class="memdesc:a75e197842560cea323699bb1c5981a3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to get value correspoding to a key.  <br /></td></tr>
 <tr class="separator:a75e197842560cea323699bb1c5981a3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af46ef218f2206bf3d934f49cbbd69a7c" id="r_af46ef218f2206bf3d934f49cbbd69a7c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af46ef218f2206bf3d934f49cbbd69a7c">del</a> (std::string key)</td></tr>
-<tr class="memdesc:af46ef218f2206bf3d934f49cbbd69a7c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to delete a key-value pair.  <br /></td></tr>
 <tr class="separator:af46ef218f2206bf3d934f49cbbd69a7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a440e606ce8a75956a7d2bb1f1bbb1575" id="r_a440e606ce8a75956a7d2bb1f1bbb1575"><td class="memItemLeft" align="right" valign="top"><a id="a440e606ce8a75956a7d2bb1f1bbb1575" name="a440e606ce8a75956a7d2bb1f1bbb1575"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>print</b> ()</td></tr>
@@ -138,7 +130,34 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>print</b> ()</td></tr
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This is the blinkdb class. It is a key-value store that lets user to set, get and delete key-value pairs It uses a hashtable to store the key-value pairs. The hashtable uses open addressing with double hashing to resolve collisions. If the in-memory hashtable is full, the key-value pairs are stored in a file on disk. When the user exits, all the data is erased from the disk and from the memory (obviously). </p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="ad20d4882572f1b492ab041b45f238a0c" name="ad20d4882572f1b492ab041b45f238a0c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad20d4882572f1b492ab041b45f238a0c">&#9670;&#160;</a></span>blinkdb()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">blinkdb::blinkdb </td>
+          <td>(</td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>size</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Construct a new blinkdb object </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
 <a id="af46ef218f2206bf3d934f49cbbd69a7c" name="af46ef218f2206bf3d934f49cbbd69a7c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af46ef218f2206bf3d934f49cbbd69a7c">&#9670;&#160;</a></span>del()</h2>
 
@@ -161,17 +180,28 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>print</b> ()</td></tr
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>Function to delete a key-value pair. </p>
+<p>Function to delete a key-value pair</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">key</td><td>The key that you want to delete </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>true when the key-value pair is deleted successfully </dd>
+<dl class="section return"><dt>Returns</dt><dd><b>true</b> when the key-value pair is deleted successfully </dd>
 <dd>
-false otherwise </dd></dl>
+<b>false</b> otherwise </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classblinkdb_af46ef218f2206bf3d934f49cbbd69a7c_cgraph.png" border="0" usemap="#aclassblinkdb_af46ef218f2206bf3d934f49cbbd69a7c_cgraph" alt=""/></div>
+<map name="aclassblinkdb_af46ef218f2206bf3d934f49cbbd69a7c_cgraph" id="aclassblinkdb_af46ef218f2206bf3d934f49cbbd69a7c_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,93,32"/>
+<area shape="rect" href="classhashtable.html#a84de2b2fb13c58b207081fc6c239b3b5" title=" " alt="" coords="141,5,243,32"/>
+<area shape="poly" title=" " alt="" coords="93,16,125,16,125,21,93,21"/>
+<area shape="rect" href="classmemorypool.html#a087fc49928d81116fc6369aff223de6f" title=" " alt="" coords="291,5,450,32"/>
+<area shape="poly" title=" " alt="" coords="244,16,276,16,276,21,244,21"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -197,8 +227,7 @@ false otherwise </dd></dl>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>Function to get value correspoding to a key. </p>
+<p>Function to get value correspoding to a key</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">key</td><td>The key whose value you want to retrieve </td></tr>
@@ -206,6 +235,27 @@ false otherwise </dd></dl>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>std::string </dd></dl>
+<p>Need to go to the disk If still not found, then the key does not exist and we return an empty string</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classblinkdb_a75e197842560cea323699bb1c5981a3d_cgraph.png" border="0" usemap="#aclassblinkdb_a75e197842560cea323699bb1c5981a3d_cgraph" alt=""/></div>
+<map name="aclassblinkdb_a75e197842560cea323699bb1c5981a3d_cgraph" id="aclassblinkdb_a75e197842560cea323699bb1c5981a3d_cgraph">
+<area shape="rect" title=" " alt="" coords="5,64,94,91"/>
+<area shape="rect" href="classhashtable.html#a6f614816407ca67d2feccc4eb6f11cf2" title=" " alt="" coords="159,5,262,32"/>
+<area shape="poly" title=" " alt="" coords="87,61,157,35,158,40,89,66"/>
+<area shape="rect" href="classbloomfilter.html#a36048739c6dcf5534c328f2bfc2bcf6f" title=" " alt="" coords="142,56,279,99"/>
+<area shape="poly" title=" " alt="" coords="94,75,126,75,126,80,94,80"/>
+<area shape="rect" href="classdiskstorage.html#a2a6d4004689c9c8084f0c07d4f49b191" title=" " alt="" coords="150,123,271,149"/>
+<area shape="poly" title=" " alt="" coords="89,89,158,114,157,119,87,94"/>
+<area shape="rect" href="classmemorypool.html#a6f20cdec1ee2500c3b6bf2229e5bc2fd" title=" " alt="" coords="328,5,484,32"/>
+<area shape="poly" title=" " alt="" coords="262,16,312,16,312,21,262,21"/>
+<area shape="rect" href="classsparseindex.html#ad4ffd3a38bc56212d400d82b3e320f54" title=" " alt="" coords="327,123,484,149"/>
+<area shape="poly" title=" " alt="" coords="272,133,311,133,311,139,272,139"/>
+<area shape="rect" href="classskiplist.html#aa1d31fd7a91a970ce89658791be4872e" title=" " alt="" coords="532,115,671,157"/>
+<area shape="poly" title=" " alt="" coords="484,133,517,133,517,139,484,139"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -235,8 +285,7 @@ false otherwise </dd></dl>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>Function to set a key-value pair. </p>
+<p>Function to set a key-value pair</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">key</td><td>The key in the key-value pair </td></tr>
@@ -244,9 +293,37 @@ false otherwise </dd></dl>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>true when the key-value pair is set successfully </dd>
+<dl class="section return"><dt>Returns</dt><dd><b>true</b> when the key-value pair is set successfully </dd>
 <dd>
-false otherwise </dd></dl>
+<b>false</b> otherwise </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classblinkdb_a38ee1f661825653379d471d7ad6f522f_cgraph.png" border="0" usemap="#aclassblinkdb_a38ee1f661825653379d471d7ad6f522f_cgraph" alt=""/></div>
+<map name="aclassblinkdb_a38ee1f661825653379d471d7ad6f522f_cgraph" id="aclassblinkdb_a38ee1f661825653379d471d7ad6f522f_cgraph">
+<area shape="rect" title=" " alt="" coords="5,157,94,184"/>
+<area shape="rect" href="classhashtable.html#ac0d2bf8122887f46a668cc0516683768" title=" " alt="" coords="144,107,257,133"/>
+<area shape="poly" title=" " alt="" coords="91,154,143,136,145,141,93,159"/>
+<area shape="rect" href="classhashtable.html#a4c02725230715510665452b4ee20e209" title=" " alt="" coords="142,208,259,235"/>
+<area shape="poly" title=" " alt="" coords="93,182,145,200,143,205,91,187"/>
+<area shape="rect" href="classmemorypool.html#a087fc49928d81116fc6369aff223de6f" title=" " alt="" coords="307,5,466,32"/>
+<area shape="poly" title=" " alt="" coords="216,104,255,73,306,42,319,36,321,41,308,46,258,78,219,108"/>
+<area shape="rect" href="classmemorypool.html#a6f20cdec1ee2500c3b6bf2229e5bc2fd" title=" " alt="" coords="308,56,465,83"/>
+<area shape="poly" title=" " alt="" coords="252,103,320,85,321,90,253,109"/>
+<area shape="rect" href="classbloomfilter.html#ac810ef21aa0925b28e291c2a4168af2a" title=" " alt="" coords="326,107,447,133"/>
+<area shape="poly" title=" " alt="" coords="257,117,310,117,310,123,257,123"/>
+<area shape="rect" href="classdiskstorage.html#a5cd280ffdc039f12c75f26ba325ec455" title=" " alt="" coords="324,157,449,184"/>
+<area shape="poly" title=" " alt="" coords="253,131,321,150,320,155,252,137"/>
+<area shape="rect" href="classsparseindex.html#ac5a9142436d081224cafb964cad4becb" title=" " alt="" coords="514,157,646,184"/>
+<area shape="poly" title=" " alt="" coords="449,168,499,168,499,173,449,173"/>
+<area shape="rect" href="classskiplist.html#aa193aa8a10a77cbf6bddca202b5c253a" title=" " alt="" coords="694,157,796,184"/>
+<area shape="poly" title=" " alt="" coords="646,168,678,168,678,173,646,173"/>
+<area shape="rect" href="classmemorypool.html#a12dc3dad0e3261da39eb647a3608cee4" title=" " alt="" coords="314,208,459,235"/>
+<area shape="poly" title=" " alt="" coords="259,219,299,219,299,224,259,224"/>
+<area shape="rect" href="classmemorypool.html#acb087b6a8e53f29ea2a6da68a6ca7a91" title=" " alt="" coords="308,259,465,285"/>
+<area shape="poly" title=" " alt="" coords="253,233,321,252,320,257,252,238"/>
+</map>
+</div>
 
 </div>
 </div>

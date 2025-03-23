@@ -1,0 +1,111 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_classblinkdb__server" xml:lang="en-US">
+<title>blinkdb_server Class Reference</title>
+<indexterm><primary>blinkdb_server</primary></indexterm>
+<para>
+<computeroutput>#include &lt;part-b/src/lib/blinkdb_server.h&gt;</computeroutput>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_classblinkdb__server_1a03488742e0e300e384826059b2cf908e">blinkdb_server</link> (int max_conn)</para>
+</listitem>
+            <listitem><para>void <link linkend="_classblinkdb__server_1aea1530a77fbf44d7b4051dc2bce2e519">run</link> (int epoll_fd, int server_fd)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>Redis-compatible server implementation</para>
+
+<para>This class implements a server that can handle multiple client connections concurrently using <emphasis role="bold">epoll</emphasis> for <emphasis role="bold">non-blocking I/O</emphasis>. It interprets <emphasis role="bold">RESP2</emphasis> protocol commands and interfaces with a blinkdb database instance for data storage and retrieval.</para>
+
+<para>Supported commands:<itemizedlist>
+<listitem>
+<para>SET: Store a key-value pair</para>
+</listitem><listitem>
+<para>GET: Retrieve a value by key</para>
+</listitem><listitem>
+<para>DEL: Remove a key-value pair</para>
+</listitem><listitem>
+<para>QUIT: Disconnect client</para>
+</listitem><listitem>
+<para>CONFIG: Server configuration (basic implementation)</para>
+</listitem><listitem>
+<para>PRINT: Debug command to display database contents </para>
+</listitem></itemizedlist>
+</para>
+</section>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_classblinkdb__server_1a03488742e0e300e384826059b2cf908e"/><section>
+    <title>blinkdb_server()</title>
+<indexterm><primary>blinkdb_server</primary><secondary>blinkdb_server</secondary></indexterm>
+<indexterm><primary>blinkdb_server</primary><secondary>blinkdb_server</secondary></indexterm>
+<para><computeroutput>blinkdb_server::blinkdb_server (int max_conn)<computeroutput>[inline]</computeroutput></computeroutput></para>
+<para>Constructor for the <link linkend="_classblinkdb__server">blinkdb_server</link> 
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>max_conn</entry><entry>
+<para>Maximum number of parallel connections to handle. This will be passed as a param when initializing the server instance </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_classblinkdb__server_1aea1530a77fbf44d7b4051dc2bce2e519"/><section>
+    <title>run()</title>
+<indexterm><primary>run</primary><secondary>blinkdb_server</secondary></indexterm>
+<indexterm><primary>blinkdb_server</primary><secondary>run</secondary></indexterm>
+<para><computeroutput>void blinkdb_server::run (int epoll_fd, int server_fd)<computeroutput>[inline]</computeroutput></computeroutput></para>
+<para>Main server loop</para>
+
+<para>Continuously listens for client connections and data using epoll. Handles new client connections, processes client requests, and manages disconnections. Delegates command parsing to the resp_parser and data operations to the blinkdb instance.</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>epoll_fd</entry><entry>
+<para>File descriptor for the epoll instance </para>
+</entry>
+                            </row>
+                            <row>
+<entry>server_fd</entry><entry>
+<para>File descriptor for the server socket </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+<para>
+The documentation for this class was generated from the following file:</para>
+<link linkend="_blinkdb__server_8h">blinkdb_server.h</link></section>
+</section>

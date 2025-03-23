@@ -1,0 +1,142 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_classsparseindex" xml:lang="en-US">
+<title>sparseindex Class Reference</title>
+<indexterm><primary>sparseindex</primary></indexterm>
+<para>
+<computeroutput>#include &lt;part-a/lib/sparseindex.h&gt;</computeroutput>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_classsparseindex_1ae58c2e252cf853f258d7e305208c0d46">sparseindex</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_classsparseindex_1ac5a9142436d081224cafb964cad4becb">insert</link> (const std::string &amp;key, std::streampos offset)</para>
+</listitem>
+            <listitem><para>std::streampos <link linkend="_classsparseindex_1ad4ffd3a38bc56212d400d82b3e320f54">get_offset</link> (const std::string &amp;key)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>This class is a sparse-index that uses a skip list to store key-offset pairs. </para>
+</section>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_classsparseindex_1ae58c2e252cf853f258d7e305208c0d46"/><section>
+    <title>sparseindex()</title>
+<indexterm><primary>sparseindex</primary><secondary>sparseindex</secondary></indexterm>
+<indexterm><primary>sparseindex</primary><secondary>sparseindex</secondary></indexterm>
+<para><computeroutput>sparseindex::sparseindex ( )<computeroutput>[inline]</computeroutput></computeroutput></para>
+<para>Construct a new sparseindex object </para>
+</section>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_classsparseindex_1ad4ffd3a38bc56212d400d82b3e320f54"/><section>
+    <title>get_offset()</title>
+<indexterm><primary>get_offset</primary><secondary>sparseindex</secondary></indexterm>
+<indexterm><primary>sparseindex</primary><secondary>get_offset</secondary></indexterm>
+<para><computeroutput>std::streampos sparseindex::get_offset (const std::string &amp; key)<computeroutput>[inline]</computeroutput></computeroutput></para>
+<para>Function to get the nearest offset for a given key</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>key</entry><entry>
+<para>The key for which the offset is to be found </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>std::streampos The offset for the given key </para>
+</formalpara>
+</para>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="classsparseindex_ad4ffd3a38bc56212d400d82b3e320f54_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="classsparseindex_ad4ffd3a38bc56212d400d82b3e320f54_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_classsparseindex_1ac5a9142436d081224cafb964cad4becb"/><section>
+    <title>insert()</title>
+<indexterm><primary>insert</primary><secondary>sparseindex</secondary></indexterm>
+<indexterm><primary>sparseindex</primary><secondary>insert</secondary></indexterm>
+<para><computeroutput>void sparseindex::insert (const std::string &amp; key, std::streampos offset)<computeroutput>[inline]</computeroutput></computeroutput></para>
+<para>Function to insert a key-offset pair into the skiplist</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>key</entry><entry>
+<para>The key in the key-offset pair </para>
+</entry>
+                            </row>
+                            <row>
+<entry>offset</entry><entry>
+<para>The offset in the key-offset pair </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="classsparseindex_ac5a9142436d081224cafb964cad4becb_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="classsparseindex_ac5a9142436d081224cafb964cad4becb_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<para>
+The documentation for this class was generated from the following file:</para>
+<link linkend="_sparseindex_8h">sparseindex.h</link></section>
+</section>

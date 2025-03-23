@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_structparse__op" xml:lang="en-US">
+<title>parse_op Struct Reference</title>
+<indexterm><primary>parse_op</primary></indexterm>
+<para>
+<computeroutput>#include &lt;part-a/lib/resp_parser.h&gt;</computeroutput>
+</para>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_structparse__op_1a381ab2d4b54f5d7665123da51afe2833"/>std::string <emphasis role="strong">cmd</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_structparse__op_1aee0bfb80d138f9ed4171f0e0d1308be5"/>std::string <emphasis role="strong">key</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_structparse__op_1a61b156f206dab342836c71e128b814d0"/>std::string <emphasis role="strong">value</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_structparse__op_1a360fa3e379d06b0e67e8943fcce7b6fb"/>std::string <emphasis role="strong">resp_str</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>Represents a parsed command operation.</para>
+
+<para>This structure holds the details of a command parsed from an input string. It encapsulates the command, key, and value parts of the operation, as well as a generated response string in RESP format (used in communication protocols).</para>
+
+<para>Members:<itemizedlist>
+<listitem>
+<para>cmd: The command name (e.g., &quot;SET&quot;, &quot;GET&quot;, &quot;DEL&quot;, etc.) indicating the operation.</para>
+</listitem><listitem>
+<para>key: The target key on which the command operates.</para>
+</listitem><listitem>
+<para>value: The associated value for operations that require it (e.g., &quot;SET&quot;); empty otherwise.</para>
+</listitem><listitem>
+<para>resp_str: The response string generated following the parsing of the command, formatted as a RESP message. </para>
+</listitem></itemizedlist>
+</para>
+<para>
+The documentation for this struct was generated from the following file:</para>
+<link linkend="_resp__parser_8h">resp_parser.h</link></section>
+</section>

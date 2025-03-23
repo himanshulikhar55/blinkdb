@@ -1,20 +1,9 @@
 /**
  * @file blinkdb_client.h
- * @brief Defines the blinkdb_client class for connecting to a BlinkDB server and sending requests.
+ * Defines the blinkdb_client class for connecting to a BlinkDB server and sending requests.
  *
  * This file provides a simple client interface that uses POSIX sockets to establish a TCP
  * connection to a BlinkDB server, send requests, and receive responses.
- */
-
-/**
- * @brief Establishes a connection to the BlinkDB server.
- *
- * Creates a TCP socket, sets up the server address structure using the provided IP and port,
- * and attempts to establish a connection to the server.
- *
- * @return true if the connection was successfully established; false otherwise.
- *
- * @note In case of failure, an error message is printed using perror.
  */
 #pragma once
 #include <string>
@@ -22,10 +11,12 @@
 #include <unistd.h>
 #include <arpa/inet.h>
 #include <sys/socket.h>
+#include "blinkdb.h"
+#include "resp_parser.h"
 
 /**
  * @class blinkdb_client
- * @brief Client for establishing a connection to a BlinkDB server.
+ * Client for establishing a connection to a BlinkDB server.
  *
  * The blinkdb_client class encapsulates the functionality to create a socket, connect
  * to a server through a specified IP and port, send a request, and receive a response.
@@ -39,11 +30,23 @@
  *       std::cout << "Server response: " << response << std::endl;
  *   }
  * @endcode
+ * 
+ * @note The user should enter the commands in the following format only. The case of the command does not matter
+ * but the format must be followed:
+ * @code
+ *      SET <KEY> <VALUE> (Eg: SET A 10)
+ *      GET <KEY>         (Eg: GET A)
+ *      DEL <KEY>         (Eg: DEL A)
+ *      exit              (Eg: exit)
+ *      print             (Eg: print)
+ * @endcode
+ * 
+ * The 
  */
 class blinkdb_client {
 public:
     /**
-     * @brief Constructs a new blinkdb_client object.
+     * onstructs a new blinkdb_client object.
      *
      * Initializes the client with the provided server IP address and port number. The socket
      * file descriptor is set to an invalid value (-1) until a connection is established.
@@ -55,8 +58,9 @@ public:
     blinkdb_client(const std::string &server_ip, int port)
         : server_ip(server_ip), port(port), sock_fd(-1) {}
 
+    blinkdb_client(): server_ip(""), port(-1), sock_fd(-1){}
     /**
-     * @brief Destroys the blinkdb_client object.
+     * Destroys the blinkdb_client object.
      *
      * Ensures that the open socket connection is closed upon destruction to free up system resources.
      */
@@ -65,13 +69,15 @@ public:
     }
     
     /**
-     * @brief Connects to the BlinkDB server.
+     * Connects to the BlinkDB server.
      *
      * This function creates a TCP socket, configures the server address using the specified IP and port,
      * and attempts to establish a connection to the BlinkDB server. If socket creation, address conversion,
      * or connection fails, the function prints an error message using perror and returns false.
      *
-     * @return true if the connection is successfully established; false otherwise.
+     * @return **true** if the connection is successfully established; false otherwise.
+     * 
+     * @note In case of failure, an error message is printed using perror.
      */
     bool connect_to_server() {
         sock_fd = socket(AF_INET, SOCK_STREAM, 0);
@@ -96,7 +102,7 @@ public:
         return true;
     }
     /**
-     * @brief Sends a request to the BlinkDB server and receives the response.
+     * Sends a request to the BlinkDB server and receives the response.
      *
      * Transmits the provided request string over the established socket. It then waits for a response
      * from the server, reads it into a buffer, and returns it as a std::string.
@@ -122,6 +128,36 @@ public:
         }
 
         return std::string(buffer, bytes_received);
+    }
+
+    void execute(blinkdb &db, parse_op *ip){
+        if(ip->cmd == "SET"){
+
+            if(!db.set(ip->key, ip->value)){
+                std::cout << "Could not set " << ip->key << " to " << ip->value << ". Try again" << std::endl;
+            }
+
+        } else if(ip->cmd == "GET"){
+
+            std::string val = db.get(ip->key);
+            if(val != ""){
+                std::cout << val << std::endl;
+            }
+            else {
+                std::cout << "NULL\n";
+            }
+        
+        } else if(ip->cmd == "DEL"){
+        
+            if(!db.del(ip->key)){
+                std::cout << "Does not exist." << std::endl;
+            }
+
+        } else if(ip->cmd == "PRINT"){ /* will most probably remove this. This is mainly for debugging purposes */
+
+            std::cout << "DB Content:\n";
+            db.print();
+        }
     }
 private:
     std::string server_ip;

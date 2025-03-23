@@ -3,27 +3,16 @@
 <title>sparseindex Class Reference</title>
 <indexterm><primary>sparseindex</primary></indexterm>
 <para>
-
-<para>This class is a sparse-index that uses a skip list to store key-offset pairs. </para>
- 
-</para>
-<para>
-<computeroutput>#include &lt;lib/sparseindex.h&gt;</computeroutput>
+<computeroutput>#include &lt;part-a/src/lib/sparseindex.h&gt;</computeroutput>
 </para>
 <simplesect>
     <title>Public Member Functions    </title>
         <itemizedlist>
-            <listitem><para><anchor xml:id="_classsparseindex_1ae58c2e252cf853f258d7e305208c0d46"/><emphasis role="strong">sparseindex</emphasis> ()</para>
-
-<para>Construct a new sparseindex object. </para>
+            <listitem><para><link linkend="_classsparseindex_1ae58c2e252cf853f258d7e305208c0d46">sparseindex</link> ()</para>
 </listitem>
             <listitem><para>void <link linkend="_classsparseindex_1ac5a9142436d081224cafb964cad4becb">insert</link> (const std::string &amp;key, std::streampos offset)</para>
-
-<para>Function to insert a key-offset pair into the skiplist. </para>
 </listitem>
             <listitem><para>std::streampos <link linkend="_classsparseindex_1ad4ffd3a38bc56212d400d82b3e320f54">get_offset</link> (const std::string &amp;key)</para>
-
-<para>Function to get the nearest offset for a given key. </para>
 </listitem>
         </itemizedlist>
 </simplesect>
@@ -33,15 +22,23 @@
 <para>This class is a sparse-index that uses a skip list to store key-offset pairs. </para>
 </section>
 <section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_classsparseindex_1ae58c2e252cf853f258d7e305208c0d46"/><section>
+    <title>sparseindex()</title>
+<indexterm><primary>sparseindex</primary><secondary>sparseindex</secondary></indexterm>
+<indexterm><primary>sparseindex</primary><secondary>sparseindex</secondary></indexterm>
+<para><computeroutput>sparseindex::sparseindex ( )<computeroutput>[inline]</computeroutput></computeroutput></para>
+<para>Construct a new sparseindex object </para>
+</section>
+</section>
+<section>
 <title>Member Function Documentation</title>
 <anchor xml:id="_classsparseindex_1ad4ffd3a38bc56212d400d82b3e320f54"/><section>
     <title>get_offset()</title>
 <indexterm><primary>get_offset</primary><secondary>sparseindex</secondary></indexterm>
 <indexterm><primary>sparseindex</primary><secondary>get_offset</secondary></indexterm>
-<para><computeroutput>std::streampos sparseindex::get_offset (const std::string &amp; key)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
-
-<para>Function to get the nearest offset for a given key. </para>
-</para>
+<para><computeroutput>std::streampos sparseindex::get_offset (const std::string &amp; key)<computeroutput>[inline]</computeroutput></computeroutput></para>
+<para>Function to get the nearest offset for a given key</para>
 
 <para>
                 <formalpara>
@@ -68,15 +65,31 @@ Parameters</title>
 <para>std::streampos The offset for the given key </para>
 </formalpara>
 </para>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="classsparseindex_ad4ffd3a38bc56212d400d82b3e320f54_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="classsparseindex_ad4ffd3a38bc56212d400d82b3e320f54_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
 </section>
 <anchor xml:id="_classsparseindex_1ac5a9142436d081224cafb964cad4becb"/><section>
     <title>insert()</title>
 <indexterm><primary>insert</primary><secondary>sparseindex</secondary></indexterm>
 <indexterm><primary>sparseindex</primary><secondary>insert</secondary></indexterm>
-<para><computeroutput>void sparseindex::insert (const std::string &amp; key, std::streampos offset)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
-
-<para>Function to insert a key-offset pair into the skiplist. </para>
-</para>
+<para><computeroutput>void sparseindex::insert (const std::string &amp; key, std::streampos offset)<computeroutput>[inline]</computeroutput></computeroutput></para>
+<para>Function to insert a key-offset pair into the skiplist</para>
 
 <para>
                 <formalpara>
@@ -104,6 +117,24 @@ Parameters</title>
                     </para>
                 </formalpara>
                 </para>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="classsparseindex_ac5a9142436d081224cafb964cad4becb_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="classsparseindex_ac5a9142436d081224cafb964cad4becb_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
 </section>
 <para>
 The documentation for this class was generated from the following file:</para>

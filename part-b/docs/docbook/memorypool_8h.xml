@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_memorypool_8h" xml:lang="en-US">
+<title>memorypool.h File Reference</title>
+<indexterm><primary>memorypool.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &quot;block.h&quot;<?linebreak?>#include &quot;debug.h&quot;<?linebreak?>#include &lt;iostream&gt;<?linebreak?>#include &lt;vector&gt;<?linebreak?>#include &lt;memory&gt;<?linebreak?>#include &lt;queue&gt;<?linebreak?></programlisting>Include dependency graph for memorypool.h:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="memorypool_8h__incl.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+This graph shows which files directly or indirectly include this file:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="memorypool_8h__dep__incl.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Classes    </title>
+        <itemizedlist>
+            <listitem><para>class <link linkend="_classmemorypool">memorypool</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>Implements a memory pool for managing <link linkend="_structBlock">Block</link> objects.</para>
+
+<para>This file defines the memorypool class, which is responsible for allocating and deallocating memory blocks, each represented by a <link linkend="_structBlock">Block</link> object that can store key-value pairs. The memory pool maintains a fixed-size vector of Blocks and uses a queue to track available (unused) blocks.</para>
+
+<para>The allocation function assigns a key-value pair to the first available block and marks it as used, ensuring efficient memory usage. The deallocation function returns a block to the pool for future reuse.</para>
+
+<para>This design is intended for scenarios where managing a collection of key-value pairs in memory is crucial for performance and resource utilization.</para>
+
+<para><note><title>Note</title>
+
+<para>The memorypool relies on the <link linkend="_structBlock">Block</link> class declared in &quot;block.h&quot;, and it uses C++ Standard Library facilities like std::vector, std::queue, and std::atomic. </para>
+</note>
+</para>
+</section>
+</section>

@@ -110,28 +110,57 @@ $(function(){initNavTree('memorypool_8h.html',''); initResizable(true); });
   <div class="headertitle"><div class="title">memorypool.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-
-<p>Implements a memory pool for managing <a class="el" href="structBlock.html" title="This is the actual &quot;Block&quot; that will store the key and value pair. This block will be dynamically all...">Block</a> objects.  
-<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;block.h&quot;</code><br />
+<code>#include &quot;debug.h&quot;</code><br />
 <code>#include &lt;iostream&gt;</code><br />
 <code>#include &lt;vector&gt;</code><br />
-<code>#include &lt;atomic&gt;</code><br />
 <code>#include &lt;memory&gt;</code><br />
 <code>#include &lt;queue&gt;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Include dependency graph for memorypool.h:</div>
+<div class="dyncontent">
+<div class="center"><img src="memorypool_8h__incl.png" border="0" usemap="#amemorypool_8h" alt=""/></div>
+<map name="amemorypool_8h" id="amemorypool_8h">
+<area shape="rect" title=" " alt="" coords="120,5,223,32"/>
+<area shape="rect" title=" " alt="" coords="5,80,77,107"/>
+<area shape="poly" title=" " alt="" coords="150,35,79,74,76,70,148,30"/>
+<area shape="rect" title=" " alt="" coords="100,80,158,107"/>
+<area shape="poly" title=" " alt="" coords="167,34,146,68,142,65,162,31"/>
+<area shape="rect" title=" " alt="" coords="182,80,250,107"/>
+<area shape="poly" title=" " alt="" coords="182,31,202,65,198,68,177,34"/>
+<area shape="rect" title=" " alt="" coords="274,80,330,107"/>
+<area shape="poly" title=" " alt="" coords="196,30,267,70,265,74,193,35"/>
+</map>
+</div>
+</div><div class="textblock"><div class="dynheader">
+This graph shows which files directly or indirectly include this file:</div>
+<div class="dyncontent">
+<div class="center"><img src="memorypool_8h__dep__incl.png" border="0" usemap="#amemorypool_8hdep" alt=""/></div>
+<map name="amemorypool_8hdep" id="amemorypool_8hdep">
+<area shape="rect" title=" " alt="" coords="56,5,159,32"/>
+<area shape="rect" href="hashtable_8h.html" title=" " alt="" coords="64,80,152,107"/>
+<area shape="poly" title=" " alt="" coords="110,48,110,80,105,80,105,48"/>
+<area shape="rect" href="blinkdb_8h.html" title=" " alt="" coords="71,155,144,181"/>
+<area shape="poly" title=" " alt="" coords="110,122,110,154,105,154,105,122"/>
+<area shape="rect" href="blinkdb__client_8h.html" title=" " alt="" coords="5,229,117,256"/>
+<area shape="poly" title=" " alt="" coords="94,196,71,230,67,227,89,193"/>
+<area shape="rect" href="client__runner_8cpp.html" title=" " alt="" coords="48,304,167,331"/>
+<area shape="poly" title=" " alt="" coords="122,195,132,229,132,250,129,271,116,305,111,303,124,270,127,250,126,230,117,197"/>
+<area shape="poly" title=" " alt="" coords="80,268,102,302,97,305,75,271"/>
+</map>
+</div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmemorypool.html">memorypool</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">This class is a memory pool that is used to allocate and deallocate memory blocks that will store key-value pairs.  <a href="classmemorypool.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Implements a memory pool for managing <a class="el" href="structBlock.html" title="This is the actual &quot;Block&quot; that will store the key and value pair. This block will be dynamically all...">Block</a> objects. </p>
-<p>This file defines the memorypool class, which is responsible for allocating and deallocating memory blocks, each represented by a <a class="el" href="structBlock.html" title="This is the actual &quot;Block&quot; that will store the key and value pair. This block will be dynamically all...">Block</a> object that can store key-value pairs. The memory pool maintains a fixed-size vector of Blocks and uses a queue to track available (unused) blocks.</p>
+<div class="textblock"><p>Implements a memory pool for managing <a class="el" href="structBlock.html">Block</a> objects.</p>
+<p>This file defines the memorypool class, which is responsible for allocating and deallocating memory blocks, each represented by a <a class="el" href="structBlock.html">Block</a> object that can store key-value pairs. The memory pool maintains a fixed-size vector of Blocks and uses a queue to track available (unused) blocks.</p>
 <p>The allocation function assigns a key-value pair to the first available block and marks it as used, ensuring efficient memory usage. The deallocation function returns a block to the pool for future reuse.</p>
 <p>This design is intended for scenarios where managing a collection of key-value pairs in memory is crucial for performance and resource utilization.</p>
-<dl class="section note"><dt>Note</dt><dd>The memorypool relies on the <a class="el" href="structBlock.html" title="This is the actual &quot;Block&quot; that will store the key and value pair. This block will be dynamically all...">Block</a> class declared in "block.h", and it uses C++ Standard Library facilities like std::vector, std::queue, and std::atomic. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>The memorypool relies on the <a class="el" href="structBlock.html">Block</a> class declared in "block.h", and it uses C++ Standard Library facilities like std::vector and std::queue. </dd></dl>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

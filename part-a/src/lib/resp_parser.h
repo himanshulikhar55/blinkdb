@@ -1,6 +1,6 @@
 /**
  * @file resp_parser.h
- * @brief Provides functionalities for parsing and converting commands using the Redis Serialization Protocol (RESP).
+ *Provides functionalities for parsing and converting commands using the Redis Serialization Protocol (RESP).
  *
  * This file defines the data structure and class used to process commands in RESP format.
  * It includes:
@@ -18,6 +18,8 @@
  * Detailed functionality is documented within the respective methods.
  */
 #pragma once
+#include "debug.h"
+
 #include <string>
 #include <sstream>
 #include <vector>
@@ -27,7 +29,7 @@
 #include <cstring>
 
 /**
- * @brief Represents a parsed command operation.
+ *Represents a parsed command operation.
  *
  * This structure holds the details of a command parsed from an input string.
  * It encapsulates the command, key, and value parts of the operation, as well
@@ -48,7 +50,7 @@ struct parse_op {
 };
 
 /**
- * @brief A parser for RESP (Redis Serialization Protocol) commands.
+ *A parser for RESP (Redis Serialization Protocol) commands.
  *
  * The resp_parser class provides methods to parse input strings formatted in RESP,
  * extract commands and their arguments, and convert standard strings into RESP-formatted
@@ -59,6 +61,8 @@ class resp_parser {
     private:
         const std::string quit = "*1\r\n$4\r\nQUIT\r\n";
         std::stringstream ss;
+        parse_op *op;
+        
         void to_lower(std::string &s){
             for(auto &c : s){
                 c = tolower(c);
@@ -79,9 +83,9 @@ class resp_parser {
             if(params[0] == "SET")
                 bufferStr[1] = '3';
             
-            bufferStr += params[0] + // the command itself
+            bufferStr += params[0] + /* the command itself */
                          "\r\n$" +
-                         std::to_string(params[1].length()) + // length of the key
+                         std::to_string(params[1].length()) + /* length of the key */
                          "\r\n" +
                          params[1] +
                          "\r\n";
@@ -95,9 +99,12 @@ class resp_parser {
             pop->resp_str = std::move(bufferStr);
         }
 
-        void _parse_(std::string input, parse_op* ip){
+        void _parse_(std::string input, parse_op* ip, int mode){
             if(input == "print"){
-                ip->resp_str = "print";
+                if(mode == 2)
+                    ip->resp_str = "print";
+                else
+                    ip->cmd = "PRINT";
                 return;
             }
             std::string cmd, key;
@@ -106,10 +113,6 @@ class resp_parser {
             to_higher(cmd);
             ip->cmd = cmd;
             to_lower(cmd);
-            if(cmd == "print"){
-                ip->cmd = std::move(cmd);
-                return;
-            }
             ss >> key;
             ip->key = key;
             if(cmd == "set"){
@@ -118,15 +121,18 @@ class resp_parser {
                 while(ss >> temp){
                     val += temp + " ";
                 }
-                val.pop_back();
+                /* Value might be empty */
+                if(val.length() > 0)
+                    val.pop_back();
                 ip->value = val;
             }
-            convert_to_resp(ip);
+            if(mode == 2)
+                convert_to_resp(ip);
         }
 
         std::string get_len(std::string& data, int *i){
             std::string num = "";
-            int j = *i;
+            size_t j = *i;
             for(; j < data.length(); j++){
                 if(data[j] == '\r' && data[j+1] == '\n'){
                     j+=2;
@@ -138,45 +144,73 @@ class resp_parser {
             return num;
         }
         bool invalid_cmd_len(std::string& data, int *i){
-            int j = *i;
+            int j = *i, len = 0;
             if(data[j] != '$')
                 return true;
             *i += 1;
-            int len = std::stoi(get_len(data, i));
+             /* stoi spoils the party which is why it has to be kept under supervision */
+             try{
+                len = std::stoi(get_len(data, i));
+            } catch(const std::exception& e){
+                std::cerr << e.what() << '\n';
+                return false;
+            }
             if(len != 3)
                 return true;
             return false;
         }
         std::string get_cmd(std::string &data, int *i){
             int j = *i;
-            std::string cmd = data.substr(j, 3);
+            std::string cmd = "";
+            try
+            {
+                cmd = data.substr(j, 3);
+            } catch(const std::exception& e)
+            {
+                std::cerr << e.what() << '\n';
+                return "";
+            }
+            
             to_lower(cmd);
             if(cmd != "set" && cmd != "get" && cmd != "del")
                 return "";
-            // check for delimiters
+            /* check for delimiters */
             if(data[j+3] != '\r' || data[j+4] != '\n')
                 return "";
-            j += 5; // 3  + 2
+            j += 5; /* 3  + 2 */
             *i = j;
             return cmd;
         }
         int get_key_len(std::string& data, int *i){
+            int key_len = 0;
             if(data[*i] != '$')
                 return 0;
             *i += 1;
-            int key_len = std::stoi(get_len(data, i));
+            /* stoi spoils the party which is why it has to be kept under supervision */
+            try{
+                key_len = std::stoi(get_len(data, i));
+            } catch(const std::exception& e){
+                std::cerr << e.what() << '\n';
+                return 0;
+            }
             if(key_len < 1)
                 return 0;
             return key_len;
         }
         std::string verify_and_get_val(std::string& data, int *i){
-            int j = *i;
+            size_t j = *i, val_len = 0;
             if(j == data.length())
                 return "";
             if(data[j] != '$')
                 return "";
             *i += 1;
-            int val_len = std::stoi(get_len(data, i));
+             /* stoi spoils the party which is why it has to be kept under supervision */
+             try{
+                val_len = std::stoi(get_len(data, i));
+             } catch(const std::exception& e){
+                 std::cerr << e.what() << '\n';
+                 return "";
+             }
             if(val_len < 1)
                 return "";
             std::string val = data.substr(*i, val_len);
@@ -185,23 +219,29 @@ class resp_parser {
         }
     
     public:
-        // kept for debugging purposes. Need to move to private later
-        parse_op *op;
         resp_parser(){
             op = new parse_op();
         }
+        ~resp_parser(){
+            delete op;
+        }
         void get_val(std::string& response){
-            int pos = response.find("\r\n");
+            size_t pos = response.find("\r\n"), len = 0;
             if(pos == std::string::npos)
                 return;
-            int len = std::stoi(response.substr(1, pos - 1));
+            try{
+                len = std::stoi(response.substr(1, pos - 1));
+            } catch(std::exception &e){
+                std::cerr << e.what() << '\n';
+                return;
+            }
             response = response.substr(pos+2, len);
         }
-        void parse(std::string input, parse_op* pop){
-            _parse_(input, pop);
+        void parse(std::string input, parse_op* pop, int mode){
+            _parse_(input, pop, mode);
         }
         /**
-         * @brief Converts an IP string to a byte stream.
+         *Converts an IP string to a byte stream.
          *
          * This function constructs a byte stream from the given IP string by first creating a prefix with
          * the '$' character followed by the length of the IP string, then a carriage return and line feed (CRLF),
@@ -214,7 +254,7 @@ class resp_parser {
             bufferStr = "$" + std::to_string(ip.length()) + "\r\n" + ip + "\r\n";
         }
         /**
-         * @brief Parses a RESP-encoded command string and extracts its components.
+         *Parses a RESP-encoded command string and extracts its components.
          *
          * This function processes an input RESP string (data) and attempts to extract the command,
          * key, and optionally the value from it. The parsed components are stored in the provided
@@ -252,8 +292,6 @@ class resp_parser {
                 pop->cmd = "CONFIG";
                 return 1;
             }
-            //check_delim
-            //fetch_fetch_arg
             if(data.length() < 11 || data[0] != '*')
                 return 0;   
             if(data == quit){
@@ -262,30 +300,29 @@ class resp_parser {
             }
             int num_args = 0, i = 1, key_len = 0;
             
-            // get the number of arguments
+            /* get the number of arguments */
             std::string num = get_len(data, &i), cmd = "", val = "";
             num_args = std::stoi(num);
-            // std::cout << num_args << std::endl;
             if(num_args < 2 || num_args > 3)
                 return 0;
             
-            // cmd len starts
+            /* cmd len starts */
             if(invalid_cmd_len(data, &i))
                 return 0;
             
-            // cmd starts
+            /* cmd starts */
             if((cmd = get_cmd(data, &i)) == "")
                 return 0;
             
-            // key len starts
+            /* key len starts */
             if((key_len = get_key_len(data, &i)) == 0)
                 return 0;
             
-            //get key
+            /* get key */
             std::string key = data.substr(i, key_len);
             i += key_len + 2;
             
-            // val len and val starts
+            /* val len and val starts */
             if(cmd == "set"){
                 val = verify_and_get_val(data, &i);
                 if(val == "")
@@ -294,7 +331,9 @@ class resp_parser {
             }
             pop->cmd = std::move(cmd);
             pop->key = std::move(key);
-            // std::cout << pop->cmd << " " << pop->key << " " << pop->value << std::endl;
+            DEBUG_PRINT2("Command: ", pop->cmd); 
+            DEBUG_PRINT2("Key: ", pop->key);
+            DEBUG_PRINT2("Value: ", pop->value);
             return 1;
         }
 };

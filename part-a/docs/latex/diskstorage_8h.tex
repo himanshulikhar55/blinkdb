@@ -1,0 +1,56 @@
+\doxysection{diskstorage.\+h File Reference}
+\hypertarget{diskstorage_8h}{}\label{diskstorage_8h}\index{diskstorage.h@{diskstorage.h}}
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include "{}sparseindex.\+h"{}}\newline
+Include dependency graph for diskstorage.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{diskstorage_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=202pt]{diskstorage_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classdiskstorage}{diskstorage}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{diskstorage_8h_ab39fec97d85960796efedec442f38004}\label{diskstorage_8h_ab39fec97d85960796efedec442f38004} 
+\#define {\bfseries INTERVAL}~100
+\item 
+\Hypertarget{diskstorage_8h_a6d3fef197146b932f5ad01fce683a66b}\label{diskstorage_8h_a6d3fef197146b932f5ad01fce683a66b} 
+\#define {\bfseries LOGFILE}~"{}data.\+log"{}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Provides the diskstorage class for disk-\/based storage of key-\/value pairs.
+
+This file defines the diskstorage class, which allows writing key-\/value pairs to a log file in an append-\/only mode and reading them back by leveraging a sparse indexing mechanism provided by the sparseindex class.
+
+The diskstorage class manages an output file stream that is used to append data to the file "{}data.\+log"{}. Every INTERVAL number of insertions, it updates the sparse index with the offset position of the key within the file. The read() member function uses the sparse index to retrieve and search for key-\/value entries efficiently.
+
+Usage Example\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{classdiskstorage}{diskstorage}}\ ds;}
+\DoxyCodeLine{\mbox{\hyperlink{classsparseindex}{sparseindex}}\ index;}
+\DoxyCodeLine{ds.\mbox{\hyperlink{classdiskstorage_a5cd280ffdc039f12c75f26ba325ec455}{write}}(\textcolor{stringliteral}{"{}sampleKey"{}},\ \textcolor{stringliteral}{"{}sampleValue"{}},\ index);}
+\DoxyCodeLine{std::string\ value\ =\ ds.\mbox{\hyperlink{classdiskstorage_a2a6d4004689c9c8084f0c07d4f49b191}{read}}(\textcolor{stringliteral}{"{}sampleKey"{}},\ index);}
+
+\end{DoxyCode}
+
+
+\begin{DoxySeeAlso}{See also}
+\doxylink{sparseindex_8h}{sparseindex.\+h} 
+\end{DoxySeeAlso}

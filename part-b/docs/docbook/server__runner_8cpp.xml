@@ -1,0 +1,101 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_server__runner_8cpp" xml:lang="en-US">
+<title>server_runner.cpp File Reference</title>
+<indexterm><primary>server_runner.cpp</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &quot;lib/blinkdb_server.h&quot;<?linebreak?>#include &quot;../../part-a/src/lib/blinkdb.h&quot;<?linebreak?>#include &quot;../../part-a/src/lib/resp_parser.h&quot;<?linebreak?>#include &lt;sys/epoll.h&gt;<?linebreak?>#include &lt;arpa/inet.h&gt;<?linebreak?>#include &lt;fcntl.h&gt;<?linebreak?>#include &lt;unistd.h&gt;<?linebreak?></programlisting>Include dependency graph for server_runner.cpp:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="server__runner_8cpp__incl.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para>void <link linkend="_server__runner_8cpp_1a32c1402c1491ea6c063e45c1c5a57f10">handle_exit</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_server__runner_8cpp_1a5b3210a63df1873c78a11917bce26ff1">handleSigInt</link> (int signum)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_server__runner_8cpp_1a0ddf1224851353fc92bfbff6f499fa97"/>int <emphasis role="strong">main</emphasis> (int argc, char *argv[])</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>Implementation of the BlinkDB server application</para>
+
+<para>This file implements the main entry point for the BlinkDB server application. It initializes a TCP socket server that listens for incoming connections and handles them using an epoll-based event loop. When running the server the user should give as the (the only one) command line arg the maximum number of parallel connections the server will be required to handle.</para>
+
+<para>The server uses the <link linkend="_classblinkdb__server">blinkdb_server</link> class to process client requests according to the RESP (Redis Serialization Protocol) format.</para>
+
+<para><note><title>Note</title>
+
+<para>The server listens on the port defined by PORT macro (defined in <link linkend="_blinkdb__server_8h">blinkdb_server.h</link> file). </para>
+
+<para>The server can be terminated by sending a SIGINT signal (Ctrl+C). It will then gracefully exit while collecting all the memory. </para>
+</note>
+</para>
+</section>
+<section>
+<title>Function Documentation</title>
+<anchor xml:id="_server__runner_8cpp_1a32c1402c1491ea6c063e45c1c5a57f10"/><section>
+    <title>handle_exit()</title>
+<indexterm><primary>handle_exit</primary><secondary>server_runner.cpp</secondary></indexterm>
+<indexterm><primary>server_runner.cpp</primary><secondary>handle_exit</secondary></indexterm>
+<para><computeroutput>void handle_exit ( )</computeroutput></para>
+<para>Handles the server exit process</para>
+
+<para>This function is called when the server is shutting down. It prints a message and exits the process gracefully. </para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="server__runner_8cpp_a32c1402c1491ea6c063e45c1c5a57f10_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_server__runner_8cpp_1a5b3210a63df1873c78a11917bce26ff1"/><section>
+    <title>handleSigInt()</title>
+<indexterm><primary>handleSigInt</primary><secondary>server_runner.cpp</secondary></indexterm>
+<indexterm><primary>server_runner.cpp</primary><secondary>handleSigInt</secondary></indexterm>
+<para><computeroutput>void handleSigInt (int signum)</computeroutput></para>
+<para>Signal handler for SIGINT (Ctrl+C)</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>signum</entry><entry>
+<para>The signal number received</para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                This function is registered as the handler for SIGINT signals and calls <link linkend="_server__runner_8cpp_1a32c1402c1491ea6c063e45c1c5a57f10">handle_exit()</link> to terminate the server gracefully. </para>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="server__runner_8cpp_a5b3210a63df1873c78a11917bce26ff1_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+</section>
+</section>

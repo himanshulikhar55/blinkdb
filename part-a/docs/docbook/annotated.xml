@@ -1,26 +1,4 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_annotated" xml:lang="en-US">
 <title>Class List</title>
-Here are the classes, structs, unions and interfaces with brief descriptions:<link linkend="_classblinkdb">blinkdb</link>
-<para>This is the blinkdb class. It is a key-value store that lets user to set, get and delete key-value pairs It uses a hashtable to store the key-value pairs. The hashtable uses open addressing with double hashing to resolve collisions. If the in-memory hashtable is full, the key-value pairs are stored in a file on disk. When the user exits, all the data is erased from the disk and from the memory (obviously) </para>
-<link linkend="_classblinkdb__client">blinkdb_client</link>
-<para>Establishes a connection to the BlinkDB server </para>
-<link linkend="_classblinkdb__server">blinkdb_server</link>
-<para>Redis-compatible server implementation </para>
-<link linkend="_structBlock">Block</link>
-<para>This is the actual &quot;Block&quot; that will store the key and value pair. This block will be dynamically allocated and deallocated during &quot;set&quot; and &quot;delete&quot; operations in blinkdb </para>
-<link linkend="_classbloomfilter">bloomfilter</link>
-<para>Bloom filter class documentation </para>
-<link linkend="_classdiskstorage">diskstorage</link>
-<para>This class is used to store key-value pairs on disk </para>
-<link linkend="_classhashtable">hashtable</link>
-<para>This is the custom hashtable class. It uses open addressing with double hashing to resolve collisions. The table is a vector of Entry structs. Each Entry struct has a key, a value and a boolean flag to indicate if the entry is occupied. The occupied variable is a std::atomic&lt;bool&gt; to ensure that the operations are atomic </para>
-<link linkend="_classmemorypool">memorypool</link>
-<para>This class is a memory pool that is used to allocate and deallocate memory blocks that will store key-value pairs </para>
-<link linkend="_structparse__op">parse_op</link>
-<para>Represents a parsed command operation </para>
-<link linkend="_classresp__parser">resp_parser</link>
-<para>A parser for RESP (Redis Serialization Protocol) commands </para>
-<link linkend="_classskiplist">skiplist</link><link linkend="_classsparseindex">sparseindex</link>
-<para>This class is a sparse-index that uses a skip list to store key-offset pairs </para>
-</section>
+Here are the classes, structs, unions and interfaces with brief descriptions:<link linkend="_classblinkdb">blinkdb</link><link linkend="_classblinkdb__client">blinkdb_client</link><link linkend="_structBlock">Block</link><link linkend="_classbloomfilter">bloomfilter</link><link linkend="_classdiskstorage">diskstorage</link><link linkend="_classhashtable">hashtable</link><link linkend="_classmemorypool">memorypool</link><link linkend="_structparse__op">parse_op</link><link linkend="_classresp__parser">resp_parser</link><link linkend="_classskiplist">skiplist</link><link linkend="_classsparseindex">sparseindex</link></section>

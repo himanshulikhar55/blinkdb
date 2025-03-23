@@ -7,7 +7,7 @@
 <para>Implementation of a Redis-like server using epoll for non-blocking I/O. </para>
  
 </para>
-<programlisting linenumbering="unnumbered">#include &lt;csignal&gt;<?linebreak?>#include &lt;iostream&gt;<?linebreak?>#include &lt;sys/epoll.h&gt;<?linebreak?>#include &lt;arpa/inet.h&gt;<?linebreak?>#include &lt;fcntl.h&gt;<?linebreak?>#include &lt;unistd.h&gt;<?linebreak?>#include &lt;vector&gt;<?linebreak?>#include &lt;cstring&gt;<?linebreak?>#include &lt;unordered_map&gt;<?linebreak?>#include &quot;resp_parser.h&quot;<?linebreak?>#include &quot;blinkdb.h&quot;<?linebreak?></programlisting><simplesect>
+<programlisting linenumbering="unnumbered">#include &lt;csignal&gt;<?linebreak?>#include &lt;iostream&gt;<?linebreak?>#include &lt;sys/epoll.h&gt;<?linebreak?>#include &lt;arpa/inet.h&gt;<?linebreak?>#include &lt;fcntl.h&gt;<?linebreak?>#include &lt;unistd.h&gt;<?linebreak?>#include &lt;vector&gt;<?linebreak?>#include &lt;cstring&gt;<?linebreak?>#include &lt;unordered_map&gt;<?linebreak?>#include &quot;resp_parser.h&quot;<?linebreak?>#include &quot;blinkdb.h&quot;<?linebreak?>#include &quot;debug.h&quot;<?linebreak?></programlisting><simplesect>
     <title>Classes    </title>
         <itemizedlist>
             <listitem><para>class <link linkend="_classblinkdb__server">blinkdb_server</link></para>
@@ -19,7 +19,7 @@
 <simplesect>
     <title>Macros    </title>
         <itemizedlist>
-            <listitem><para><anchor xml:id="_blinkdb__server_8h_1ae42954bb8545d24e3e9dcde5920c9a0b"/>#define <emphasis role="strong">MAX_EVENTS</emphasis>&#160;&#160;&#160;100</para>
+            <listitem><para><anchor xml:id="_blinkdb__server_8h_1ae42954bb8545d24e3e9dcde5920c9a0b"/>#define <emphasis role="strong">MAX_EVENTS</emphasis>&#160;&#160;&#160;1024</para>
 </listitem>
             <listitem><para><anchor xml:id="_blinkdb__server_8h_1a614217d263be1fb1a5f76e2ff7be19a2"/>#define <emphasis role="strong">PORT</emphasis>&#160;&#160;&#160;9001</para>
 </listitem>

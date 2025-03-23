@@ -1,20 +1,22 @@
 
 /**
  * @file skiplist.h
- * @brief Implementation of a concurrent skiplist data structure.
+ * @parblock 
+ *  Implementation of a concurrent skiplist data structure.
  *
  * This file provides the implementation of a skiplist data structure using C++.
  * The skiplist is designed to support efficient insertion and search operations,
- * leveraging probabilistic balancing and atomic operations for thread safety.
+ * leveraging probabilistic balancing
  *
  * The data structure consists of:
  * - A nested Node struct, representing each node in the skiplist, which holds a key,
- *   a stream offset, and a vector of atomic pointers to subsequent nodes at different levels.
+ *   a stream offset, and a vector of pointers to subsequent nodes at different levels.
  * - Member functions for inserting nodes and retrieving the nearest offset for a given key.
  *
  * The design uses a probabilistic method for promoting nodes to higher levels based on a
  * user-defined probability, ensuring balanced performance across operations.
  *
+ * @endparblock
  * Typical usage example:
  * @code
  * skiplist sl;
@@ -22,14 +24,11 @@
  * std::streampos pos = sl.get_nearest_offset("another_key");
  * @endcode
  *
- * @note This implementation showcases concurrency control using std::atomic and assumes
- * that the environment supports C++11 or later.
- *
- * @author
- * @date
+ * @author Himanshu Likhar
+ * @date 23/03/2025
  */
 #include <iostream>
-#include <atomic>
+
 #include <vector>
 #include <random>
 #include <limits>
@@ -40,17 +39,17 @@ private:
     struct Node {
         std::string key;
         size_t offset;
-        std::vector<std::atomic<Node*>> next;
+        std::vector<Node*> next;
 
         Node(std::string k, size_t off, int level)
-            : key(k), offset(off), next(level) {  // Initialize vector with `level` elements
-            for (size_t i = 0; i < level; ++i) {
-                next[i].store(nullptr, std::memory_order_relaxed);  // Properly initialize atomics
+            : key(k), offset(off), next(level) {
+            for (int i = 0; i < level; ++i) {
+                next[i] = nullptr;
             }
         }
     };
 
-    std::atomic<Node*> head;
+    Node* head;
     int maxLevel;
     float probability;
 
@@ -64,7 +63,7 @@ private:
 
 public:
     /**
-     * @brief Constructs a new skiplist object.
+     *Constructs a new skiplist object.
      *
      * Initializes the skiplist with a specified maximum level and probability.
      * A header node is created with an empty key and a placeholder value (-1)
@@ -75,19 +74,29 @@ public:
      */
     skiplist(int maxLvl = 16, float prob = 0.5)
         : maxLevel(maxLvl), probability(prob) {
-        head.store(new Node("", -1, maxLevel));
+        head = new Node("", -1, maxLevel);
     }
 
     skiplist(){}
 
+    ~skiplist() {
+        Node* curr = head->next[0];
+        while (curr) {
+            Node* next = curr->next[0];
+            delete curr;
+            curr = next;
+        }
+        delete head;
+    }
+    
+
     /**
-     * @brief Inserts a new node with the given key and stream offset into the skip list.
+     *Inserts a new node with the given key and stream offset into the skip list.
      *
      * This function navigates the skip list from the highest level down to level 0 to find
      * the appropriate insertion point for the new node. It maintains arrays of predecessor
      * and successor nodes for each level during the traversal. A new random level is determined
-     * for the node, and the node is inserted into each level using atomic operations to ensure
-     * thread safety.
+     * for the node, and the node is inserted into each level.
      *
      * @param key The key associated with the new node; used for maintaining order within the list.
      * @param offset The stream offset associated with the key, typically representing a position 
@@ -95,13 +104,13 @@ public:
      */
     void insert(const std::string& key, std::streampos offset) {
         Node* preds[maxLevel], * succs[maxLevel];
-        Node* pred = head.load();
+        Node* pred = head;
 
         for (int level = maxLevel - 1; level >= 0; --level) {
-            Node* curr = pred->next[level].load();
+            Node* curr = pred->next[level];
             while (curr && curr->key < key) {
                 pred = curr;
-                curr = curr->next[level].load();
+                curr = curr->next[level];
             }
             preds[level] = pred;
             succs[level] = curr;
@@ -111,14 +120,13 @@ public:
         Node* newNode = new Node(key, offset, newLevel);
 
         for (int level = 0; level < newLevel; ++level) {
-            do {
-                newNode->next[level].store(succs[level]);
-            } while (!preds[level]->next[level].compare_exchange_weak(succs[level], newNode));
+            newNode->next[level] = succs[level];  /* Set newNode's next pointer */
+            preds[level]->next[level] = newNode;  /* Link predecessor to newNode */
         }
     }
 
     /**
-     * @brief Retrieves the stream offset of the node immediately preceding the given key.
+     *Retrieves the stream offset of the node immediately preceding the given key.
      *
      * This function traverses the skip list from the top-most level down to the lowest level,
      * moving forward at each level until it finds the last node whose key is less than the specified key.
@@ -131,13 +139,13 @@ public:
      * @note If no node with a key less than the provided key exists, the offset of the head node is returned.
      */
     std::streampos get_nearest_offset(const std::string& key) {
-        Node* pred = head.load();
+        Node* pred = head;
 
         for (int level = maxLevel - 1; level >= 0; --level) {
-            Node* curr = pred->next[level].load();
+            Node* curr = pred->next[level];
             while (curr && curr->key < key) {
                 pred = curr;
-                curr = curr->next[level].load();
+                curr = curr->next[level];
             }
         }
         return pred->offset;

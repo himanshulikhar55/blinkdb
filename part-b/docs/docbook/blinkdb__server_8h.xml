@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_blinkdb__server_8h" xml:lang="en-US">
+<title>blinkdb_server.h File Reference</title>
+<indexterm><primary>blinkdb_server.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &lt;csignal&gt;<?linebreak?>#include &lt;iostream&gt;<?linebreak?>#include &lt;sys/epoll.h&gt;<?linebreak?>#include &lt;arpa/inet.h&gt;<?linebreak?>#include &lt;fcntl.h&gt;<?linebreak?>#include &lt;unistd.h&gt;<?linebreak?>#include &lt;vector&gt;<?linebreak?>#include &lt;cstring&gt;<?linebreak?>#include &lt;unordered_map&gt;<?linebreak?>#include &quot;../../../part-a/src/lib/resp_parser.h&quot;<?linebreak?>#include &quot;../../../part-a/src/lib/blinkdb.h&quot;<?linebreak?>#include &quot;../../../part-a/src/lib/debug.h&quot;<?linebreak?></programlisting>Include dependency graph for blinkdb_server.h:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="blinkdb__server_8h__incl.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+This graph shows which files directly or indirectly include this file:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="blinkdb__server_8h__dep__incl.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Classes    </title>
+        <itemizedlist>
+            <listitem><para>class <link linkend="_classblinkdb__server">blinkdb_server</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Macros    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_blinkdb__server_8h_1ae42954bb8545d24e3e9dcde5920c9a0b"/>#define <emphasis role="strong">MAX_EVENTS</emphasis>&#160;&#160;&#160;1024</para>
+</listitem>
+            <listitem><para><anchor xml:id="_blinkdb__server_8h_1a614217d263be1fb1a5f76e2ff7be19a2"/>#define <emphasis role="strong">PORT</emphasis>&#160;&#160;&#160;9001</para>
+</listitem>
+            <listitem><para><anchor xml:id="_blinkdb__server_8h_1a09d9220ce42211cac743f7b8d30ab038"/>#define <emphasis role="strong">DB_SIZE</emphasis>&#160;&#160;&#160;100000</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>Implementation of a Redis-like server using epoll for non-blocking I/O</para>
+
+<para>This file defines the <link linkend="_classblinkdb__server">blinkdb_server</link> class which implements a server that:<itemizedlist>
+<listitem>
+<para>Uses epoll for efficient handling of multiple client connections</para>
+</listitem><listitem>
+<para>Implements basic Redis-compatible commands (SET, GET, DEL, QUIT)</para>
+</listitem><listitem>
+<para>Parses RESP (Redis Serialization Protocol) commands</para>
+</listitem><listitem>
+<para>Provides connection management and data storage via blinkdb</para>
+</listitem></itemizedlist>
+</para>
+
+<para><note><title>Note</title>
+
+<para>Default server port is 9001 </para>
+</note>
+</para>
+</section>
+</section>

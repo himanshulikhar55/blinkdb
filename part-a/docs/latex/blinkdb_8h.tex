@@ -1,0 +1,41 @@
+\doxysection{blinkdb.\+h File Reference}
+\hypertarget{blinkdb_8h}{}\label{blinkdb_8h}\index{blinkdb.h@{blinkdb.h}}
+{\ttfamily \#include "{}hashtable.\+h"{}}\newline
+Include dependency graph for blinkdb.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{blinkdb_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=202pt]{blinkdb_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classblinkdb}{blinkdb}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Defines the blinkdb class, a key-\/value store with in-\/memory and disk storage.
+
+This file introduces the blinkdb class which implements a key-\/value store. The design uses an in-\/memory hashtable (with open addressing and double hashing) to store key-\/value pairs. When the hashtable becomes full, it evicts entries to disk storage and leverages a sparse index for file lookups. A bloom filter is used to optimize read operations by quickly ruling out non-\/existent keys.
+
+The class provides basic operations\+:
+\begin{DoxyItemize}
+\item set\+: Insert a key-\/value pair into the store.
+\item get\+: Retrieve the value corresponding to a given key, fetching from memory first, then disk if needed.
+\item del\+: Delete a key-\/value pair from the in-\/memory store.
+\end{DoxyItemize}
+
+The design ensures that when the user exits, all stored data, both in memory and on disk, are cleared.
+
+\begin{DoxyNote}{Note}
+This file is part of the design-\/lab project and is located in the src/lib directory. 
+\end{DoxyNote}

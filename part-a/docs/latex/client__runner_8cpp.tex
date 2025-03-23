@@ -1,0 +1,120 @@
+\doxysection{client\+\_\+runner.\+cpp File Reference}
+\hypertarget{client__runner_8cpp}{}\label{client__runner_8cpp}\index{client\_runner.cpp@{client\_runner.cpp}}
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$csignal$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$termios.\+h$>$}\newline
+{\ttfamily \#include "{}lib/blinkdb\+\_\+client.\+h"{}}\newline
+{\ttfamily \#include "{}lib/resp\+\_\+parser.\+h"{}}\newline
+{\ttfamily \#include "{}lib/blinkdb.\+h"{}}\newline
+{\ttfamily \#include $<$limits$>$}\newline
+Include dependency graph for client\+\_\+runner.\+cpp\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{client__runner_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{client__runner_8cpp_a614217d263be1fb1a5f76e2ff7be19a2}\label{client__runner_8cpp_a614217d263be1fb1a5f76e2ff7be19a2} 
+\#define {\bfseries PORT}~9001
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{client__runner_8cpp_ad18c16ed26afe044ae31ebb0747ca3e0}\label{client__runner_8cpp_ad18c16ed26afe044ae31ebb0747ca3e0} 
+void {\bfseries sigtstp\+Handler} (int signum)
+\item 
+\Hypertarget{client__runner_8cpp_a32c1402c1491ea6c063e45c1c5a57f10}\label{client__runner_8cpp_a32c1402c1491ea6c063e45c1c5a57f10} 
+void {\bfseries handle\+\_\+exit} ()
+\item 
+\Hypertarget{client__runner_8cpp_a5b3210a63df1873c78a11917bce26ff1}\label{client__runner_8cpp_a5b3210a63df1873c78a11917bce26ff1} 
+void {\bfseries handle\+Sig\+Int} (int signum)
+\item 
+\Hypertarget{client__runner_8cpp_a36bcfdb895e212dfff1f23bd747a2722}\label{client__runner_8cpp_a36bcfdb895e212dfff1f23bd747a2722} 
+std\+::string {\bfseries to\+\_\+lower} (std\+::string s)
+\item 
+\Hypertarget{client__runner_8cpp_a0ddf1224851353fc92bfbff6f499fa97}\label{client__runner_8cpp_a0ddf1224851353fc92bfbff6f499fa97} 
+int {\bfseries main} (int argc, char \texorpdfstring{$\ast$}{*}argv\mbox{[}$\,$\mbox{]})
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{client__runner_8cpp_ae27b4f22721ba0592f8aacd5d2bbc8c3}\label{client__runner_8cpp_ae27b4f22721ba0592f8aacd5d2bbc8c3} 
+std\+::string {\bfseries response} = "{}\textbackslash{}n\+Please enter \textquotesingle{}exit\textquotesingle{} to exit the client\textbackslash{}n"{}
+\item 
+\Hypertarget{client__runner_8cpp_a8fcd9b89b4e75da59ed5f2e83dce4c8b}\label{client__runner_8cpp_a8fcd9b89b4e75da59ed5f2e83dce4c8b} 
+const std\+::string {\bfseries quit} = "{}\texorpdfstring{$\ast$}{*}1\textbackslash{}r\textbackslash{}n\$4\textbackslash{}r\textbackslash{}n\+QUIT\textbackslash{}r\textbackslash{}n"{}
+\item 
+\Hypertarget{client__runner_8cpp_af37dd3e201ddc8f713737a9a8eaba215}\label{client__runner_8cpp_af37dd3e201ddc8f713737a9a8eaba215} 
+\mbox{\hyperlink{classblinkdb__client}{blinkdb\+\_\+client}} {\bfseries client}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Client runner for connecting to Blink\+DB and interacting with it.
+
+This file provides the main functionality for a client that connects to a Blink\+DB server. It establishes a connection to the server on a specified port, handles user input, and communicates using the RESP protocol. The client supports sending various commands and cleanly exits on receiving an exit command or SIGINT signal.
+
+Signal Handlers\+:
+\begin{DoxyItemize}
+\item SIGINT\+: Invokes the function to safely exit the client by sending a QUIT command.
+\item SIGTSTP\+: Outputs a prompt message to remind the user of the available exit command.
+\end{DoxyItemize}
+
+Key Functions\+:
+\begin{DoxyItemize}
+\item sigtstp\+Handler\+: Displays a reminder message when the SIGTSTP signal (Ctrl+Z) is received.
+\item handle\+\_\+exit\+: Sends the quit command to the Blink\+DB server and terminates the client.
+\item handle\+Sig\+Int\+: Triggered by SIGINT (Ctrl+C) and calls handle\+\_\+exit to perform a cleanup before exit.
+\item main\+: Sets up the client, registers signal handlers, and enters an interactive loop to process user input.
+\end{DoxyItemize}
+
+This client allows users to send commands to the Blink\+DB server using the RESP-\/2 protocol. The supported commands are\+:
+
+
+\begin{DoxyItemize}
+\item {\bfseries{SET key value}}\+: Store a key-\/value pair in the database.
+\item {\bfseries{GET key}}\+: Retrieve the value associated with a key.
+\item {\bfseries{DEL key}}\+: Delete a key from the database.
+\end{DoxyItemize}\hypertarget{client__runner_8cpp_autotoc_md0}{}\doxysubsubsection{\texorpdfstring{Usage Examples\+:}{Usage Examples\+:}}\label{client__runner_8cpp_autotoc_md0}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{./client\_runner}
+
+\end{DoxyCode}
+
+
+Once inside the interactive client, you can type commands as follows\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{>\ SET\ A\ 10}
+\DoxyCodeLine{+OK}
+\DoxyCodeLine{}
+\DoxyCodeLine{>\ GET\ A}
+\DoxyCodeLine{10}
+\DoxyCodeLine{>\ DEL\ A}
+\DoxyCodeLine{+OK}
+
+\end{DoxyCode}
+
+
+The client connects to the Blink\+DB server running on the configured port (default\+: {\bfseries{9001}}).\hypertarget{client__runner_8cpp_autotoc_md1}{}\doxysubsubsection{\texorpdfstring{Command Format\+:}{Command Format\+:}}\label{client__runner_8cpp_autotoc_md1}
+The client serializes commands into the {\bfseries{RESP-\/2 protocol format}} before sending them\+:
+
+
+\begin{DoxyItemize}
+\item {\bfseries{SET A 10}} → {\ttfamily \texorpdfstring{$\ast$}{*}3\textbackslash{}r\textbackslash{}n\$3\textbackslash{}r\textbackslash{}n\+SET\textbackslash{}r\textbackslash{}n\$1\textbackslash{}r\textbackslash{}nA\textbackslash{}r\textbackslash{}n\$2\textbackslash{}r\textbackslash{}n10\textbackslash{}r\textbackslash{}n}
+\item {\bfseries{GET A}} → {\ttfamily \texorpdfstring{$\ast$}{*}2\textbackslash{}r\textbackslash{}n\$3\textbackslash{}r\textbackslash{}n\+GET\textbackslash{}r\textbackslash{}n\$1\textbackslash{}r\textbackslash{}nA\textbackslash{}r\textbackslash{}n}
+\item {\bfseries{DEL A}} → {\ttfamily \texorpdfstring{$\ast$}{*}2\textbackslash{}r\textbackslash{}n\$3\textbackslash{}r\textbackslash{}n\+DEL\textbackslash{}r\textbackslash{}n\$1\textbackslash{}r\textbackslash{}nA\textbackslash{}r\textbackslash{}n}
+\end{DoxyItemize}
+
+The server responds with a result (OK, a value, or an error message (-\/ERR)).
+
+\begin{DoxyNote}{Note}
+The client communicates with the server using a custom RESP protocol format. 
+\end{DoxyNote}

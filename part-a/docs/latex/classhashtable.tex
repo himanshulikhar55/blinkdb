@@ -1,0 +1,196 @@
+\doxysection{hashtable Class Reference}
+\hypertarget{classhashtable}{}\label{classhashtable}\index{hashtable@{hashtable}}
+
+
+{\ttfamily \#include $<$part-\/a/src/lib/hashtable.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classhashtable_a5a4380930980dd21fcc5f14da473d8b2}{hashtable}} (size\+\_\+t size, const double threshold=0.\+70)
+\item 
+\mbox{\hyperlink{classhashtable_a0e8cd243f696051b91e3ac04205564c5}{hashtable}} ()
+\item 
+bool \mbox{\hyperlink{classhashtable_a4c02725230715510665452b4ee20e209}{insert}} (const std\+::string \&key, std\+::string \&value)
+\item 
+std\+::string \mbox{\hyperlink{classhashtable_a6f614816407ca67d2feccc4eb6f11cf2}{get}} (const std\+::string \&key)
+\item 
+bool \mbox{\hyperlink{classhashtable_a84de2b2fb13c58b207081fc6c239b3b5}{del}} (const std\+::string \&key)
+\item 
+void \mbox{\hyperlink{classhashtable_ac0d2bf8122887f46a668cc0516683768}{evict}} (\mbox{\hyperlink{classdiskstorage}{diskstorage}} \&ds, \mbox{\hyperlink{classsparseindex}{sparseindex}} \&sparse\+Index, \mbox{\hyperlink{classbloomfilter}{bloomfilter}} \&bloom\+Filter)
+\item 
+\Hypertarget{classhashtable_a9f5174a33d3f1726fad9d7a2bb3c66d6}\label{classhashtable_a9f5174a33d3f1726fad9d7a2bb3c66d6} 
+void {\bfseries print} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This is the custom hashtable class. It uses open addressing with double hashing to resolve collisions. The table is a vector of Entry structs. Each Entry struct has a key, a value and a boolean flag to indicate if the entry is occupied. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classhashtable_a5a4380930980dd21fcc5f14da473d8b2}\index{hashtable@{hashtable}!hashtable@{hashtable}}
+\index{hashtable@{hashtable}!hashtable@{hashtable}}
+\doxysubsubsection{\texorpdfstring{hashtable()}{hashtable()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classhashtable_a5a4380930980dd21fcc5f14da473d8b2} 
+hashtable\+::hashtable (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{size}{, }\item[{const double}]{threshold}{ = {\ttfamily 0.70}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Construct a new hashtable object
+
+
+\begin{DoxyParams}{Parameters}
+{\em size} & Size of the hashtable \\
+\hline
+{\em threshold} & Threshold for resizing the hashtable. Currently this cannot be changed \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classhashtable_a0e8cd243f696051b91e3ac04205564c5}\index{hashtable@{hashtable}!hashtable@{hashtable}}
+\index{hashtable@{hashtable}!hashtable@{hashtable}}
+\doxysubsubsection{\texorpdfstring{hashtable()}{hashtable()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classhashtable_a0e8cd243f696051b91e3ac04205564c5} 
+hashtable\+::hashtable (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Construct a new hashtable object. This is the default constructor 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classhashtable_a84de2b2fb13c58b207081fc6c239b3b5}\index{hashtable@{hashtable}!del@{del}}
+\index{del@{del}!hashtable@{hashtable}}
+\doxysubsubsection{\texorpdfstring{del()}{del()}}
+{\footnotesize\ttfamily \label{classhashtable_a84de2b2fb13c58b207081fc6c239b3b5} 
+bool hashtable\+::del (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{key}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Function to delete a key-\/value pair from the hashtable
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & The key that you want to delete \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\bfseries{true}}, if the key-\/value pair is deleted successfully 
+
+{\bfseries{false}}, otherwise 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=312pt]{classhashtable_a84de2b2fb13c58b207081fc6c239b3b5_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=258pt]{classhashtable_a84de2b2fb13c58b207081fc6c239b3b5_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classhashtable_ac0d2bf8122887f46a668cc0516683768}\index{hashtable@{hashtable}!evict@{evict}}
+\index{evict@{evict}!hashtable@{hashtable}}
+\doxysubsubsection{\texorpdfstring{evict()}{evict()}}
+{\footnotesize\ttfamily \label{classhashtable_ac0d2bf8122887f46a668cc0516683768} 
+void hashtable\+::evict (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classdiskstorage}{diskstorage}} \&}]{ds}{, }\item[{\mbox{\hyperlink{classsparseindex}{sparseindex}} \&}]{sparse\+Index}{, }\item[{\mbox{\hyperlink{classbloomfilter}{bloomfilter}} \&}]{bloom\+Filter}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Evicts all occupied entries from the hash table and offloads them to disk.
+
+This function iterates over each slot in the table and, for every occupied entry\+:
+\begin{DoxyItemize}
+\item Retrieves the key and its associated value.
+\item Writes the key-\/value pair to disk via the provided disk storage, updating the sparse index.
+\item Inserts the key into the bloom filter.
+\item Marks the entry as unoccupied.
+\end{DoxyItemize}
+
+After processing all entries, the count of occupied entries is reset to zero.
+
+
+\begin{DoxyParams}{Parameters}
+{\em ds} & Reference to a diskstorage object used to perform disk write operations. \\
+\hline
+{\em sparse\+Index} & Reference to a sparseindex object managing disk entry indexing. \\
+\hline
+{\em bloom\+Filter} & Reference to a bloomfilter object used for tracking key presence. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhashtable_ac0d2bf8122887f46a668cc0516683768_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=267pt]{classhashtable_ac0d2bf8122887f46a668cc0516683768_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classhashtable_a6f614816407ca67d2feccc4eb6f11cf2}\index{hashtable@{hashtable}!get@{get}}
+\index{get@{get}!hashtable@{hashtable}}
+\doxysubsubsection{\texorpdfstring{get()}{get()}}
+{\footnotesize\ttfamily \label{classhashtable_a6f614816407ca67d2feccc4eb6f11cf2} 
+std\+::string hashtable\+::get (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{key}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Function to get the value corresponding to a key
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & The key whose value you want to retrieve \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::string Returns the value corresponding to the key. If the key does not exist, it returns an empty string 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=311pt]{classhashtable_a6f614816407ca67d2feccc4eb6f11cf2_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=260pt]{classhashtable_a6f614816407ca67d2feccc4eb6f11cf2_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classhashtable_a4c02725230715510665452b4ee20e209}\index{hashtable@{hashtable}!insert@{insert}}
+\index{insert@{insert}!hashtable@{hashtable}}
+\doxysubsubsection{\texorpdfstring{insert()}{insert()}}
+{\footnotesize\ttfamily \label{classhashtable_a4c02725230715510665452b4ee20e209} 
+bool hashtable\+::insert (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{key}{, }\item[{std\+::string \&}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Function to insert a key-\/value pair into the hashtable
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & The key in the key-\/value pair \\
+\hline
+{\em value} & The value in the key-\/value pair \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\bfseries{true}}, when the key-\/value pair is inserted successfully 
+
+{\bfseries{false}}, otherwise 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=321pt]{classhashtable_a4c02725230715510665452b4ee20e209_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=270pt]{classhashtable_a4c02725230715510665452b4ee20e209_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{hashtable_8h}{hashtable.\+h}}\end{DoxyCompactItemize}

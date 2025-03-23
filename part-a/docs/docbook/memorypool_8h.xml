@@ -2,24 +2,35 @@
 <section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_memorypool_8h" xml:lang="en-US">
 <title>memorypool.h File Reference</title>
 <indexterm><primary>memorypool.h</primary></indexterm>
-<para>
-
-<para>Implements a memory pool for managing <link linkend="_structBlock">Block</link> objects. </para>
- 
+<programlisting linenumbering="unnumbered">#include &quot;block.h&quot;<?linebreak?>#include &quot;debug.h&quot;<?linebreak?>#include &lt;iostream&gt;<?linebreak?>#include &lt;vector&gt;<?linebreak?>#include &lt;memory&gt;<?linebreak?>#include &lt;queue&gt;<?linebreak?></programlisting>Include dependency graph for memorypool.h:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="memorypool_8h__incl.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
 </para>
-<programlisting linenumbering="unnumbered">#include &quot;block.h&quot;<?linebreak?>#include &lt;iostream&gt;<?linebreak?>#include &lt;vector&gt;<?linebreak?>#include &lt;atomic&gt;<?linebreak?>#include &lt;memory&gt;<?linebreak?>#include &lt;queue&gt;<?linebreak?></programlisting><simplesect>
+This graph shows which files directly or indirectly include this file:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="memorypool_8h__dep__incl.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
     <title>Classes    </title>
         <itemizedlist>
             <listitem><para>class <link linkend="_classmemorypool">memorypool</link></para>
-
-<para>This class is a memory pool that is used to allocate and deallocate memory blocks that will store key-value pairs. </para>
 </listitem>
         </itemizedlist>
 </simplesect>
 <section>
 <title>Detailed Description</title>
 
-<para>Implements a memory pool for managing <link linkend="_structBlock">Block</link> objects. </para>
+<para>Implements a memory pool for managing <link linkend="_structBlock">Block</link> objects.</para>
 
 <para>This file defines the memorypool class, which is responsible for allocating and deallocating memory blocks, each represented by a <link linkend="_structBlock">Block</link> object that can store key-value pairs. The memory pool maintains a fixed-size vector of Blocks and uses a queue to track available (unused) blocks.</para>
 
@@ -29,7 +40,7 @@
 
 <para><note><title>Note</title>
 
-<para>The memorypool relies on the <link linkend="_structBlock">Block</link> class declared in &quot;block.h&quot;, and it uses C++ Standard Library facilities like std::vector, std::queue, and std::atomic. </para>
+<para>The memorypool relies on the <link linkend="_structBlock">Block</link> class declared in &quot;block.h&quot;, and it uses C++ Standard Library facilities like std::vector and std::queue. </para>
 </note>
 </para>
 </section>

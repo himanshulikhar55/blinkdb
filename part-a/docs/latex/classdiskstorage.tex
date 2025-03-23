@@ -1,0 +1,103 @@
+\doxysection{diskstorage Class Reference}
+\hypertarget{classdiskstorage}{}\label{classdiskstorage}\index{diskstorage@{diskstorage}}
+
+
+{\ttfamily \#include $<$part-\/a/src/lib/diskstorage.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classdiskstorage_a0300c72eb828fd9708e9ac0fb53000d8}{diskstorage}} ()
+\item 
+bool \mbox{\hyperlink{classdiskstorage_a5cd280ffdc039f12c75f26ba325ec455}{write}} (const std\+::string \&key, const std\+::string \&value, \mbox{\hyperlink{classsparseindex}{sparseindex}} \&sparse\+Index)
+\item 
+std\+::string \mbox{\hyperlink{classdiskstorage_a2a6d4004689c9c8084f0c07d4f49b191}{read}} (const std\+::string \&key, \mbox{\hyperlink{classsparseindex}{sparseindex}} \&sparse\+Index)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This class is used to store key-\/value pairs on disk. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classdiskstorage_a0300c72eb828fd9708e9ac0fb53000d8}\index{diskstorage@{diskstorage}!diskstorage@{diskstorage}}
+\index{diskstorage@{diskstorage}!diskstorage@{diskstorage}}
+\doxysubsubsection{\texorpdfstring{diskstorage()}{diskstorage()}}
+{\footnotesize\ttfamily \label{classdiskstorage_a0300c72eb828fd9708e9ac0fb53000d8} 
+diskstorage\+::diskstorage (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Construct a new diskstorage object. It opens the file "{}data.\+log"{} in current directory in append mode. It currently stores data as key-\/value pairs in the file (space-\/separated). 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classdiskstorage_a2a6d4004689c9c8084f0c07d4f49b191}\index{diskstorage@{diskstorage}!read@{read}}
+\index{read@{read}!diskstorage@{diskstorage}}
+\doxysubsubsection{\texorpdfstring{read()}{read()}}
+{\footnotesize\ttfamily \label{classdiskstorage_a2a6d4004689c9c8084f0c07d4f49b191} 
+std\+::string diskstorage\+::read (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{key}{, }\item[{\mbox{\hyperlink{classsparseindex}{sparseindex}} \&}]{sparse\+Index}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Function to read a key-\/value pair from disk using the key. It uses the sparse index to find the offset in the file.
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & The key in the key-\/value pair \\
+\hline
+{\em sparse\+Index} & The sparse index that stores the key and offset in the file \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::string The value in the key-\/value pair 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdiskstorage_a2a6d4004689c9c8084f0c07d4f49b191_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=273pt]{classdiskstorage_a2a6d4004689c9c8084f0c07d4f49b191_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classdiskstorage_a5cd280ffdc039f12c75f26ba325ec455}\index{diskstorage@{diskstorage}!write@{write}}
+\index{write@{write}!diskstorage@{diskstorage}}
+\doxysubsubsection{\texorpdfstring{write()}{write()}}
+{\footnotesize\ttfamily \label{classdiskstorage_a5cd280ffdc039f12c75f26ba325ec455} 
+bool diskstorage\+::write (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{key}{, }\item[{const std\+::string \&}]{value}{, }\item[{\mbox{\hyperlink{classsparseindex}{sparseindex}} \&}]{sparse\+Index}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Function to write a key-\/value pair to disk. It also updates the sparse index with the key and offset in the file.
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & The key in the key-\/value pair \\
+\hline
+{\em value} & The value in the key-\/value pair \\
+\hline
+{\em sparse\+Index} & The sparse index that stores the key and offset in the file \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\bfseries{true}}, if the key-\/value pair is written successfully 
+
+{\bfseries{false}}, otherwise 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdiskstorage_a5cd280ffdc039f12c75f26ba325ec455_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdiskstorage_a5cd280ffdc039f12c75f26ba325ec455_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{diskstorage_8h}{diskstorage.\+h}}\end{DoxyCompactItemize}

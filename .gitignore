@@ -9,3 +9,6 @@ docs/latex/
 docs/xml/
 docs/rtf/
 docs/man/
+*.zip
+*.log
+obj

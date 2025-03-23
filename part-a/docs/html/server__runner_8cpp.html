@@ -144,14 +144,9 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>main</b> ()</td></tr>
 <div class="textblock"><p>Implementation of the BlinkDB server application. </p>
 <p>This file implements the main entry point for the BlinkDB server application. It initializes a TCP socket server that listens for incoming connections and handles them using an epoll-based event loop. The server is designed to handle up to MAX_CONN simultaneous connections.</p>
 <p>The server uses the <a class="el" href="classblinkdb__server.html" title="Redis-compatible server implementation.">blinkdb_server</a> class to process client requests according to the RESP (Redis Serialization Protocol) format.</p>
-<p>Dependencies:</p><ul>
-<li><a class="el" href="classblinkdb__server.html" title="Redis-compatible server implementation.">blinkdb_server</a>: Manages the server's main event loop and connection handling.</li>
-<li>blinkdb: Implements the core BlinkDB functionality for storing key-value pairs.</li>
-<li><a class="el" href="classresp__parser.html" title="A parser for RESP (Redis Serialization Protocol) commands.">resp_parser</a>: Parses the RESP protocol commands and responses. <dl class="section note"><dt>Note</dt><dd>The server listens on the port defined by PORT macro (defined elsewhere). </dd>
+<dl class="section note"><dt>Note</dt><dd>The server listens on the port defined by PORT macro (defined elsewhere). </dd>
 <dd>
 The server can be terminated by sending a SIGINT signal (Ctrl+C). </dd></dl>
-</li>
-</ul>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="a824f45aaf6041e2e0c6b91551e82a4b6" name="a824f45aaf6041e2e0c6b91551e82a4b6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a824f45aaf6041e2e0c6b91551e82a4b6">&#9670;&#160;</a></span>MAX_CONN</h2>

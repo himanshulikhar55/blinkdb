@@ -1,0 +1,38 @@
+\doxysection{sparseindex.\+h File Reference}
+\hypertarget{sparseindex_8h}{}\label{sparseindex_8h}\index{sparseindex.h@{sparseindex.h}}
+{\ttfamily \#include "{}skiplist.\+h"{}}\newline
+Include dependency graph for sparseindex.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sparseindex_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=205pt]{sparseindex_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classsparseindex}{sparseindex}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Sparse index implementation using a skip list.
+
+This file defines the sparseindex class, which encapsulates a skip list that stores key-\/offset pairs. The class leverages the efficiency of skip lists to allow fast insertion and nearest-\/neighbor offset retrieval, which is particularly useful for indexing. For N keys, the maximum level L for the skip list is recommended as\+:   \[
+ L = \log_{1/p}(N)
+ \] With p chosen as 0.\+5, the formula simplifies to\+:
+
+\[
+ L = \log_2(N)
+ \]
+
+The design aims to provide a balance between space efficiency and quick lookup times, utilizing the probabilistic balancing nature of skip lists. 

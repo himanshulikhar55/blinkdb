@@ -1,0 +1,93 @@
+\doxysection{resp\+\_\+parser Class Reference}
+\hypertarget{classresp__parser}{}\label{classresp__parser}\index{resp\_parser@{resp\_parser}}
+
+
+{\ttfamily \#include $<$part-\/a/lib/resp\+\_\+parser.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classresp__parser_a881e195aed5df64ceceb6512b0e51b01}\label{classresp__parser_a881e195aed5df64ceceb6512b0e51b01} 
+void {\bfseries get\+\_\+val} (std\+::string \&response)
+\item 
+\Hypertarget{classresp__parser_a3498e4ebf4660f06a01c8da2b60fdb5c}\label{classresp__parser_a3498e4ebf4660f06a01c8da2b60fdb5c} 
+void {\bfseries parse} (std\+::string input, \mbox{\hyperlink{structparse__op}{parse\+\_\+op}} \texorpdfstring{$\ast$}{*}pop)
+\item 
+void \mbox{\hyperlink{classresp__parser_a62311f01225a09a6cc46c4b6f66696ac}{convert\+\_\+to\+\_\+byte\+\_\+stream}} (std\+::string \&buffer\+Str, std\+::string \&ip)
+\item 
+int \mbox{\hyperlink{classresp__parser_a341fd50f9b16eab8308238fdc3fe9d7f}{parse\+\_\+command}} (std\+::string \&data, \mbox{\hyperlink{structparse__op}{parse\+\_\+op}} \texorpdfstring{$\ast$}{*}pop)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A parser for RESP (Redis Serialization Protocol) commands.
+
+The \doxylink{classresp__parser}{resp\+\_\+parser} class provides methods to parse input strings formatted in RESP, extract commands and their arguments, and convert standard strings into RESP-\/formatted byte streams. It supports parsing of commands such as GET, SET, DEL, and PRINT. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classresp__parser_a62311f01225a09a6cc46c4b6f66696ac}\index{resp\_parser@{resp\_parser}!convert\_to\_byte\_stream@{convert\_to\_byte\_stream}}
+\index{convert\_to\_byte\_stream@{convert\_to\_byte\_stream}!resp\_parser@{resp\_parser}}
+\doxysubsubsection{\texorpdfstring{convert\_to\_byte\_stream()}{convert\_to\_byte\_stream()}}
+{\footnotesize\ttfamily \label{classresp__parser_a62311f01225a09a6cc46c4b6f66696ac} 
+void resp\+\_\+parser\+::convert\+\_\+to\+\_\+byte\+\_\+stream (\begin{DoxyParamCaption}\item[{std\+::string \&}]{buffer\+Str}{, }\item[{std\+::string \&}]{ip}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Converts an IP string to a byte stream.
+
+This function constructs a byte stream from the given IP string by first creating a prefix with the \textquotesingle{}\$\textquotesingle{} character followed by the length of the IP string, then a carriage return and line feed (CRLF), the IP string itself, and finally another CRLF.
+
+
+\begin{DoxyParams}{Parameters}
+{\em buffer\+Str} & Reference to a string where the resulting byte stream will be stored. \\
+\hline
+{\em ip} & The IP address string to be converted. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=320pt]{classresp__parser_a62311f01225a09a6cc46c4b6f66696ac_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classresp__parser_a341fd50f9b16eab8308238fdc3fe9d7f}\index{resp\_parser@{resp\_parser}!parse\_command@{parse\_command}}
+\index{parse\_command@{parse\_command}!resp\_parser@{resp\_parser}}
+\doxysubsubsection{\texorpdfstring{parse\_command()}{parse\_command()}}
+{\footnotesize\ttfamily \label{classresp__parser_a341fd50f9b16eab8308238fdc3fe9d7f} 
+int resp\+\_\+parser\+::parse\+\_\+command (\begin{DoxyParamCaption}\item[{std\+::string \&}]{data}{, }\item[{\mbox{\hyperlink{structparse__op}{parse\+\_\+op}} \texorpdfstring{$\ast$}{*}}]{pop}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Parses a RESP-\/encoded command string and extracts its components.
+
+This function processes an input RESP string (data) and attempts to extract the command, key, and optionally the value from it. The parsed components are stored in the provided \doxylink{structparse__op}{parse\+\_\+op} structure (pop).
+
+The function handles several special cases\+:
+\begin{DoxyItemize}
+\item If the input is "{}print"{}, it sets the command in pop to "{}print"{} and returns success.
+\item If the input contains "{}\+CONFIG"{}, it sets the command to "{}\+CONFIG"{} and returns success.
+\item If the input matches the predefined quit command, the command is set to "{}quit"{}.
+\end{DoxyItemize}
+
+For a general RESP command, the function\+:
+\begin{DoxyItemize}
+\item Verifies that the input starts with \textquotesingle{}\texorpdfstring{$\ast$}{*}\textquotesingle{} and is of sufficient length.
+\item Extracts the number of arguments.
+\item Validates and retrieves the command string using helper functions, ensuring it is one of the supported commands ("{}set"{}, "{}get"{}, "{}del"{}).
+\item Extracts the key from the input.
+\item If the command is "{}set"{}, it also extracts the associated value.
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & A reference to the RESP-\/encoded command string to be parsed. \\
+\hline
+{\em pop} & A pointer to a \doxylink{structparse__op}{parse\+\_\+op} structure where the parsed command, key, and value (if applicable) will be stored.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int Returns 1 if the command is successfully parsed; otherwise, returns 0 to indicate a parsing failure (due to incorrect formatting or unsupported number of arguments). 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{resp__parser_8h}{resp\+\_\+parser.\+h}}\end{DoxyCompactItemize}

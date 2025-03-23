@@ -1,6 +1,6 @@
 /**
  * @file client_runner.cpp
- * @brief Client runner for connecting to BlinkDB and interacting with it.
+ *Client runner for connecting to BlinkDB and interacting with it.
  *
  * This file provides the main functionality for a client that connects to a BlinkDB server.
  * It establishes a connection to the server on a specified port, handles user input, and
@@ -62,13 +62,14 @@
 #include <termios.h>
 #include "lib/blinkdb_client.h"
 #include "lib/resp_parser.h"
+#include "lib/blinkdb.h"
 #include <limits>
 
 #define PORT 9001
 
 std::string response = "\nPlease enter 'exit' to exit the client\n";
 const std::string quit = "*1\r\n$4\r\nQUIT\r\n";
-blinkdb_client client = blinkdb_client("127.0.0.1", PORT);
+blinkdb_client client;
 
 void sigtstpHandler(int signum) {
     std::cout << response;
@@ -78,49 +79,94 @@ void handle_exit(){
     std::string response = client.send_request(quit);
     if(response == "+OK\r\n"){
         std::cout << "Exiting the client\n";
+        std::remove("data.log");
         exit(0);
     }
     std::cin.clear();
-    std:: cout << "Failed to exit the client\n";
+    std:: cout << "Failed to send server that the client is exiting. Memory leak possible. Exiting abrubtly...\n";
+    exit(-1);
 }
 
 void handleSigInt(int signum){
     handle_exit();
 }
 
+std::string to_lower(std::string s){
+    std::string temp = "";
+    for(char c : s){
+        temp += tolower(c);
+    }
+    return temp;
+}
 
-
-int main() {
-    if (!client.connect_to_server()) {
-        std::cerr << "Failed to connect to server.\n";
-        return 1;
+int main(int argc, char* argv[]) {
+    int mode = 0;
+    if(argc != 2){
+        std::cout << "Usage: " << argv[0] << " <mode> (can be one of 1 or 2)" << std::endl;
+        return -1;
+    }
+    try{
+        mode = std::stoi(argv[1]);
+    } catch(std::exception &e){
+        std::cout << e.what() << std::endl;
+    }
+    if(mode < 1 || mode > 2){
+        std::cout << "Invalid mode. It can either be:\n1-> Interact with blinkdb locally.\n2-> Interact with it over the server\n";
+        return -1;
     }
 
     resp_parser parser;
     parse_op ip;
     signal(SIGINT, handleSigInt);
 
-    signal(SIGTSTP, sigtstpHandler);  // Handle Ctrl+Z
-
-    while (true) {
-        std::cout << "User> ";
-        std::string input;
-        getline(std::cin, input);
-        if(input.empty()){
-            std::cout << "Please enter a valid com!~~mand\n";
-            continue;
+    signal(SIGTSTP, sigtstpHandler);  /* Handle Ctrl+Z */
+    if(mode == 2){
+        client = blinkdb_client("127.0.0.1", PORT);
+        if (!client.connect_to_server()) {
+            std::cerr << "Failed to connect to server.\n";
+            return 1;
         }
-        if(input == "exit"){
-            handle_exit();
-        }
-        parser.parse(input, &ip);  // Fill ip->resp_str
-        if (ip.resp_str.empty())
-            continue;
+        while (true) {
+            std::cout << "User> ";
+            std::string input;
+            getline(std::cin, input);
+            if(input.empty()){
+                std::cout << "Please enter a valid command\n";
+                continue;
+            }
+            if(input == "exit"){
+                handle_exit();
+            }
+            parser.parse(input, &ip, mode);  /* Fill ip->resp_str */
+            if (ip.resp_str.empty())
+                continue;
 
-        std::string response = client.send_request(ip.resp_str);
-        if(input.substr(0,3) == "GET")
-            parser.get_val(response);
-        std::cout << response << std::endl;
+            std::string response = client.send_request(ip.resp_str);
+            if(to_lower(input.substr(0,3)) == "get")
+                parser.get_val(response);
+            std::cout << response << std::endl;
+        }
+    } else {
+        blinkdb db(10000);
+        while (true) {
+            std::cout << "User> ";
+            std::string input;
+            getline(std::cin, input);
+            if(input.empty()){
+                std::cout << "Please enter a valid command\n";
+                continue;
+            }
+            if(input == "exit"){
+                std::cout << "Exiting...\n" << std::endl;
+                return 1;
+            }
+            parser.parse(input, &ip, mode);  /* Fill ip with appropriate values */
+            if (ip.cmd.empty()){
+                std::cout << "Invalid command. Please have a look at documentation for supported command types and their usage.\n";
+                continue;
+            }
+            client.execute(db, &ip);
+        }
     }
 
     return 0;

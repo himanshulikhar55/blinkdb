@@ -112,25 +112,19 @@ $(function(){initNavTree('classbloomfilter.html',''); initResizable(true); });
 </div><!--header-->
 <div class="contents">
 
-<p>Bloom filter class documentation.  
- <a href="#details">More...</a></p>
-
-<p><code>#include &lt;lib/bloomfilter.h&gt;</code></p>
+<p><code>#include &lt;part-a/src/lib/bloomfilter.h&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a07695cd9beb90cbb31a9f953a0d5698e" id="r_a07695cd9beb90cbb31a9f953a0d5698e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a07695cd9beb90cbb31a9f953a0d5698e">bloomfilter</a> (size_t num_bits, size_t num_hashes)</td></tr>
-<tr class="memdesc:a07695cd9beb90cbb31a9f953a0d5698e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new bloomfilter object.  <br /></td></tr>
 <tr class="separator:a07695cd9beb90cbb31a9f953a0d5698e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac810ef21aa0925b28e291c2a4168af2a" id="r_ac810ef21aa0925b28e291c2a4168af2a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac810ef21aa0925b28e291c2a4168af2a">insert</a> (const std::string &amp;key)</td></tr>
-<tr class="memdesc:ac810ef21aa0925b28e291c2a4168af2a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to insert a key into the bloomfilter. This function is only called when the key-value pair is being flushed to the disk.  <br /></td></tr>
 <tr class="separator:ac810ef21aa0925b28e291c2a4168af2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a36048739c6dcf5534c328f2bfc2bcf6f" id="r_a36048739c6dcf5534c328f2bfc2bcf6f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a36048739c6dcf5534c328f2bfc2bcf6f">possibly_contains</a> (const std::string &amp;key) const</td></tr>
-<tr class="memdesc:a36048739c6dcf5534c328f2bfc2bcf6f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to check if a key is possibly present in the bloomfilter.  <br /></td></tr>
 <tr class="separator:a36048739c6dcf5534c328f2bfc2bcf6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Bloom filter class documentation. </p>
+<div class="textblock"><p>Bloom filter class documentation.</p>
 <p>This Bloom filter is used to quickly test whether a key is possibly present in the dataset. It provides a space-efficient probabilistic method with a configurable false positive rate. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a07695cd9beb90cbb31a9f953a0d5698e" name="a07695cd9beb90cbb31a9f953a0d5698e"></a>
@@ -159,8 +153,7 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>Construct a new bloomfilter object. </p>
+<p>Construct a new bloomfilter object</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">num_bits</td><td>Size of the bit array (in bits) </td></tr>
@@ -194,14 +187,25 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>Function to insert a key into the bloomfilter. This function is only called when the key-value pair is being flushed to the disk. </p>
+<p>Function to insert a key into the bloomfilter. This function is only called when the key-value pair is being flushed to the disk</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">key</td><td>The key to insert </td></tr>
   </table>
   </dd>
 </dl>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classbloomfilter_ac810ef21aa0925b28e291c2a4168af2a_icgraph.png" border="0" usemap="#aclassbloomfilter_ac810ef21aa0925b28e291c2a4168af2a_icgraph" alt=""/></div>
+<map name="aclassbloomfilter_ac810ef21aa0925b28e291c2a4168af2a_icgraph" id="aclassbloomfilter_ac810ef21aa0925b28e291c2a4168af2a_icgraph">
+<area shape="rect" title=" " alt="" coords="303,5,424,32"/>
+<area shape="rect" href="classhashtable.html#ac0d2bf8122887f46a668cc0516683768" title=" " alt="" coords="142,5,255,32"/>
+<area shape="poly" title=" " alt="" coords="288,21,256,21,256,16,288,16"/>
+<area shape="rect" href="classblinkdb.html#a38ee1f661825653379d471d7ad6f522f" title=" " alt="" coords="5,5,94,32"/>
+<area shape="poly" title=" " alt="" coords="126,21,94,21,94,16,126,16"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -227,17 +231,26 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>Function to check if a key is possibly present in the bloomfilter. </p>
+<p>Function to check if a key is possibly present in the bloomfilter</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">key</td><td>The key to check </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>true If the key is possibly present </dd>
+<dl class="section return"><dt>Returns</dt><dd><b>true</b> If the key is possibly present </dd>
 <dd>
-false Otherwise </dd></dl>
+<b>false</b> Otherwise </dd></dl>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classbloomfilter_a36048739c6dcf5534c328f2bfc2bcf6f_icgraph.png" border="0" usemap="#aclassbloomfilter_a36048739c6dcf5534c328f2bfc2bcf6f_icgraph" alt=""/></div>
+<map name="aclassbloomfilter_a36048739c6dcf5534c328f2bfc2bcf6f_icgraph" id="aclassbloomfilter_a36048739c6dcf5534c328f2bfc2bcf6f_icgraph">
+<area shape="rect" title=" " alt="" coords="142,5,279,48"/>
+<area shape="rect" href="classblinkdb.html#a75e197842560cea323699bb1c5981a3d" title=" " alt="" coords="5,13,94,40"/>
+<area shape="poly" title=" " alt="" coords="126,29,94,29,94,24,126,24"/>
+</map>
+</div>
 
 </div>
 </div>

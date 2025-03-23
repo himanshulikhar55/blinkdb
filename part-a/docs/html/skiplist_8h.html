@@ -110,15 +110,51 @@ $(function(){initNavTree('skiplist_8h.html',''); initResizable(true); });
   <div class="headertitle"><div class="title">skiplist.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-
-<p>Implementation of a concurrent skiplist data structure.  
-<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;iostream&gt;</code><br />
-<code>#include &lt;atomic&gt;</code><br />
 <code>#include &lt;vector&gt;</code><br />
 <code>#include &lt;random&gt;</code><br />
 <code>#include &lt;limits&gt;</code><br />
 <code>#include &lt;string&gt;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Include dependency graph for skiplist.h:</div>
+<div class="dyncontent">
+<div class="center"><img src="skiplist_8h__incl.png" border="0" usemap="#askiplist_8h" alt=""/></div>
+<map name="askiplist_8h" id="askiplist_8h">
+<area shape="rect" title=" " alt="" coords="178,5,251,32"/>
+<area shape="rect" title=" " alt="" coords="5,80,77,107"/>
+<area shape="poly" title=" " alt="" coords="185,35,86,76,84,71,183,30"/>
+<area shape="rect" title=" " alt="" coords="100,80,158,107"/>
+<area shape="poly" title=" " alt="" coords="201,35,157,72,153,68,198,31"/>
+<area shape="rect" title=" " alt="" coords="182,80,246,107"/>
+<area shape="poly" title=" " alt="" coords="217,33,217,64,212,64,212,33"/>
+<area shape="rect" title=" " alt="" coords="271,80,323,107"/>
+<area shape="poly" title=" " alt="" coords="230,31,273,68,270,72,227,35"/>
+<area shape="rect" title=" " alt="" coords="348,80,401,107"/>
+<area shape="poly" title=" " alt="" coords="243,30,335,71,333,76,241,35"/>
+</map>
+</div>
+</div><div class="textblock"><div class="dynheader">
+This graph shows which files directly or indirectly include this file:</div>
+<div class="dyncontent">
+<div class="center"><img src="skiplist_8h__dep__incl.png" border="0" usemap="#askiplist_8hdep" alt=""/></div>
+<map name="askiplist_8hdep" id="askiplist_8hdep">
+<area shape="rect" title=" " alt="" coords="71,5,144,32"/>
+<area shape="rect" href="sparseindex_8h.html" title=" " alt="" coords="56,80,159,107"/>
+<area shape="poly" title=" " alt="" coords="110,48,110,80,105,80,105,48"/>
+<area shape="rect" href="diskstorage_8h.html" title=" " alt="" coords="15,155,115,181"/>
+<area shape="poly" title=" " alt="" coords="95,122,75,156,70,153,90,119"/>
+<area shape="rect" href="hashtable_8h.html" title=" " alt="" coords="64,229,152,256"/>
+<area shape="poly" title=" " alt="" coords="121,121,128,150,129,182,115,229,110,228,124,181,123,150,116,122"/>
+<area shape="poly" title=" " alt="" coords="82,193,103,228,98,230,78,196"/>
+<area shape="rect" href="blinkdb_8h.html" title=" " alt="" coords="71,304,144,331"/>
+<area shape="poly" title=" " alt="" coords="110,272,110,304,105,304,105,272"/>
+<area shape="rect" href="blinkdb__client_8h.html" title=" " alt="" coords="5,379,117,405"/>
+<area shape="poly" title=" " alt="" coords="94,345,71,380,67,377,89,342"/>
+<area shape="rect" href="client__runner_8cpp.html" title=" " alt="" coords="48,453,167,480"/>
+<area shape="poly" title=" " alt="" coords="122,344,132,378,132,399,129,420,116,454,111,452,124,419,127,399,126,379,117,346"/>
+<area shape="poly" title=" " alt="" coords="80,417,102,451,97,454,75,420"/>
+</map>
+</div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
@@ -126,22 +162,22 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Implementation of a concurrent skiplist data structure. </p>
-<p>This file provides the implementation of a skiplist data structure using C++. The skiplist is designed to support efficient insertion and search operations, leveraging probabilistic balancing and atomic operations for thread safety.</p>
+<div class="textblock"><p>Implementation of a concurrent skiplist data structure.</p>
+<p>This file provides the implementation of a skiplist data structure using C++. The skiplist is designed to support efficient insertion and search operations, leveraging probabilistic balancing</p>
 <p>The data structure consists of:</p><ul>
-<li>A nested Node struct, representing each node in the skiplist, which holds a key, a stream offset, and a vector of atomic pointers to subsequent nodes at different levels.</li>
+<li>A nested Node struct, representing each node in the skiplist, which holds a key, a stream offset, and a vector of pointers to subsequent nodes at different levels.</li>
 <li>Member functions for inserting nodes and retrieving the nearest offset for a given key.</li>
 </ul>
 <p>The design uses a probabilistic method for promoting nodes to higher levels based on a user-defined probability, ensuring balanced performance across operations.</p>
+<p></p>
 <p>Typical usage example: </p><div class="fragment"><div class="line"><a class="code hl_class" href="classskiplist.html">skiplist</a> sl;</div>
 <div class="line">sl.<a class="code hl_function" href="classskiplist.html#aa193aa8a10a77cbf6bddca202b5c253a">insert</a>(<span class="stringliteral">&quot;example_key&quot;</span>, 42);</div>
 <div class="line">std::streampos pos = sl.<a class="code hl_function" href="classskiplist.html#aa1d31fd7a91a970ce89658791be4872e">get_nearest_offset</a>(<span class="stringliteral">&quot;another_key&quot;</span>);</div>
-<div class="ttc" id="aclassskiplist_html"><div class="ttname"><a href="classskiplist.html">skiplist</a></div><div class="ttdef"><b>Definition</b> skiplist.h:38</div></div>
-<div class="ttc" id="aclassskiplist_html_aa193aa8a10a77cbf6bddca202b5c253a"><div class="ttname"><a href="classskiplist.html#aa193aa8a10a77cbf6bddca202b5c253a">skiplist::insert</a></div><div class="ttdeci">void insert(const std::string &amp;key, std::streampos offset)</div><div class="ttdoc">Inserts a new node with the given key and stream offset into the skip list.</div><div class="ttdef"><b>Definition</b> skiplist.h:96</div></div>
-<div class="ttc" id="aclassskiplist_html_aa1d31fd7a91a970ce89658791be4872e"><div class="ttname"><a href="classskiplist.html#aa1d31fd7a91a970ce89658791be4872e">skiplist::get_nearest_offset</a></div><div class="ttdeci">std::streampos get_nearest_offset(const std::string &amp;key)</div><div class="ttdoc">Retrieves the stream offset of the node immediately preceding the given key.</div><div class="ttdef"><b>Definition</b> skiplist.h:133</div></div>
-</div><!-- fragment --><dl class="section note"><dt>Note</dt><dd>This implementation showcases concurrency control using std::atomic and assumes that the environment supports C++11 or later.</dd></dl>
-<dl class="section author"><dt>Author</dt><dd></dd></dl>
-<dl class="section date"><dt>Date</dt><dd></dd></dl>
+<div class="ttc" id="aclassskiplist_html"><div class="ttname"><a href="classskiplist.html">skiplist</a></div><div class="ttdef"><b>Definition</b> skiplist.h:37</div></div>
+<div class="ttc" id="aclassskiplist_html_aa193aa8a10a77cbf6bddca202b5c253a"><div class="ttname"><a href="classskiplist.html#aa193aa8a10a77cbf6bddca202b5c253a">skiplist::insert</a></div><div class="ttdeci">void insert(const std::string &amp;key, std::streampos offset)</div><div class="ttdef"><b>Definition</b> skiplist.h:105</div></div>
+<div class="ttc" id="aclassskiplist_html_aa1d31fd7a91a970ce89658791be4872e"><div class="ttname"><a href="classskiplist.html#aa1d31fd7a91a970ce89658791be4872e">skiplist::get_nearest_offset</a></div><div class="ttdeci">std::streampos get_nearest_offset(const std::string &amp;key)</div><div class="ttdef"><b>Definition</b> skiplist.h:141</div></div>
+</div><!-- fragment --><dl class="section author"><dt>Author</dt><dd>Himanshu Likhar </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>23/03/2025 </dd></dl>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

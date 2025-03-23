@@ -115,13 +115,10 @@ $(function(){initNavTree('classskiplist.html',''); initResizable(true); });
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a9751bd1be5d110bb38e5cb4a42c172c7" id="r_a9751bd1be5d110bb38e5cb4a42c172c7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9751bd1be5d110bb38e5cb4a42c172c7">skiplist</a> (int maxLvl=16, float prob=0.5)</td></tr>
-<tr class="memdesc:a9751bd1be5d110bb38e5cb4a42c172c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a new skiplist object.  <br /></td></tr>
 <tr class="separator:a9751bd1be5d110bb38e5cb4a42c172c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa193aa8a10a77cbf6bddca202b5c253a" id="r_aa193aa8a10a77cbf6bddca202b5c253a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa193aa8a10a77cbf6bddca202b5c253a">insert</a> (const std::string &amp;key, std::streampos offset)</td></tr>
-<tr class="memdesc:aa193aa8a10a77cbf6bddca202b5c253a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inserts a new node with the given key and stream offset into the skip list.  <br /></td></tr>
 <tr class="separator:aa193aa8a10a77cbf6bddca202b5c253a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa1d31fd7a91a970ce89658791be4872e" id="r_aa1d31fd7a91a970ce89658791be4872e"><td class="memItemLeft" align="right" valign="top">std::streampos&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa1d31fd7a91a970ce89658791be4872e">get_nearest_offset</a> (const std::string &amp;key)</td></tr>
-<tr class="memdesc:aa1d31fd7a91a970ce89658791be4872e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the stream offset of the node immediately preceding the given key.  <br /></td></tr>
 <tr class="separator:aa1d31fd7a91a970ce89658791be4872e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
@@ -151,8 +148,7 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>Constructs a new skiplist object. </p>
+<p>Constructs a new skiplist object.</p>
 <p>Initializes the skiplist with a specified maximum level and probability. A header node is created with an empty key and a placeholder value (-1) using the provided maximum level.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -187,8 +183,7 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>Retrieves the stream offset of the node immediately preceding the given key. </p>
+<p>Retrieves the stream offset of the node immediately preceding the given key.</p>
 <p>This function traverses the skip list from the top-most level down to the lowest level, moving forward at each level until it finds the last node whose key is less than the specified key. The function then returns the offset of this node within the stream.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -198,6 +193,20 @@ Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>std::streampos The offset of the node with the largest key that is less than the input key.</dd></dl>
 <dl class="section note"><dt>Note</dt><dd>If no node with a key less than the provided key exists, the offset of the head node is returned. </dd></dl>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classskiplist_aa1d31fd7a91a970ce89658791be4872e_icgraph.png" border="0" usemap="#aclassskiplist_aa1d31fd7a91a970ce89658791be4872e_icgraph" alt=""/></div>
+<map name="aclassskiplist_aa1d31fd7a91a970ce89658791be4872e_icgraph" id="aclassskiplist_aa1d31fd7a91a970ce89658791be4872e_icgraph">
+<area shape="rect" title=" " alt="" coords="516,5,655,48"/>
+<area shape="rect" href="classsparseindex.html#ad4ffd3a38bc56212d400d82b3e320f54" title=" " alt="" coords="311,13,468,40"/>
+<area shape="poly" title=" " alt="" coords="501,29,469,29,469,24,501,24"/>
+<area shape="rect" href="classdiskstorage.html#a2a6d4004689c9c8084f0c07d4f49b191" title=" " alt="" coords="142,13,263,40"/>
+<area shape="poly" title=" " alt="" coords="295,29,263,29,263,24,295,24"/>
+<area shape="rect" href="classblinkdb.html#a75e197842560cea323699bb1c5981a3d" title=" " alt="" coords="5,13,94,40"/>
+<area shape="poly" title=" " alt="" coords="126,29,94,29,94,24,126,24"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -227,9 +236,8 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>Inserts a new node with the given key and stream offset into the skip list. </p>
-<p>This function navigates the skip list from the highest level down to level 0 to find the appropriate insertion point for the new node. It maintains arrays of predecessor and successor nodes for each level during the traversal. A new random level is determined for the node, and the node is inserted into each level using atomic operations to ensure thread safety.</p>
+<p>Inserts a new node with the given key and stream offset into the skip list.</p>
+<p>This function navigates the skip list from the highest level down to level 0 to find the appropriate insertion point for the new node. It maintains arrays of predecessor and successor nodes for each level during the traversal. A new random level is determined for the node, and the node is inserted into each level.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">key</td><td>The key associated with the new node; used for maintaining order within the list. </td></tr>
@@ -237,6 +245,22 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classskiplist_aa193aa8a10a77cbf6bddca202b5c253a_icgraph.png" border="0" usemap="#aclassskiplist_aa193aa8a10a77cbf6bddca202b5c253a_icgraph" alt=""/></div>
+<map name="aclassskiplist_aa193aa8a10a77cbf6bddca202b5c253a_icgraph" id="aclassskiplist_aa193aa8a10a77cbf6bddca202b5c253a_icgraph">
+<area shape="rect" title=" " alt="" coords="655,5,757,32"/>
+<area shape="rect" href="classsparseindex.html#ac5a9142436d081224cafb964cad4becb" title=" " alt="" coords="475,5,607,32"/>
+<area shape="poly" title=" " alt="" coords="639,21,607,21,607,16,639,16"/>
+<area shape="rect" href="classdiskstorage.html#a5cd280ffdc039f12c75f26ba325ec455" title=" " alt="" coords="303,5,427,32"/>
+<area shape="poly" title=" " alt="" coords="460,21,428,21,428,16,460,16"/>
+<area shape="rect" href="classhashtable.html#ac0d2bf8122887f46a668cc0516683768" title=" " alt="" coords="142,5,255,32"/>
+<area shape="poly" title=" " alt="" coords="288,21,255,21,255,16,288,16"/>
+<area shape="rect" href="classblinkdb.html#a38ee1f661825653379d471d7ad6f522f" title=" " alt="" coords="5,5,94,32"/>
+<area shape="poly" title=" " alt="" coords="126,21,94,21,94,16,126,16"/>
+</map>
+</div>
 
 </div>
 </div>

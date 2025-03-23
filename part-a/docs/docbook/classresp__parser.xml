@@ -3,43 +3,25 @@
 <title>resp_parser Class Reference</title>
 <indexterm><primary>resp_parser</primary></indexterm>
 <para>
-
-<para>A parser for RESP (Redis Serialization Protocol) commands. </para>
- 
-</para>
-<para>
-<computeroutput>#include &lt;lib/resp_parser.h&gt;</computeroutput>
+<computeroutput>#include &lt;part-a/src/lib/resp_parser.h&gt;</computeroutput>
 </para>
 <simplesect>
     <title>Public Member Functions    </title>
         <itemizedlist>
             <listitem><para><anchor xml:id="_classresp__parser_1a881e195aed5df64ceceb6512b0e51b01"/>void <emphasis role="strong">get_val</emphasis> (std::string &amp;response)</para>
 </listitem>
-            <listitem><para><anchor xml:id="_classresp__parser_1a3498e4ebf4660f06a01c8da2b60fdb5c"/>void <emphasis role="strong">parse</emphasis> (std::string input, <link linkend="_structparse__op">parse_op</link> *pop)</para>
+            <listitem><para><anchor xml:id="_classresp__parser_1a0333c0d032a0ec8c0b4451dc2113d23a"/>void <emphasis role="strong">parse</emphasis> (std::string input, <link linkend="_structparse__op">parse_op</link> *pop, int mode)</para>
 </listitem>
             <listitem><para>void <link linkend="_classresp__parser_1a62311f01225a09a6cc46c4b6f66696ac">convert_to_byte_stream</link> (std::string &amp;bufferStr, std::string &amp;ip)</para>
-
-<para>Converts an IP string to a byte stream. </para>
 </listitem>
             <listitem><para>int <link linkend="_classresp__parser_1a341fd50f9b16eab8308238fdc3fe9d7f">parse_command</link> (std::string &amp;data, <link linkend="_structparse__op">parse_op</link> *pop)</para>
-
-<para>Parses a RESP-encoded command string and extracts its components. </para>
-</listitem>
-        </itemizedlist>
-</simplesect>
-<simplesect>
-    <title>Public Attributes    </title>
-        <itemizedlist>
-            <listitem><para><anchor xml:id="_classresp__parser_1a64636245c2a64d74220ceafda3ad7d0d"/><link linkend="_structparse__op">parse_op</link> * <emphasis role="strong">op</emphasis></para>
 </listitem>
         </itemizedlist>
 </simplesect>
 <section>
 <title>Detailed Description</title>
 
-<para>A parser for RESP (Redis Serialization Protocol) commands. </para>
-
-
+<para>A parser for RESP (Redis Serialization Protocol) commands.</para>
 
 <para>The <link linkend="_classresp__parser">resp_parser</link> class provides methods to parse input strings formatted in RESP, extract commands and their arguments, and convert standard strings into RESP-formatted byte streams. It supports parsing of commands such as GET, SET, DEL, and PRINT. </para>
 </section>
@@ -49,10 +31,8 @@
     <title>convert_to_byte_stream()</title>
 <indexterm><primary>convert_to_byte_stream</primary><secondary>resp_parser</secondary></indexterm>
 <indexterm><primary>resp_parser</primary><secondary>convert_to_byte_stream</secondary></indexterm>
-<para><computeroutput>void resp_parser::convert_to_byte_stream (std::string &amp; bufferStr, std::string &amp; ip)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
-
-<para>Converts an IP string to a byte stream. </para>
-</para>
+<para><computeroutput>void resp_parser::convert_to_byte_stream (std::string &amp; bufferStr, std::string &amp; ip)<computeroutput>[inline]</computeroutput></computeroutput></para>
+<para>Converts an IP string to a byte stream.</para>
 
 <para>This function constructs a byte stream from the given IP string by first creating a prefix with the &apos;$&apos; character followed by the length of the IP string, then a carriage return and line feed (CRLF), the IP string itself, and finally another CRLF.</para>
 
@@ -87,10 +67,8 @@ Parameters</title>
     <title>parse_command()</title>
 <indexterm><primary>parse_command</primary><secondary>resp_parser</secondary></indexterm>
 <indexterm><primary>resp_parser</primary><secondary>parse_command</secondary></indexterm>
-<para><computeroutput>int resp_parser::parse_command (std::string &amp; data, <link linkend="_structparse__op">parse_op</link> * pop)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
-
-<para>Parses a RESP-encoded command string and extracts its components. </para>
-</para>
+<para><computeroutput>int resp_parser::parse_command (std::string &amp; data, <link linkend="_structparse__op">parse_op</link> * pop)<computeroutput>[inline]</computeroutput></computeroutput></para>
+<para>Parses a RESP-encoded command string and extracts its components.</para>
 
 <para>This function processes an input RESP string (data) and attempts to extract the command, key, and optionally the value from it. The parsed components are stored in the provided <link linkend="_structparse__op">parse_op</link> structure (pop).</para>
 

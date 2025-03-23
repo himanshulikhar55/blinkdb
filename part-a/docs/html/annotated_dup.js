@@ -2,7 +2,6 @@ var annotated_dup =
 [
     [ "blinkdb", "classblinkdb.html", "classblinkdb" ],
     [ "blinkdb_client", "classblinkdb__client.html", "classblinkdb__client" ],
-    [ "blinkdb_server", "classblinkdb__server.html", "classblinkdb__server" ],
     [ "Block", "structBlock.html", "structBlock" ],
     [ "bloomfilter", "classbloomfilter.html", "classbloomfilter" ],
     [ "diskstorage", "classdiskstorage.html", "classdiskstorage" ],

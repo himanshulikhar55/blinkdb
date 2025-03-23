@@ -112,27 +112,47 @@ $(function(){initNavTree('classdiskstorage.html',''); initResizable(true); });
 </div><!--header-->
 <div class="contents">
 
-<p>This class is used to store key-value pairs on disk.  
- <a href="#details">More...</a></p>
-
-<p><code>#include &lt;lib/diskstorage.h&gt;</code></p>
+<p><code>#include &lt;part-a/src/lib/diskstorage.h&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a0300c72eb828fd9708e9ac0fb53000d8" id="r_a0300c72eb828fd9708e9ac0fb53000d8"><td class="memItemLeft" align="right" valign="top"><a id="a0300c72eb828fd9708e9ac0fb53000d8" name="a0300c72eb828fd9708e9ac0fb53000d8"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>diskstorage</b> ()</td></tr>
-<tr class="memdesc:a0300c72eb828fd9708e9ac0fb53000d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new diskstorage object. It opens the file "data.log" in current directory in append mode. It currently stores data as key-value pairs in the file (space-separated). <br /></td></tr>
+<tr class="memitem:a0300c72eb828fd9708e9ac0fb53000d8" id="r_a0300c72eb828fd9708e9ac0fb53000d8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0300c72eb828fd9708e9ac0fb53000d8">diskstorage</a> ()</td></tr>
 <tr class="separator:a0300c72eb828fd9708e9ac0fb53000d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5cd280ffdc039f12c75f26ba325ec455" id="r_a5cd280ffdc039f12c75f26ba325ec455"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5cd280ffdc039f12c75f26ba325ec455">write</a> (const std::string &amp;key, const std::string &amp;value, <a class="el" href="classsparseindex.html">sparseindex</a> &amp;sparseIndex)</td></tr>
-<tr class="memdesc:a5cd280ffdc039f12c75f26ba325ec455"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to write a key-value pair to disk. It also updates the sparse index with the key and offset in the file.  <br /></td></tr>
 <tr class="separator:a5cd280ffdc039f12c75f26ba325ec455"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2a6d4004689c9c8084f0c07d4f49b191" id="r_a2a6d4004689c9c8084f0c07d4f49b191"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2a6d4004689c9c8084f0c07d4f49b191">read</a> (const std::string &amp;key, <a class="el" href="classsparseindex.html">sparseindex</a> &amp;sparseIndex)</td></tr>
-<tr class="memdesc:a2a6d4004689c9c8084f0c07d4f49b191"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to read a key-value pair from disk using the key. It uses the sparse index to find the offset in the file.  <br /></td></tr>
 <tr class="separator:a2a6d4004689c9c8084f0c07d4f49b191"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This class is used to store key-value pairs on disk. </p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a0300c72eb828fd9708e9ac0fb53000d8" name="a0300c72eb828fd9708e9ac0fb53000d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0300c72eb828fd9708e9ac0fb53000d8">&#9670;&#160;</a></span>diskstorage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">diskstorage::diskstorage </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Construct a new diskstorage object. It opens the file "data.log" in current directory in append mode. It currently stores data as key-value pairs in the file (space-separated). </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
 <a id="a2a6d4004689c9c8084f0c07d4f49b191" name="a2a6d4004689c9c8084f0c07d4f49b191"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2a6d4004689c9c8084f0c07d4f49b191">&#9670;&#160;</a></span>read()</h2>
 
@@ -159,8 +179,7 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>Function to read a key-value pair from disk using the key. It uses the sparse index to find the offset in the file. </p>
+<p>Function to read a key-value pair from disk using the key. It uses the sparse index to find the offset in the file.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">key</td><td>The key in the key-value pair </td></tr>
@@ -169,6 +188,28 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>std::string The value in the key-value pair </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classdiskstorage_a2a6d4004689c9c8084f0c07d4f49b191_cgraph.png" border="0" usemap="#aclassdiskstorage_a2a6d4004689c9c8084f0c07d4f49b191_cgraph" alt=""/></div>
+<map name="aclassdiskstorage_a2a6d4004689c9c8084f0c07d4f49b191_cgraph" id="aclassdiskstorage_a2a6d4004689c9c8084f0c07d4f49b191_cgraph">
+<area shape="rect" title=" " alt="" coords="5,13,127,40"/>
+<area shape="rect" href="classsparseindex.html#ad4ffd3a38bc56212d400d82b3e320f54" title=" " alt="" coords="175,13,332,40"/>
+<area shape="poly" title=" " alt="" coords="127,24,159,24,159,29,127,29"/>
+<area shape="rect" href="classskiplist.html#aa1d31fd7a91a970ce89658791be4872e" title=" " alt="" coords="380,5,518,48"/>
+<area shape="poly" title=" " alt="" coords="332,24,365,24,365,29,332,29"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classdiskstorage_a2a6d4004689c9c8084f0c07d4f49b191_icgraph.png" border="0" usemap="#aclassdiskstorage_a2a6d4004689c9c8084f0c07d4f49b191_icgraph" alt=""/></div>
+<map name="aclassdiskstorage_a2a6d4004689c9c8084f0c07d4f49b191_icgraph" id="aclassdiskstorage_a2a6d4004689c9c8084f0c07d4f49b191_icgraph">
+<area shape="rect" title=" " alt="" coords="142,5,263,32"/>
+<area shape="rect" href="classblinkdb.html#a75e197842560cea323699bb1c5981a3d" title=" " alt="" coords="5,5,94,32"/>
+<area shape="poly" title=" " alt="" coords="126,21,94,21,94,16,126,16"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -203,8 +244,7 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>Function to write a key-value pair to disk. It also updates the sparse index with the key and offset in the file. </p>
+<p>Function to write a key-value pair to disk. It also updates the sparse index with the key and offset in the file.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">key</td><td>The key in the key-value pair </td></tr>
@@ -213,9 +253,33 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>true, if the key-value pair is written successfully </dd>
+<dl class="section return"><dt>Returns</dt><dd><b>true</b>, if the key-value pair is written successfully </dd>
 <dd>
-false, otherwise </dd></dl>
+<b>false</b>, otherwise </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classdiskstorage_a5cd280ffdc039f12c75f26ba325ec455_cgraph.png" border="0" usemap="#aclassdiskstorage_a5cd280ffdc039f12c75f26ba325ec455_cgraph" alt=""/></div>
+<map name="aclassdiskstorage_a5cd280ffdc039f12c75f26ba325ec455_cgraph" id="aclassdiskstorage_a5cd280ffdc039f12c75f26ba325ec455_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,130,32"/>
+<area shape="rect" href="classsparseindex.html#ac5a9142436d081224cafb964cad4becb" title=" " alt="" coords="178,5,309,32"/>
+<area shape="poly" title=" " alt="" coords="130,16,162,16,162,21,130,21"/>
+<area shape="rect" href="classskiplist.html#aa193aa8a10a77cbf6bddca202b5c253a" title=" " alt="" coords="357,5,459,32"/>
+<area shape="poly" title=" " alt="" coords="309,16,341,16,341,21,309,21"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classdiskstorage_a5cd280ffdc039f12c75f26ba325ec455_icgraph.png" border="0" usemap="#aclassdiskstorage_a5cd280ffdc039f12c75f26ba325ec455_icgraph" alt=""/></div>
+<map name="aclassdiskstorage_a5cd280ffdc039f12c75f26ba325ec455_icgraph" id="aclassdiskstorage_a5cd280ffdc039f12c75f26ba325ec455_icgraph">
+<area shape="rect" title=" " alt="" coords="303,5,427,32"/>
+<area shape="rect" href="classhashtable.html#ac0d2bf8122887f46a668cc0516683768" title=" " alt="" coords="142,5,255,32"/>
+<area shape="poly" title=" " alt="" coords="288,21,255,21,255,16,288,16"/>
+<area shape="rect" href="classblinkdb.html#a38ee1f661825653379d471d7ad6f522f" title=" " alt="" coords="5,5,94,32"/>
+<area shape="poly" title=" " alt="" coords="126,21,94,21,94,16,126,16"/>
+</map>
+</div>
 
 </div>
 </div>

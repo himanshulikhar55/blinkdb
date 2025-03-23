@@ -2,35 +2,46 @@
 <section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_sparseindex_8h" xml:lang="en-US">
 <title>sparseindex.h File Reference</title>
 <indexterm><primary>sparseindex.h</primary></indexterm>
-<para>
-
-<para>Sparse index implementation using a skip list. </para>
- 
+<programlisting linenumbering="unnumbered">#include &quot;skiplist.h&quot;<?linebreak?></programlisting>Include dependency graph for sparseindex.h:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="sparseindex_8h__incl.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
 </para>
-<programlisting linenumbering="unnumbered">#include &quot;skiplist.h&quot;<?linebreak?></programlisting><simplesect>
+This graph shows which files directly or indirectly include this file:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="sparseindex_8h__dep__incl.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
     <title>Classes    </title>
         <itemizedlist>
             <listitem><para>class <link linkend="_classsparseindex">sparseindex</link></para>
-
-<para>This class is a sparse-index that uses a skip list to store key-offset pairs. </para>
 </listitem>
         </itemizedlist>
 </simplesect>
 <section>
 <title>Detailed Description</title>
 
-<para>Sparse index implementation using a skip list. </para>
+<para>Sparse index implementation using a skip list.</para>
 
 <para>This file defines the sparseindex class, which encapsulates a skip list that stores key-offset pairs. The class leverages the efficiency of skip lists to allow fast insertion and nearest-neighbor offset retrieval, which is particularly useful for indexing. For N keys, the maximum level L for the skip list is recommended as:           <mediaobject>
             <imageobject>
-                <imagedata align="center" valign="middle" scalefit="0" fileref="form_6.png"/>
+                <imagedata align="center" valign="middle" scalefit="0" fileref="form_10.png"/>
             </imageobject>
         </mediaobject>
  With p chosen as 0.5, the formula simplifies to:</para>
 
 <para>        <mediaobject>
             <imageobject>
-                <imagedata align="center" valign="middle" scalefit="0" fileref="form_7.png"/>
+                <imagedata align="center" valign="middle" scalefit="0" fileref="form_11.png"/>
             </imageobject>
         </mediaobject>
 </para>

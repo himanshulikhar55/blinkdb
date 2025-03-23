@@ -1,0 +1,21 @@
+<map id="diskstorage.h" name="diskstorage.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="114,5,213,32"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,229,77,256"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="159,34,57,217,53,215,154,31"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="283,80,348,107"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="191,30,276,70,274,75,189,35"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="101,229,154,256"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="162,33,148,81,137,153,132,214,126,214,131,152,142,79,157,31"/>
+<area shape="rect" id="Node000005" href="$sparseindex_8h.html" title=" " alt="" coords="156,80,259,107"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="174,31,194,65,190,68,169,34"/>
+<area shape="rect" id="Node000006" href="$skiplist_8h.html" title=" " alt="" coords="171,155,244,181"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="210,107,210,139,205,139,205,107"/>
+<area shape="poly" id="edge6_Node000006_Node000002" title=" " alt="" coords="180,184,85,225,83,220,178,179"/>
+<area shape="poly" id="edge10_Node000006_Node000004" title=" " alt="" coords="196,184,154,221,151,217,192,180"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="179,229,236,256"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="210,182,210,214,205,214,205,182"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="261,229,325,256"/>
+<area shape="poly" id="edge8_Node000006_Node000008" title=" " alt="" coords="224,180,269,217,265,221,221,184"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="350,229,402,256"/>
+<area shape="poly" id="edge9_Node000006_Node000009" title=" " alt="" coords="238,179,336,221,334,226,236,184"/>
+</map>

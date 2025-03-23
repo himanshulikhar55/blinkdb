@@ -3,12 +3,7 @@
 <title>parse_op Struct Reference</title>
 <indexterm><primary>parse_op</primary></indexterm>
 <para>
-
-<para>Represents a parsed command operation. </para>
- 
-</para>
-<para>
-<computeroutput>#include &lt;lib/resp_parser.h&gt;</computeroutput>
+<computeroutput>#include &lt;part-a/src/lib/resp_parser.h&gt;</computeroutput>
 </para>
 <simplesect>
     <title>Public Attributes    </title>
@@ -26,9 +21,7 @@
 <section>
 <title>Detailed Description</title>
 
-<para>Represents a parsed command operation. </para>
-
-
+<para>Represents a parsed command operation.</para>
 
 <para>This structure holds the details of a command parsed from an input string. It encapsulates the command, key, and value parts of the operation, as well as a generated response string in RESP format (used in communication protocols).</para>
 

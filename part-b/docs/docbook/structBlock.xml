@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_structBlock" xml:lang="en-US">
+<title>Block Struct Reference</title>
+<indexterm><primary>Block</primary></indexterm>
+<para>
+<computeroutput>#include &lt;part-a/lib/block.h&gt;</computeroutput>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_structBlock_1a0ea72a3eb59e554553361052ba685fc2"/><emphasis role="strong">Block</emphasis> (<link linkend="_structBlock">Block</link> &amp;&amp;other) noexcept</para>
+</listitem>
+            <listitem><para><anchor xml:id="_structBlock_1ad4beffac191c95134d0077eba050874e"/><link linkend="_structBlock">Block</link> &amp; <emphasis role="strong">operator=</emphasis> (<link linkend="_structBlock">Block</link> &amp;&amp;other) noexcept</para>
+</listitem>
+            <listitem><para><anchor xml:id="_structBlock_1ab9157e4f3718be0fbf96fc7688aca03f"/><emphasis role="strong">Block</emphasis> (const <link linkend="_structBlock">Block</link> &amp;other)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_structBlock_1a888b88c7a7a80512f859193f7924e49a"/><link linkend="_structBlock">Block</link> &amp; <emphasis role="strong">operator=</emphasis> (const <link linkend="_structBlock">Block</link> &amp;other) noexcept</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para>bool <link linkend="_structBlock_1a225ba060d553f8fa475ea477c2bb5134">used</link></para>
+</listitem>
+            <listitem><para>std::string <link linkend="_structBlock_1ae9be57efa71d5c61092282c4032d4b6b">value</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>This is the actual &quot;Block&quot; that will store the key and value pair. This block will be dynamically allocated and deallocated during &quot;set&quot; and &quot;delete&quot; operations in blinkdb. </para>
+</section>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_structBlock_1a225ba060d553f8fa475ea477c2bb5134"/><section>
+    <title>used</title>
+<indexterm><primary>used</primary><secondary>Block</secondary></indexterm>
+<indexterm><primary>Block</primary><secondary>used</secondary></indexterm>
+<para><computeroutput>bool Block::used</computeroutput></para>
+<para>Tells if the block is used or not </para>
+</section>
+<anchor xml:id="_structBlock_1ae9be57efa71d5c61092282c4032d4b6b"/><section>
+    <title>value</title>
+<indexterm><primary>value</primary><secondary>Block</secondary></indexterm>
+<indexterm><primary>Block</primary><secondary>value</secondary></indexterm>
+<para><computeroutput>std::string Block::value</computeroutput></para>
+<para>The value in the key-value pair </para>
+</section>
+<para>
+The documentation for this struct was generated from the following file:</para>
+block.h</section>
+</section>

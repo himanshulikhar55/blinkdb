@@ -3,36 +3,23 @@
 <title>bloomfilter Class Reference</title>
 <indexterm><primary>bloomfilter</primary></indexterm>
 <para>
-
-<para>Bloom filter class documentation. </para>
- 
-</para>
-<para>
-<computeroutput>#include &lt;lib/bloomfilter.h&gt;</computeroutput>
+<computeroutput>#include &lt;part-a/src/lib/bloomfilter.h&gt;</computeroutput>
 </para>
 <simplesect>
     <title>Public Member Functions    </title>
         <itemizedlist>
             <listitem><para><link linkend="_classbloomfilter_1a07695cd9beb90cbb31a9f953a0d5698e">bloomfilter</link> (size_t num_bits, size_t num_hashes)</para>
-
-<para>Construct a new bloomfilter object. </para>
 </listitem>
             <listitem><para>void <link linkend="_classbloomfilter_1ac810ef21aa0925b28e291c2a4168af2a">insert</link> (const std::string &amp;key)</para>
-
-<para>Function to insert a key into the bloomfilter. This function is only called when the key-value pair is being flushed to the disk. </para>
 </listitem>
             <listitem><para>bool <link linkend="_classbloomfilter_1a36048739c6dcf5534c328f2bfc2bcf6f">possibly_contains</link> (const std::string &amp;key) const</para>
-
-<para>Function to check if a key is possibly present in the bloomfilter. </para>
 </listitem>
         </itemizedlist>
 </simplesect>
 <section>
 <title>Detailed Description</title>
 
-<para>Bloom filter class documentation. </para>
-
-
+<para>Bloom filter class documentation.</para>
 
 <para>This Bloom filter is used to quickly test whether a key is possibly present in the dataset. It provides a space-efficient probabilistic method with a configurable false positive rate. </para>
 </section>
@@ -42,10 +29,8 @@
     <title>bloomfilter()</title>
 <indexterm><primary>bloomfilter</primary><secondary>bloomfilter</secondary></indexterm>
 <indexterm><primary>bloomfilter</primary><secondary>bloomfilter</secondary></indexterm>
-<para><computeroutput>bloomfilter::bloomfilter (size_t num_bits, size_t num_hashes)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
-
-<para>Construct a new bloomfilter object. </para>
-</para>
+<para><computeroutput>bloomfilter::bloomfilter (size_t num_bits, size_t num_hashes)<computeroutput>[inline]</computeroutput></computeroutput></para>
+<para>Construct a new bloomfilter object</para>
 
 <para>
                 <formalpara>
@@ -81,10 +66,8 @@ Parameters</title>
     <title>insert()</title>
 <indexterm><primary>insert</primary><secondary>bloomfilter</secondary></indexterm>
 <indexterm><primary>bloomfilter</primary><secondary>insert</secondary></indexterm>
-<para><computeroutput>void bloomfilter::insert (const std::string &amp; key)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
-
-<para>Function to insert a key into the bloomfilter. This function is only called when the key-value pair is being flushed to the disk. </para>
-</para>
+<para><computeroutput>void bloomfilter::insert (const std::string &amp; key)<computeroutput>[inline]</computeroutput></computeroutput></para>
+<para>Function to insert a key into the bloomfilter. This function is only called when the key-value pair is being flushed to the disk</para>
 
 <para>
                 <formalpara>
@@ -107,15 +90,22 @@ Parameters</title>
                     </para>
                 </formalpara>
                 </para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="classbloomfilter_ac810ef21aa0925b28e291c2a4168af2a_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
 </section>
 <anchor xml:id="_classbloomfilter_1a36048739c6dcf5534c328f2bfc2bcf6f"/><section>
     <title>possibly_contains()</title>
 <indexterm><primary>possibly_contains</primary><secondary>bloomfilter</secondary></indexterm>
 <indexterm><primary>bloomfilter</primary><secondary>possibly_contains</secondary></indexterm>
-<para><computeroutput>bool bloomfilter::possibly_contains (const std::string &amp; key) const<computeroutput>[inline]</computeroutput></computeroutput></para><para>
-
-<para>Function to check if a key is possibly present in the bloomfilter. </para>
-</para>
+<para><computeroutput>bool bloomfilter::possibly_contains (const std::string &amp; key) const<computeroutput>[inline]</computeroutput></computeroutput></para>
+<para>Function to check if a key is possibly present in the bloomfilter</para>
 
 <para>
                 <formalpara>
@@ -139,10 +129,19 @@ Parameters</title>
                 </formalpara>
                 <formalpara><title>Returns</title>
 
-<para>true If the key is possibly present </para>
+<para><emphasis role="bold">true</emphasis> If the key is possibly present </para>
 
-<para>false Otherwise </para>
+<para><emphasis role="bold">false</emphasis> Otherwise </para>
 </formalpara>
+</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="classbloomfilter_a36048739c6dcf5534c328f2bfc2bcf6f_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
 </para>
 </section>
 <para>

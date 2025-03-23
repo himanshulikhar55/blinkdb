@@ -2,12 +2,16 @@
 <section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_client__runner_8cpp" xml:lang="en-US">
 <title>client_runner.cpp File Reference</title>
 <indexterm><primary>client_runner.cpp</primary></indexterm>
-<para>
-
-<para>Client runner for connecting to BlinkDB and interacting with it. </para>
- 
+<programlisting linenumbering="unnumbered">#include &lt;iostream&gt;<?linebreak?>#include &lt;string&gt;<?linebreak?>#include &lt;csignal&gt;<?linebreak?>#include &lt;unistd.h&gt;<?linebreak?>#include &lt;termios.h&gt;<?linebreak?>#include &quot;lib/blinkdb_client.h&quot;<?linebreak?>#include &quot;lib/resp_parser.h&quot;<?linebreak?>#include &quot;lib/blinkdb.h&quot;<?linebreak?>#include &lt;limits&gt;<?linebreak?></programlisting>Include dependency graph for client_runner.cpp:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="client__runner_8cpp__incl.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
 </para>
-<programlisting linenumbering="unnumbered">#include &lt;iostream&gt;<?linebreak?>#include &lt;string&gt;<?linebreak?>#include &lt;csignal&gt;<?linebreak?>#include &lt;unistd.h&gt;<?linebreak?>#include &lt;termios.h&gt;<?linebreak?>#include &quot;lib/blinkdb_client.h&quot;<?linebreak?>#include &quot;lib/resp_parser.h&quot;<?linebreak?>#include &lt;limits&gt;<?linebreak?></programlisting><simplesect>
+<simplesect>
     <title>Macros    </title>
         <itemizedlist>
             <listitem><para><anchor xml:id="_client__runner_8cpp_1a614217d263be1fb1a5f76e2ff7be19a2"/>#define <emphasis role="strong">PORT</emphasis>&#160;&#160;&#160;9001</para>
@@ -23,7 +27,9 @@
 </listitem>
             <listitem><para><anchor xml:id="_client__runner_8cpp_1a5b3210a63df1873c78a11917bce26ff1"/>void <emphasis role="strong">handleSigInt</emphasis> (int signum)</para>
 </listitem>
-            <listitem><para><anchor xml:id="_client__runner_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4"/>int <emphasis role="strong">main</emphasis> ()</para>
+            <listitem><para><anchor xml:id="_client__runner_8cpp_1a36bcfdb895e212dfff1f23bd747a2722"/>std::string <emphasis role="strong">to_lower</emphasis> (std::string s)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_client__runner_8cpp_1a0ddf1224851353fc92bfbff6f499fa97"/>int <emphasis role="strong">main</emphasis> (int argc, char *argv[])</para>
 </listitem>
         </itemizedlist>
 </simplesect>
@@ -34,14 +40,14 @@
 </listitem>
             <listitem><para><anchor xml:id="_client__runner_8cpp_1a8fcd9b89b4e75da59ed5f2e83dce4c8b"/>const std::string <emphasis role="strong">quit</emphasis> = &quot;*1\r\n$4\r\nQUIT\r\n&quot;</para>
 </listitem>
-            <listitem><para><anchor xml:id="_client__runner_8cpp_1af37dd3e201ddc8f713737a9a8eaba215"/><link linkend="_classblinkdb__client">blinkdb_client</link> <emphasis role="strong">client</emphasis> = <link linkend="_classblinkdb__client">blinkdb_client</link>(&quot;127.0.0.1&quot;, PORT)</para>
+            <listitem><para><anchor xml:id="_client__runner_8cpp_1af37dd3e201ddc8f713737a9a8eaba215"/><link linkend="_classblinkdb__client">blinkdb_client</link> <emphasis role="strong">client</emphasis></para>
 </listitem>
         </itemizedlist>
 </simplesect>
 <section>
 <title>Detailed Description</title>
 
-<para>Client runner for connecting to BlinkDB and interacting with it. </para>
+<para>Client runner for connecting to BlinkDB and interacting with it.</para>
 
 <para>This file provides the main functionality for a client that connects to a BlinkDB server. It establishes a connection to the server on a specified port, handles user input, and communicates using the RESP protocol. The client supports sending various commands and cleanly exits on receiving an exit command or SIGINT signal.</para>
 
@@ -108,15 +114,7 @@
 </listitem></itemizedlist>
 </para>
 
-<para>The server responds with a result (OK, a value, or an error message).</para>
-
-<para>Dependencies:<itemizedlist>
-<listitem>
-<para><link linkend="_classblinkdb__client">blinkdb_client</link>: Manages the connection and communication with the BlinkDB server.</para>
-</listitem><listitem>
-<para><link linkend="_classresp__parser">resp_parser</link>: Parses the RESP protocol commands and responses.</para>
-</listitem></itemizedlist>
-</para>
+<para>The server responds with a result (OK, a value, or an error message (-ERR)).</para>
 
 <para><note><title>Note</title>
 

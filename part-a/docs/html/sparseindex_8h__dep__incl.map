@@ -1,0 +1,15 @@
+<map id="sparseindex.h" name="sparseindex.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="56,5,159,32"/>
+<area shape="rect" id="Node000002" href="$diskstorage_8h.html" title=" " alt="" coords="15,80,115,107"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="95,47,75,81,70,78,90,44"/>
+<area shape="rect" id="Node000003" href="$hashtable_8h.html" title=" " alt="" coords="64,155,152,181"/>
+<area shape="poly" id="edge7_Node000001_Node000003" title=" " alt="" coords="121,46,128,75,129,107,115,155,110,153,124,106,123,76,116,47"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="82,119,103,153,98,156,78,122"/>
+<area shape="rect" id="Node000004" href="$blinkdb_8h.html" title=" " alt="" coords="71,229,144,256"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="110,197,110,229,105,229,105,197"/>
+<area shape="rect" id="Node000005" href="$blinkdb__client_8h.html" title=" " alt="" coords="5,304,117,331"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="94,271,71,305,67,302,89,268"/>
+<area shape="rect" id="Node000006" href="$client__runner_8cpp.html" title=" " alt="" coords="48,379,167,405"/>
+<area shape="poly" id="edge6_Node000004_Node000006" title=" " alt="" coords="122,270,132,304,132,325,129,346,116,379,111,378,124,344,127,324,126,304,117,271"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="80,342,102,377,97,380,75,345"/>
+</map>

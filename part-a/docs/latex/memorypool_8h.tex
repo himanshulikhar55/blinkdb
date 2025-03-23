@@ -1,0 +1,41 @@
+\doxysection{memorypool.\+h File Reference}
+\hypertarget{memorypool_8h}{}\label{memorypool_8h}\index{memorypool.h@{memorypool.h}}
+{\ttfamily \#include "{}block.\+h"{}}\newline
+{\ttfamily \#include "{}debug.\+h"{}}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$memory$>$}\newline
+{\ttfamily \#include $<$queue$>$}\newline
+Include dependency graph for memorypool.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=324pt]{memorypool_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=202pt]{memorypool_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classmemorypool}{memorypool}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implements a memory pool for managing \doxylink{structBlock}{Block} objects.
+
+This file defines the memorypool class, which is responsible for allocating and deallocating memory blocks, each represented by a \doxylink{structBlock}{Block} object that can store key-\/value pairs. The memory pool maintains a fixed-\/size vector of Blocks and uses a queue to track available (unused) blocks.
+
+The allocation function assigns a key-\/value pair to the first available block and marks it as used, ensuring efficient memory usage. The deallocation function returns a block to the pool for future reuse.
+
+This design is intended for scenarios where managing a collection of key-\/value pairs in memory is crucial for performance and resource utilization.
+
+\begin{DoxyNote}{Note}
+The memorypool relies on the \doxylink{structBlock}{Block} class declared in "{}block.\+h"{}, and it uses C++ Standard Library facilities like std\+::vector and std\+::queue. 
+\end{DoxyNote}

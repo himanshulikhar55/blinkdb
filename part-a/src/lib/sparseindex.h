@@ -1,7 +1,7 @@
 
 /**
  * @file sparseindex.h
- * @brief Sparse index implementation using a skip list.
+ *Sparse index implementation using a skip list.
  *
  * This file defines the sparseindex class, which encapsulates a skip list that stores key-offset pairs.
  * The class leverages the efficiency of skip lists to allow fast insertion and nearest-neighbor offset retrieval,
@@ -22,7 +22,7 @@
 #include "skiplist.h"
 
 /**
- * @brief This class is a sparse-index that uses a skip list to store key-offset pairs.
+ *This class is a sparse-index that uses a skip list to store key-offset pairs.
  * 
  */
 
@@ -32,13 +32,13 @@ class sparseindex {
     
     public:
         /**
-         * @brief Construct a new sparseindex object
+         *Construct a new sparseindex object
          * 
          */
         sparseindex() : index(20, 0.5) {}
         
         /**
-         * @brief Function to insert a key-offset pair into the skiplist
+         *Function to insert a key-offset pair into the skiplist
          * 
          * @param key The key in the key-offset pair
          * @param offset The offset in the key-offset pair
@@ -48,7 +48,7 @@ class sparseindex {
         }
         
         /**
-         * @brief Function to get the nearest offset for a given key
+         *Function to get the nearest offset for a given key
          * 
          * @param key The key for which the offset is to be found
          * @return std::streampos The offset for the given key

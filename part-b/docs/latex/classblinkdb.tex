@@ -1,0 +1,142 @@
+\doxysection{blinkdb Class Reference}
+\hypertarget{classblinkdb}{}\label{classblinkdb}\index{blinkdb@{blinkdb}}
+
+
+{\ttfamily \#include $<$part-\/a/lib/blinkdb.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classblinkdb_ad20d4882572f1b492ab041b45f238a0c}{blinkdb}} (size\+\_\+t size)
+\item 
+bool \mbox{\hyperlink{classblinkdb_a38ee1f661825653379d471d7ad6f522f}{set}} (std\+::string key, std\+::string value)
+\item 
+std\+::string \mbox{\hyperlink{classblinkdb_a75e197842560cea323699bb1c5981a3d}{get}} (std\+::string key)
+\item 
+bool \mbox{\hyperlink{classblinkdb_af46ef218f2206bf3d934f49cbbd69a7c}{del}} (std\+::string key)
+\item 
+\Hypertarget{classblinkdb_a440e606ce8a75956a7d2bb1f1bbb1575}\label{classblinkdb_a440e606ce8a75956a7d2bb1f1bbb1575} 
+void {\bfseries print} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This is the blinkdb class. It is a key-\/value store that lets user to set, get and delete key-\/value pairs It uses a hashtable to store the key-\/value pairs. The hashtable uses open addressing with double hashing to resolve collisions. If the in-\/memory hashtable is full, the key-\/value pairs are stored in a file on disk. When the user exits, all the data is erased from the disk and from the memory (obviously). 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classblinkdb_ad20d4882572f1b492ab041b45f238a0c}\index{blinkdb@{blinkdb}!blinkdb@{blinkdb}}
+\index{blinkdb@{blinkdb}!blinkdb@{blinkdb}}
+\doxysubsubsection{\texorpdfstring{blinkdb()}{blinkdb()}}
+{\footnotesize\ttfamily \label{classblinkdb_ad20d4882572f1b492ab041b45f238a0c} 
+blinkdb\+::blinkdb (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{size}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Construct a new blinkdb object 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classblinkdb_af46ef218f2206bf3d934f49cbbd69a7c}\index{blinkdb@{blinkdb}!del@{del}}
+\index{del@{del}!blinkdb@{blinkdb}}
+\doxysubsubsection{\texorpdfstring{del()}{del()}}
+{\footnotesize\ttfamily \label{classblinkdb_af46ef218f2206bf3d934f49cbbd69a7c} 
+bool blinkdb\+::del (\begin{DoxyParamCaption}\item[{std\+::string}]{key}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Function to delete a key-\/value pair
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & The key that you want to delete \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true when the key-\/value pair is deleted successfully 
+
+false otherwise 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classblinkdb_af46ef218f2206bf3d934f49cbbd69a7c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=280pt]{classblinkdb_af46ef218f2206bf3d934f49cbbd69a7c_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classblinkdb_a75e197842560cea323699bb1c5981a3d}\index{blinkdb@{blinkdb}!get@{get}}
+\index{get@{get}!blinkdb@{blinkdb}}
+\doxysubsubsection{\texorpdfstring{get()}{get()}}
+{\footnotesize\ttfamily \label{classblinkdb_a75e197842560cea323699bb1c5981a3d} 
+std\+::string blinkdb\+::get (\begin{DoxyParamCaption}\item[{std\+::string}]{key}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Function to get value correspoding to a key
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & The key whose value you want to retrieve \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::string 
+\end{DoxyReturn}
+Need to go to the disk If still not found, then the key does not exist and we return an empty stringHere is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classblinkdb_a75e197842560cea323699bb1c5981a3d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=281pt]{classblinkdb_a75e197842560cea323699bb1c5981a3d_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classblinkdb_a38ee1f661825653379d471d7ad6f522f}\index{blinkdb@{blinkdb}!set@{set}}
+\index{set@{set}!blinkdb@{blinkdb}}
+\doxysubsubsection{\texorpdfstring{set()}{set()}}
+{\footnotesize\ttfamily \label{classblinkdb_a38ee1f661825653379d471d7ad6f522f} 
+bool blinkdb\+::set (\begin{DoxyParamCaption}\item[{std\+::string}]{key}{, }\item[{std\+::string}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Function to set a key-\/value pair
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & The key in the key-\/value pair \\
+\hline
+{\em value} & The value in the key-\/value pair \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true when the key-\/value pair is set successfully 
+
+false otherwise 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classblinkdb_a38ee1f661825653379d471d7ad6f522f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=281pt]{classblinkdb_a38ee1f661825653379d471d7ad6f522f_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{blinkdb_8h}{blinkdb.\+h}}\end{DoxyCompactItemize}

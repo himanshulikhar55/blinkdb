@@ -3,27 +3,16 @@
 <title>diskstorage Class Reference</title>
 <indexterm><primary>diskstorage</primary></indexterm>
 <para>
-
-<para>This class is used to store key-value pairs on disk. </para>
- 
-</para>
-<para>
-<computeroutput>#include &lt;lib/diskstorage.h&gt;</computeroutput>
+<computeroutput>#include &lt;part-a/src/lib/diskstorage.h&gt;</computeroutput>
 </para>
 <simplesect>
     <title>Public Member Functions    </title>
         <itemizedlist>
-            <listitem><para><anchor xml:id="_classdiskstorage_1a0300c72eb828fd9708e9ac0fb53000d8"/><emphasis role="strong">diskstorage</emphasis> ()</para>
-
-<para>Construct a new diskstorage object. It opens the file &quot;data.log&quot; in current directory in append mode. It currently stores data as key-value pairs in the file (space-separated). </para>
+            <listitem><para><link linkend="_classdiskstorage_1a0300c72eb828fd9708e9ac0fb53000d8">diskstorage</link> ()</para>
 </listitem>
             <listitem><para>bool <link linkend="_classdiskstorage_1a5cd280ffdc039f12c75f26ba325ec455">write</link> (const std::string &amp;key, const std::string &amp;value, <link linkend="_classsparseindex">sparseindex</link> &amp;sparseIndex)</para>
-
-<para>Function to write a key-value pair to disk. It also updates the sparse index with the key and offset in the file. </para>
 </listitem>
             <listitem><para>std::string <link linkend="_classdiskstorage_1a2a6d4004689c9c8084f0c07d4f49b191">read</link> (const std::string &amp;key, <link linkend="_classsparseindex">sparseindex</link> &amp;sparseIndex)</para>
-
-<para>Function to read a key-value pair from disk using the key. It uses the sparse index to find the offset in the file. </para>
 </listitem>
         </itemizedlist>
 </simplesect>
@@ -33,15 +22,23 @@
 <para>This class is used to store key-value pairs on disk. </para>
 </section>
 <section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_classdiskstorage_1a0300c72eb828fd9708e9ac0fb53000d8"/><section>
+    <title>diskstorage()</title>
+<indexterm><primary>diskstorage</primary><secondary>diskstorage</secondary></indexterm>
+<indexterm><primary>diskstorage</primary><secondary>diskstorage</secondary></indexterm>
+<para><computeroutput>diskstorage::diskstorage ( )<computeroutput>[inline]</computeroutput></computeroutput></para>
+<para>Construct a new diskstorage object. It opens the file &quot;data.log&quot; in current directory in append mode. It currently stores data as key-value pairs in the file (space-separated). </para>
+</section>
+</section>
+<section>
 <title>Member Function Documentation</title>
 <anchor xml:id="_classdiskstorage_1a2a6d4004689c9c8084f0c07d4f49b191"/><section>
     <title>read()</title>
 <indexterm><primary>read</primary><secondary>diskstorage</secondary></indexterm>
 <indexterm><primary>diskstorage</primary><secondary>read</secondary></indexterm>
-<para><computeroutput>std::string diskstorage::read (const std::string &amp; key, <link linkend="_classsparseindex">sparseindex</link> &amp; sparseIndex)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
-
-<para>Function to read a key-value pair from disk using the key. It uses the sparse index to find the offset in the file. </para>
-</para>
+<para><computeroutput>std::string diskstorage::read (const std::string &amp; key, <link linkend="_classsparseindex">sparseindex</link> &amp; sparseIndex)<computeroutput>[inline]</computeroutput></computeroutput></para>
+<para>Function to read a key-value pair from disk using the key. It uses the sparse index to find the offset in the file.</para>
 
 <para>
                 <formalpara>
@@ -73,15 +70,31 @@ Parameters</title>
 <para>std::string The value in the key-value pair </para>
 </formalpara>
 </para>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="classdiskstorage_a2a6d4004689c9c8084f0c07d4f49b191_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="classdiskstorage_a2a6d4004689c9c8084f0c07d4f49b191_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
 </section>
 <anchor xml:id="_classdiskstorage_1a5cd280ffdc039f12c75f26ba325ec455"/><section>
     <title>write()</title>
 <indexterm><primary>write</primary><secondary>diskstorage</secondary></indexterm>
 <indexterm><primary>diskstorage</primary><secondary>write</secondary></indexterm>
-<para><computeroutput>bool diskstorage::write (const std::string &amp; key, const std::string &amp; value, <link linkend="_classsparseindex">sparseindex</link> &amp; sparseIndex)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
-
-<para>Function to write a key-value pair to disk. It also updates the sparse index with the key and offset in the file. </para>
-</para>
+<para><computeroutput>bool diskstorage::write (const std::string &amp; key, const std::string &amp; value, <link linkend="_classsparseindex">sparseindex</link> &amp; sparseIndex)<computeroutput>[inline]</computeroutput></computeroutput></para>
+<para>Function to write a key-value pair to disk. It also updates the sparse index with the key and offset in the file.</para>
 
 <para>
                 <formalpara>
@@ -115,10 +128,28 @@ Parameters</title>
                 </formalpara>
                 <formalpara><title>Returns</title>
 
-<para>true, if the key-value pair is written successfully </para>
+<para><emphasis role="bold">true</emphasis>, if the key-value pair is written successfully </para>
 
-<para>false, otherwise </para>
+<para><emphasis role="bold">false</emphasis>, otherwise </para>
 </formalpara>
+</para>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="classdiskstorage_a5cd280ffdc039f12c75f26ba325ec455_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="classdiskstorage_a5cd280ffdc039f12c75f26ba325ec455_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
 </para>
 </section>
 <para>

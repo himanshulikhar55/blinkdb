@@ -106,43 +106,120 @@ $(function(){initNavTree('hashtable_8h.html',''); initResizable(true); });
 
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a>  </div>
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#define-members">Macros</a>  </div>
   <div class="headertitle"><div class="title">hashtable.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-
-<p>Custom Hashtable implementation using open addressing with double hashing.  
-<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="memorypool_8h.html">memorypool.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="diskstorage_8h.html">diskstorage.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="bloomfilter_8h.html">bloomfilter.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="sparseindex_8h.html">sparseindex.h</a>&quot;</code><br />
+<code>#include &quot;debug.h&quot;</code><br />
 <code>#include &lt;vector&gt;</code><br />
 <code>#include &lt;string&gt;</code><br />
 <code>#include &lt;thread&gt;</code><br />
 <code>#include &lt;chrono&gt;</code><br />
-<code>#include &lt;atomic&gt;</code><br />
+<code>#include &lt;utility&gt;</code><br />
+<code>#include &lt;fstream&gt;</code><br />
+<code>#include &lt;sstream&gt;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Include dependency graph for hashtable.h:</div>
+<div class="dyncontent">
+<div class="center"><img src="hashtable_8h__incl.png" border="0" usemap="#ahashtable_8h" alt=""/></div>
+<map name="ahashtable_8h" id="ahashtable_8h">
+<area shape="rect" title=" " alt="" coords="539,5,628,32"/>
+<area shape="rect" href="memorypool_8h.html" title=" " alt="" coords="74,229,178,256"/>
+<area shape="poly" title=" " alt="" coords="539,24,455,29,354,40,261,57,224,68,198,82,171,111,152,147,140,183,133,215,127,214,135,182,147,145,167,108,195,78,222,64,259,52,353,34,455,24,539,19"/>
+<area shape="rect" title=" " alt="" coords="274,304,331,331"/>
+<area shape="poly" title=" " alt="" coords="539,23,467,31,425,39,382,51,340,68,301,91,268,120,243,156,237,173,236,191,245,228,262,262,283,291,279,294,258,265,240,230,231,192,232,172,238,153,264,116,298,86,337,63,380,46,424,33,466,25,539,18"/>
+<area shape="rect" href="diskstorage_8h.html" title=" " alt="" coords="392,80,492,107"/>
+<area shape="poly" title=" " alt="" coords="560,35,482,75,479,70,558,30"/>
+<area shape="rect" title=" " alt="" coords="480,155,546,181"/>
+<area shape="poly" title=" " alt="" coords="580,34,528,142,523,139,575,31"/>
+<area shape="rect" title=" " alt="" coords="536,304,589,331"/>
+<area shape="poly" title=" " alt="" coords="585,33,567,289,561,288,580,32"/>
+<area shape="rect" href="sparseindex_8h.html" title=" " alt="" coords="252,155,355,181"/>
+<area shape="poly" title=" " alt="" coords="540,29,463,47,421,62,382,82,348,111,322,144,318,140,344,108,379,78,419,57,461,41,538,23"/>
+<area shape="rect" href="bloomfilter_8h.html" title=" " alt="" coords="612,229,704,256"/>
+<area shape="poly" title=" " alt="" coords="590,32,652,214,647,216,585,33"/>
+<area shape="rect" title=" " alt="" coords="672,80,730,107"/>
+<area shape="poly" title=" " alt="" coords="605,30,669,69,666,74,603,35"/>
+<area shape="rect" title=" " alt="" coords="753,80,814,107"/>
+<area shape="poly" title=" " alt="" coords="619,30,740,73,738,78,617,35"/>
+<area shape="rect" title=" " alt="" coords="837,80,890,107"/>
+<area shape="poly" title=" " alt="" coords="629,27,823,77,822,82,627,33"/>
+<area shape="rect" title=" " alt="" coords="913,80,982,107"/>
+<area shape="poly" title=" " alt="" coords="629,25,747,46,899,77,898,82,746,51,628,30"/>
+<area shape="rect" title=" " alt="" coords="178,304,250,331"/>
+<area shape="poly" title=" " alt="" coords="143,254,189,292,186,296,140,259"/>
+<area shape="poly" title=" " alt="" coords="158,254,260,296,258,301,156,259"/>
+<area shape="rect" title=" " alt="" coords="5,304,74,331"/>
+<area shape="poly" title=" " alt="" coords="113,259,68,296,64,292,109,254"/>
+<area shape="rect" title=" " alt="" coords="98,304,154,331"/>
+<area shape="poly" title=" " alt="" coords="129,257,129,288,124,288,124,257"/>
+<area shape="poly" title=" " alt="" coords="434,109,368,183,301,246,243,296,239,292,298,242,364,179,430,105"/>
+<area shape="poly" title=" " alt="" coords="456,105,492,142,488,145,453,109"/>
+<area shape="poly" title=" " alt="" coords="447,106,456,140,471,180,507,241,544,290,540,293,503,244,466,182,451,142,442,108"/>
+<area shape="poly" title=" " alt="" coords="419,110,343,149,340,145,417,105"/>
+<area shape="rect" href="skiplist_8h.html" title=" " alt="" coords="340,229,414,256"/>
+<area shape="poly" title=" " alt="" coords="318,180,355,216,351,220,314,184"/>
+<area shape="poly" title=" " alt="" coords="350,259,258,300,255,295,347,254"/>
+<area shape="poly" title=" " alt="" coords="366,258,328,295,324,291,362,255"/>
+<area shape="poly" title=" " alt="" coords="410,254,522,298,520,303,408,259"/>
+<area shape="rect" title=" " alt="" coords="355,304,420,331"/>
+<area shape="poly" title=" " alt="" coords="381,256,386,288,381,289,376,257"/>
+<area shape="rect" title=" " alt="" coords="444,304,496,331"/>
+<area shape="poly" title=" " alt="" coords="395,254,444,292,441,297,391,259"/>
+<area shape="poly" title=" " alt="" coords="612,254,496,275,346,306,345,301,495,270,612,249"/>
+<area shape="poly" title=" " alt="" coords="643,259,593,297,589,292,640,254"/>
+<area shape="rect" title=" " alt="" coords="620,304,697,331"/>
+<area shape="poly" title=" " alt="" coords="661,257,661,288,656,288,656,257"/>
+</map>
+</div>
+</div><div class="textblock"><div class="dynheader">
+This graph shows which files directly or indirectly include this file:</div>
+<div class="dyncontent">
+<div class="center"><img src="hashtable_8h__dep__incl.png" border="0" usemap="#ahashtable_8hdep" alt=""/></div>
+<map name="ahashtable_8hdep" id="ahashtable_8hdep">
+<area shape="rect" title=" " alt="" coords="64,5,152,32"/>
+<area shape="rect" href="blinkdb_8h.html" title=" " alt="" coords="71,80,144,107"/>
+<area shape="poly" title=" " alt="" coords="110,48,110,80,105,80,105,48"/>
+<area shape="rect" href="blinkdb__client_8h.html" title=" " alt="" coords="5,155,117,181"/>
+<area shape="poly" title=" " alt="" coords="94,121,71,156,67,153,89,118"/>
+<area shape="rect" href="client__runner_8cpp.html" title=" " alt="" coords="48,229,167,256"/>
+<area shape="poly" title=" " alt="" coords="122,120,132,154,132,175,129,196,116,230,111,228,124,195,127,175,126,155,117,122"/>
+<area shape="poly" title=" " alt="" coords="80,193,102,227,97,230,75,196"/>
+</map>
+</div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhashtable.html">hashtable</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is the custom hashtable class. It uses open addressing with double hashing to resolve collisions. The table is a vector of Entry structs. Each Entry struct has a key, a value and a boolean flag to indicate if the entry is occupied. The occupied variable is a std::atomic&lt;bool&gt; to ensure that the operations are atomic.  <a href="classhashtable.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a0f387538e47ac7cc23dc1204313c3162" id="r_a0f387538e47ac7cc23dc1204313c3162"><td class="memItemLeft" align="right" valign="top"><a id="a0f387538e47ac7cc23dc1204313c3162" name="a0f387538e47ac7cc23dc1204313c3162"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MAX_PROCESS_MEMORY</b>&#160;&#160;&#160;1000000 /* 1GB */</td></tr>
+<tr class="separator:a0f387538e47ac7cc23dc1204313c3162"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7201066a7f98df69ca8f01d974dcfb53" id="r_a7201066a7f98df69ca8f01d974dcfb53"><td class="memItemLeft" align="right" valign="top"><a id="a7201066a7f98df69ca8f01d974dcfb53" name="a7201066a7f98df69ca8f01d974dcfb53"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>DEBUG_FILE</b>&#160;&#160;&#160;&quot;debug.log&quot;</td></tr>
+<tr class="separator:a7201066a7f98df69ca8f01d974dcfb53"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Custom Hashtable implementation using open addressing with double hashing. </p>
-<p>This file contains the declaration and implementation of a custom hashtable that employs open addressing with double hashing for collision resolution. Each entry in the hashtable is represented by an Entry struct containing an atomic occupancy flag, a key string, and a pointer to a memory-managed <a class="el" href="structBlock.html" title="This is the actual &quot;Block&quot; that will store the key and value pair. This block will be dynamically all...">Block</a>. The hashtable integrates several components including:</p><ul>
+<div class="textblock"><p>Custom Hashtable implementation using open addressing with double hashing.</p>
+<p>This file contains the declaration and implementation of a custom hashtable that employs open addressing with double hashing for collision resolution. Each entry in the hashtable is represented by an Entry struct containing an occupancy flag, a key string, and a pointer to a memory-managed <a class="el" href="structBlock.html">Block</a>. The hashtable integrates several components including:</p><ul>
 <li>A custom memory pool for managing dynamic memory allocation.</li>
 <li>Disk storage for offloading key-value pairs via the evict() function.</li>
 <li>A sparse index for maintaining and updating disk entries.</li>
 <li>A bloom filter to provide efficient approximate membership tests.</li>
 </ul>
 <p>Key features include:</p><ul>
-<li>Atomic operations ensuring thread-safety in the manipulation of table entries.</li>
 <li>Dynamic resizing of the table based on occupancy thresholds, monitored by a dedicated background thread.</li>
 <li>Standard hashtable operations such as insert, get, del, and evict.</li>
 </ul>
-<p>The implementation is designed to efficiently handle memory and disk storage operations, making use of modern C++ features such as move semantics, std::atomic, and multithreading. </p>
+<p>The implementation is designed to efficiently handle memory and disk storage operations, making use of modern C++ features such as move semantic and using thread to handle resizing. </p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

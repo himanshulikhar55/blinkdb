@@ -110,19 +110,84 @@ $(function(){initNavTree('blinkdb_8h.html',''); initResizable(true); });
   <div class="headertitle"><div class="title">blinkdb.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-
-<p>Defines the blinkdb class, a key-value store with in-memory and disk storage.  
-<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="hashtable_8h.html">hashtable.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Include dependency graph for blinkdb.h:</div>
+<div class="dyncontent">
+<div class="center"><img src="blinkdb_8h__incl.png" border="0" usemap="#ablinkdb_8h" alt=""/></div>
+<map name="ablinkdb_8h" id="ablinkdb_8h">
+<area shape="rect" title=" " alt="" coords="547,5,620,32"/>
+<area shape="rect" href="hashtable_8h.html" title=" " alt="" coords="539,80,628,107"/>
+<area shape="poly" title=" " alt="" coords="586,33,586,64,581,64,581,33"/>
+<area shape="rect" href="memorypool_8h.html" title=" " alt="" coords="74,304,178,331"/>
+<area shape="poly" title=" " alt="" coords="539,99,455,104,354,114,261,132,224,143,198,157,171,186,152,221,140,258,133,289,127,288,135,256,147,219,167,183,195,153,222,138,259,126,353,109,455,99,539,94"/>
+<area shape="rect" title=" " alt="" coords="274,379,331,405"/>
+<area shape="poly" title=" " alt="" coords="539,98,467,105,425,113,382,125,340,143,301,165,268,194,243,231,237,248,236,266,245,303,262,337,283,365,279,368,258,340,240,305,231,266,232,247,238,228,264,191,298,161,337,138,380,120,424,108,466,100,539,93"/>
+<area shape="rect" href="diskstorage_8h.html" title=" " alt="" coords="392,155,492,181"/>
+<area shape="poly" title=" " alt="" coords="560,110,482,150,479,145,558,105"/>
+<area shape="rect" title=" " alt="" coords="480,229,546,256"/>
+<area shape="poly" title=" " alt="" coords="580,108,528,216,523,214,575,106"/>
+<area shape="rect" title=" " alt="" coords="536,379,589,405"/>
+<area shape="poly" title=" " alt="" coords="585,107,567,363,561,363,580,107"/>
+<area shape="rect" href="sparseindex_8h.html" title=" " alt="" coords="252,229,355,256"/>
+<area shape="poly" title=" " alt="" coords="540,103,463,121,421,137,382,157,348,186,322,218,318,215,344,182,379,152,419,132,461,116,538,98"/>
+<area shape="rect" href="bloomfilter_8h.html" title=" " alt="" coords="612,304,704,331"/>
+<area shape="poly" title=" " alt="" coords="590,106,652,289,647,290,585,108"/>
+<area shape="rect" title=" " alt="" coords="672,155,730,181"/>
+<area shape="poly" title=" " alt="" coords="605,105,669,144,666,149,603,109"/>
+<area shape="rect" title=" " alt="" coords="753,155,814,181"/>
+<area shape="poly" title=" " alt="" coords="619,105,740,148,738,153,617,110"/>
+<area shape="rect" title=" " alt="" coords="837,155,890,181"/>
+<area shape="poly" title=" " alt="" coords="629,102,823,151,822,156,627,107"/>
+<area shape="rect" title=" " alt="" coords="913,155,982,181"/>
+<area shape="poly" title=" " alt="" coords="629,99,747,120,899,151,898,157,746,126,628,105"/>
+<area shape="rect" title=" " alt="" coords="178,379,250,405"/>
+<area shape="poly" title=" " alt="" coords="143,329,189,367,186,371,140,333"/>
+<area shape="poly" title=" " alt="" coords="158,329,260,370,258,375,156,334"/>
+<area shape="rect" title=" " alt="" coords="5,379,74,405"/>
+<area shape="poly" title=" " alt="" coords="113,333,68,371,64,367,109,329"/>
+<area shape="rect" title=" " alt="" coords="98,379,154,405"/>
+<area shape="poly" title=" " alt="" coords="129,331,129,363,124,363,124,331"/>
+<area shape="poly" title=" " alt="" coords="434,183,368,258,301,320,243,371,239,367,298,316,364,254,430,180"/>
+<area shape="poly" title=" " alt="" coords="456,180,492,216,488,220,453,184"/>
+<area shape="poly" title=" " alt="" coords="447,181,456,215,471,255,507,316,544,365,540,368,503,319,466,257,451,217,442,182"/>
+<area shape="poly" title=" " alt="" coords="419,184,343,224,340,219,417,180"/>
+<area shape="rect" href="skiplist_8h.html" title=" " alt="" coords="340,304,414,331"/>
+<area shape="poly" title=" " alt="" coords="318,255,355,291,351,295,314,258"/>
+<area shape="poly" title=" " alt="" coords="350,334,258,374,255,369,347,329"/>
+<area shape="poly" title=" " alt="" coords="366,333,328,370,324,366,362,329"/>
+<area shape="poly" title=" " alt="" coords="410,329,522,372,520,377,408,334"/>
+<area shape="rect" title=" " alt="" coords="355,379,420,405"/>
+<area shape="poly" title=" " alt="" coords="381,331,386,363,381,364,376,332"/>
+<area shape="rect" title=" " alt="" coords="444,379,496,405"/>
+<area shape="poly" title=" " alt="" coords="395,329,444,367,441,371,391,333"/>
+<area shape="poly" title=" " alt="" coords="612,329,496,349,346,381,345,376,495,344,612,323"/>
+<area shape="poly" title=" " alt="" coords="643,333,593,371,589,367,640,329"/>
+<area shape="rect" title=" " alt="" coords="620,379,697,405"/>
+<area shape="poly" title=" " alt="" coords="661,331,661,363,656,363,656,331"/>
+</map>
+</div>
+</div><div class="textblock"><div class="dynheader">
+This graph shows which files directly or indirectly include this file:</div>
+<div class="dyncontent">
+<div class="center"><img src="blinkdb_8h__dep__incl.png" border="0" usemap="#ablinkdb_8hdep" alt=""/></div>
+<map name="ablinkdb_8hdep" id="ablinkdb_8hdep">
+<area shape="rect" title=" " alt="" coords="71,5,144,32"/>
+<area shape="rect" href="blinkdb__client_8h.html" title=" " alt="" coords="5,80,117,107"/>
+<area shape="poly" title=" " alt="" coords="94,47,71,81,67,78,89,44"/>
+<area shape="rect" href="client__runner_8cpp.html" title=" " alt="" coords="48,155,167,181"/>
+<area shape="poly" title=" " alt="" coords="122,46,132,80,132,101,129,122,116,155,111,154,124,120,127,100,126,80,117,47"/>
+<area shape="poly" title=" " alt="" coords="80,118,102,153,97,156,75,121"/>
+</map>
+</div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classblinkdb.html">blinkdb</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is the blinkdb class. It is a key-value store that lets user to set, get and delete key-value pairs It uses a hashtable to store the key-value pairs. The hashtable uses open addressing with double hashing to resolve collisions. If the in-memory hashtable is full, the key-value pairs are stored in a file on disk. When the user exits, all the data is erased from the disk and from the memory (obviously).  <a href="classblinkdb.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Defines the blinkdb class, a key-value store with in-memory and disk storage. </p>
+<div class="textblock"><p>Defines the blinkdb class, a key-value store with in-memory and disk storage.</p>
 <p>This file introduces the blinkdb class which implements a key-value store. The design uses an in-memory hashtable (with open addressing and double hashing) to store key-value pairs. When the hashtable becomes full, it evicts entries to disk storage and leverages a sparse index for file lookups. A bloom filter is used to optimize read operations by quickly ruling out non-existent keys.</p>
 <p>The class provides basic operations:</p><ul>
 <li>set: Insert a key-value pair into the store.</li>

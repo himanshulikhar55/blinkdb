@@ -1,0 +1,62 @@
+\doxysection{hashtable.\+h File Reference}
+\hypertarget{hashtable_8h}{}\label{hashtable_8h}\index{hashtable.h@{hashtable.h}}
+{\ttfamily \#include "{}memorypool.\+h"{}}\newline
+{\ttfamily \#include "{}diskstorage.\+h"{}}\newline
+{\ttfamily \#include "{}bloomfilter.\+h"{}}\newline
+{\ttfamily \#include "{}sparseindex.\+h"{}}\newline
+{\ttfamily \#include "{}debug.\+h"{}}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$thread$>$}\newline
+{\ttfamily \#include $<$chrono$>$}\newline
+{\ttfamily \#include $<$utility$>$}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include $<$sstream$>$}\newline
+Include dependency graph for hashtable.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{hashtable_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=202pt]{hashtable_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classhashtable}{hashtable}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{hashtable_8h_a0f387538e47ac7cc23dc1204313c3162}\label{hashtable_8h_a0f387538e47ac7cc23dc1204313c3162} 
+\#define {\bfseries MAX\+\_\+\+PROCESS\+\_\+\+MEMORY}~1000000 /\texorpdfstring{$\ast$}{*} 1GB \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{hashtable_8h_a7201066a7f98df69ca8f01d974dcfb53}\label{hashtable_8h_a7201066a7f98df69ca8f01d974dcfb53} 
+\#define {\bfseries DEBUG\+\_\+\+FILE}~"{}debug.\+log"{}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Custom Hashtable implementation using open addressing with double hashing.
+
+This file contains the declaration and implementation of a custom hashtable that employs open addressing with double hashing for collision resolution. Each entry in the hashtable is represented by an Entry struct containing an occupancy flag, a key string, and a pointer to a memory-\/managed \doxylink{structBlock}{Block}. The hashtable integrates several components including\+:
+\begin{DoxyItemize}
+\item A custom memory pool for managing dynamic memory allocation.
+\item Disk storage for offloading key-\/value pairs via the evict() function.
+\item A sparse index for maintaining and updating disk entries.
+\item A bloom filter to provide efficient approximate membership tests.
+\end{DoxyItemize}
+
+Key features include\+:
+\begin{DoxyItemize}
+\item Dynamic resizing of the table based on occupancy thresholds, monitored by a dedicated background thread.
+\item Standard hashtable operations such as insert, get, del, and evict.
+\end{DoxyItemize}
+
+The implementation is designed to efficiently handle memory and disk storage operations, making use of modern C++ features such as move semantic and using thread to handle resizing. 

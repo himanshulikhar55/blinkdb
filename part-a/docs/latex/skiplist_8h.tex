@@ -1,0 +1,58 @@
+\doxysection{skiplist.\+h File Reference}
+\hypertarget{skiplist_8h}{}\label{skiplist_8h}\index{skiplist.h@{skiplist.h}}
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$random$>$}\newline
+{\ttfamily \#include $<$limits$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+Include dependency graph for skiplist.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{skiplist_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=202pt]{skiplist_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classskiplist}{skiplist}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implementation of a concurrent skiplist data structure.
+
+This file provides the implementation of a skiplist data structure using C++. The skiplist is designed to support efficient insertion and search operations, leveraging probabilistic balancing
+
+The data structure consists of\+:
+\begin{DoxyItemize}
+\item A nested Node struct, representing each node in the skiplist, which holds a key, a stream offset, and a vector of pointers to subsequent nodes at different levels.
+\item Member functions for inserting nodes and retrieving the nearest offset for a given key.
+\end{DoxyItemize}
+
+The design uses a probabilistic method for promoting nodes to higher levels based on a user-\/defined probability, ensuring balanced performance across operations.
+
+
+
+Typical usage example\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{classskiplist}{skiplist}}\ sl;}
+\DoxyCodeLine{sl.\mbox{\hyperlink{classskiplist_aa193aa8a10a77cbf6bddca202b5c253a}{insert}}(\textcolor{stringliteral}{"{}example\_key"{}},\ 42);}
+\DoxyCodeLine{std::streampos\ pos\ =\ sl.\mbox{\hyperlink{classskiplist_aa1d31fd7a91a970ce89658791be4872e}{get\_nearest\_offset}}(\textcolor{stringliteral}{"{}another\_key"{}});}
+
+\end{DoxyCode}
+
+
+\begin{DoxyAuthor}{Author}
+Himanshu Likhar 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+23/03/2025 
+\end{DoxyDate}

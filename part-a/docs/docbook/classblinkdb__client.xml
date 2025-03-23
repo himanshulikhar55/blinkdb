@@ -3,52 +3,27 @@
 <title>blinkdb_client Class Reference</title>
 <indexterm><primary>blinkdb_client</primary></indexterm>
 <para>
-
-<para>Establishes a connection to the BlinkDB server. </para>
- 
-</para>
-<para>
-<computeroutput>#include &lt;lib/blinkdb_client.h&gt;</computeroutput>
+<computeroutput>#include &lt;part-a/src/lib/blinkdb_client.h&gt;</computeroutput>
 </para>
 <simplesect>
     <title>Public Member Functions    </title>
         <itemizedlist>
             <listitem><para><link linkend="_classblinkdb__client_1a241c6b3fd49c3b614de8084c38c46843">blinkdb_client</link> (const std::string &amp;server_ip, int port)</para>
-
-<para>Constructs a new <link linkend="_classblinkdb__client">blinkdb_client</link> object. </para>
 </listitem>
             <listitem><para><link linkend="_classblinkdb__client_1a7de8b80085d695f6b17dd7441ba04438">~blinkdb_client</link> ()</para>
-
-<para>Destroys the <link linkend="_classblinkdb__client">blinkdb_client</link> object. </para>
 </listitem>
             <listitem><para>bool <link linkend="_classblinkdb__client_1a2617b4d52ddfbaf0d700f0afb782fd8f">connect_to_server</link> ()</para>
-
-<para>Connects to the BlinkDB server. </para>
 </listitem>
             <listitem><para>std::string <link linkend="_classblinkdb__client_1a0cd58d36cc3847316e6bead61eba3f9a">send_request</link> (const std::string &amp;request)</para>
-
-<para>Sends a request to the BlinkDB server and receives the response. </para>
+</listitem>
+            <listitem><para><anchor xml:id="_classblinkdb__client_1a47e4a96c8025543684f24122efa74063"/>void <emphasis role="strong">execute</emphasis> (<link linkend="_classblinkdb">blinkdb</link> &amp;db, <link linkend="_structparse__op">parse_op</link> *ip)</para>
 </listitem>
         </itemizedlist>
 </simplesect>
 <section>
 <title>Detailed Description</title>
 
-<para>Establishes a connection to the BlinkDB server. </para>
-
-
-
-<para>Creates a TCP socket, sets up the server address structure using the provided IP and port, and attempts to establish a connection to the server.</para>
-
-<para><formalpara><title>Returns</title>
-
-<para>true if the connection was successfully established; false otherwise.</para>
-</formalpara>
-<note><title>Note</title>
-
-<para>In case of failure, an error message is printed using perror.</para>
-</note>
-Client for establishing a connection to a BlinkDB server.</para>
+<para>Client for establishing a connection to a BlinkDB server.</para>
 
 <para>The <link linkend="_classblinkdb__client">blinkdb_client</link> class encapsulates the functionality to create a socket, connect to a server through a specified IP and port, send a request, and receive a response. It ensures the proper release of socket resources when the instance is destroyed.</para>
 
@@ -57,7 +32,18 @@ Client for establishing a connection to a BlinkDB server.</para>
 &#32;&#32;&#32;&#32;std::string&#32;response&#32;=&#32;client.<link linkend="_classblinkdb__client_1a0cd58d36cc3847316e6bead61eba3f9a">send_request</link>(<emphasis role="stringliteral">&quot;GET&#32;/data&quot;</emphasis>);
 &#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Server&#32;response:&#32;&quot;</emphasis>&#32;&lt;&lt;&#32;response&#32;&lt;&lt;&#32;std::endl;
 }
-</computeroutput></literallayout> </para>
+</computeroutput></literallayout></para>
+
+<para><note><title>Note</title>
+
+<para>The user should enter the commands in the following format only. The case of the command does not matter but the format must be followed: <literallayout><computeroutput>SET&#32;&lt;KEY&gt;&#32;&lt;VALUE&gt;&#32;(Eg:&#32;SET&#32;A&#32;10)
+GET&#32;&lt;KEY&gt;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;(Eg:&#32;GET&#32;A)
+DEL&#32;&lt;KEY&gt;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;(Eg:&#32;DEL&#32;A)
+exit&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;(Eg:&#32;exit)
+print&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;(Eg:&#32;print)
+</computeroutput></literallayout></para>
+</note>
+The </para>
 </section>
 <section>
 <title>Constructor &amp; Destructor Documentation</title>
@@ -65,10 +51,8 @@ Client for establishing a connection to a BlinkDB server.</para>
     <title>blinkdb_client()</title>
 <indexterm><primary>blinkdb_client</primary><secondary>blinkdb_client</secondary></indexterm>
 <indexterm><primary>blinkdb_client</primary><secondary>blinkdb_client</secondary></indexterm>
-<para><computeroutput>blinkdb_client::blinkdb_client (const std::string &amp; server_ip, int port)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
-
-<para>Constructs a new <link linkend="_classblinkdb__client">blinkdb_client</link> object. </para>
-</para>
+<para><computeroutput>blinkdb_client::blinkdb_client (const std::string &amp; server_ip, int port)<computeroutput>[inline]</computeroutput></computeroutput></para>
+<para>onstructs a new <link linkend="_classblinkdb__client">blinkdb_client</link> object.</para>
 
 <para>Initializes the client with the provided server IP address and port number. The socket file descriptor is set to an invalid value (-1) until a connection is established.</para>
 
@@ -103,10 +87,8 @@ Parameters</title>
     <title>~blinkdb_client()</title>
 <indexterm><primary>~blinkdb_client</primary><secondary>blinkdb_client</secondary></indexterm>
 <indexterm><primary>blinkdb_client</primary><secondary>~blinkdb_client</secondary></indexterm>
-<para><computeroutput>blinkdb_client::~blinkdb_client ( )<computeroutput>[inline]</computeroutput></computeroutput></para><para>
-
-<para>Destroys the <link linkend="_classblinkdb__client">blinkdb_client</link> object. </para>
-</para>
+<para><computeroutput>blinkdb_client::~blinkdb_client ( )<computeroutput>[inline]</computeroutput></computeroutput></para>
+<para>Destroys the <link linkend="_classblinkdb__client">blinkdb_client</link> object.</para>
 
 <para>Ensures that the open socket connection is closed upon destruction to free up system resources. </para>
 </section>
@@ -117,27 +99,27 @@ Parameters</title>
     <title>connect_to_server()</title>
 <indexterm><primary>connect_to_server</primary><secondary>blinkdb_client</secondary></indexterm>
 <indexterm><primary>blinkdb_client</primary><secondary>connect_to_server</secondary></indexterm>
-<para><computeroutput>bool blinkdb_client::connect_to_server ( )<computeroutput>[inline]</computeroutput></computeroutput></para><para>
-
-<para>Connects to the BlinkDB server. </para>
-</para>
+<para><computeroutput>bool blinkdb_client::connect_to_server ( )<computeroutput>[inline]</computeroutput></computeroutput></para>
+<para>Connects to the BlinkDB server.</para>
 
 <para>This function creates a TCP socket, configures the server address using the specified IP and port, and attempts to establish a connection to the BlinkDB server. If socket creation, address conversion, or connection fails, the function prints an error message using perror and returns false.</para>
 
 <para><formalpara><title>Returns</title>
 
-<para>true if the connection is successfully established; false otherwise. </para>
+<para><emphasis role="bold">true</emphasis> if the connection is successfully established; false otherwise.</para>
 </formalpara>
+<note><title>Note</title>
+
+<para>In case of failure, an error message is printed using perror. </para>
+</note>
 </para>
 </section>
 <anchor xml:id="_classblinkdb__client_1a0cd58d36cc3847316e6bead61eba3f9a"/><section>
     <title>send_request()</title>
 <indexterm><primary>send_request</primary><secondary>blinkdb_client</secondary></indexterm>
 <indexterm><primary>blinkdb_client</primary><secondary>send_request</secondary></indexterm>
-<para><computeroutput>std::string blinkdb_client::send_request (const std::string &amp; request)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
-
-<para>Sends a request to the BlinkDB server and receives the response. </para>
-</para>
+<para><computeroutput>std::string blinkdb_client::send_request (const std::string &amp; request)<computeroutput>[inline]</computeroutput></computeroutput></para>
+<para>Sends a request to the BlinkDB server and receives the response.</para>
 
 <para>Transmits the provided request string over the established socket. It then waits for a response from the server, reads it into a buffer, and returns it as a std::string.</para>
 

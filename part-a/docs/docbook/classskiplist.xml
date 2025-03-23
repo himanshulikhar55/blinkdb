@@ -6,16 +6,10 @@
     <title>Public Member Functions    </title>
         <itemizedlist>
             <listitem><para><link linkend="_classskiplist_1a9751bd1be5d110bb38e5cb4a42c172c7">skiplist</link> (int maxLvl=16, float prob=0.5)</para>
-
-<para>Constructs a new skiplist object. </para>
 </listitem>
             <listitem><para>void <link linkend="_classskiplist_1aa193aa8a10a77cbf6bddca202b5c253a">insert</link> (const std::string &amp;key, std::streampos offset)</para>
-
-<para>Inserts a new node with the given key and stream offset into the skip list. </para>
 </listitem>
             <listitem><para>std::streampos <link linkend="_classskiplist_1aa1d31fd7a91a970ce89658791be4872e">get_nearest_offset</link> (const std::string &amp;key)</para>
-
-<para>Retrieves the stream offset of the node immediately preceding the given key. </para>
 </listitem>
         </itemizedlist>
 </simplesect>
@@ -27,10 +21,8 @@
 <indexterm><primary>skiplist</primary><secondary>skiplist</secondary></indexterm>
 <para><computeroutput>skiplist::skiplist (int maxLvl = <computeroutput>16</computeroutput>
 , float prob = <computeroutput>0.5</computeroutput>
-)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
-
-<para>Constructs a new skiplist object. </para>
-</para>
+)<computeroutput>[inline]</computeroutput></computeroutput></para>
+<para>Constructs a new skiplist object.</para>
 
 <para>Initializes the skiplist with a specified maximum level and probability. A header node is created with an empty key and a placeholder value (-1) using the provided maximum level.</para>
 
@@ -68,10 +60,8 @@ Parameters</title>
     <title>get_nearest_offset()</title>
 <indexterm><primary>get_nearest_offset</primary><secondary>skiplist</secondary></indexterm>
 <indexterm><primary>skiplist</primary><secondary>get_nearest_offset</secondary></indexterm>
-<para><computeroutput>std::streampos skiplist::get_nearest_offset (const std::string &amp; key)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
-
-<para>Retrieves the stream offset of the node immediately preceding the given key. </para>
-</para>
+<para><computeroutput>std::streampos skiplist::get_nearest_offset (const std::string &amp; key)<computeroutput>[inline]</computeroutput></computeroutput></para>
+<para>Retrieves the stream offset of the node immediately preceding the given key.</para>
 
 <para>This function traverses the skip list from the top-most level down to the lowest level, moving forward at each level until it finds the last node whose key is less than the specified key. The function then returns the offset of this node within the stream.</para>
 
@@ -104,17 +94,24 @@ Parameters</title>
 <para>If no node with a key less than the provided key exists, the offset of the head node is returned. </para>
 </note>
 </para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="classskiplist_aa1d31fd7a91a970ce89658791be4872e_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
 </section>
 <anchor xml:id="_classskiplist_1aa193aa8a10a77cbf6bddca202b5c253a"/><section>
     <title>insert()</title>
 <indexterm><primary>insert</primary><secondary>skiplist</secondary></indexterm>
 <indexterm><primary>skiplist</primary><secondary>insert</secondary></indexterm>
-<para><computeroutput>void skiplist::insert (const std::string &amp; key, std::streampos offset)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+<para><computeroutput>void skiplist::insert (const std::string &amp; key, std::streampos offset)<computeroutput>[inline]</computeroutput></computeroutput></para>
+<para>Inserts a new node with the given key and stream offset into the skip list.</para>
 
-<para>Inserts a new node with the given key and stream offset into the skip list. </para>
-</para>
-
-<para>This function navigates the skip list from the highest level down to level 0 to find the appropriate insertion point for the new node. It maintains arrays of predecessor and successor nodes for each level during the traversal. A new random level is determined for the node, and the node is inserted into each level using atomic operations to ensure thread safety.</para>
+<para>This function navigates the skip list from the highest level down to level 0 to find the appropriate insertion point for the new node. It maintains arrays of predecessor and successor nodes for each level during the traversal. A new random level is determined for the node, and the node is inserted into each level.</para>
 
 <para>
                 <formalpara>
@@ -142,6 +139,15 @@ Parameters</title>
                     </para>
                 </formalpara>
                 </para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="classskiplist_aa193aa8a10a77cbf6bddca202b5c253a_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
 </section>
 <para>
 The documentation for this class was generated from the following file:</para>

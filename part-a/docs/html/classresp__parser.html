@@ -107,41 +107,29 @@ $(function(){initNavTree('classresp__parser.html',''); initResizable(true); });
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="classresp__parser-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">resp_parser Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>A parser for RESP (Redis Serialization Protocol) commands.  
- <a href="#details">More...</a></p>
-
-<p><code>#include &lt;lib/resp_parser.h&gt;</code></p>
+<p><code>#include &lt;part-a/src/lib/resp_parser.h&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a881e195aed5df64ceceb6512b0e51b01" id="r_a881e195aed5df64ceceb6512b0e51b01"><td class="memItemLeft" align="right" valign="top"><a id="a881e195aed5df64ceceb6512b0e51b01" name="a881e195aed5df64ceceb6512b0e51b01"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>get_val</b> (std::string &amp;response)</td></tr>
 <tr class="separator:a881e195aed5df64ceceb6512b0e51b01"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3498e4ebf4660f06a01c8da2b60fdb5c" id="r_a3498e4ebf4660f06a01c8da2b60fdb5c"><td class="memItemLeft" align="right" valign="top"><a id="a3498e4ebf4660f06a01c8da2b60fdb5c" name="a3498e4ebf4660f06a01c8da2b60fdb5c"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>parse</b> (std::string input, <a class="el" href="structparse__op.html">parse_op</a> *pop)</td></tr>
-<tr class="separator:a3498e4ebf4660f06a01c8da2b60fdb5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0333c0d032a0ec8c0b4451dc2113d23a" id="r_a0333c0d032a0ec8c0b4451dc2113d23a"><td class="memItemLeft" align="right" valign="top"><a id="a0333c0d032a0ec8c0b4451dc2113d23a" name="a0333c0d032a0ec8c0b4451dc2113d23a"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>parse</b> (std::string input, <a class="el" href="structparse__op.html">parse_op</a> *pop, int mode)</td></tr>
+<tr class="separator:a0333c0d032a0ec8c0b4451dc2113d23a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a62311f01225a09a6cc46c4b6f66696ac" id="r_a62311f01225a09a6cc46c4b6f66696ac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a62311f01225a09a6cc46c4b6f66696ac">convert_to_byte_stream</a> (std::string &amp;bufferStr, std::string &amp;ip)</td></tr>
-<tr class="memdesc:a62311f01225a09a6cc46c4b6f66696ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts an IP string to a byte stream.  <br /></td></tr>
 <tr class="separator:a62311f01225a09a6cc46c4b6f66696ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a341fd50f9b16eab8308238fdc3fe9d7f" id="r_a341fd50f9b16eab8308238fdc3fe9d7f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a341fd50f9b16eab8308238fdc3fe9d7f">parse_command</a> (std::string &amp;data, <a class="el" href="structparse__op.html">parse_op</a> *pop)</td></tr>
-<tr class="memdesc:a341fd50f9b16eab8308238fdc3fe9d7f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses a RESP-encoded command string and extracts its components.  <br /></td></tr>
 <tr class="separator:a341fd50f9b16eab8308238fdc3fe9d7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
-Public Attributes</h2></td></tr>
-<tr class="memitem:a64636245c2a64d74220ceafda3ad7d0d" id="r_a64636245c2a64d74220ceafda3ad7d0d"><td class="memItemLeft" align="right" valign="top"><a id="a64636245c2a64d74220ceafda3ad7d0d" name="a64636245c2a64d74220ceafda3ad7d0d"></a>
-<a class="el" href="structparse__op.html">parse_op</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>op</b></td></tr>
-<tr class="separator:a64636245c2a64d74220ceafda3ad7d0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>A parser for RESP (Redis Serialization Protocol) commands. </p>
-<p>The <a class="el" href="classresp__parser.html" title="A parser for RESP (Redis Serialization Protocol) commands.">resp_parser</a> class provides methods to parse input strings formatted in RESP, extract commands and their arguments, and convert standard strings into RESP-formatted byte streams. It supports parsing of commands such as GET, SET, DEL, and PRINT. </p>
+<div class="textblock"><p>A parser for RESP (Redis Serialization Protocol) commands.</p>
+<p>The <a class="el" href="classresp__parser.html">resp_parser</a> class provides methods to parse input strings formatted in RESP, extract commands and their arguments, and convert standard strings into RESP-formatted byte streams. It supports parsing of commands such as GET, SET, DEL, and PRINT. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a62311f01225a09a6cc46c4b6f66696ac" name="a62311f01225a09a6cc46c4b6f66696ac"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a62311f01225a09a6cc46c4b6f66696ac">&#9670;&#160;</a></span>convert_to_byte_stream()</h2>
@@ -169,8 +157,7 @@ Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>Converts an IP string to a byte stream. </p>
+<p>Converts an IP string to a byte stream.</p>
 <p>This function constructs a byte stream from the given IP string by first creating a prefix with the '$' character followed by the length of the IP string, then a carriage return and line feed (CRLF), the IP string itself, and finally another CRLF.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -208,9 +195,8 @@ Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>Parses a RESP-encoded command string and extracts its components. </p>
-<p>This function processes an input RESP string (data) and attempts to extract the command, key, and optionally the value from it. The parsed components are stored in the provided <a class="el" href="structparse__op.html" title="Represents a parsed command operation.">parse_op</a> structure (pop).</p>
+<p>Parses a RESP-encoded command string and extracts its components.</p>
+<p>This function processes an input RESP string (data) and attempts to extract the command, key, and optionally the value from it. The parsed components are stored in the provided <a class="el" href="structparse__op.html">parse_op</a> structure (pop).</p>
 <p>The function handles several special cases:</p><ul>
 <li>If the input is "print", it sets the command in pop to "print" and returns success.</li>
 <li>If the input contains "CONFIG", it sets the command to "CONFIG" and returns success.</li>
@@ -226,7 +212,7 @@ Public Attributes</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">data</td><td>A reference to the RESP-encoded command string to be parsed. </td></tr>
-    <tr><td class="paramname">pop</td><td>A pointer to a <a class="el" href="structparse__op.html" title="Represents a parsed command operation.">parse_op</a> structure where the parsed command, key, and value (if applicable) will be stored.</td></tr>
+    <tr><td class="paramname">pop</td><td>A pointer to a <a class="el" href="structparse__op.html">parse_op</a> structure where the parsed command, key, and value (if applicable) will be stored.</td></tr>
   </table>
   </dd>
 </dl>

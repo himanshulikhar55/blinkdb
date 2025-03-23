@@ -1,0 +1,78 @@
+\doxysection{server\+\_\+runner.\+cpp File Reference}
+\hypertarget{server__runner_8cpp}{}\label{server__runner_8cpp}\index{server\_runner.cpp@{server\_runner.cpp}}
+{\ttfamily \#include "{}lib/blinkdb\+\_\+server.\+h"{}}\newline
+{\ttfamily \#include "{}../../part-\/a/src/lib/blinkdb.\+h"{}}\newline
+{\ttfamily \#include "{}../../part-\/a/src/lib/resp\+\_\+parser.\+h"{}}\newline
+{\ttfamily \#include $<$sys/epoll.\+h$>$}\newline
+{\ttfamily \#include $<$arpa/inet.\+h$>$}\newline
+{\ttfamily \#include $<$fcntl.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+Include dependency graph for server\+\_\+runner.\+cpp\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{server__runner_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{server__runner_8cpp_a32c1402c1491ea6c063e45c1c5a57f10}{handle\+\_\+exit}} ()
+\item 
+void \mbox{\hyperlink{server__runner_8cpp_a5b3210a63df1873c78a11917bce26ff1}{handle\+Sig\+Int}} (int signum)
+\item 
+\Hypertarget{server__runner_8cpp_a0ddf1224851353fc92bfbff6f499fa97}\label{server__runner_8cpp_a0ddf1224851353fc92bfbff6f499fa97} 
+int {\bfseries main} (int argc, char \texorpdfstring{$\ast$}{*}argv\mbox{[}$\,$\mbox{]})
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implementation of the Blink\+DB server application
+
+This file implements the main entry point for the Blink\+DB server application. It initializes a TCP socket server that listens for incoming connections and handles them using an epoll-\/based event loop. When running the server the user should give as the (the only one) command line arg the maximum number of parallel connections the server will be required to handle.
+
+The server uses the \doxylink{classblinkdb__server}{blinkdb\+\_\+server} class to process client requests according to the RESP (Redis Serialization Protocol) format.
+
+\begin{DoxyNote}{Note}
+The server listens on the port defined by PORT macro (defined in \doxylink{blinkdb__server_8h}{blinkdb\+\_\+server.\+h} file). 
+
+The server can be terminated by sending a SIGINT signal (Ctrl+C). It will then gracefully exit while collecting all the memory. 
+\end{DoxyNote}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{server__runner_8cpp_a32c1402c1491ea6c063e45c1c5a57f10}\index{server\_runner.cpp@{server\_runner.cpp}!handle\_exit@{handle\_exit}}
+\index{handle\_exit@{handle\_exit}!server\_runner.cpp@{server\_runner.cpp}}
+\doxysubsubsection{\texorpdfstring{handle\_exit()}{handle\_exit()}}
+{\footnotesize\ttfamily \label{server__runner_8cpp_a32c1402c1491ea6c063e45c1c5a57f10} 
+void handle\+\_\+exit (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+Handles the server exit process
+
+This function is called when the server is shutting down. It prints a message and exits the process gracefully. Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=252pt]{server__runner_8cpp_a32c1402c1491ea6c063e45c1c5a57f10_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{server__runner_8cpp_a5b3210a63df1873c78a11917bce26ff1}\index{server\_runner.cpp@{server\_runner.cpp}!handleSigInt@{handleSigInt}}
+\index{handleSigInt@{handleSigInt}!server\_runner.cpp@{server\_runner.cpp}}
+\doxysubsubsection{\texorpdfstring{handleSigInt()}{handleSigInt()}}
+{\footnotesize\ttfamily \label{server__runner_8cpp_a5b3210a63df1873c78a11917bce26ff1} 
+void handle\+Sig\+Int (\begin{DoxyParamCaption}\item[{int}]{signum}{}\end{DoxyParamCaption})}
+
+Signal handler for SIGINT (Ctrl+C)
+
+
+\begin{DoxyParams}{Parameters}
+{\em signum} & The signal number received\\
+\hline
+\end{DoxyParams}
+This function is registered as the handler for SIGINT signals and calls \doxylink{server__runner_8cpp_a32c1402c1491ea6c063e45c1c5a57f10}{handle\+\_\+exit()} to terminate the server gracefully. Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=252pt]{server__runner_8cpp_a5b3210a63df1873c78a11917bce26ff1_cgraph}
+\end{center}
+\end{figure}

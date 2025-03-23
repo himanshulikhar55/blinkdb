@@ -112,27 +112,47 @@ $(function(){initNavTree('classsparseindex.html',''); initResizable(true); });
 </div><!--header-->
 <div class="contents">
 
-<p>This class is a sparse-index that uses a skip list to store key-offset pairs.  
- <a href="#details">More...</a></p>
-
-<p><code>#include &lt;lib/sparseindex.h&gt;</code></p>
+<p><code>#include &lt;part-a/src/lib/sparseindex.h&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ae58c2e252cf853f258d7e305208c0d46" id="r_ae58c2e252cf853f258d7e305208c0d46"><td class="memItemLeft" align="right" valign="top"><a id="ae58c2e252cf853f258d7e305208c0d46" name="ae58c2e252cf853f258d7e305208c0d46"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>sparseindex</b> ()</td></tr>
-<tr class="memdesc:ae58c2e252cf853f258d7e305208c0d46"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new sparseindex object. <br /></td></tr>
+<tr class="memitem:ae58c2e252cf853f258d7e305208c0d46" id="r_ae58c2e252cf853f258d7e305208c0d46"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae58c2e252cf853f258d7e305208c0d46">sparseindex</a> ()</td></tr>
 <tr class="separator:ae58c2e252cf853f258d7e305208c0d46"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac5a9142436d081224cafb964cad4becb" id="r_ac5a9142436d081224cafb964cad4becb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac5a9142436d081224cafb964cad4becb">insert</a> (const std::string &amp;key, std::streampos offset)</td></tr>
-<tr class="memdesc:ac5a9142436d081224cafb964cad4becb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to insert a key-offset pair into the skiplist.  <br /></td></tr>
 <tr class="separator:ac5a9142436d081224cafb964cad4becb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad4ffd3a38bc56212d400d82b3e320f54" id="r_ad4ffd3a38bc56212d400d82b3e320f54"><td class="memItemLeft" align="right" valign="top">std::streampos&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad4ffd3a38bc56212d400d82b3e320f54">get_offset</a> (const std::string &amp;key)</td></tr>
-<tr class="memdesc:ad4ffd3a38bc56212d400d82b3e320f54"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to get the nearest offset for a given key.  <br /></td></tr>
 <tr class="separator:ad4ffd3a38bc56212d400d82b3e320f54"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This class is a sparse-index that uses a skip list to store key-offset pairs. </p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="ae58c2e252cf853f258d7e305208c0d46" name="ae58c2e252cf853f258d7e305208c0d46"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae58c2e252cf853f258d7e305208c0d46">&#9670;&#160;</a></span>sparseindex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">sparseindex::sparseindex </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Construct a new sparseindex object </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
 <a id="ad4ffd3a38bc56212d400d82b3e320f54" name="ad4ffd3a38bc56212d400d82b3e320f54"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad4ffd3a38bc56212d400d82b3e320f54">&#9670;&#160;</a></span>get_offset()</h2>
 
@@ -155,8 +175,7 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>Function to get the nearest offset for a given key. </p>
+<p>Function to get the nearest offset for a given key</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">key</td><td>The key for which the offset is to be found </td></tr>
@@ -164,6 +183,28 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>std::streampos The offset for the given key </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classsparseindex_ad4ffd3a38bc56212d400d82b3e320f54_cgraph.png" border="0" usemap="#aclasssparseindex_ad4ffd3a38bc56212d400d82b3e320f54_cgraph" alt=""/></div>
+<map name="aclasssparseindex_ad4ffd3a38bc56212d400d82b3e320f54_cgraph" id="aclasssparseindex_ad4ffd3a38bc56212d400d82b3e320f54_cgraph">
+<area shape="rect" title=" " alt="" coords="5,13,163,40"/>
+<area shape="rect" href="classskiplist.html#aa1d31fd7a91a970ce89658791be4872e" title=" " alt="" coords="211,5,349,48"/>
+<area shape="poly" title=" " alt="" coords="163,24,195,24,195,29,163,29"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classsparseindex_ad4ffd3a38bc56212d400d82b3e320f54_icgraph.png" border="0" usemap="#aclasssparseindex_ad4ffd3a38bc56212d400d82b3e320f54_icgraph" alt=""/></div>
+<map name="aclasssparseindex_ad4ffd3a38bc56212d400d82b3e320f54_icgraph" id="aclasssparseindex_ad4ffd3a38bc56212d400d82b3e320f54_icgraph">
+<area shape="rect" title=" " alt="" coords="311,5,468,32"/>
+<area shape="rect" href="classdiskstorage.html#a2a6d4004689c9c8084f0c07d4f49b191" title=" " alt="" coords="142,5,263,32"/>
+<area shape="poly" title=" " alt="" coords="295,21,263,21,263,16,295,16"/>
+<area shape="rect" href="classblinkdb.html#a75e197842560cea323699bb1c5981a3d" title=" " alt="" coords="5,5,94,32"/>
+<area shape="poly" title=" " alt="" coords="126,21,94,21,94,16,126,16"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -193,8 +234,7 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>Function to insert a key-offset pair into the skiplist. </p>
+<p>Function to insert a key-offset pair into the skiplist</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">key</td><td>The key in the key-offset pair </td></tr>
@@ -202,6 +242,30 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classsparseindex_ac5a9142436d081224cafb964cad4becb_cgraph.png" border="0" usemap="#aclasssparseindex_ac5a9142436d081224cafb964cad4becb_cgraph" alt=""/></div>
+<map name="aclasssparseindex_ac5a9142436d081224cafb964cad4becb_cgraph" id="aclasssparseindex_ac5a9142436d081224cafb964cad4becb_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,137,32"/>
+<area shape="rect" href="classskiplist.html#aa193aa8a10a77cbf6bddca202b5c253a" title=" " alt="" coords="185,5,287,32"/>
+<area shape="poly" title=" " alt="" coords="137,16,169,16,169,21,137,21"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classsparseindex_ac5a9142436d081224cafb964cad4becb_icgraph.png" border="0" usemap="#aclasssparseindex_ac5a9142436d081224cafb964cad4becb_icgraph" alt=""/></div>
+<map name="aclasssparseindex_ac5a9142436d081224cafb964cad4becb_icgraph" id="aclasssparseindex_ac5a9142436d081224cafb964cad4becb_icgraph">
+<area shape="rect" title=" " alt="" coords="475,5,607,32"/>
+<area shape="rect" href="classdiskstorage.html#a5cd280ffdc039f12c75f26ba325ec455" title=" " alt="" coords="303,5,427,32"/>
+<area shape="poly" title=" " alt="" coords="460,21,428,21,428,16,460,16"/>
+<area shape="rect" href="classhashtable.html#ac0d2bf8122887f46a668cc0516683768" title=" " alt="" coords="142,5,255,32"/>
+<area shape="poly" title=" " alt="" coords="288,21,255,21,255,16,288,16"/>
+<area shape="rect" href="classblinkdb.html#a38ee1f661825653379d471d7ad6f522f" title=" " alt="" coords="5,5,94,32"/>
+<area shape="poly" title=" " alt="" coords="126,21,94,21,94,16,126,16"/>
+</map>
+</div>
 
 </div>
 </div>

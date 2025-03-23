@@ -1,0 +1,16 @@
+\_form#0=9x6:$n$
+\_form#1=13x6:$m$
+\_form#2=6x10:$k$
+\_form#3=8x9:$p$
+\_form#4=81x31:\[
+    m = - \frac{n \ln(p)}{(\ln(2))^2}
+    \]
+\_form#5=65x24:\[
+    k = \frac{m}{n} \ln(2)
+    \]
+\_form#6=78x15:\[
+ L = \log_{1/p}(N)
+ \]
+\_form#7=68x14:\[
+ L = \log_2(N)
+ \]

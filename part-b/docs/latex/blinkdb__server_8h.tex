@@ -1,0 +1,61 @@
+\doxysection{blinkdb\+\_\+server.\+h File Reference}
+\hypertarget{blinkdb__server_8h}{}\label{blinkdb__server_8h}\index{blinkdb\_server.h@{blinkdb\_server.h}}
+{\ttfamily \#include $<$csignal$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$sys/epoll.\+h$>$}\newline
+{\ttfamily \#include $<$arpa/inet.\+h$>$}\newline
+{\ttfamily \#include $<$fcntl.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$cstring$>$}\newline
+{\ttfamily \#include $<$unordered\+\_\+map$>$}\newline
+{\ttfamily \#include "{}../../../part-\/a/src/lib/resp\+\_\+parser.\+h"{}}\newline
+{\ttfamily \#include "{}../../../part-\/a/src/lib/blinkdb.\+h"{}}\newline
+{\ttfamily \#include "{}../../../part-\/a/src/lib/debug.\+h"{}}\newline
+Include dependency graph for blinkdb\+\_\+server.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{blinkdb__server_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=173pt]{blinkdb__server_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classblinkdb__server}{blinkdb\+\_\+server}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{blinkdb__server_8h_ae42954bb8545d24e3e9dcde5920c9a0b}\label{blinkdb__server_8h_ae42954bb8545d24e3e9dcde5920c9a0b} 
+\#define {\bfseries MAX\+\_\+\+EVENTS}~1024
+\item 
+\Hypertarget{blinkdb__server_8h_a614217d263be1fb1a5f76e2ff7be19a2}\label{blinkdb__server_8h_a614217d263be1fb1a5f76e2ff7be19a2} 
+\#define {\bfseries PORT}~9001
+\item 
+\Hypertarget{blinkdb__server_8h_a09d9220ce42211cac743f7b8d30ab038}\label{blinkdb__server_8h_a09d9220ce42211cac743f7b8d30ab038} 
+\#define {\bfseries DB\+\_\+\+SIZE}~100000
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implementation of a Redis-\/like server using epoll for non-\/blocking I/O
+
+This file defines the \doxylink{classblinkdb__server}{blinkdb\+\_\+server} class which implements a server that\+:
+\begin{DoxyItemize}
+\item Uses epoll for efficient handling of multiple client connections
+\item Implements basic Redis-\/compatible commands (SET, GET, DEL, QUIT)
+\item Parses RESP (Redis Serialization Protocol) commands
+\item Provides connection management and data storage via blinkdb
+\end{DoxyItemize}
+
+\begin{DoxyNote}{Note}
+Default server port is 9001 
+\end{DoxyNote}

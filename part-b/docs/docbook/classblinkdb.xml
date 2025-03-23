@@ -1,0 +1,207 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_classblinkdb" xml:lang="en-US">
+<title>blinkdb Class Reference</title>
+<indexterm><primary>blinkdb</primary></indexterm>
+<para>
+<computeroutput>#include &lt;part-a/lib/blinkdb.h&gt;</computeroutput>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_classblinkdb_1ad20d4882572f1b492ab041b45f238a0c">blinkdb</link> (size_t size)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_classblinkdb_1a38ee1f661825653379d471d7ad6f522f">set</link> (std::string key, std::string value)</para>
+</listitem>
+            <listitem><para>std::string <link linkend="_classblinkdb_1a75e197842560cea323699bb1c5981a3d">get</link> (std::string key)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_classblinkdb_1af46ef218f2206bf3d934f49cbbd69a7c">del</link> (std::string key)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_classblinkdb_1a440e606ce8a75956a7d2bb1f1bbb1575"/>void <emphasis role="strong">print</emphasis> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>This is the blinkdb class. It is a key-value store that lets user to set, get and delete key-value pairs It uses a hashtable to store the key-value pairs. The hashtable uses open addressing with double hashing to resolve collisions. If the in-memory hashtable is full, the key-value pairs are stored in a file on disk. When the user exits, all the data is erased from the disk and from the memory (obviously). </para>
+</section>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_classblinkdb_1ad20d4882572f1b492ab041b45f238a0c"/><section>
+    <title>blinkdb()</title>
+<indexterm><primary>blinkdb</primary><secondary>blinkdb</secondary></indexterm>
+<indexterm><primary>blinkdb</primary><secondary>blinkdb</secondary></indexterm>
+<para><computeroutput>blinkdb::blinkdb (size_t size)<computeroutput>[inline]</computeroutput></computeroutput></para>
+<para>Construct a new blinkdb object </para>
+</section>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_classblinkdb_1af46ef218f2206bf3d934f49cbbd69a7c"/><section>
+    <title>del()</title>
+<indexterm><primary>del</primary><secondary>blinkdb</secondary></indexterm>
+<indexterm><primary>blinkdb</primary><secondary>del</secondary></indexterm>
+<para><computeroutput>bool blinkdb::del (std::string key)<computeroutput>[inline]</computeroutput></computeroutput></para>
+<para>Function to delete a key-value pair</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>key</entry><entry>
+<para>The key that you want to delete </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>true when the key-value pair is deleted successfully </para>
+
+<para>false otherwise </para>
+</formalpara>
+</para>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="classblinkdb_af46ef218f2206bf3d934f49cbbd69a7c_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="classblinkdb_af46ef218f2206bf3d934f49cbbd69a7c_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_classblinkdb_1a75e197842560cea323699bb1c5981a3d"/><section>
+    <title>get()</title>
+<indexterm><primary>get</primary><secondary>blinkdb</secondary></indexterm>
+<indexterm><primary>blinkdb</primary><secondary>get</secondary></indexterm>
+<para><computeroutput>std::string blinkdb::get (std::string key)<computeroutput>[inline]</computeroutput></computeroutput></para>
+<para>Function to get value correspoding to a key</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>key</entry><entry>
+<para>The key whose value you want to retrieve </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>std::string </para>
+</formalpara>
+</para>
+
+<para>Need to go to the disk If still not found, then the key does not exist and we return an empty string</para>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="classblinkdb_a75e197842560cea323699bb1c5981a3d_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="classblinkdb_a75e197842560cea323699bb1c5981a3d_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_classblinkdb_1a38ee1f661825653379d471d7ad6f522f"/><section>
+    <title>set()</title>
+<indexterm><primary>set</primary><secondary>blinkdb</secondary></indexterm>
+<indexterm><primary>blinkdb</primary><secondary>set</secondary></indexterm>
+<para><computeroutput>bool blinkdb::set (std::string key, std::string value)<computeroutput>[inline]</computeroutput></computeroutput></para>
+<para>Function to set a key-value pair</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>key</entry><entry>
+<para>The key in the key-value pair </para>
+</entry>
+                            </row>
+                            <row>
+<entry>value</entry><entry>
+<para>The value in the key-value pair </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>true when the key-value pair is set successfully </para>
+
+<para>false otherwise </para>
+</formalpara>
+</para>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="classblinkdb_a38ee1f661825653379d471d7ad6f522f_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="classblinkdb_a38ee1f661825653379d471d7ad6f522f_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<para>
+The documentation for this class was generated from the following file:</para>
+<link linkend="_blinkdb_8h">blinkdb.h</link></section>
+</section>

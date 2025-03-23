@@ -1,0 +1,21 @@
+var NAVTREEINDEX0 =
+{
+"annotated.html":[0,0],
+"blinkdb__server_8h.html":[1,0,0,0,0],
+"classblinkdb__server.html":[0,0,0],
+"classblinkdb__server.html#a03488742e0e300e384826059b2cf908e":[0,0,0,0],
+"classblinkdb__server.html#aea1530a77fbf44d7b4051dc2bce2e519":[0,0,0,1],
+"classes.html":[0,1],
+"dir_68267d1309a1af8e8297ef4c3efbcdba.html":[1,0,0],
+"dir_c85d3e3c5052e9ad9ce18c6863244a25.html":[1,0,0,0],
+"files.html":[1,0],
+"functions.html":[0,2,0],
+"functions_func.html":[0,2,1],
+"globals.html":[1,1,0],
+"globals_func.html":[1,1,1],
+"index.html":[],
+"pages.html":[],
+"server__runner_8cpp.html":[1,0,0,1],
+"server__runner_8cpp.html#a32c1402c1491ea6c063e45c1c5a57f10":[1,0,0,1,0],
+"server__runner_8cpp.html#a5b3210a63df1873c78a11917bce26ff1":[1,0,0,1,1]
+};
