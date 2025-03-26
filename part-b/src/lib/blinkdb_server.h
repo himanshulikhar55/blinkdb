@@ -189,7 +189,8 @@ private:
         char buffer[1024];
         ssize_t bytes_read = read(client_fd, buffer, sizeof(buffer));
         if(bytes_read <= 0) {
-            std::cout << "Client disconnected: " << client_fd << std::endl;
+            std::string message = "Client disconnected: " + std::to_string(client_fd);
+            print_log(message.c_str());
             epoll_ctl(epoll_fd, EPOLL_CTL_DEL, client_fd, NULL);
             close(client_fd);
             return 0;
