@@ -51,7 +51,11 @@ ds.<link linkend="_classdiskstorage_1a5cd280ffdc039f12c75f26ba325ec455">write</l
 std::string&#32;value&#32;=&#32;ds.<link linkend="_classdiskstorage_1a2a6d4004689c9c8084f0c07d4f49b191">read</link>(<emphasis role="stringliteral">&quot;sampleKey&quot;</emphasis>,&#32;index);
 </computeroutput></literallayout></para>
 
-<para><formalpara><title>See also</title>
+<para><formalpara><title>Copyright</title>
+
+<para>Copyright (c) 2025 </para>
+</formalpara>
+<formalpara><title>See also</title>
 
 <para><link linkend="_sparseindex_8h">sparseindex.h</link> </para>
 </formalpara>

@@ -1,7 +1,7 @@
 
 /**
  * @file bloomfilter.h
- *Implements a space-efficient probabilistic Bloom filter.
+ * Implements a space-efficient probabilistic Bloom filter.
  *
  * This file defines the bloomfilter class which provides a space-efficient
  * data structure to test whether a key is possibly present in a dataset.
@@ -30,6 +30,8 @@
  *
  * This file is part of the design-lab project and is intended for quickly checking
  * key membership with a controlled false positive rate.
+ * 
+ * @copyright Copyright (c) 2025
  */
 #include <vector>
 

@@ -1,5 +1,5 @@
 <map id="hashtable.h" name="hashtable.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="64,5,152,32"/>
+<area shape="rect" id="Node000001" title="Custom Hashtable implementation using open addressing with double hashing." alt="" coords="64,5,152,32"/>
 <area shape="rect" id="Node000002" href="$blinkdb_8h.html" title=" " alt="" coords="71,80,144,107"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="110,48,110,80,105,80,105,48"/>
 <area shape="rect" id="Node000003" href="$blinkdb__client_8h.html" title=" " alt="" coords="5,155,117,181"/>

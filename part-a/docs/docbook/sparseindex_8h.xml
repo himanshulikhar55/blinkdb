@@ -34,18 +34,24 @@ This graph shows which files directly or indirectly include this file:<para>
 
 <para>This file defines the sparseindex class, which encapsulates a skip list that stores key-offset pairs. The class leverages the efficiency of skip lists to allow fast insertion and nearest-neighbor offset retrieval, which is particularly useful for indexing. For N keys, the maximum level L for the skip list is recommended as:           <mediaobject>
             <imageobject>
-                <imagedata align="center" valign="middle" scalefit="0" fileref="form_10.png"/>
+                <imagedata align="center" valign="middle" scalefit="0" fileref="form_6.png"/>
             </imageobject>
         </mediaobject>
  With p chosen as 0.5, the formula simplifies to:</para>
 
 <para>        <mediaobject>
             <imageobject>
-                <imagedata align="center" valign="middle" scalefit="0" fileref="form_11.png"/>
+                <imagedata align="center" valign="middle" scalefit="0" fileref="form_7.png"/>
             </imageobject>
         </mediaobject>
 </para>
 
-<para>The design aims to provide a balance between space efficiency and quick lookup times, utilizing the probabilistic balancing nature of skip lists. </para>
+<para>The design aims to provide a balance between space efficiency and quick lookup times, utilizing the probabilistic balancing nature of skip lists.</para>
+
+<para><formalpara><title>Copyright</title>
+
+<para>Copyright (c) 2025 </para>
+</formalpara>
+</para>
 </section>
 </section>

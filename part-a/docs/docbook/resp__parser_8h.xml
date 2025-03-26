@@ -44,6 +44,12 @@ This graph shows which files directly or indirectly include this file:<para>
 
 <para>The parser offers robust mechanisms to validate, format, and retrieve command components, ensuring the correct conversion to and from RESP representations. Additionally, helper methods are provided for converting strings to byte streams and handling specific command conditions like quit, print, and configuration commands.</para>
 
-<para>Detailed functionality is documented within the respective methods. </para>
+<para>Detailed functionality is documented within the respective methods.</para>
+
+<para><formalpara><title>Copyright</title>
+
+<para>Copyright (c) 2025 </para>
+</formalpara>
+</para>
 </section>
 </section>

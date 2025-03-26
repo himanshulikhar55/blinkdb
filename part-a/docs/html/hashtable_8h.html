@@ -111,6 +111,9 @@ $(function(){initNavTree('hashtable_8h.html',''); initResizable(true); });
   <div class="headertitle"><div class="title">hashtable.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Custom Hashtable implementation using open addressing with double hashing.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="memorypool_8h.html">memorypool.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="diskstorage_8h.html">diskstorage.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="bloomfilter_8h.html">bloomfilter.h</a>&quot;</code><br />
@@ -128,53 +131,56 @@ Include dependency graph for hashtable.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="hashtable_8h__incl.png" border="0" usemap="#ahashtable_8h" alt=""/></div>
 <map name="ahashtable_8h" id="ahashtable_8h">
-<area shape="rect" title=" " alt="" coords="539,5,628,32"/>
-<area shape="rect" href="memorypool_8h.html" title=" " alt="" coords="74,229,178,256"/>
-<area shape="poly" title=" " alt="" coords="539,24,455,29,354,40,261,57,224,68,198,82,171,111,152,147,140,183,133,215,127,214,135,182,147,145,167,108,195,78,222,64,259,52,353,34,455,24,539,19"/>
-<area shape="rect" title=" " alt="" coords="274,304,331,331"/>
-<area shape="poly" title=" " alt="" coords="539,23,467,31,425,39,382,51,340,68,301,91,268,120,243,156,237,173,236,191,245,228,262,262,283,291,279,294,258,265,240,230,231,192,232,172,238,153,264,116,298,86,337,63,380,46,424,33,466,25,539,18"/>
-<area shape="rect" href="diskstorage_8h.html" title=" " alt="" coords="392,80,492,107"/>
-<area shape="poly" title=" " alt="" coords="560,35,482,75,479,70,558,30"/>
-<area shape="rect" title=" " alt="" coords="480,155,546,181"/>
-<area shape="poly" title=" " alt="" coords="580,34,528,142,523,139,575,31"/>
-<area shape="rect" title=" " alt="" coords="536,304,589,331"/>
-<area shape="poly" title=" " alt="" coords="585,33,567,289,561,288,580,32"/>
-<area shape="rect" href="sparseindex_8h.html" title=" " alt="" coords="252,155,355,181"/>
-<area shape="poly" title=" " alt="" coords="540,29,463,47,421,62,382,82,348,111,322,144,318,140,344,108,379,78,419,57,461,41,538,23"/>
-<area shape="rect" href="bloomfilter_8h.html" title=" " alt="" coords="612,229,704,256"/>
-<area shape="poly" title=" " alt="" coords="590,32,652,214,647,216,585,33"/>
-<area shape="rect" title=" " alt="" coords="672,80,730,107"/>
-<area shape="poly" title=" " alt="" coords="605,30,669,69,666,74,603,35"/>
-<area shape="rect" title=" " alt="" coords="753,80,814,107"/>
-<area shape="poly" title=" " alt="" coords="619,30,740,73,738,78,617,35"/>
-<area shape="rect" title=" " alt="" coords="837,80,890,107"/>
-<area shape="poly" title=" " alt="" coords="629,27,823,77,822,82,627,33"/>
-<area shape="rect" title=" " alt="" coords="913,80,982,107"/>
-<area shape="poly" title=" " alt="" coords="629,25,747,46,899,77,898,82,746,51,628,30"/>
-<area shape="rect" title=" " alt="" coords="178,304,250,331"/>
-<area shape="poly" title=" " alt="" coords="143,254,189,292,186,296,140,259"/>
-<area shape="poly" title=" " alt="" coords="158,254,260,296,258,301,156,259"/>
-<area shape="rect" title=" " alt="" coords="5,304,74,331"/>
-<area shape="poly" title=" " alt="" coords="113,259,68,296,64,292,109,254"/>
-<area shape="rect" title=" " alt="" coords="98,304,154,331"/>
-<area shape="poly" title=" " alt="" coords="129,257,129,288,124,288,124,257"/>
-<area shape="poly" title=" " alt="" coords="434,109,368,183,301,246,243,296,239,292,298,242,364,179,430,105"/>
-<area shape="poly" title=" " alt="" coords="456,105,492,142,488,145,453,109"/>
-<area shape="poly" title=" " alt="" coords="447,106,456,140,471,180,507,241,544,290,540,293,503,244,466,182,451,142,442,108"/>
-<area shape="poly" title=" " alt="" coords="419,110,343,149,340,145,417,105"/>
-<area shape="rect" href="skiplist_8h.html" title=" " alt="" coords="340,229,414,256"/>
-<area shape="poly" title=" " alt="" coords="318,180,355,216,351,220,314,184"/>
-<area shape="poly" title=" " alt="" coords="350,259,258,300,255,295,347,254"/>
-<area shape="poly" title=" " alt="" coords="366,258,328,295,324,291,362,255"/>
-<area shape="poly" title=" " alt="" coords="410,254,522,298,520,303,408,259"/>
-<area shape="rect" title=" " alt="" coords="355,304,420,331"/>
-<area shape="poly" title=" " alt="" coords="381,256,386,288,381,289,376,257"/>
-<area shape="rect" title=" " alt="" coords="444,304,496,331"/>
-<area shape="poly" title=" " alt="" coords="395,254,444,292,441,297,391,259"/>
-<area shape="poly" title=" " alt="" coords="612,254,496,275,346,306,345,301,495,270,612,249"/>
-<area shape="poly" title=" " alt="" coords="643,259,593,297,589,292,640,254"/>
-<area shape="rect" title=" " alt="" coords="620,304,697,331"/>
-<area shape="poly" title=" " alt="" coords="661,257,661,288,656,288,656,257"/>
+<area shape="rect" title="Custom Hashtable implementation using open addressing with double hashing." alt="" coords="619,5,708,32"/>
+<area shape="rect" href="memorypool_8h.html" title=" " alt="" coords="484,155,587,181"/>
+<area shape="poly" title=" " alt="" coords="655,34,558,145,554,141,651,31"/>
+<area shape="rect" title=" " alt="" coords="608,304,661,331"/>
+<area shape="poly" title=" " alt="" coords="670,32,680,70,689,126,692,192,688,225,681,257,671,277,659,294,655,291,667,274,676,255,683,224,687,191,684,127,675,71,665,33"/>
+<area shape="rect" title=" " alt="" coords="315,304,372,331"/>
+<area shape="poly" title=" " alt="" coords="640,35,588,64,521,108,449,164,416,196,387,231,368,261,355,291,350,289,364,258,383,228,413,193,446,160,517,103,585,59,637,30"/>
+<area shape="rect" href="diskstorage_8h.html" title=" " alt="" coords="240,80,340,107"/>
+<area shape="poly" title=" " alt="" coords="619,31,356,82,355,77,618,26"/>
+<area shape="rect" title=" " alt="" coords="328,155,394,181"/>
+<area shape="poly" title=" " alt="" coords="619,23,573,27,519,37,464,55,414,82,389,110,372,142,368,139,385,107,411,78,462,50,518,32,572,22,619,18"/>
+<area shape="rect" href="sparseindex_8h.html" title=" " alt="" coords="56,155,159,181"/>
+<area shape="poly" title=" " alt="" coords="619,22,543,24,445,32,336,50,282,65,230,82,176,112,133,146,130,142,173,108,228,78,280,59,335,45,444,27,543,19,619,17"/>
+<area shape="rect" href="bloomfilter_8h.html" title=" " alt="" coords="740,229,832,256"/>
+<area shape="poly" title=" " alt="" coords="673,31,774,215,770,217,668,34"/>
+<area shape="rect" title=" " alt="" coords="752,80,810,107"/>
+<area shape="poly" title=" " alt="" coords="685,30,749,69,746,74,683,35"/>
+<area shape="rect" title=" " alt="" coords="833,80,894,107"/>
+<area shape="poly" title=" " alt="" coords="699,30,820,73,818,78,697,35"/>
+<area shape="rect" title=" " alt="" coords="917,80,970,107"/>
+<area shape="poly" title=" " alt="" coords="709,27,903,77,902,82,707,33"/>
+<area shape="rect" title=" " alt="" coords="993,80,1062,107"/>
+<area shape="poly" title=" " alt="" coords="709,25,827,46,979,77,978,82,826,51,708,30"/>
+<area shape="rect" href="block_8h.html" title="This is the actual &quot;Block&quot; that will store the key and value pair." alt="" coords="602,229,666,256"/>
+<area shape="poly" title=" " alt="" coords="554,180,607,218,604,222,551,184"/>
+<area shape="rect" title=" " alt="" coords="170,304,242,331"/>
+<area shape="poly" title=" " alt="" coords="503,184,386,232,246,299,243,294,384,227,501,180"/>
+<area shape="poly" title=" " alt="" coords="503,184,461,204,418,231,387,262,362,293,358,290,383,258,415,227,459,199,501,179"/>
+<area shape="rect" title=" " alt="" coords="429,229,498,256"/>
+<area shape="poly" title=" " alt="" coords="525,184,488,220,485,216,521,180"/>
+<area shape="rect" title=" " alt="" coords="522,229,578,256"/>
+<area shape="poly" title=" " alt="" coords="541,181,547,214,542,215,535,182"/>
+<area shape="poly" title=" " alt="" coords="637,257,637,288,632,288,632,257"/>
+<area shape="poly" title=" " alt="" coords="294,106,301,141,319,180,341,207,362,224,418,254,463,273,510,287,593,307,592,312,509,293,461,278,416,258,359,229,337,211,315,183,296,143,289,107"/>
+<area shape="poly" title=" " alt="" coords="284,108,254,160,223,230,211,289,206,288,218,229,250,158,280,106"/>
+<area shape="poly" title=" " alt="" coords="304,105,340,142,336,145,301,109"/>
+<area shape="poly" title=" " alt="" coords="259,110,155,151,153,146,257,105"/>
+<area shape="rect" href="skiplist_8h.html" title=" " alt="" coords="78,229,151,256"/>
+<area shape="poly" title=" " alt="" coords="111,182,114,213,109,214,106,182"/>
+<area shape="poly" title=" " alt="" coords="152,246,593,308,592,313,151,252"/>
+<area shape="poly" title=" " alt="" coords="132,254,180,292,177,297,129,259"/>
+<area shape="poly" title=" " alt="" coords="152,253,301,300,299,305,150,258"/>
+<area shape="rect" title=" " alt="" coords="82,304,146,331"/>
+<area shape="poly" title=" " alt="" coords="117,257,117,288,112,288,112,257"/>
+<area shape="rect" title=" " alt="" coords="5,304,58,331"/>
+<area shape="poly" title=" " alt="" coords="102,259,59,296,55,292,98,255"/>
+<area shape="poly" title=" " alt="" coords="761,259,676,299,673,294,759,254"/>
+<area shape="poly" title=" " alt="" coords="740,254,388,311,387,306,740,249"/>
+<area shape="rect" title=" " alt="" coords="748,304,825,331"/>
+<area shape="poly" title=" " alt="" coords="789,257,789,288,784,288,784,257"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -182,7 +188,7 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="hashtable_8h__dep__incl.png" border="0" usemap="#ahashtable_8hdep" alt=""/></div>
 <map name="ahashtable_8hdep" id="ahashtable_8hdep">
-<area shape="rect" title=" " alt="" coords="64,5,152,32"/>
+<area shape="rect" title="Custom Hashtable implementation using open addressing with double hashing." alt="" coords="64,5,152,32"/>
 <area shape="rect" href="blinkdb_8h.html" title=" " alt="" coords="71,80,144,107"/>
 <area shape="poly" title=" " alt="" coords="110,48,110,80,105,80,105,48"/>
 <area shape="rect" href="blinkdb__client_8h.html" title=" " alt="" coords="5,155,117,181"/>
@@ -208,7 +214,7 @@ Macros</h2></td></tr>
 <tr class="separator:a7201066a7f98df69ca8f01d974dcfb53"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Custom Hashtable implementation using open addressing with double hashing.</p>
+<div class="textblock"><p>Custom Hashtable implementation using open addressing with double hashing. </p>
 <p>This file contains the declaration and implementation of a custom hashtable that employs open addressing with double hashing for collision resolution. Each entry in the hashtable is represented by an Entry struct containing an occupancy flag, a key string, and a pointer to a memory-managed <a class="el" href="structBlock.html">Block</a>. The hashtable integrates several components including:</p><ul>
 <li>A custom memory pool for managing dynamic memory allocation.</li>
 <li>Disk storage for offloading key-value pairs via the evict() function.</li>
@@ -219,7 +225,15 @@ Macros</h2></td></tr>
 <li>Dynamic resizing of the table based on occupancy thresholds, monitored by a dedicated background thread.</li>
 <li>Standard hashtable operations such as insert, get, del, and evict.</li>
 </ul>
-<p>The implementation is designed to efficiently handle memory and disk storage operations, making use of modern C++ features such as move semantic and using thread to handle resizing. </p>
+<p>The implementation is designed to efficiently handle memory and disk storage operations, making use of modern C++ features such as move semantic and using thread to handle resizing.</p>
+<dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2025 </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="memorypool_8h.html">memorypool.h</a> </dd>
+<dd>
+<a class="el" href="diskstorage_8h.html">diskstorage.h</a> </dd>
+<dd>
+<a class="el" href="bloomfilter_8h.html">bloomfilter.h</a> </dd>
+<dd>
+<a class="el" href="sparseindex_8h.html">sparseindex.h</a> </dd></dl>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

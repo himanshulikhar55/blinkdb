@@ -1,6 +1,6 @@
 /**
  * @file resp_parser.h
- *Provides functionalities for parsing and converting commands using the Redis Serialization Protocol (RESP).
+ * Provides functionalities for parsing and converting commands using the Redis Serialization Protocol (RESP).
  *
  * This file defines the data structure and class used to process commands in RESP format.
  * It includes:
@@ -16,6 +16,8 @@
  * conditions like quit, print, and configuration commands.
  *
  * Detailed functionality is documented within the respective methods.
+ * 
+ * @copyright Copyright (c) 2025
  */
 #pragma once
 #include "debug.h"

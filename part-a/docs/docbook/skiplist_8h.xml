@@ -53,13 +53,13 @@ sl.<link linkend="_classskiplist_1aa193aa8a10a77cbf6bddca202b5c253a">insert</lin
 std::streampos&#32;pos&#32;=&#32;sl.<link linkend="_classskiplist_1aa1d31fd7a91a970ce89658791be4872e">get_nearest_offset</link>(<emphasis role="stringliteral">&quot;another_key&quot;</emphasis>);
 </computeroutput></literallayout></para>
 
-<para><formalpara><title>Author</title>
+<para><formalpara><title>See also</title>
 
-<para>Himanshu Likhar </para>
+<para><link xlink:href="https://en.wikipedia.org/wiki/Skip_list">https://en.wikipedia.org/wiki/Skip_list</link> </para>
 </formalpara>
-<formalpara><title>Date</title>
+<formalpara><title>Copyright</title>
 
-<para>23/03/2025 </para>
+<para>Copyright (c) 2025 </para>
 </formalpara>
 </para>
 </section>

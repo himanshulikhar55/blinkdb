@@ -1,5 +1,10 @@
 \doxysection{hashtable.\+h File Reference}
 \hypertarget{hashtable_8h}{}\label{hashtable_8h}\index{hashtable.h@{hashtable.h}}
+
+
+Custom Hashtable implementation using open addressing with double hashing.  
+
+
 {\ttfamily \#include "{}memorypool.\+h"{}}\newline
 {\ttfamily \#include "{}diskstorage.\+h"{}}\newline
 {\ttfamily \#include "{}bloomfilter.\+h"{}}\newline
@@ -43,7 +48,7 @@ class \mbox{\hyperlink{classhashtable}{hashtable}}
 
 
 \doxysubsection{Detailed Description}
-Custom Hashtable implementation using open addressing with double hashing.
+Custom Hashtable implementation using open addressing with double hashing. 
 
 This file contains the declaration and implementation of a custom hashtable that employs open addressing with double hashing for collision resolution. Each entry in the hashtable is represented by an Entry struct containing an occupancy flag, a key string, and a pointer to a memory-\/managed \doxylink{structBlock}{Block}. The hashtable integrates several components including\+:
 \begin{DoxyItemize}
@@ -59,4 +64,17 @@ Key features include\+:
 \item Standard hashtable operations such as insert, get, del, and evict.
 \end{DoxyItemize}
 
-The implementation is designed to efficiently handle memory and disk storage operations, making use of modern C++ features such as move semantic and using thread to handle resizing. 
+The implementation is designed to efficiently handle memory and disk storage operations, making use of modern C++ features such as move semantic and using thread to handle resizing.
+
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2025 
+\end{DoxyCopyright}
+\begin{DoxySeeAlso}{See also}
+\doxylink{memorypool_8h}{memorypool.\+h} 
+
+\doxylink{diskstorage_8h}{diskstorage.\+h} 
+
+\doxylink{bloomfilter_8h}{bloomfilter.\+h} 
+
+\doxylink{sparseindex_8h}{sparseindex.\+h} 
+\end{DoxySeeAlso}

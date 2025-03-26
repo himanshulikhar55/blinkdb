@@ -32,24 +32,30 @@ This graph shows which files directly or indirectly include this file:<para>
 
 <para>Defines the blinkdb class, a key-value store with in-memory and disk storage.</para>
 
-<para>This file introduces the blinkdb class which implements a key-value store. The design uses an in-memory hashtable (with open addressing and double hashing) to store key-value pairs. When the hashtable becomes full, it evicts entries to disk storage and leverages a sparse index for file lookups. A bloom filter is used to optimize read operations by quickly ruling out non-existent keys.</para>
+<para>This file introduces the blinkdb class which implements an in-memory key-value store database. The design uses an in-memory hashtable (with open addressing and double hashing) to store key-value pairs. When the hashtable becomes 70% full, it checks if its size is greater than 1GB. If no, it resizes and rehashes the existing eentries. Else, it evicts 50% of entries to disk storage. It leverages a sparse index for file lookups. A bloom filter is used to optimize read operations by quickly ruling out non-existent keys and saving a disk-access.</para>
 
 <para>The class provides basic operations:<itemizedlist>
 <listitem>
-<para>set: Insert a key-value pair into the store.</para>
+<para>SET: Insert a key-value pair into the store.</para>
 </listitem><listitem>
-<para>get: Retrieve the value corresponding to a given key, fetching from memory first, then disk if needed.</para>
+<para>GET: Retrieve the value corresponding to a given key, fetching from memory first, then disk if needed.</para>
 </listitem><listitem>
-<para>del: Delete a key-value pair from the in-memory store.</para>
+<para>DEL: Delete a key-value pair from the in-memory store.</para>
+</listitem><listitem>
+<para>print: Print the contents of the in-memory store.</para>
 </listitem></itemizedlist>
 </para>
 
-<para>The design ensures that when the user exits, all stored data, both in memory and on disk, are cleared.</para>
+<para>The design ensures that when the user exits, all stored data, both in memory and on disk, are cleared (obviously).</para>
 
-<para><note><title>Note</title>
+<para><formalpara><title>See also</title>
 
-<para>This file is part of the design-lab project and is located in the src/lib directory. </para>
-</note>
+<para><link linkend="_hashtable_8h">hashtable.h</link></para>
+</formalpara>
+<formalpara><title>Copyright</title>
+
+<para>Copyright (c) 2025 </para>
+</formalpara>
 </para>
 </section>
 </section>

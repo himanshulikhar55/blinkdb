@@ -19,7 +19,7 @@
 <section>
 <title>Detailed Description</title>
 
-<para>This class is used to store key-value pairs on disk. </para>
+<para>This is the diskstorage class. It is used to store key-value pairs on disk. It writes the key-value pairs to a file in append mode and reads them back using a sparse index. </para>
 </section>
 <section>
 <title>Constructor &amp; Destructor Documentation</title>

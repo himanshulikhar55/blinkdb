@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<chapter xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_mainpage" xml:lang="en-US">
+<title>BlinkDB</title>
+<indexterm><primary>BlinkDB</primary></indexterm>
+
+<para><note><title>Note</title>
+
+<para>BlinkDB is a project developed for educational purposes and is not intended for production use. </para>
+</note>
+</para>
+<section xml:id="_index_1overview">
+<title>Overview</title>
+<para>BlinkDB is an efficient <emphasis role="bold">in-memory key-value store</emphasis> that leverages both in-memory and on-disk storage to provide quick data access and high write speeds. The project employs an in-memory hashtable alongside disk storage for evicted entries (when the main memory starts to fill up), ensuring scalability when the dataset grows large. Additionally, it integrates a bloom filter and a sparse index to optimize read operations and disk lookups.</para>
+</section>
+<section xml:id="_index_1architecture">
+<title>Architecture</title>
+<para>The architecture of BlinkDB consists of:<itemizedlist>
+<listitem>
+<para>In-Memory Hashtable: Utilizes open addressing with double hashing to store key-value pairs until the load factor reaches 70%.</para>
+</listitem><listitem>
+<para>Resizing and Rehashing: When feasible (i.e., if memory usage is below 1GB), the hashtable is resized and rehashed to accommodate more entries.</para>
+</listitem><listitem>
+<para>Disk Storage Eviction: If resizing is not possible, 50% of the in-memory entries are evicted to disk storage to free up memory.</para>
+</listitem><listitem>
+<para>Disk Storage: Maintains evicted entries and is optimized using a sparse index for faster file lookups.</para>
+</listitem><listitem>
+<para>Bloom Filter: Quickly rules out non-existent keys to reduce unnecessary disk accesses during read operations.</para>
+</listitem></itemizedlist>
+</para>
+</section>
+<section xml:id="_index_1operations">
+<title>Operations</title>
+<para>BlinkDB provides the following core functionalities:<itemizedlist>
+<listitem>
+<para>SET: Insert or update a key-value pair in the store.</para>
+</listitem><listitem>
+<para>GET: Retrieve the value associated with a given key, first by checking in-memory storage, then, if needed, falling back to disk storage.</para>
+</listitem><listitem>
+<para>DEL: Delete a key-value pair from the in-memory store.</para>
+</listitem><listitem>
+<para>print: Output the current contents of the in-memory store to the console.</para>
+</listitem></itemizedlist>
+</para>
+</section>
+<section xml:id="_index_1cleanup">
+<title>Cleanup</title>
+<para>Upon termination, BlinkDB <emphasis role="bold">ensures</emphasis> that both in-memory and disk data are cleared, maintaining data integrity and resource management. This was achieved after much deliberation and hours of testing using Valgrind and GDB.</para>
+</section>
+<section xml:id="_index_1author">
+<title>Author</title>
+<para>Himanshu Likhar</para>
+</section>
+<section xml:id="_index_1version">
+<title>Version</title>
+<para>0.1</para>
+</section>
+<section xml:id="_index_1date">
+<title>Date</title>
+<para>2025-03-27 </para>
+</section>
+</chapter>

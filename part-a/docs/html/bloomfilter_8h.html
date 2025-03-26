@@ -133,7 +133,7 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="center"><img src="bloomfilter_8h__dep__incl.png" border="0" usemap="#abloomfilter_8hdep" alt=""/></div>
 <map name="abloomfilter_8hdep" id="abloomfilter_8hdep">
 <area shape="rect" title=" " alt="" coords="62,5,153,32"/>
-<area shape="rect" href="hashtable_8h.html" title=" " alt="" coords="64,80,152,107"/>
+<area shape="rect" href="hashtable_8h.html" title="Custom Hashtable implementation using open addressing with double hashing." alt="" coords="64,80,152,107"/>
 <area shape="poly" title=" " alt="" coords="110,48,110,80,105,80,105,48"/>
 <area shape="rect" href="blinkdb_8h.html" title=" " alt="" coords="71,155,144,181"/>
 <area shape="poly" title=" " alt="" coords="110,122,110,154,105,154,105,122"/>
@@ -162,20 +162,21 @@ Classes</h2></td></tr>
 <ol type="1">
 <li><b>Bit Array Size</b>:   <p class="formulaDsp">
 \[
-    m = - \frac{n \ln(p)}{(\ln(2))^2}
-    \]
+   m = - \frac{n \ln(p)}{(\ln(2))^2}
+   \]
 </p>
 </li>
 <li><b>Number of Hash Functions</b>:   <p class="formulaDsp">
 \[
-    k = \frac{m}{n} \ln(2)
-    \]
+   k = \frac{m}{n} \ln(2)
+   \]
 </p>
 </li>
 </ol>
 <p>These formulas help minimize the false positive rate while using space efficiently.</p>
 <p>The implementation combines two hash functions to simulate k hash functions using the formula: hash_i = hash1 + i * hash2.</p>
-<p>This file is part of the design-lab project and is intended for quickly checking key membership with a controlled false positive rate. </p>
+<p>This file is part of the design-lab project and is intended for quickly checking key membership with a controlled false positive rate.</p>
+<dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2025 </dd></dl>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

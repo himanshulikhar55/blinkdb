@@ -2,7 +2,7 @@
 <section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_client__runner_8cpp" xml:lang="en-US">
 <title>client_runner.cpp File Reference</title>
 <indexterm><primary>client_runner.cpp</primary></indexterm>
-<programlisting linenumbering="unnumbered">#include &lt;iostream&gt;<?linebreak?>#include &lt;string&gt;<?linebreak?>#include &lt;csignal&gt;<?linebreak?>#include &lt;unistd.h&gt;<?linebreak?>#include &lt;termios.h&gt;<?linebreak?>#include &quot;lib/blinkdb_client.h&quot;<?linebreak?>#include &quot;lib/resp_parser.h&quot;<?linebreak?>#include &quot;lib/blinkdb.h&quot;<?linebreak?>#include &lt;limits&gt;<?linebreak?></programlisting>Include dependency graph for client_runner.cpp:<para>
+<programlisting linenumbering="unnumbered">#include &lt;iostream&gt;<?linebreak?>#include &lt;string&gt;<?linebreak?>#include &lt;csignal&gt;<?linebreak?>#include &lt;unistd.h&gt;<?linebreak?>#include &lt;termios.h&gt;<?linebreak?>#include &lt;limits&gt;<?linebreak?>#include &quot;lib/blinkdb_client.h&quot;<?linebreak?>#include &quot;lib/resp_parser.h&quot;<?linebreak?>#include &quot;lib/blinkdb.h&quot;<?linebreak?>#include &quot;lib/utils.h&quot;<?linebreak?></programlisting>Include dependency graph for client_runner.cpp:<para>
     <informalfigure>
         <mediaobject>
             <imageobject>
@@ -49,9 +49,16 @@
 
 <para>Client runner for connecting to BlinkDB and interacting with it.</para>
 
-<para>This file provides the main functionality for a client that connects to a BlinkDB server. It establishes a connection to the server on a specified port, handles user input, and communicates using the RESP protocol. The client supports sending various commands and cleanly exits on receiving an exit command or SIGINT signal.</para>
+<para>This file provides the main functionality for a client that connects to a BlinkDB server. It establishes a connection to the server on a predefined port, handles user input, and communicates using the RESP2 protocol. The client supports sending various commands and cleanly exits on receiving an exit command or SIGINT signal.</para>
 
-<para>Signal Handlers:<itemizedlist>
+<para>The client can run in only one of two modes: The first mode is &quot;Local mode&quot; which basically instantiates a local instance of BlinkDB and runs GET, SET and DEL command. The second mode is the &quot;Client-Server mode&quot;. It is the mode in which the user connects to a BLINKDB server and all the requests are processed in the Server-side. The client takes the input from the user, parses it into RESP2 format and uses POSIX sockets to establish a TCP connection to a BlinkDB server.</para>
+
+<para><note><title>Note</title>
+
+<para>The client can only run in the modes described above. The user should run the client in the following way: <literallayout><computeroutput>./client_runner&#32;&lt;mode&gt;
+</computeroutput></literallayout> where &lt;mode&gt; can be either 1 or 2. 1 is for local mode and 2 is for client-server mode.</para>
+</note>
+Signal Handlers:<itemizedlist>
 <listitem>
 <para>SIGINT: Invokes the function to safely exit the client by sending a QUIT command.</para>
 </listitem><listitem>
@@ -80,11 +87,15 @@
 <para><emphasis role="bold">GET key</emphasis>: Retrieve the value associated with a key.</para>
 </listitem><listitem>
 <para><emphasis role="bold">DEL key</emphasis>: Delete a key from the database.</para>
+</listitem><listitem>
+<para><emphasis role="bold">exit</emphasis>: Exit the client.</para>
+</listitem><listitem>
+<para><emphasis role="bold">print</emphasis>: Print the contents of the database. </para>
 </listitem></itemizedlist>
 </para>
 <section xml:id="_client__runner_8cpp_1autotoc_md0">
 <title>Usage Examples:</title>
-<para><literallayout><computeroutput>./client_runner
+<para><literallayout><computeroutput>./client_runner&#32;&lt;mode&gt;
 </computeroutput></literallayout></para>
 
 <para>Once inside the interactive client, you can type commands as follows:</para>
@@ -98,11 +109,11 @@
 +OK
 </computeroutput></literallayout></para>
 
-<para>The client connects to the BlinkDB server running on the configured port (default: <emphasis role="bold">9001</emphasis>).</para>
+<para>If running in &quot;Client-Server Mode&quot; the client connects to the BlinkDB server running on the preconfigured port (<emphasis role="bold">9001</emphasis>).</para>
 </section>
 <section xml:id="_client__runner_8cpp_1autotoc_md1">
 <title>Command Format:</title>
-<para>The client serializes commands into the <emphasis role="bold">RESP-2 protocol format</emphasis> before sending them:</para>
+<para>The client serializes commands into the <emphasis role="bold">RESP2 protocol format</emphasis> before sending them:</para>
 
 <para><itemizedlist>
 <listitem>
@@ -118,7 +129,7 @@
 
 <para><note><title>Note</title>
 
-<para>The client communicates with the server using a custom RESP protocol format. </para>
+<para>The client communicates with the server using a custom RESP2 protocol format. </para>
 </note>
 </para>
 </section>

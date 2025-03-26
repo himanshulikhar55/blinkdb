@@ -2,8 +2,14 @@
  * @file blinkdb_client.h
  * Defines the blinkdb_client class for connecting to a BlinkDB server and sending requests.
  *
- * This file provides a simple client interface that uses POSIX sockets to establish a TCP
+ * This file provides a simple client interface that provides public methods to either directly execute commands
+ * on the passed on BLINKDB instance based on the inputs or uses POSIX sockets to establish a TCP
  * connection to a BlinkDB server, send requests, and receive responses.
+ * The former is used for local mode and the latter for client-server mode.
+ * 
+ * @copyright Copyright (c) 2025
+ * @see resp_parser.h
+ * @see blinkdb.h
  */
 #pragma once
 #include <string>
@@ -160,7 +166,7 @@ public:
         }
     }
 private:
-    std::string server_ip;
-    int port;
-    int sock_fd;
+    std::string server_ip; /* IP address of the BlinkDB server */
+    int port;              /* Port number of the BlinkDB server */
+    int sock_fd;           /* Socket file descriptor */
 };

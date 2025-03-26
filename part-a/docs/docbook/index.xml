@@ -3,6 +3,7 @@
     <info>
     <title>BLINKDB-Engine</title>
     </info>
+    <xi:include href="mainpage.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
 <chapter>
     <title>Class Documentation</title>
     <xi:include href="classblinkdb.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
@@ -22,6 +23,7 @@
     <xi:include href="client__runner_8cpp.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="blinkdb_8h.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="blinkdb__client_8h.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="block_8h.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="bloomfilter_8h.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="diskstorage_8h.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="hashtable_8h.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>

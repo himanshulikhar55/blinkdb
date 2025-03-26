@@ -40,8 +40,18 @@ This graph shows which files directly or indirectly include this file:<para>
 
 <para><note><title>Note</title>
 
-<para>The memorypool relies on the <link linkend="_structBlock">Block</link> class declared in &quot;block.h&quot;, and it uses C++ Standard Library facilities like std::vector and std::queue. </para>
+<para>The memorypool relies on the <link linkend="_structBlock">Block</link> class declared in &quot;block.h&quot;, and it uses C++ Standard Library facilities like std::vector and std::queue.</para>
+
+<para>The memorypool class is not thread-safe and does not support concurrent access.</para>
 </note>
+<formalpara><title>See also</title>
+
+<para><link linkend="_block_8h">block.h</link> </para>
+</formalpara>
+<formalpara><title>Copyright</title>
+
+<para>Copyright (c) 2025 </para>
+</formalpara>
 </para>
 </section>
 </section>

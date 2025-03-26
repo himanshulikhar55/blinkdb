@@ -31,4 +31,13 @@ class \mbox{\hyperlink{classblinkdb__client}{blinkdb\+\_\+client}}
 \doxysubsection{Detailed Description}
 Defines the \doxylink{classblinkdb__client}{blinkdb\+\_\+client} class for connecting to a Blink\+DB server and sending requests.
 
-This file provides a simple client interface that uses POSIX sockets to establish a TCP connection to a Blink\+DB server, send requests, and receive responses. 
+This file provides a simple client interface that provides public methods to either directly execute commands on the passed on BLINKDB instance based on the inputs or uses POSIX sockets to establish a TCP connection to a Blink\+DB server, send requests, and receive responses. The former is used for local mode and the latter for client-\/server mode.
+
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2025 
+\end{DoxyCopyright}
+\begin{DoxySeeAlso}{See also}
+\doxylink{resp__parser_8h}{resp\+\_\+parser.\+h} 
+
+\doxylink{blinkdb_8h}{blinkdb.\+h} 
+\end{DoxySeeAlso}

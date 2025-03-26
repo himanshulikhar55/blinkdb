@@ -1,7 +1,7 @@
 
 /**
  * @file hashtable.h
- *Custom Hashtable implementation using open addressing with double hashing.
+ * @brief Custom Hashtable implementation using open addressing with double hashing.
  *
  * This file contains the declaration and implementation of a custom hashtable that
  * employs open addressing with double hashing for collision resolution. Each entry in
@@ -20,6 +20,12 @@
  *
  * The implementation is designed to efficiently handle memory and disk storage operations,
  * making use of modern C++ features such as move semantic and using thread to handle resizing.
+ * 
+ * @copyright Copyright (c) 2025
+ * @see memorypool.h
+ * @see diskstorage.h
+ * @see bloomfilter.h
+ * @see sparseindex.h
  */
 #pragma once
 #include "memorypool.h"

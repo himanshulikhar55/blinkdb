@@ -123,13 +123,15 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a75e197842560cea323699bb1c5981a3d" id="r_a75e197842560cea323699bb1c5981a3d"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a75e197842560cea323699bb1c5981a3d">get</a> (std::string key)</td></tr>
 <tr class="separator:a75e197842560cea323699bb1c5981a3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af46ef218f2206bf3d934f49cbbd69a7c" id="r_af46ef218f2206bf3d934f49cbbd69a7c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af46ef218f2206bf3d934f49cbbd69a7c">del</a> (std::string key)</td></tr>
+<tr class="memdesc:af46ef218f2206bf3d934f49cbbd69a7c"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function should be called when we want to delete a key-value pair.  <br /></td></tr>
 <tr class="separator:af46ef218f2206bf3d934f49cbbd69a7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a440e606ce8a75956a7d2bb1f1bbb1575" id="r_a440e606ce8a75956a7d2bb1f1bbb1575"><td class="memItemLeft" align="right" valign="top"><a id="a440e606ce8a75956a7d2bb1f1bbb1575" name="a440e606ce8a75956a7d2bb1f1bbb1575"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>print</b> ()</td></tr>
+<tr class="memdesc:a440e606ce8a75956a7d2bb1f1bbb1575"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints the contents of the database. <br /></td></tr>
 <tr class="separator:a440e606ce8a75956a7d2bb1f1bbb1575"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>This is the blinkdb class. It is a key-value store that lets user to set, get and delete key-value pairs It uses a hashtable to store the key-value pairs. The hashtable uses open addressing with double hashing to resolve collisions. If the in-memory hashtable is full, the key-value pairs are stored in a file on disk. When the user exits, all the data is erased from the disk and from the memory (obviously). </p>
+<div class="textblock"><p>This is the blinkdb class. It is a key-value store that lets user to set, get and delete key-value pairs It uses a hashtable to store the key-value pairs. When the hashtable becomes 70% full, it checks if its size is greater than 1GB. If no, it resizes and rehashes the existing eentries. Else, it evicts 50% of entries to disk storage. It leverages a sparse index for file lookups. A bloom filter is used to optimize read operations by quickly ruling out non-existent keys and saving a disk-access. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ad20d4882572f1b492ab041b45f238a0c" name="ad20d4882572f1b492ab041b45f238a0c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad20d4882572f1b492ab041b45f238a0c">&#9670;&#160;</a></span>blinkdb()</h2>
@@ -180,7 +182,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>print</b> ()</td></tr
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Function to delete a key-value pair</p>
+
+<p>This function should be called when we want to delete a key-value pair. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">key</td><td>The key that you want to delete </td></tr>
@@ -195,7 +198,7 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classblinkdb_af46ef218f2206bf3d934f49cbbd69a7c_cgraph.png" border="0" usemap="#aclassblinkdb_af46ef218f2206bf3d934f49cbbd69a7c_cgraph" alt=""/></div>
 <map name="aclassblinkdb_af46ef218f2206bf3d934f49cbbd69a7c_cgraph" id="aclassblinkdb_af46ef218f2206bf3d934f49cbbd69a7c_cgraph">
-<area shape="rect" title=" " alt="" coords="5,5,93,32"/>
+<area shape="rect" title="This function should be called when we want to delete a key&#45;value pair." alt="" coords="5,5,93,32"/>
 <area shape="rect" href="classhashtable.html#a84de2b2fb13c58b207081fc6c239b3b5" title=" " alt="" coords="141,5,243,32"/>
 <area shape="poly" title=" " alt="" coords="93,16,125,16,125,21,93,21"/>
 <area shape="rect" href="classmemorypool.html#a087fc49928d81116fc6369aff223de6f" title=" " alt="" coords="291,5,450,32"/>

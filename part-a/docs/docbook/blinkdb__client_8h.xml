@@ -32,6 +32,18 @@ This graph shows which files directly or indirectly include this file:<para>
 
 <para>Defines the <link linkend="_classblinkdb__client">blinkdb_client</link> class for connecting to a BlinkDB server and sending requests.</para>
 
-<para>This file provides a simple client interface that uses POSIX sockets to establish a TCP connection to a BlinkDB server, send requests, and receive responses. </para>
+<para>This file provides a simple client interface that provides public methods to either directly execute commands on the passed on BLINKDB instance based on the inputs or uses POSIX sockets to establish a TCP connection to a BlinkDB server, send requests, and receive responses. The former is used for local mode and the latter for client-server mode.</para>
+
+<para><formalpara><title>Copyright</title>
+
+<para>Copyright (c) 2025 </para>
+</formalpara>
+<formalpara><title>See also</title>
+
+<para><link linkend="_resp__parser_8h">resp_parser.h</link> </para>
+
+<para><link linkend="_blinkdb_8h">blinkdb.h</link> </para>
+</formalpara>
+</para>
 </section>
 </section>

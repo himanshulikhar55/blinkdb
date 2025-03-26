@@ -70,14 +70,14 @@ This graph shows which files directly or indirectly include this file:<para>
 <listitem>
 <para><emphasis role="bold">Bit Array Size</emphasis>:           <mediaobject>
             <imageobject>
-                <imagedata align="center" valign="middle" scalefit="0" fileref="form_8.png"/>
+                <imagedata align="center" valign="middle" scalefit="0" fileref="form_4.png"/>
             </imageobject>
         </mediaobject>
 </para>
 </listitem><listitem>
 <para><emphasis role="bold">Number of Hash Functions</emphasis>:           <mediaobject>
             <imageobject>
-                <imagedata align="center" valign="middle" scalefit="0" fileref="form_9.png"/>
+                <imagedata align="center" valign="middle" scalefit="0" fileref="form_5.png"/>
             </imageobject>
         </mediaobject>
 </para>
@@ -88,6 +88,12 @@ This graph shows which files directly or indirectly include this file:<para>
 
 <para>The implementation combines two hash functions to simulate k hash functions using the formula: hash_i = hash1 + i * hash2.</para>
 
-<para>This file is part of the design-lab project and is intended for quickly checking key membership with a controlled false positive rate. </para>
+<para>This file is part of the design-lab project and is intended for quickly checking key membership with a controlled false positive rate.</para>
+
+<para><formalpara><title>Copyright</title>
+
+<para>Copyright (c) 2025 </para>
+</formalpara>
+</para>
 </section>
 </section>

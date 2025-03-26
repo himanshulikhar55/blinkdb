@@ -5,11 +5,13 @@
 {\ttfamily \#include $<$csignal$>$}\newline
 {\ttfamily \#include $<$unistd.\+h$>$}\newline
 {\ttfamily \#include $<$termios.\+h$>$}\newline
+{\ttfamily \#include $<$limits$>$}\newline
 {\ttfamily \#include "{}lib/blinkdb\+\_\+client.\+h"{}}\newline
 {\ttfamily \#include "{}lib/resp\+\_\+parser.\+h"{}}\newline
 {\ttfamily \#include "{}lib/blinkdb.\+h"{}}\newline
-{\ttfamily \#include $<$limits$>$}\newline
-Include dependency graph for client\+\_\+runner.\+cpp\+:\nopagebreak
+{\ttfamily \#include "{}lib/utils.\+h"{}}\newline
+Include dependency graph for client\+\_\+runner.\+cpp\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -57,8 +59,18 @@ const std\+::string {\bfseries quit} = "{}\texorpdfstring{$\ast$}{*}1\textbacksl
 \doxysubsection{Detailed Description}
 Client runner for connecting to Blink\+DB and interacting with it.
 
-This file provides the main functionality for a client that connects to a Blink\+DB server. It establishes a connection to the server on a specified port, handles user input, and communicates using the RESP protocol. The client supports sending various commands and cleanly exits on receiving an exit command or SIGINT signal.
+This file provides the main functionality for a client that connects to a Blink\+DB server. It establishes a connection to the server on a predefined port, handles user input, and communicates using the RESP2 protocol. The client supports sending various commands and cleanly exits on receiving an exit command or SIGINT signal.
 
+The client can run in only one of two modes\+: The first mode is "{}\+Local mode"{} which basically instantiates a local instance of Blink\+DB and runs GET, SET and DEL command. The second mode is the "{}\+Client-\/\+Server mode"{}. It is the mode in which the user connects to a BLINKDB server and all the requests are processed in the Server-\/side. The client takes the input from the user, parses it into RESP2 format and uses POSIX sockets to establish a TCP connection to a Blink\+DB server.
+
+\begin{DoxyNote}{Note}
+The client can only run in the modes described above. The user should run the client in the following way\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{./client\_runner\ <mode>}
+
+\end{DoxyCode}
+ where $<$mode$>$ can be either 1 or 2. 1 is for local mode and 2 is for client-\/server mode.
+\end{DoxyNote}
 Signal Handlers\+:
 \begin{DoxyItemize}
 \item SIGINT\+: Invokes the function to safely exit the client by sending a QUIT command.
@@ -80,10 +92,12 @@ This client allows users to send commands to the Blink\+DB server using the RESP
 \item {\bfseries{SET key value}}\+: Store a key-\/value pair in the database.
 \item {\bfseries{GET key}}\+: Retrieve the value associated with a key.
 \item {\bfseries{DEL key}}\+: Delete a key from the database.
+\item {\bfseries{exit}}\+: Exit the client.
+\item {\bfseries{print}}\+: Print the contents of the database. 
 \end{DoxyItemize}\hypertarget{client__runner_8cpp_autotoc_md0}{}\doxysubsubsection{\texorpdfstring{Usage Examples\+:}{Usage Examples\+:}}\label{client__runner_8cpp_autotoc_md0}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{./client\_runner}
+\DoxyCodeLine{./client\_runner\ <mode>}
 
 \end{DoxyCode}
 
@@ -103,8 +117,8 @@ Once inside the interactive client, you can type commands as follows\+:
 \end{DoxyCode}
 
 
-The client connects to the Blink\+DB server running on the configured port (default\+: {\bfseries{9001}}).\hypertarget{client__runner_8cpp_autotoc_md1}{}\doxysubsubsection{\texorpdfstring{Command Format\+:}{Command Format\+:}}\label{client__runner_8cpp_autotoc_md1}
-The client serializes commands into the {\bfseries{RESP-\/2 protocol format}} before sending them\+:
+If running in "{}\+Client-\/\+Server Mode"{} the client connects to the Blink\+DB server running on the preconfigured port ({\bfseries{9001}}).\hypertarget{client__runner_8cpp_autotoc_md1}{}\doxysubsubsection{\texorpdfstring{Command Format\+:}{Command Format\+:}}\label{client__runner_8cpp_autotoc_md1}
+The client serializes commands into the {\bfseries{RESP2 protocol format}} before sending them\+:
 
 
 \begin{DoxyItemize}
@@ -116,5 +130,5 @@ The client serializes commands into the {\bfseries{RESP-\/2 protocol format}} be
 The server responds with a result (OK, a value, or an error message (-\/ERR)).
 
 \begin{DoxyNote}{Note}
-The client communicates with the server using a custom RESP protocol format. 
+The client communicates with the server using a custom RESP2 protocol format. 
 \end{DoxyNote}

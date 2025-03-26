@@ -2,6 +2,11 @@
 <section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_hashtable_8h" xml:lang="en-US">
 <title>hashtable.h File Reference</title>
 <indexterm><primary>hashtable.h</primary></indexterm>
+<para>
+
+<para>Custom Hashtable implementation using open addressing with double hashing. </para>
+ 
+</para>
 <programlisting linenumbering="unnumbered">#include &quot;memorypool.h&quot;<?linebreak?>#include &quot;diskstorage.h&quot;<?linebreak?>#include &quot;bloomfilter.h&quot;<?linebreak?>#include &quot;sparseindex.h&quot;<?linebreak?>#include &quot;debug.h&quot;<?linebreak?>#include &lt;vector&gt;<?linebreak?>#include &lt;string&gt;<?linebreak?>#include &lt;thread&gt;<?linebreak?>#include &lt;chrono&gt;<?linebreak?>#include &lt;utility&gt;<?linebreak?>#include &lt;fstream&gt;<?linebreak?>#include &lt;sstream&gt;<?linebreak?></programlisting>Include dependency graph for hashtable.h:<para>
     <informalfigure>
         <mediaobject>
@@ -39,7 +44,7 @@ This graph shows which files directly or indirectly include this file:<para>
 <section>
 <title>Detailed Description</title>
 
-<para>Custom Hashtable implementation using open addressing with double hashing.</para>
+<para>Custom Hashtable implementation using open addressing with double hashing. </para>
 
 <para>This file contains the declaration and implementation of a custom hashtable that employs open addressing with double hashing for collision resolution. Each entry in the hashtable is represented by an Entry struct containing an occupancy flag, a key string, and a pointer to a memory-managed <link linkend="_structBlock">Block</link>. The hashtable integrates several components including:<itemizedlist>
 <listitem>
@@ -61,6 +66,22 @@ This graph shows which files directly or indirectly include this file:<para>
 </listitem></itemizedlist>
 </para>
 
-<para>The implementation is designed to efficiently handle memory and disk storage operations, making use of modern C++ features such as move semantic and using thread to handle resizing. </para>
+<para>The implementation is designed to efficiently handle memory and disk storage operations, making use of modern C++ features such as move semantic and using thread to handle resizing.</para>
+
+<para><formalpara><title>Copyright</title>
+
+<para>Copyright (c) 2025 </para>
+</formalpara>
+<formalpara><title>See also</title>
+
+<para><link linkend="_memorypool_8h">memorypool.h</link> </para>
+
+<para><link linkend="_diskstorage_8h">diskstorage.h</link> </para>
+
+<para><link linkend="_bloomfilter_8h">bloomfilter.h</link> </para>
+
+<para><link linkend="_sparseindex_8h">sparseindex.h</link> </para>
+</formalpara>
+</para>
 </section>
 </section>

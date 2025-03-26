@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['_7eblinkdb_5fclient_0',['~blinkdb_client',['../classblinkdb__client.html#a7de8b80085d695f6b17dd7441ba04438',1,'blinkdb_client']]]
+  ['write_0',['write',['../classdiskstorage.html#a5cd280ffdc039f12c75f26ba325ec455',1,'diskstorage']]]
 ];

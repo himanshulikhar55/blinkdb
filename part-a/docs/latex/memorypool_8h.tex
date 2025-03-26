@@ -10,7 +10,7 @@ Include dependency graph for memorypool.\+h\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=324pt]{memorypool_8h__incl}
+\includegraphics[width=350pt]{memorypool_8h__incl}
 \end{center}
 \end{figure}
 This graph shows which files directly or indirectly include this file\+:\nopagebreak
@@ -37,5 +37,13 @@ The allocation function assigns a key-\/value pair to the first available block 
 This design is intended for scenarios where managing a collection of key-\/value pairs in memory is crucial for performance and resource utilization.
 
 \begin{DoxyNote}{Note}
-The memorypool relies on the \doxylink{structBlock}{Block} class declared in "{}block.\+h"{}, and it uses C++ Standard Library facilities like std\+::vector and std\+::queue. 
+The memorypool relies on the \doxylink{structBlock}{Block} class declared in "{}block.\+h"{}, and it uses C++ Standard Library facilities like std\+::vector and std\+::queue.
+
+The memorypool class is not thread-\/safe and does not support concurrent access.
 \end{DoxyNote}
+\begin{DoxySeeAlso}{See also}
+\doxylink{block_8h}{block.\+h} 
+\end{DoxySeeAlso}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2025 
+\end{DoxyCopyright}

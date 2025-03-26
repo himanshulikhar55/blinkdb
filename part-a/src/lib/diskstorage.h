@@ -1,7 +1,7 @@
 
 /**
  * @file diskstorage.h
- *Provides the diskstorage class for disk-based storage of key-value pairs.
+ * Provides the diskstorage class for disk-based storage of key-value pairs.
  *
  * This file defines the diskstorage class, which allows writing key-value pairs
  * to a log file in an append-only mode and reading them back by leveraging a sparse
@@ -20,6 +20,7 @@
  * std::string value = ds.read("sampleKey", index);
  * @endcode
  * 
+ * @copyright Copyright (c) 2025
  * @see sparseindex.h
  */
 #pragma once
@@ -33,13 +34,15 @@
 #define LOGFILE "data.log"
 
 /**
- *This class is used to store key-value pairs on disk.
+ * @class diskstorage
+ * This is the diskstorage class. It is used to store key-value pairs on disk.
+ * It writes the key-value pairs to a file in append mode and reads them back using a sparse index.
  * 
  */
 class diskstorage {
 private:
-    std::ofstream* outFile;
-    int counter = 0;
+    std::ofstream* outFile; /* The log file stream to write key-value pairs */
+    int counter = 0;        /* Counter to keep track of number of insertions */
 public:
     /**
      *Construct a new diskstorage object. It opens the file "data.log" in current directory in append mode.

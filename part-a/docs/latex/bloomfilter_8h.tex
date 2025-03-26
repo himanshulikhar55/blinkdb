@@ -41,15 +41,19 @@ The optimal parameters for a desired false positive probability $p$ are calculat
 
 \begin{DoxyEnumerate}
 \item {\bfseries{Bit Array Size}}\+:   \[
-    m = - \frac{n \ln(p)}{(\ln(2))^2}
-    \]
+   m = - \frac{n \ln(p)}{(\ln(2))^2}
+   \]
 \item {\bfseries{Number of Hash Functions}}\+:   \[
-    k = \frac{m}{n} \ln(2)
-    \]
+   k = \frac{m}{n} \ln(2)
+   \]
 \end{DoxyEnumerate}
 
 These formulas help minimize the false positive rate while using space efficiently.
 
 The implementation combines two hash functions to simulate k hash functions using the formula\+: hash\+\_\+i = hash1 + i \texorpdfstring{$\ast$}{*} hash2.
 
-This file is part of the design-\/lab project and is intended for quickly checking key membership with a controlled false positive rate. 
+This file is part of the design-\/lab project and is intended for quickly checking key membership with a controlled false positive rate.
+
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2025 
+\end{DoxyCopyright}

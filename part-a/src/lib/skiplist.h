@@ -23,9 +23,9 @@
  * sl.insert("example_key", 42);
  * std::streampos pos = sl.get_nearest_offset("another_key");
  * @endcode
- *
- * @author Himanshu Likhar
- * @date 23/03/2025
+ * 
+ * @see https://en.wikipedia.org/wiki/Skip_list
+ * @copyright Copyright (c) 2025
  */
 #include <iostream>
 

@@ -1,7 +1,7 @@
 
 /**
  * @file sparseindex.h
- *Sparse index implementation using a skip list.
+ * Sparse index implementation using a skip list.
  *
  * This file defines the sparseindex class, which encapsulates a skip list that stores key-offset pairs.
  * The class leverages the efficiency of skip lists to allow fast insertion and nearest-neighbor offset retrieval,
@@ -17,6 +17,8 @@
  *
  * The design aims to provide a balance between space efficiency and quick lookup times, utilizing the probabilistic
  * balancing nature of skip lists.
+ * 
+ * @copyright Copyright (c) 2025
  */
 #pragma once
 #include "skiplist.h"

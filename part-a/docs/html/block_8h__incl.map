@@ -1,0 +1,5 @@
+<map id="block.h" name="block.h">
+<area shape="rect" id="Node000001" title="This is the actual &quot;Block&quot; that will store the key and value pair." alt="" coords="5,5,69,32"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="10,80,64,107"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="40,33,40,64,34,64,34,33"/>
+</map>

@@ -139,7 +139,7 @@ This graph shows which files directly or indirectly include this file:</div>
 <area shape="rect" title=" " alt="" coords="56,5,159,32"/>
 <area shape="rect" href="diskstorage_8h.html" title=" " alt="" coords="15,80,115,107"/>
 <area shape="poly" title=" " alt="" coords="95,47,75,81,70,78,90,44"/>
-<area shape="rect" href="hashtable_8h.html" title=" " alt="" coords="64,155,152,181"/>
+<area shape="rect" href="hashtable_8h.html" title="Custom Hashtable implementation using open addressing with double hashing." alt="" coords="64,155,152,181"/>
 <area shape="poly" title=" " alt="" coords="121,46,128,75,129,107,115,155,110,153,124,106,123,76,116,47"/>
 <area shape="poly" title=" " alt="" coords="82,119,103,153,98,156,78,122"/>
 <area shape="rect" href="blinkdb_8h.html" title=" " alt="" coords="71,229,144,256"/>
@@ -161,16 +161,17 @@ Classes</h2></td></tr>
 <div class="textblock"><p>Sparse index implementation using a skip list.</p>
 <p>This file defines the sparseindex class, which encapsulates a skip list that stores key-offset pairs. The class leverages the efficiency of skip lists to allow fast insertion and nearest-neighbor offset retrieval, which is particularly useful for indexing. For N keys, the maximum level L for the skip list is recommended as:   </p><p class="formulaDsp">
 \[
- L = \log_{1/p}(N)
- \]
+L = \log_{1/p}(N)
+\]
 </p>
 <p> With p chosen as 0.5, the formula simplifies to:</p>
 <p class="formulaDsp">
 \[
- L = \log_2(N)
- \]
+L = \log_2(N)
+\]
 </p>
-<p>The design aims to provide a balance between space efficiency and quick lookup times, utilizing the probabilistic balancing nature of skip lists. </p>
+<p>The design aims to provide a balance between space efficiency and quick lookup times, utilizing the probabilistic balancing nature of skip lists.</p>
+<dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2025 </dd></dl>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

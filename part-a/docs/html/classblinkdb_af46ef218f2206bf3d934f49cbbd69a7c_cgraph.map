@@ -1,5 +1,5 @@
 <map id="blinkdb::del" name="blinkdb::del">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,93,32"/>
+<area shape="rect" id="Node000001" title="This function should be called when we want to delete a key&#45;value pair." alt="" coords="5,5,93,32"/>
 <area shape="rect" id="Node000002" href="$classhashtable.html#a84de2b2fb13c58b207081fc6c239b3b5" title=" " alt="" coords="141,5,243,32"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="93,16,125,16,125,21,93,21"/>
 <area shape="rect" id="Node000003" href="$classmemorypool.html#a087fc49928d81116fc6369aff223de6f" title=" " alt="" coords="291,5,450,32"/>

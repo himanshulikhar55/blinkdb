@@ -1,24 +1,27 @@
+/**
+ * @file block.h
+ * @brief This is the actual "Block" that will store the key and value pair.
+ * @copyright Copyright (c) 2025
+ * 
+ */
 #pragma once
 #include <string>
 
 
 /**
- *This is the actual "Block" that will store the key and value pair.
- * This block will be dynamically allocated and deallocated during "set" and "delete" operations in blinkdb.
+ * This is the actual "Block" that will store the key and value pair.
+ * This block will be dynamically "allocated" and "deallocated" during "set" and "delete" operations in blinkdb.
  * 
  */
 struct Block {
-    /**
-     *Tells if the block is used or not
-     * 
-     */
-    bool used;
-    /**
-     *The value in the key-value pair
-     * 
-     */
-    std::string value;
 
+    bool used;         /* Tells if the block is used or not */
+    std::string value; /* The value in the key-value pair */
+
+    /**
+     * @brief Default constructor to create a new Block object
+     * 
+     */
     Block() {
         used = false;
         value = "";

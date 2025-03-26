@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['write_0',['write',['../classdiskstorage.html#a5cd280ffdc039f12c75f26ba325ec455',1,'diskstorage']]]
+  ['version_0',['Version',['../index.html#version',1,'']]]
 ];
