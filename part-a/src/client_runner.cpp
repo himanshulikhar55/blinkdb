@@ -85,21 +85,24 @@
 std::string response = "\nPlease enter 'exit' to exit the client\n";
 const std::string quit = "*1\r\n$4\r\nQUIT\r\n";
 blinkdb_client client;
+int mode = 0;
 
 void sigtstpHandler(int signum) {
     std::cout << response;
 }
 
 void handle_exit(){
-    std::string response = client.send_request(quit);
-    if(response == "+OK\r\n"){
-        std::cout << "Exiting the client\n";
-        std::remove("data.log");
-        exit(0);
+    restore_echoctl();
+    if(mode == 2){
+        std::string response = client.send_request(quit);
+        if(response == "+OK\r\n"){
+            std::cout << "Exiting the client\n";
+            std::remove("data.log");
+            exit(0);
+        }
     }
     std::cin.clear();
-    restore_echoctl();
-    std:: cout << "Failed to send server that the client is exiting. Memory leak possible. Exiting abrubtly...\n";
+    std:: cout << "Failed to send server that the client is exiting. Memory leak possible. Exiting  btly...\n";
     exit(-1);
 }
 
@@ -117,7 +120,6 @@ std::string to_lower(std::string s){
 }
 
 int main(int argc, char* argv[]) {
-    int mode = 0;
     if(argc != 2){
         std::cout << "Usage: " << argv[0] << " <mode> (can be one of 1 or 2)" << std::endl;
         return -1;

@@ -12,3 +12,6 @@ docs/man/
 *.zip
 *.log
 obj
+submission/
+24CS60R43*
+part-a/src/client
