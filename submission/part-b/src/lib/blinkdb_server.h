@@ -24,7 +24,7 @@
 #include "../../../part-a/src/lib/resp_parser.h"
 #include "../../../part-a/src/lib/blinkdb.h"
 #include "../../../part-a/src/lib/debug.h"
-#include "utils.h"
+#include "lib/utils.h"
 
 #define MAX_EVENTS 1024
 #define PORT 9001
@@ -62,8 +62,9 @@ public:
 
     ~blinkdb_server() {
         std::remove("data.log");
-        print_log("Server shutting down");
-        print_log("BlinkDB is now exiting the server. Bbye...");
+        print_log("\nBlinkDB is now exiting the server. Bbye...");
+        std::cout << "Server shutting down\n";
+
         client_data.clear();
     }
 
@@ -79,7 +80,6 @@ public:
      * @param server_fd File descriptor for the server socket
      */
     void run(int epoll_fd, int server_fd) {
-        std::string message = "";
         DEBUG_PRINT2("Server started on port: ", PORT);
         std::vector<epoll_event> events = std::vector<epoll_event>(MAX_EVENTS);
         
@@ -88,6 +88,7 @@ public:
             int event_count = epoll_wait(epoll_fd, events.data(), max_parallel_conn, -1);
             
             if (event_count == -1) {
+                perror("Epoll wait failed");
                 break;
             }
             /* Iterate over generated events */
@@ -110,9 +111,7 @@ public:
                         continue;
                     }
                     
-                    message.clear();
-                    message =  "Client " + std::to_string(client_fd) + " connected";
-                    print_log(message.c_str());
+                    std::cout << "Client " << client_fd << " connected\n";
                 } else {
                     int client_fd = events[i].data.fd;
 
@@ -158,13 +157,11 @@ public:
                             send(client_fd, "+OK\r\n", 5, 0);
                             close(client_fd);
                             client_data.erase(client_id);
-                            message.clear();
-                            message = "Client " + std::to_string(client_id) + " disconnected";
-                            print_log(message.c_str());
+                            std::cout << "Client " << client_id << " disconnected\n";
 
                         } else if(op->cmd == "print"){ /* will most probably remove this. This is mainly for debugging purposes */
 
-                            print_log("DB Content:");
+                            std::cout << "DB Content:\n";
                             db.print();
                             send(client_fd, "+OK\r\n", 5, 0);
 

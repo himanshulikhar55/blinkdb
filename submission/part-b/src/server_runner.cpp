@@ -18,7 +18,10 @@
 #include "lib/blinkdb_server.h"
 #include "../../part-a/src/lib/blinkdb.h"
 #include "../../part-a/src/lib/resp_parser.h"
-
+#include <sys/epoll.h>
+#include <arpa/inet.h>
+#include <fcntl.h>
+#include <unistd.h>
 
 #ifdef DEBUG
     #define MAX_CONN 1000
@@ -43,7 +46,6 @@ void handle_exit();
 void handleSigInt(int signum);
 
 int main(int argc, char* argv[]) {
-    std::string message = "";
     #ifdef DEBUG
         int max_parallel_conn = MAX_CONN;
     #else
@@ -56,23 +58,21 @@ int main(int argc, char* argv[]) {
     try{
         max_parallel_conn = std::stoi(argv[1]);
     } catch(std::exception &e){
-        print_log(e.what());
+        std::cout << e.what() << std::endl;
         return -1;
     }
     if(max_parallel_conn < 10){
-        print_log("Max Parallel Connections should be atleast 10");
+        std::cout << "Max Parallel Connections should be atleast 10\n";
         return -1;
     }
-    disable_echoctl();
-    printBanner();
-    message = "Initalizing server with " + std::to_string(max_parallel_conn) + " parallel connections";
-    print_log(message.c_str());
+    std::cout << "Initalizing server with " << max_parallel_conn << " parallel connections" << std::endl;
     #ifdef DEBUG
         blinkdb_server server(MAX_CONN);
     #else
         blinkdb_server server(max_parallel_conn);
     #endif
-    print_log("Setting up server");
+
+    std::cout << "Setting up server" << std::endl;
     int server_fd = -1;
     int epoll_fd = -1;
     
@@ -106,7 +106,7 @@ int main(int argc, char* argv[]) {
         return -1;
     }
     
-    print_log("Adding to epoll");
+    std::cout << "Adding to epoll" << std::endl;
     epoll_fd = epoll_create1(0);
     if (epoll_fd == -1) {
         perror("Epoll creation failed");
@@ -119,9 +119,7 @@ int main(int argc, char* argv[]) {
         perror("Epoll_ctl failed");
         return -1;
     }
-    message.clear();
-    message = "All initializations successful. Server started on port " + std::to_string(PORT);
-    print_log(message.c_str());
+    std::cout << "All initializations successful. Server started on port " << PORT << std::endl;
 
     server.run(epoll_fd, server_fd);
 
@@ -129,8 +127,8 @@ int main(int argc, char* argv[]) {
 }
 
 void handle_exit(){
-    restore_echoctl();
-    print_log("User requested server shutdown...");
+    std::cout << "\nExiting the server\n";
+    std::remove("data.log");
     return;
 }
 
