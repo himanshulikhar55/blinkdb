@@ -138,7 +138,10 @@ public:
 
     void execute(blinkdb &db, parse_op *ip){
         if(ip->cmd == "SET"){
-
+            if((ip->value).length() == 0){
+                std::cout << "value cannot be empty" << std::endl;
+                return;
+            }
             if(!db.set(ip->key, ip->value)){
                 std::cout << "Could not set " << ip->key << " to " << ip->value << ". Try again" << std::endl;
             }

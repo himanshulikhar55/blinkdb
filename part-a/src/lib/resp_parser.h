@@ -21,6 +21,7 @@
  */
 #pragma once
 #include "debug.h"
+#include "utils.h"
 
 #include <string>
 #include <sstream>
@@ -112,10 +113,18 @@ class resp_parser {
             std::string cmd, key;
             ss = std::stringstream(input);
             ss >> cmd;
+            if(ss.fail()){
+                ip->cmd = "";
+                return;
+            }
             to_higher(cmd);
             ip->cmd = cmd;
             to_lower(cmd);
             ss >> key;
+            if(ss.fail()){
+                ip->cmd = "";
+                return;
+            }
             ip->key = key;
             if(cmd == "set"){
                 std::string temp = "";
@@ -126,6 +135,10 @@ class resp_parser {
                 /* Value might be empty */
                 if(val.length() > 0)
                     val.pop_back();
+                else{
+                    ip->cmd = "";
+                    return;
+                }
                 ip->value = val;
             }
             if(mode == 2)
@@ -231,6 +244,10 @@ class resp_parser {
             size_t pos = response.find("\r\n"), len = 0;
             if(pos == std::string::npos)
                 return;
+            if(response == "+OK\r\n"){
+                response = "";
+                return;
+            }
             try{
                 len = std::stoi(response.substr(1, pos - 1));
             } catch(std::exception &e){
@@ -304,7 +321,14 @@ class resp_parser {
             
             /* get the number of arguments */
             std::string num = get_len(data, &i), cmd = "", val = "";
-            num_args = std::stoi(num);
+            try{
+                num_args = std::stoi(num);
+            } catch(std::exception &e){
+                std::string error = "Invalid number of arguments: ";
+                error += e.what();
+                print_log(error.c_str());
+                return 0;
+            }
             if(num_args < 2 || num_args > 3)
                 return 0;
             

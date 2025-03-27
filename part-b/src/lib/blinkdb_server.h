@@ -24,7 +24,6 @@
 #include "../../../part-a/src/lib/resp_parser.h"
 #include "../../../part-a/src/lib/blinkdb.h"
 #include "../../../part-a/src/lib/debug.h"
-#include "utils.h"
 
 #define MAX_EVENTS 1024
 #define PORT 9001
@@ -142,7 +141,7 @@ public:
                             }
                             else {
                                 DEBUG_PRINT("Key not available\n");
-                                send(client_fd, "+OK\r\n", 5, 0);
+                                send(client_fd, "+OK\r\n", 5, 0); /* Sending OK because redis-benchmark needs OK after execution of each command */
                             }
                         
                         } else if(op->cmd == "del"){

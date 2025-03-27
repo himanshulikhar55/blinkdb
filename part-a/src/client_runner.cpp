@@ -135,7 +135,6 @@ int main(int argc, char* argv[]) {
     }
     disable_echoctl();
     resp_parser parser;
-    parse_op ip;
     signal(SIGINT, handleSigInt);
 
     signal(SIGTSTP, sigtstpHandler);  /* Handle Ctrl+Z */
@@ -147,6 +146,7 @@ int main(int argc, char* argv[]) {
             return 1;
         }
         while (true) {
+            parse_op ip;
             std::cout << "User> ";
             std::string input;
             getline(std::cin, input);
@@ -158,15 +158,19 @@ int main(int argc, char* argv[]) {
                 handle_exit();
             }
             parser.parse(input, &ip, mode);  /* Fill ip->resp_str */
-            if (ip.resp_str.empty())
+            if (ip.resp_str.empty()){
+                std::cout << "Invalid command. Please have a look at documentation for supported command types and their usage.\n";
                 continue;
+            }
 
             std::string response = client.send_request(ip.resp_str);
             if(to_lower(input.substr(0,3)) == "get")
                 parser.get_val(response);
-            std::cout << response << std::endl;
+            if(response.length() > 0)
+                std::cout << response << std::endl;
         }
     } else {
+        parse_op ip;
         blinkdb db(10000);
         while (true) {
             std::cout << "User> ";
